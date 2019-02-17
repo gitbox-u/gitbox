@@ -1,3 +1,3 @@
-# team01
+# Gitbox
 
-hello world
+A viusual repository manager for all git repositories.
