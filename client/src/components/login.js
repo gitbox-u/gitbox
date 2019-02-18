@@ -27,9 +27,9 @@ const styles = {
 
 class Login extends Component {
 
-    handleChange = name => event => {
-        this.props.updateLoginField(name, event.target.value);
-    }
+  handleChange = name => event => {
+    this.props.updateLoginField(name, event.target.value);
+  };
 
     render() {
 
@@ -57,7 +57,7 @@ class Login extends Component {
                             </Grid>
                             <Grid item>
                                 <Typography variant="h4">
-                                    Gitbox
+                                    GITBOX
                                 </Typography>
                             </Grid>
                             <Grid item>
@@ -65,7 +65,7 @@ class Login extends Component {
                                     value={username}
                                     onChange={this.handleChange("username")}
                                     fullWidth
-                                    label="Username"
+                                    placeholder="Username"
                                     className={classes.formInput}/>
                             </Grid>
                             <Grid item>
@@ -74,8 +74,9 @@ class Login extends Component {
                                     onChange={this.handleChange("password")}
                                     fullWidth
                                     type="password"
-                                    label="Password"
-                                    className={classes.formInput}/>
+                                    placeholder="Password"
+                                    className={classes.formInput}
+                                    />
                             </Grid>
                             <Grid item>
                                 <Button fullWidth variant="contained" color="primary"
@@ -91,15 +92,15 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = {
-    updateLoginField
-}
+  updateLoginField
+};
 
 const mapStateToProps = (state) => {
-    const {username, password} = state;
+  const {username, password} = state;
 
-    return {
-        username, password
-    }
-}
+  return {
+    username, password
+  }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login));

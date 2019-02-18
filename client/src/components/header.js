@@ -7,7 +7,7 @@ const styles = {
     grow: {
         flexGrow: 1,
     },
-}
+};
 
 const Header = (props) => {
 
@@ -36,6 +36,6 @@ const Header = (props) => {
             </Toolbar>
         </AppBar>
     );
-}
+};
 
 export default withStyles(styles)(Header);

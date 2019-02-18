@@ -6,12 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  background-image: url(./assets/back.png);
-  background-size: 2000px;
-  background-position: center;
-  background-repeat: repeat;
-  
+  background-color: rgb(1, 105, 193);
 }
 
 code {

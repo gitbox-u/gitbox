@@ -1,11 +1,11 @@
 const ACTIONS = {
     UPDATE: 0,
-}
+};
 
 const initial = {
     username: '',
     password: '',
-}
+};
 
 const updateLoginField = (field, value) => {
     return (dispatch) => {
@@ -15,7 +15,7 @@ const updateLoginField = (field, value) => {
             value
         });
     }
-}
+};
 
 const reducer = (state = initial, action) => {
     const { type } = action;
@@ -27,7 +27,7 @@ const reducer = (state = initial, action) => {
         }
     }
     return state;
-}
+};
 
 export { updateLoginField };
 export default reducer;
