@@ -10,7 +10,7 @@ const Header = (props) => {
     const { classes } = props;
 
     return (
-        <AppBar position="static">
+        <AppBar color="primary" position="static">
             <Toolbar>
                 <IconButton color="inherit">
                     <MenuIcon />

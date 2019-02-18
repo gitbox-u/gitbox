@@ -4,11 +4,13 @@ import Header from './components/header';
 import Login from './components/login';
 
 import { AppBar, Typography, createMuiTheme, MuiThemeProvider } from '@material-ui/core';
-import { indigo } from '@material-ui/core/colors';
+import { indigo , white} from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
     palette: {
-      
+      primary: {
+        main: 'rgb(43, 36, 77)',
+      }
     }
 })
 

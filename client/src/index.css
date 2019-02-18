@@ -7,16 +7,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: 
-  /* top, transparent red, faked with gradient */ 
-  linear-gradient(
-    rgba(15, 0, 25, 0.75), 
-    rgba(15, 0, 25, 0.75)
-  ),
-  url(./assets/back.png);
+  background-image: url(./assets/back.jpg);
   background-position: center;
-  background-size: 20%;
-  background-repeat: repeat;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   
 }
 
