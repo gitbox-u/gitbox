@@ -12,16 +12,20 @@ const styles = {
     },
 
     formInput: {
-        // marginBottom: 10
+        marginTop: '5px',
+        borderBottom: '1px solid black',
     },
 
     formButton: {
-        marginTop: 20,
-        // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+        marginTop: '20px',
     },
 
     logo: {
         width: 130
+    },
+
+    logoLabel: {
+      letterSpacing: '0.1em'
     }
 };
 
@@ -56,20 +60,27 @@ class Login extends Component {
                                 <img src={logo} className={classes.logo}/>
                             </Grid>
                             <Grid item>
-                                <Typography variant="h4">
+                                <Typography variant="h4" className={classes.logoLabel}>
                                     GITBOX
                                 </Typography>
                             </Grid>
                             <Grid item>
                                 <TextField
+                                    InputProps={{
+                                      disableUnderline: true,
+                                    }}
                                     value={username}
                                     onChange={this.handleChange("username")}
                                     fullWidth
                                     placeholder="Username"
-                                    className={classes.formInput}/>
+                                    className={classes.formInput}
+                                />
                             </Grid>
                             <Grid item>
                                 <TextField
+                                    InputProps={{
+                                      disableUnderline: true,
+                                    }}
                                     value={password}
                                     onChange={this.handleChange("password")}
                                     fullWidth
@@ -79,7 +90,7 @@ class Login extends Component {
                                     />
                             </Grid>
                             <Grid item>
-                                <Button fullWidth variant="contained" color="primary"
+                                <Button fullWidth variant="outlined" color="primary"
                                         className={classes.formButton}>Login</Button>
                             </Grid>
                         </Grid>
