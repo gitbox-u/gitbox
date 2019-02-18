@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import Login from './components/login';
 import Header from './components/header';
+import Dashboard from './components/dashboard'
 
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 
@@ -38,6 +39,7 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
           {location.pathname !== '/login' && <Header />}
           <Route exact path="/login" component={Login} />
+          <Route exact path="/dashboard" component={Dashboard} />
       </MuiThemeProvider>
     );
   }
