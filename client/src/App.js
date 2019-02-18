@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/header';
 import Login from './components/login';
 
-import { AppBar, Typography, createMuiTheme, MuiThemeProvider } from '@material-ui/core';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 
 const theme = createMuiTheme({
     palette: {
