@@ -49,7 +49,7 @@ class Login extends Component {
                   value={username}
                   onChange={this.handleChange("username")}
                   fullWidth
-                  label="Username"
+                  placeholder="Username"
                   className={classes.formInput} />
               </Grid>
               <Grid item>
@@ -58,7 +58,7 @@ class Login extends Component {
                   onChange={this.handleChange("password")}
                   fullWidth
                   type="password"
-                  label="Password"
+                  placeholder="Password"
                   className={classes.formInput} />
               </Grid>
               <Grid item>
