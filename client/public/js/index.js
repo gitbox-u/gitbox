@@ -1,4 +1,5 @@
 //source: https://codepen.io/laurentschoonbrodt/pen/NqdPpy
+function geometric(){
 var refreshDuration = 10000;
 var refreshTimeout;
 var numPointsX;
@@ -6,6 +7,7 @@ var numPointsY;
 var unitWidth;
 var unitHeight;
 var points;
+
 
 function onLoad()
 {
@@ -132,3 +134,7 @@ function onResize() {
 
 window.onload = onLoad;
 window.onresize = onResize;
+}
+if(window.location.href.includes('login')){
+    geometric();
+}
