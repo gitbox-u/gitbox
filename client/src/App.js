@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import Login from './components/login';
 import Header from './components/header';
-import Dashboard from './components/dashboard'
+import Dashboard from './components/dashboard/dashboard'
 
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 
@@ -13,7 +13,7 @@ const theme = createMuiTheme({
       contrastText: 'rgb(225, 225, 225)',
     },
     secondary: {
-      main: 'rgb(200, 200, 200)',
+      main: 'rgb(232, 166, 0)',
       contrastText: 'rgb(25, 25, 25)',
     }
   },

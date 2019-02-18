@@ -1,6 +1,7 @@
 html {
-  background: radial-gradient(ellipse at center, #0169c1 0%, #06a7dd 100%);
+  background: radial-gradient(ellipse at center, #0169c1 100%, black 100%);
   overflow: hidden;
+  
 }
 
 svg polygon {
