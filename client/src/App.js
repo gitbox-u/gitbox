@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import Login from './components/login';
+import Header from './components/header';
 
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 
@@ -31,14 +32,15 @@ const theme = createMuiTheme({
 
 class App extends Component {
   render() {
+    const { location } = this.props;
+
     return (
-      <BrowserRouter>
-        <MuiThemeProvider theme={theme}>
+      <MuiThemeProvider theme={theme}>
+          {location.pathname !== '/login' && <Header />}
           <Route exact path="/login" component={Login} />
-        </MuiThemeProvider>
-      </BrowserRouter>
+      </MuiThemeProvider>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
