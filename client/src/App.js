@@ -16,7 +16,7 @@ const theme = createMuiTheme({
         contrastText: 'rgb(25, 25, 25)',
       }
     }
-})
+});
 
 class App extends Component {
   render() {
