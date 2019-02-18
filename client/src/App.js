@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import Header from './components/header';
 import Login from './components/login';
 
 import { AppBar, Typography, createMuiTheme, MuiThemeProvider } from '@material-ui/core';
-import { indigo , white} from '@material-ui/core/colors';
+// import { indigo , white} from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
+    // transitions: {
+    //   create: () => 'none',
+    // },
     palette: {
       primary: {
         main: 'rgb(70, 16, 77)',
@@ -16,15 +18,25 @@ const theme = createMuiTheme({
         main: 'rgb(200, 200, 200)',
         contrastText: 'rgb(25, 25, 25)',
       }
-    }
-})
+    },
+    props: {
+      MuiButtonBase: {
+        disableRipple: true,
+      },
+    },
+    typography: {
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      'Roboto'
+    ].join(','),
+    },
+});
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <MuiThemeProvider theme={theme}>
-          <Header />
           <Route exact path="/login" component={Login} />
         </MuiThemeProvider>
       </BrowserRouter>

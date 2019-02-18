@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Button, Card, TextField, withStyles, Grid, Typography, Tab, Tabs, Paper } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { updateLoginField } from '../redux/reducer';
-import MenuIcon from '@material-ui/icons/Menu';
 
 const styles = {
   formContainer: {
@@ -18,13 +17,13 @@ const styles = {
     marginTop: 10,
     // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
   }
-}
+};
 
 class Login extends Component {
 
   handleChange = name => event => {
     this.props.updateLoginField(name, event.target.value);
-  }
+  };
 
   render() {
 
@@ -75,7 +74,7 @@ class Login extends Component {
 
 const mapDispatchToProps = {
   updateLoginField
-}
+};
 
 const mapStateToProps = (state) => {
   const { username, password } = state;
@@ -83,6 +82,6 @@ const mapStateToProps = (state) => {
   return {
     username, password
   }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login));
