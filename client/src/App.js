@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Login from './components/login';
 
-import { AppBar, Typography, createMuiTheme, MuiThemeProvider } from '@material-ui/core';
-// import { indigo , white} from '@material-ui/core/colors';
+import { Typography, createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 
 const theme = createMuiTheme({
     palette: {
       primary: {
-        main: 'rgb(70, 16, 77)',
+        main: 'rgb(1, 105, 193);',
         contrastText: 'rgb(225, 225, 225)',
       },
       secondary: {
@@ -24,6 +23,7 @@ const theme = createMuiTheme({
     typography: {
     // Use the system font instead of the default Roboto font.
     fontFamily: [
+      'Hind+Siliguri',
       'Roboto'
     ].join(','),
     },

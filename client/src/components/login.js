@@ -57,7 +57,7 @@ class Login extends Component {
                             </Grid>
                             <Grid item>
                                 <Typography variant="h4">
-                                    Gitbox
+                                    GITBOX
                                 </Typography>
                             </Grid>
                             <Grid item>
@@ -75,7 +75,8 @@ class Login extends Component {
                                     fullWidth
                                     type="password"
                                     placeholder="Password"
-                                    className={classes.formInput}/>
+                                    className={classes.formInput}
+                                    />
                             </Grid>
                             <Grid item>
                                 <Button fullWidth variant="contained" color="primary"
