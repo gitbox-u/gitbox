@@ -3,11 +3,12 @@ import {connect} from 'react-redux';
 import Grid from "@material-ui/core/Grid";
 import Repos from "./dashboardRepos";
 import withStyles from "@material-ui/core/es/styles/withStyles";
+import Header from "./header";
 
 
 const style =
     {
-        dashboardColumn:{
+        dashboardColumn: {
             minWidth: 200,
 
         },
@@ -21,42 +22,42 @@ class Dashboard extends Component {
         const {classes} = this.props;
 
         return (
-            <Grid container
-                  spacing={16}
-                  direction="column"
-                  justify="center"
-                  alignItems="center"
-                  style={{
-                      minHeight: '30vh',
-                  }}
-            >
-                <Grid item container
-                      spacing={16}
-                      direction="row"
+                <Grid container
+                      spacing={0}
+                      direction="column"
                       justify="center"
-
+                      alignItems="center"
+                      style={{
+                          minHeight: '30vh',
+                      }}
                 >
-                    <Grid item className={classes.dashboardColumn}>
-                        <Repos className={classes.dashboardItem}/>
+                    <Grid item container
+                          spacing={0}
+                          direction="row"
+                          justify="center"
+
+                    >
+                        <Grid item className={classes.dashboardColumn}>
+                            <Repos className={classes.dashboardItem}/>
+                        </Grid>
+                        <Grid item>
+                            <Repos/>
+                        </Grid>
                     </Grid>
-                    <Grid item>
-                        <Repos/>
+
+                    <Grid item container
+                          spacing={0}
+                          direction="row"
+                          justify="center"
+                    >
+                        <Grid item>
+                            <Repos/>
+                        </Grid>
+                        <Grid item>
+                            <Repos/>
+                        </Grid>
                     </Grid>
                 </Grid>
-
-                <Grid item container
-                      spacing={16}
-                      direction="row"
-                      justify="center"
-                >
-                    <Grid item>
-                        <Repos/>
-                    </Grid>
-                    <Grid item>
-                        <Repos/>
-                    </Grid>
-                </Grid>
-            </Grid>
         );
     }
 }

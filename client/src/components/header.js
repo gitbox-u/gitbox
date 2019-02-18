@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withStyles, AppBar, Typography, Toolbar, IconButton, Button } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from '../assets/logo.svg';
+import {withRouter} from "react-router-dom";
 
 const styles = {
     grow: {
@@ -9,33 +10,44 @@ const styles = {
     },
 };
 
-const Header = (props) => {
+class Header extends Component {
 
-    const { classes } = props;
+    constuctor() {
+        this.routeChange = this.routeChange.bind(this);
+    }
 
-    return (
-        <AppBar color="primary" position="static">
-            <Toolbar>
-                <IconButton color="inherit">
-                    <img src={logo} width="40" />
-                </IconButton>
-                <Typography color="inherit" variant="h4">
-                    Gitbox
-                </Typography>
-                <div className={classes.grow} />
-                <Button color="inherit" variant={"text"}>
-                    Home
-                </Button>
-                <Button color="inherit" variant={"text"}>
-                    Dashboard
-                </Button>
-                <Button color="inherit" variant={"text"}>
-                    Login
-                </Button>
+    routeChange = (path) => () => {
+        this.props.history.push(path);
+    };
 
-            </Toolbar>
-        </AppBar>
-    );
-};
+    render() {
 
-export default withStyles(styles)(Header);
+        const {classes} = this.props;
+
+        return (
+            <AppBar color="primary" position="static">
+                <Toolbar>
+                    <IconButton color="inherit">
+                        <img src={logo} width="40"/>
+                    </IconButton>
+                    <Typography color="inherit" variant="h4">
+                        Gitbox
+                    </Typography>
+                    <div className={classes.grow}/>
+                    <Button onClick={this.routeChange("")} color="inherit" variant={"text"}>
+                        Home
+                    </Button>
+                    <Button onClick={this.routeChange("dashboard")} color="inherit" variant={"text"}>
+                        Dashboard
+                    </Button>
+                    <Button onClick={this.routeChange("login")} color="inherit" variant={"text"}>
+                        Login
+                    </Button>
+
+                </Toolbar>
+            </AppBar>
+        );
+    }
+}
+
+export default withRouter(withStyles(styles)(Header));
