@@ -6,6 +6,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-image: 
+  /* top, transparent red, faked with gradient */ 
+  linear-gradient(
+    rgba(15, 0, 25, 0.75), 
+    rgba(15, 0, 25, 0.75)
+  ),
+  url(./assets/back.png);
+  background-position: center;
+  background-size: 20%;
+  background-repeat: repeat;
+  
 }
 
 code {
