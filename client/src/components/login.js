@@ -7,7 +7,7 @@ import logo from '../assets/logo.svg';
 
 const styles = {
     formContainer: {
-        padding: 40,
+        padding: '50px 90px',
         minWidth: 300,
     },
 
@@ -47,7 +47,7 @@ class Login extends Component {
                 spacing={0}
                 justify="center"
                 direction="column"
-                style={{minHeight: '80vh'}}
+                style={{minHeight: '85vh'}}
             >
                 <Grid item>
                     <Paper className={classes.formContainer}>
