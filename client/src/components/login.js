@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card, TextField, withStyles, Grid, Typography, Tab, Tabs } from '@material-ui/core';
+import { Button, Card, TextField, withStyles, Grid, Typography, Tab, Tabs, Paper } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { updateLoginField } from '../redux/reducer';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -41,7 +41,7 @@ class Login extends Component {
         style={{ minHeight: '80vh' }}
       >
         <Grid item>
-          <Card className={classes.formContainer}>
+          <Paper className={classes.formContainer}>
             <Grid container
               direction="column">
               <Grid item>
@@ -65,7 +65,7 @@ class Login extends Component {
                 <Button fullWidth variant="contained" color="primary" className={classes.formButton}>Login</Button>
               </Grid>
             </Grid>
-          </Card>
+          </Paper>
         </Grid>
 
       </Grid>
