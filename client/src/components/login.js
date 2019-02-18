@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card, TextField, withStyles, CardHeader, Typography, Tab, Tabs } from '@material-ui/core';
+import { Button, Card, TextField, withStyles, Grid, Typography, Tab, Tabs } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { updateLoginField } from '../redux/reducer';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -7,7 +7,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 const styles = {
   formContainer: {
     padding: 20,
-    maxWidth: 300,
+    minWidth: 300,
   },
 
   formInput: {
@@ -16,7 +16,7 @@ const styles = {
 
   formButton: {
     marginTop: 10,
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
   }
 }
 
@@ -32,24 +32,43 @@ class Login extends Component {
     const { username, password } = this.props;
 
     return (
-      <Card className={classes.formContainer}>
-        <TextField
-          value={username}
-          onChange={this.handleChange("username")}
-          fullWidth
-          label="Username"
-          className={classes.formInput} /> <br />
+      <Grid
+        container
+        alignItems="center"
+        spacing={0}
+        justify="center"
+        direction="column"
+        style={{ minHeight: '80vh' }}
+      >
+        <Grid item>
+          <Card className={classes.formContainer}>
+            <Grid container
+              direction="column">
+              <Grid item>
+                <TextField
+                  value={username}
+                  onChange={this.handleChange("username")}
+                  fullWidth
+                  label="Username"
+                  className={classes.formInput} />
+              </Grid>
+              <Grid item>
+                <TextField
+                  value={password}
+                  onChange={this.handleChange("password")}
+                  fullWidth
+                  type="password"
+                  label="Password"
+                  className={classes.formInput} />
+              </Grid>
+              <Grid item>
+                <Button fullWidth variant="contained" color="primary" className={classes.formButton}>Login</Button>
+              </Grid>
+            </Grid>
+          </Card>
+        </Grid>
 
-        <TextField
-          value={password}
-          onChange={this.handleChange("password")}
-          fullWidth
-          type="password"
-          label="Password"
-          className={classes.formInput} /> <br />
-
-        <Button fullWidth variant="contained" color="primary" className={classes.formButton}>Login</Button> <br />
-      </Card>
+      </Grid>
     );
   }
 }

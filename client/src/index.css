@@ -7,10 +7,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: url(./assets/back.jpg);
+  background-image: url(./assets/back.png);
+  background-size: 2000px;
   background-position: center;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   
 }
 

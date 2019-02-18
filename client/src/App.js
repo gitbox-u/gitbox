@@ -9,7 +9,12 @@ import { indigo , white} from '@material-ui/core/colors';
 const theme = createMuiTheme({
     palette: {
       primary: {
-        main: 'rgb(43, 36, 77)',
+        main: 'rgb(70, 16, 77)',
+        contrastText: 'rgb(225, 225, 225)',
+      },
+      secondary: {
+        main: 'rgb(200, 200, 200)',
+        contrastText: 'rgb(25, 25, 25)',
       }
     }
 })
