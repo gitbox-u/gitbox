@@ -4,7 +4,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import logo from '../assets/logo.svg';
 
 const styles = {
-}
+};
 
 const Header = (props) => {
 
@@ -25,6 +25,6 @@ const Header = (props) => {
             </Toolbar>
         </AppBar>
     );
-}
+};
 
 export default withStyles(styles)(Header);

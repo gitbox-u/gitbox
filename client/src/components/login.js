@@ -29,7 +29,7 @@ class Login extends Component {
 
     handleChange = name => event => {
         this.props.updateLoginField(name, event.target.value);
-    }
+    };
 
     render() {
 
@@ -92,7 +92,7 @@ class Login extends Component {
 
 const mapDispatchToProps = {
     updateLoginField
-}
+};
 
 const mapStateToProps = (state) => {
     const {username, password} = state;
@@ -100,6 +100,6 @@ const mapStateToProps = (state) => {
     return {
         username, password
     }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login));
