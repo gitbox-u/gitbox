@@ -74,7 +74,7 @@ function onLoad()
                     }
                 }
                 polygon.setAttribute('fill','rgba(0,0,0,'+(Math.random()/5)+')');
-                polygon.setAttribute('stroke','rgba(250,250,250,'+(Math.random()/1)+')');
+                // polygon.setAttribute('stroke','rgba(250,250,250,'+(Math.random()/1)+')');
                 var animate = document.createElementNS('http://www.w3.org/2000/svg','animate');
                 animate.setAttribute('fill','freeze');
                 animate.setAttribute('attributeName','points');
