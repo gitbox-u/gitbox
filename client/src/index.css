@@ -24,6 +24,6 @@ code {
 #root {
   position: absolute;
   top: 0;
-  left: calc(50vw -50%);
+  left: calc(50vw - 50%);
   width: 100%;
 }
