@@ -31,7 +31,7 @@ class Header extends Component {
                         <img src={logo} width="40"/>
                     </IconButton>
                     <Typography color="inherit" variant="h4">
-                        Gitbox
+                        Gitmap
                     </Typography>
                     <div className={classes.grow}/>
                     <Button onClick={this.routeChange("")} color="inherit" variant={"text"}>
@@ -43,7 +43,6 @@ class Header extends Component {
                     <Button onClick={this.routeChange("login")} color="inherit" variant={"text"}>
                         Login
                     </Button>
-
                 </Toolbar>
             </AppBar>
         );
