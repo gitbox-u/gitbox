@@ -6,9 +6,6 @@ import { AppBar, Typography, createMuiTheme, MuiThemeProvider } from '@material-
 // import { indigo , white} from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
-    // transitions: {
-    //   create: () => 'none',
-    // },
     palette: {
       primary: {
         main: 'rgb(70, 16, 77)',
