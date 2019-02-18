@@ -85,9 +85,9 @@ class Login extends Component {
                     </Paper>
                 </Grid>
 
-      </Grid>
-    );
-  }
+            </Grid>
+        );
+    }
 }
 
 const mapDispatchToProps = {
@@ -95,7 +95,7 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state) => {
-  const { username, password } = state;
+  const {username, password} = state;
 
   return {
     username, password
