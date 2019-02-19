@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Button, Card, TextField, withStyles, Grid, Typography, Tab, Tabs, Paper} from '@material-ui/core';
 import {connect} from 'react-redux';
-import {updateLoginField} from '../redux/reducer';
+import {updateLoginField} from '../reducers/loginReducer';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from '../assets/logo.svg';
 

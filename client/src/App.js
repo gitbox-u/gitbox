@@ -4,7 +4,6 @@ import Login from './components/login';
 import Header from './components/header';
 import Dashboard from './components/dashboard/dashboard';
 import Repository from './components/repository/Repository';
-import Searchbar from './components/dashboard/searchbar'
 
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 

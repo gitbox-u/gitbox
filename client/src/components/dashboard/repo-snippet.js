@@ -7,7 +7,7 @@ import { Avatar } from '@material-ui/core/es';
 const styles = {
     repoCard: {
         width: 250,
-        height: 180,
+        height: 220,
         padding: 24,
     },
 }
@@ -17,15 +17,15 @@ class Repository extends Component {
     render() {
         const { classes } = this.props;
 
-        const { name } = this.props;
+        const { name, desc } = this.props;
 
         return (
             <Card className={classes.repoCard}>
                 <CardHeader 
                     title={
-                        `Repository ${name}`
+                        `${name}`
                     }
-                    subheader="Lorum ipsum blah blab some words here."
+                    subheader={`${desc}`}
                 />
             </Card>
         );

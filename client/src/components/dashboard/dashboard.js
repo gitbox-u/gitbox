@@ -4,8 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import Repositories from './repos';
 import QuickStats from "./QuickStats";
-import SearchBar from "./searchbar";
-import Pages from "./pagination";
 import { Typography } from "@material-ui/core";
 
 const style =
@@ -15,6 +13,7 @@ const style =
     },
 
     dashboardSection: {
+        width: '80%'
     },
 
     repoHeader: {
@@ -45,15 +44,6 @@ class Dashboard extends Component {
                     <Typography variant="h4">
                         Repositories
                     </Typography>
-                </Grid>
-
-
-                <Grid item className={classes.dashboardSection}>
-                    <SearchBar />
-                </Grid>
-
-                <Grid item className={classes.dashboardSection}>
-                    <Pages />
                 </Grid>
 
                 <Grid item className={classes.dashboardSection}>
