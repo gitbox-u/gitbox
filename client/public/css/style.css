@@ -1,7 +1,3 @@
-html {
-  background: radial-gradient(ellipse at center, #0169c1 100%, black 100%);
-}
-
 svg polygon {
   transition: 2.5s all;
 }

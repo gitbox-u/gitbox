@@ -5,17 +5,21 @@ import withStyles from "@material-ui/core/es/styles/withStyles";
 import Repositories from './repos';
 import QuickStats from "./QuickStats";
 import SearchBar from "./searchbar"
+import { Typography } from "@material-ui/core";
 
 
 const style =
 {
     dashboardContainer: {
-        padding: 100,
-        paddingTop: 40,
+        paddingTop: 100,
     },
     dashboardSection: {
         maxWidth: '80%',
     },
+
+    repoHeader: {
+        marginTop: 60
+    }
 };
 
 class Dashboard extends Component {
@@ -33,11 +37,19 @@ class Dashboard extends Component {
             >
 
                 <Grid item className={classes.dashboardSection}>
-                    <QuickStats/>
+                    <QuickStats />
                 </Grid>
 
+
+                <Grid item className={[classes.dashboardSection, classes.repoHeader]}>
+                    <Typography variant="h4">
+                        Repositories
+                    </Typography>
+                </Grid>
+
+
                 <Grid item className={classes.dashboardSection}>
-                    <SearchBar/>
+                    <SearchBar />
                 </Grid>
 
 
@@ -45,9 +57,6 @@ class Dashboard extends Component {
                     <Repositories>
                     </Repositories>
                 </Grid>
-                <Grid item className={classes.dashboardSection}></Grid>
-                <Grid item className={classes.dashboardSection}></Grid>
-
             </Grid>
         );
     }

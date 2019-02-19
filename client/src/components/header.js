@@ -25,7 +25,7 @@ class Header extends Component {
         const {classes} = this.props;
 
         return (
-            <AppBar color="primary" position="static">
+            <AppBar color="primary" position="fixed">
                 <Toolbar>
                     <IconButton color="inherit">
                         <img src={logo} width="40"/>

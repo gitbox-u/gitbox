@@ -7,15 +7,16 @@ class Repositories extends Component {
     render() {
         // temp
         const repos = [
+            1, 2, 3, 4, 5, 6, 7, 8, 9,
+            1, 2, 3, 4, 5, 6, 7, 8, 9,
             1, 2, 3, 4, 5, 6, 7, 8, 9
         ];
 
         return (
             <Grid container
-                direction="row"
                 spacing={32}
                 justify="center"
-                alignItems="center"
+                alignContent="center"
             >
                 {
                     repos.map(
