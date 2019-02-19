@@ -4,6 +4,7 @@ import Login from './components/login';
 import Header from './components/header';
 import Dashboard from './components/dashboard/dashboard';
 import Repository from './components/repository/Repository';
+import Searchbar from './components/searchbar'
 
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 
@@ -40,6 +41,7 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
           {location.pathname !== '/login' && <Header />}
           <Route exact path="/login" component={Login} />
+          <Route exact path="/dashboard" component={Searchbar} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/repository/:id" component={Repository} />
       </MuiThemeProvider>
