@@ -11,11 +11,14 @@ const styles = theme => ({
     container: {
         display: 'flex',
         flexWrap: 'wrap',
+        paddingTop: 40,
     },
     textField: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
+        width: 500,
     }
+
 });
 
 
@@ -27,25 +30,29 @@ class searchbar extends React.Component {
 };
 
 render() {
-const { classes } = this.props;
+    const { classes } = this.props;
+    const {search} = this.props;
 
 return (
-    <Grid
-                container
-                alignItems="center"
-                spacing={0}
-                justify="center"
-                direction="column"
-            >
+  <Grid
+    container
+    alignItems="center"
+    spacing={0}
+    justify="center"
+    direction="column"
+  >
+
   <form className={classes.container} noValidate autoComplete="off">
 
-    <TextField
-      id="outlined-bare"
-      className={classes.textField}
-      defaultValue="Search for a repo..."
-      margin="normal"
-      variant="outlined"
-    />
+  <TextField
+    onChange={this.handleChange("search")}
+    placeholder="Search for a repo..."
+    className={classes.formInput}
+    id="outlined-bare"
+    className={classes.textField}
+    margin="normal"
+    variant="outlined"
+  />
   </form>
   </Grid>
 );
@@ -53,7 +60,7 @@ return (
 }
 
 searchbar.propTypes = {
-classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(searchbar);
