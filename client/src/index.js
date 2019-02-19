@@ -4,20 +4,26 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import reducer from './redux/reducer';
+import loginReducer from './redux/reducer';
+import reposReducer from './reducers/repos';
 import thunk from 'redux-thunk';
 
-const store = createStore(reducer, applyMiddleware(thunk));
+const store = createStore(combineReducers({
+  login: loginReducer,
+  repos: reposReducer
+}), applyMiddleware(thunk));
 
 ReactDOM.render(
     <BrowserRouter>
         <Provider
             store={store}
-        ><App /></Provider>
+        >
+          <App />
+        </Provider>
     </BrowserRouter>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

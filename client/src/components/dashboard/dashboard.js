@@ -6,7 +6,6 @@ import Repositories from './repos';
 import QuickStats from "./QuickStats";
 import SearchBar from "./searchbar"
 
-
 const style =
 {
     dashboardContainer: {
