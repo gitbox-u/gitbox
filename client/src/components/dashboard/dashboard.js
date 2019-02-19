@@ -8,7 +8,7 @@ import Repositories from './repos';
 const style =
 {
     dashboardContainer: {
-        padding: 100,
+        paddingTop: 100,
     },
     dashboardSection: {
         maxWidth: '80%',
@@ -20,22 +20,20 @@ class Dashboard extends Component {
         const { classes } = this.props;
 
         return (
-            <Grid item
-                container
-                spacing={16}
-                direction="column"
-                alignItems="center"
-                justify="center"
-                className={classes.dashboardContainer}
-            >
-                <Grid item className={classes.dashboardSection}>
-                    <Repositories>
-                    </Repositories>
+            <div>
+                <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    justify="center"
+                    spacing={36}
+                    className={classes.dashboardContainer}
+                >
+                    <Grid item className={classes.dashboardSection}>
+                        <Repositories />
+                    </Grid>
                 </Grid>
-                <Grid item className={classes.dashboardSection}></Grid>
-                <Grid item className={classes.dashboardSection}></Grid>
-
-            </Grid>
+            </div>
         );
     }
 }

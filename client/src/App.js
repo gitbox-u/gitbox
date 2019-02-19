@@ -36,11 +36,13 @@ class App extends Component {
     const { location } = this.props;
 
     return (
-      <MuiThemeProvider theme={theme}>
+      <div>
+        <MuiThemeProvider theme={theme} >
           {location.pathname !== '/login' && <Header />}
           <Route exact path="/login" component={Login} />
           <Route exact path="/dashboard" component={Dashboard} />
-      </MuiThemeProvider>
+        </MuiThemeProvider>
+      </div>
     );
   }
 }
