@@ -13,8 +13,8 @@ const style =
     dashboardContainer: {
         paddingTop: 100,
     },
+
     dashboardSection: {
-        maxWidth: '80%',
     },
 
     repoHeader: {

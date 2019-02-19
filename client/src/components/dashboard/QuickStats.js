@@ -5,7 +5,7 @@ import withStyles from "@material-ui/core/es/styles/withStyles";
 
 const styles = {
     quickStats: {
-        width: 1000,
+        minWidth: '80vw',
         height: 180,
         padding: 24,
     },
