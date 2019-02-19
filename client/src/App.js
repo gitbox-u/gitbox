@@ -42,7 +42,7 @@ class App extends Component {
           {location.pathname !== '/login' && <Header />}
           <Route exact path="/login" component={Login} />
           <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/repository/:name" component={Repository} />
+          <Route exact path="/repository/:id" component={Repository} />
       </MuiThemeProvider>
     );
   }
