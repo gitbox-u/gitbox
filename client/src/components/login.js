@@ -8,6 +8,7 @@ import logo from '../assets/logo.svg';
 const styles = {
     formContainer: {
         padding: '50px 90px',
+        margin: '10px',
         minWidth: 300,
     },
 
