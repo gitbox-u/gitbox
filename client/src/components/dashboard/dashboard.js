@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import Repositories from './repos';
+import QuickStats from "./QuickStats";
 
 
 const style =
@@ -28,6 +29,11 @@ class Dashboard extends Component {
                 justify="center"
                 className={classes.dashboardContainer}
             >
+                <Grid item className={classes.dashboardSection}>
+                    <QuickStats/>
+                </Grid>
+
+
                 <Grid item className={classes.dashboardSection}>
                     <Repositories>
                     </Repositories>
