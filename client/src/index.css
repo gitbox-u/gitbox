@@ -12,8 +12,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(79, 104, 126);
-  /*background: transparent;*/
+
+  background: rgb(79, 104, 126);
+  /* background: #ff0000; */
+  /* background: transparent; */
 }
 
 code {
