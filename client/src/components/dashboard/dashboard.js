@@ -10,6 +10,7 @@ const style =
 {
     dashboardContainer: {
         padding: 100,
+        paddingTop: 40,
     },
     dashboardSection: {
         maxWidth: '80%',

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import Login from './components/login';
 import Header from './components/header';
-import Dashboard from './components/dashboard/dashboard'
+import Dashboard from './components/dashboard/dashboard';
+import Repository from './components/repository/Repository';
+import Searchbar from './components/searchbar'
 
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 
@@ -39,7 +41,9 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
           {location.pathname !== '/login' && <Header />}
           <Route exact path="/login" component={Login} />
+          <Route exact path="/dashboard" component={Searchbar} />
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/repository/:name" component={Repository} />
       </MuiThemeProvider>
     );
   }
