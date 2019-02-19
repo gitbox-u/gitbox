@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
-import Repository from './repository';
+import Repository from './repo-snippet';
 
 class Repositories extends Component {
     render() {
@@ -14,6 +14,8 @@ class Repositories extends Component {
             <Grid container
                 direction="row"
                 spacing={32}
+                justify="center"
+                alignItems="center"
             >
                 {
                     repos.map(

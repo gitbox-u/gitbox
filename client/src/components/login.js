@@ -14,6 +14,7 @@ const styles = {
     formInput: {
         marginTop: '5px',
         borderBottom: '1px solid black',
+        padding: '0 5px',
     },
 
     formButton: {
