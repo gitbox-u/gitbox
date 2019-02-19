@@ -7,7 +7,6 @@ import QuickStats from "./QuickStats";
 import SearchBar from "./searchbar"
 import { Typography } from "@material-ui/core";
 
-
 const style =
 {
     dashboardContainer: {
