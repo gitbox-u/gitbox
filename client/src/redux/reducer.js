@@ -17,7 +17,7 @@ const updateLoginField = (field, value) => {
     }
 };
 
-const reducer = (state = initial, action) => {
+const loginReducer = (state = initial, action) => {
     const { type } = action;
     if (type === ACTIONS.UPDATE) {
         const { field, value } = action;
@@ -30,4 +30,4 @@ const reducer = (state = initial, action) => {
 };
 
 export { updateLoginField };
-export default reducer;
+export default loginReducer;

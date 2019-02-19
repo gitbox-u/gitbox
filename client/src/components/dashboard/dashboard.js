@@ -8,14 +8,13 @@ import SearchBar from "./searchbar";
 import Pages from "./pagination";
 import { Typography } from "@material-ui/core";
 
-
 const style =
 {
     dashboardContainer: {
         paddingTop: 100,
     },
+
     dashboardSection: {
-        maxWidth: '80%',
     },
 
     repoHeader: {

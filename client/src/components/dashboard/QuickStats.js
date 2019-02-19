@@ -1,30 +1,32 @@
 import React, {Component, PureComponent} from 'react';
 import {Card, CardHeader} from "@material-ui/core";
 import withStyles from "@material-ui/core/es/styles/withStyles";
+import LangPie from "./LangPie";
 
 
 const styles = {
     quickStats: {
-        width: 1000,
+        minWidth: '80vw',
         height: 180,
         padding: 24,
     },
+
+    languages: {
+        height: 200
+    }
 };
 
 
 class QuickStats extends Component {
     render() {
-        const { classes } = this.props;
+        const {classes} = this.props;
 
 
         return (
             <Card className={classes.quickStats}>
-                <CardHeader
-                    title={
-                        `Quick Stats`
-                    }
-                    subheader="Lorum ipsum blah blab some words here."
-                />
+                <div className={classes.languages}>
+                    <LangPie />
+                </div>
             </Card>
 
         );
