@@ -6,7 +6,7 @@ import Pagination from "material-ui-flat-pagination";
  
 const theme = createMuiTheme();
  
-class Example extends React.Component {
+class Pages extends React.Component {
   constructor(props) {
     super(props);
     this.state = { offset: 0 };
@@ -31,4 +31,5 @@ class Example extends React.Component {
   }
 }
  
-ReactDOM.render(<Example />, document.getElementById("root"));
+
+export default (Pages);

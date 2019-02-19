@@ -4,7 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import Repositories from './repos';
 import QuickStats from "./QuickStats";
-import SearchBar from "./searchbar"
+import SearchBar from "./searchbar";
+import Pages from "./pagination";
 import { Typography } from "@material-ui/core";
 
 
@@ -52,6 +53,9 @@ class Dashboard extends Component {
                     <SearchBar />
                 </Grid>
 
+                <Grid item className={classes.dashboardSection}>
+                    <Pages />
+                </Grid>
 
                 <Grid item className={classes.dashboardSection}>
                     <Repositories>
