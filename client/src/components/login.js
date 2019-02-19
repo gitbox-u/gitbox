@@ -8,12 +8,14 @@ import logo from '../assets/logo.svg';
 const styles = {
     formContainer: {
         padding: '50px 90px',
+        margin: '10px',
         minWidth: 300,
     },
 
     formInput: {
         marginTop: '5px',
         borderBottom: '1px solid black',
+        padding: '0 5px',
     },
 
     formButton: {
