@@ -1,10 +1,14 @@
 const ACTIONS = {
     UPDATE: 0,
+    AUTH: 1,
 };
 
 const initial = {
     username: '',
     password: '',
+
+    loggedIn: false,
+    isAdmin: false,
 };
 
 const updateLoginField = (field, value) => {
@@ -17,6 +21,14 @@ const updateLoginField = (field, value) => {
     }
 };
 
+const tryLogin = () => {
+    return (dispatch) => {
+        dispatch({
+            type: ACTIONS.AUTH,
+        });
+    }
+}
+
 const loginReducer = (state = initial, action) => {
     const { type } = action;
     if (type === ACTIONS.UPDATE) {
@@ -25,9 +37,25 @@ const loginReducer = (state = initial, action) => {
             ...state,
             [field]: value,
         }
+    } else if (type === ACTIONS.AUTH) {
+        const { username, password } = state;
+
+        if (username === "user" && password === "user") {
+            return {
+                ...state,
+                loggedIn: true,
+                isAdmin: false,
+            }
+        } else if (username === "admin" && password === "admin") {
+            return {
+                ...state,
+                loggedIn: true,
+                isAdmin: true,
+            }
+        }
     }
     return state;
 };
 
-export { updateLoginField };
+export { updateLoginField, tryLogin };
 export default loginReducer;

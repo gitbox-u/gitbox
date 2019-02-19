@@ -136,7 +136,6 @@ function geometric() {
     window.onload = onLoad;
     window.onresize = onResize;
 }
-
 if (window.location.href.includes('login')) {
     geometric();
 }

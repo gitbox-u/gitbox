@@ -55,10 +55,4 @@ class Dashboard extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {};
-}
-
-export default connect(
-    mapStateToProps,
-)(withStyles(style)(Dashboard));
+export default withStyles(style)(Dashboard);
