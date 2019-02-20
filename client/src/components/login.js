@@ -27,15 +27,21 @@ const styles = {
     },
 
     logoLabel: {
-      letterSpacing: '0.1em'
+        letterSpacing: '0.1em'
     }
 };
 
 class Login extends Component {
 
-  handleChange = name => event => {
-    this.props.updateLoginField(name, event.target.value);
-  };
+    handleChange = name => event => {
+        this.props.updateLoginField(name, event.target.value);
+    };
+
+    componentDidMount() {
+        // console.log("geo")
+        window.geometric();
+
+    }
 
     render() {
 
@@ -43,77 +49,80 @@ class Login extends Component {
         const {username, password} = this.props;
 
         return (
-            <Grid
-                container
-                alignItems="center"
-                spacing={0}
-                justify="center"
-                direction="column"
-                style={{minHeight: '85vh'}}
-            >
-                <Grid item>
-                    <Paper className={classes.formContainer}>
-                        <Grid container
-                              direction="column"
-                              alignItems="center"
-                              spacing={8}
-                              justify="center">
-                            <Grid item>
-                                <img src={logo} className={classes.logo}/>
-                            </Grid>
-                            <Grid item>
-                                <Typography variant="h4" className={classes.logoLabel}>
-                                    GITBOX
-                                </Typography>
-                            </Grid>
-                            <Grid item>
-                                <TextField
-                                    InputProps={{
-                                      disableUnderline: true,
-                                    }}
-                                    value={username}
-                                    onChange={this.handleChange("username")}
-                                    fullWidth
-                                    placeholder="Username"
-                                    className={classes.formInput}
-                                />
-                            </Grid>
-                            <Grid item>
-                                <TextField
-                                    InputProps={{
-                                      disableUnderline: true,
-                                    }}
-                                    value={password}
-                                    onChange={this.handleChange("password")}
-                                    fullWidth
-                                    type="password"
-                                    placeholder="Password"
-                                    className={classes.formInput}
+            <div>
+                <div id={"bg"}></div>
+                <Grid
+                    container
+                    alignItems="center"
+                    spacing={0}
+                    justify="center"
+                    direction="column"
+                    style={{minHeight: '85vh'}}
+                >
+                    <Grid item>
+                        <Paper className={classes.formContainer}>
+                            <Grid container
+                                  direction="column"
+                                  alignItems="center"
+                                  spacing={8}
+                                  justify="center">
+                                <Grid item>
+                                    <img src={logo} className={classes.logo}/>
+                                </Grid>
+                                <Grid item>
+                                    <Typography variant="h4" className={classes.logoLabel}>
+                                        GITBOX
+                                    </Typography>
+                                </Grid>
+                                <Grid item>
+                                    <TextField
+                                        InputProps={{
+                                            disableUnderline: true,
+                                        }}
+                                        value={username}
+                                        onChange={this.handleChange("username")}
+                                        fullWidth
+                                        placeholder="Username"
+                                        className={classes.formInput}
                                     />
+                                </Grid>
+                                <Grid item>
+                                    <TextField
+                                        InputProps={{
+                                            disableUnderline: true,
+                                        }}
+                                        value={password}
+                                        onChange={this.handleChange("password")}
+                                        fullWidth
+                                        type="password"
+                                        placeholder="Password"
+                                        className={classes.formInput}
+                                    />
+                                </Grid>
+                                <Grid item>
+                                    <Button fullWidth variant="outlined" color="primary"
+                                            className={classes.formButton}>Login</Button>
+                                </Grid>
                             </Grid>
-                            <Grid item>
-                                <Button fullWidth variant="outlined" color="primary"
-                                        className={classes.formButton}>Login</Button>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                </Grid>
+                        </Paper>
+                    </Grid>
 
-            </Grid>
+                </Grid>
+            </div>
         );
     }
 }
 
 const mapDispatchToProps = {
-  updateLoginField
+    updateLoginField
 };
 
 const mapStateToProps = (state) => {
-  const {username, password} = state;
+    const {username, password} = state;
 
-  return {
-    username, password
-  }
+    return {
+        username, password
+    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login));

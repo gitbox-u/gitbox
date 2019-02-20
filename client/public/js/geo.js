@@ -93,7 +93,7 @@ function geometric() {
                 var polygon0 = document.querySelector('#bg svg').childNodes[ktmp];
                 var polygon1 = document.querySelector('#bg svg').childNodes[k];
                 var tmp = polygon1.getAttribute('fill');
-                polygon0.setAttribute('fill', tmp);
+                // polygon0.setAttribute('fill', tmp);
                 polygon1.setAttribute('fill', 'rgba(255,255,255,.7)');
             }
             , 500);
@@ -133,11 +133,8 @@ function geometric() {
         onLoad();
     }
 
-    window.onload = onLoad;
+    onLoad();
     window.onresize = onResize;
 }
 
-if (window.location.href.includes('login')) {
-    geometric();
-}
 

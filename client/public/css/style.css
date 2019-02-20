@@ -2,6 +2,8 @@ svg polygon {
   transition: 2.5s all;
 }
 
-.bg {
+#bg {
   z-index: -1;
+  position: fixed;
+  /*overflow: hidden;*/
 }
