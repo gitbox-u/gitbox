@@ -13,10 +13,6 @@ const styles = {
 
 class Header extends Component {
 
-    constuctor() {
-        this.routeChange = this.routeChange.bind(this);
-    }
-
     routeChange = (path) => () => {
         this.props.history.push(path);
     };
@@ -36,19 +32,19 @@ class Header extends Component {
                         Gitmap
                     </Typography>
                     <div className={classes.grow} />
-                    <Button onClick={this.routeChange("")} color="inherit" variant={"text"}>
+                    <Button onClick={this.routeChange("/")} color="inherit" variant={"text"}>
                         Home
                     </Button>
                     {
                         isAdmin ?
-                            <Button onClick={this.routeChange("dashboard")} color="inherit" variant={"text"}>
+                            <Button onClick={this.routeChange("/dashboard")} color="inherit" variant={"text"}>
                                 Admin Panel
                         </Button> :
-                            <Button onClick={this.routeChange("dashboard")} color="inherit" variant={"text"}>
+                            <Button onClick={this.routeChange("/dashboard")} color="inherit" variant={"text"}>
                                 Dashboard
                         </Button>
                     }
-                    <Button onClick={this.routeChange("login")} color="inherit" variant={"text"}>
+                    <Button onClick={this.routeChange("/login")} color="inherit" variant={"text"}>
                         Login
                     </Button>
                 </Toolbar>
