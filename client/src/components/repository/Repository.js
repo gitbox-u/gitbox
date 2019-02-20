@@ -1,15 +1,27 @@
 import React, {Component} from 'react';
 import {withStyles, Button, Grid, Typography} from '@material-ui/core';
 import CodeStream from "./CodeStream";
+import Card from "@material-ui/core/Card";
+import Paper from "@material-ui/core/Paper";
+import Contributors from "./Contributors";
 
 const styles = {
     repoViewContainer: {
-        paddingTop: 100
+        paddingTop: 100,
+        paddingLeft: 100
     },
 
     codeStream: {
-        height: '60vh',
-        width: '70vw'
+        height: '30vh',
+        width: '40vw',
+        marginBottom: '2vh'
+    },
+
+    repoName: {},
+
+    contributors: {
+        height: '80vh',
+        width: '30vh',
     }
 
 };
@@ -68,25 +80,50 @@ class Repository extends Component {
         const {classes} = this.props;
 
         return (
+
             <Grid item
                   container
-                  direction="column"
-                  alignItems="center"
+                  alignItems="left"
                   justify="center"
                   spacing={16}
                   direction="column"
                   className={classes.repoViewContainer}
             >
                 <Grid item>
-                    <Typography variant="h3">
+                    <Typography className={classes.repoName} variant="h4">
                         {data.name}
                     </Typography>
+                </Grid>
+                <Grid item
+                      container
+                      direction="row"
+                      spacing={16}
+                >
+
+                    <Grid item
+                          direction="column"
+                          spacing={16}
+                    >
+                        <Grid item>
+                            <Paper className={classes.codeStream}>
+                                <CodeStream stats={data.stats} contributors={data.contributors}/>
+                            </Paper>
+                        </Grid>
+
+                        <Grid item>
+                            <Paper className={classes.codeStream}>
+                                <CodeStream stats={data.stats} contributors={data.contributors}/>
+                            </Paper>
+                        </Grid>
+                    </Grid>
+
+                    <Grid item >
+                        <Contributors contributors={data.contributors}/>
+                    </Grid>
 
                 </Grid>
 
-                <Grid item className={classes.codeStream}>
-                    <CodeStream stats={data.stats} contributors={data.contributors}/>
-                </Grid>
+
             </Grid>
         );
     }
