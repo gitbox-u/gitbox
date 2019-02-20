@@ -94,7 +94,7 @@ function geometric() {
                 var polygon1 = document.querySelector('#bg svg').childNodes[k];
                 var tmp = polygon1.getAttribute('fill');
                 // polygon0.setAttribute('fill', tmp);
-                polygon1.setAttribute('fill', 'rgba(255,255,255,.7)');
+                // polygon1.setAttribute('fill', 'rgba(255,255,255,.7)');
             }
             , 500);
         refresh();

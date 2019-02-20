@@ -1,9 +1,10 @@
 svg polygon {
-  transition: 2.5s all;
+    transition: 2.5s all;
 }
 
 #bg {
-  z-index: -1;
-  position: fixed;
-  /*overflow: hidden;*/
+    z-index: -1;
+    position: fixed;
+    background: radial-gradient(ellipse at center, #2e5182 100%, black 100%);
+    /*overflow: hidden;*/
 }
