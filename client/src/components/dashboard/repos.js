@@ -1,40 +1,65 @@
 import React, { Component } from 'react';
-import { Grid } from "@material-ui/core";
+import { Grid, TextField } from "@material-ui/core";
 import Repository from './repo-snippet';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
+import { updateSearchField } from '../../reducers/reposReducer';
+import Pages from "./pagination";
 
-const Repositories = (props) => {
+class Repositories extends Component {
 
-  const {repos} = props;
+  handleChange = (e) => {
+    const { value } = e.target;
+    this.props.updateSearchField(value);
+  }
 
-  return (
+  render() {
 
+    const { allRepos, search, filteredRepos } = this.props.repos;
 
-    <Grid container
+    return (
+      <div>
+        <TextField
+          placeholder="Search for a repo..."
+          id="outlined-bare"
+          margin="normal"
+          variant="outlined"
+          onChange={this.handleChange}
+          value={search}
+        />
+        <Pages />
+        <Grid container
           direction="row"
           spacing={32}
           justify="center"
           alignItems="center"
-    >
-      {
-        repos.map(
-          id => (
-            <Grid item>
-              <Repository name={id}/>
-            </Grid>
-          )
-        )
-      }
-    </Grid>
-  )
+        >
+          {
+            filteredRepos.map(
+              id => (
+                <Grid item>
+                  <Repository name={allRepos[id].name} desc={allRepos[id].desc} />
+                </Grid>
+              )
+            )
+          }
+        </Grid>
+      </div>
+
+    )
+  }
 
 };
 
 const mapStateToProps = state => {
-  const {repos} = state;
-  return {repos}
+  const { repos } = state;
+  return { repos }
 };
 
-export default connect (
-  mapStateToProps
+const mapDispatchToProps = {
+  updateSearchField
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
 )(Repositories);

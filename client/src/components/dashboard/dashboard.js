@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import Repositories from './repos';
 import QuickStats from "./QuickStats";
-import SearchBar from "./searchbar"
 import { Typography } from "@material-ui/core";
 
 const style =
@@ -12,8 +11,9 @@ const style =
     dashboardContainer: {
         paddingTop: 100,
     },
+
     dashboardSection: {
-        maxWidth: '80%',
+        width: '80%'
     },
 
     repoHeader: {
@@ -46,12 +46,6 @@ class Dashboard extends Component {
                     </Typography>
                 </Grid>
 
-
-                <Grid item className={classes.dashboardSection}>
-                    <SearchBar />
-                </Grid>
-
-
                 <Grid item className={classes.dashboardSection}>
                     <Repositories>
                     </Repositories>
@@ -61,10 +55,4 @@ class Dashboard extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {};
-}
-
-export default connect(
-    mapStateToProps,
-)(withStyles(style)(Dashboard));
+export default withStyles(style)(Dashboard);

@@ -8,8 +8,8 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import loginReducer from './redux/reducer';
-import reposReducer from './reducers/repos';
+import loginReducer from './reducers/loginReducer';
+import reposReducer from './reducers/reposReducer';
 import thunk from 'redux-thunk';
 
 const store = createStore(combineReducers({
