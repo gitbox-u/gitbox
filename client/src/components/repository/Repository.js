@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {withStyles, Button, Grid, Typography} from '@material-ui/core';
 import CodeStream from "./CodeStream";
-import Card from "@material-ui/core/Card";
 import Paper from "@material-ui/core/Paper";
 import Contributors from "./Contributors";
 
@@ -33,10 +32,34 @@ class Repository extends Component {
         return {
             name: `Repository #${id}`,
             contributors: [
-                "Murad",
-                "Eric",
-                "Lin",
-                "Howard"
+                {
+                    key:"1",
+                    name: "Murad",
+                    commits: 300,
+                    additions: 2000,
+                    deletions: 400
+                },
+                {
+                    key:"2",
+                    name: "Eric",
+                    commits: 300,
+                    additions: 2000,
+                    deletions: 400
+                },
+                {
+                    key:"3",
+                    name: "Lin",
+                    commits: 300,
+                    additions: 2000,
+                    deletions: 400
+                },
+                {
+                    key:"4",
+                    name: "Howard",
+                    commits: 300,
+                    additions: 2000,
+                    deletions: 400
+                },
             ],
             stats: [
                 {
@@ -72,18 +95,16 @@ class Repository extends Component {
     };
 
     render() {
-        // Temporary
-        console.log("repo");
-
         const data = this.getData();
 
         const {classes} = this.props;
+
+        const contributorNames = data.contributors.map((c) => c.name);
 
         return (
 
             <Grid item
                   container
-                  alignItems="left"
                   justify="center"
                   spacing={16}
                   direction="column"
@@ -101,23 +122,21 @@ class Repository extends Component {
                 >
 
                     <Grid item
-                          direction="column"
-                          spacing={16}
                     >
                         <Grid item>
                             <Paper className={classes.codeStream}>
-                                <CodeStream stats={data.stats} contributors={data.contributors}/>
+                                <CodeStream stats={data.stats} contributors={contributorNames}/>
                             </Paper>
                         </Grid>
 
                         <Grid item>
                             <Paper className={classes.codeStream}>
-                                <CodeStream stats={data.stats} contributors={data.contributors}/>
+                                <CodeStream stats={data.stats} contributors={contributorNames}/>
                             </Paper>
                         </Grid>
                     </Grid>
 
-                    <Grid item >
+                    <Grid item>
                         <Contributors contributors={data.contributors}/>
                     </Grid>
 

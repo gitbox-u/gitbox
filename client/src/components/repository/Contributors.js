@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Paper from "@material-ui/core/Paper";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
+import ContributorCard from "./ContributorCard";
 
 
 const styles = {
@@ -9,11 +10,6 @@ const styles = {
         height: '80vh',
         width: '30vh',
     },
-
-    contributor: {
-        height: '10vh',
-        marginBottom: '2vh'
-    }
 
 };
 
@@ -27,9 +23,7 @@ class Contributors extends Component {
             <Grid item className={classes.contributors}>
                 {
                     this.props.contributors.map((contributor) => (
-                        <Paper className={classes.contributor}>
-                            {contributor}
-                        </Paper>
+                        <ContributorCard data={contributor}/>
                     ))
                 }
 
