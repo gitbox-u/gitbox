@@ -46,7 +46,6 @@ class Login extends Component {
     };
 
     componentDidMount() {
-        // console.log("geo")
         window.geometric();
 
     }
