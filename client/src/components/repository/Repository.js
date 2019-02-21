@@ -119,123 +119,99 @@ class Repository extends Component {
       ],
       languages: {
         "name": "nivo",
-        "color": "hsl(346, 70%, 50%)",
         "children": [
           {
             "name": "C++",
-            "color": "hsl(291, 70%, 50%)",
             "children": [
               {
                 "name": "address.cpp",
-                "color": "hsl(21, 70%, 50%)",
                 "loc": 72594
               },
               {
                 "name": "city.cpp",
-                "color": "hsl(191, 70%, 50%)",
                 "loc": 137732
               },
               {
                 "name": "anima.cpp",
-                "color": "hsl(217, 70%, 50%)",
                 "loc": 81132
               },
               {
                 "name": "movie.cpp",
-                "color": "hsl(176, 70%, 50%)",
                 "loc": 146492
               },
               {
                 "name": "user.cpp",
-                "color": "hsl(155, 70%, 50%)",
                 "loc": 49485
               }
             ]
           },
           {
             "name": "javascript",
-            "color": "hsl(146, 70%, 50%)",
             "children": [
               {
                 "name": "clone.js",
-                "color": "hsl(247, 70%, 50%)",
                 "loc": 48385
               },
               {
                 "name": "shuffle.js",
-                "color": "hsl(125, 70%, 50%)",
                 "loc": 116587
               },
               {
                 "name": "pick.js",
-                "color": "hsl(259, 70%, 50%)",
                 "loc": 102176
               },
               {
                 "name": "plouc.js",
-                "color": "hsl(104, 70%, 50%)",
                 "loc": 136373
               }
             ]
           },
           {
             "name": "java",
-            "color": "hsl(180, 70%, 50%)",
             "children": [
               {
                 "name": "main.java",
-                "color": "hsl(201, 70%, 50%)",
                 "loc": 35993
               },
               {
                 "name": "hello.java",
-                "color": "hsl(292, 70%, 50%)",
                 "loc": 146986
               },
               {
                 "name": "a.java",
-                "color": "hsl(186, 70%, 50%)",
                 "loc": 58568
               },
               {
                 "name": "sa.java",
-                "color": "hsl(172, 70%, 50%)",
                 "loc": 83987
               },
               {
                 "name": "repeat.java",
-                "color": "hsl(19, 70%, 50%)",
                 "loc": 138659
               },
               {
                 "name": "padLeft.java",
-                "color": "hsl(76, 70%, 50%)",
                 "loc": 22276
               },
               {
                 "name": "padRight.java",
-                "color": "hsl(293, 70%, 50%)",
                 "loc": 178134
               },
               {
                 "name": "sanitize.java",
-                "color": "hsl(266, 70%, 50%)",
                 "loc": 99550
               },
               {
                 "name": "ploucify.java",
-                "color": "hsl(73, 70%, 50%)",
                 "loc": 392
               }
             ]
           },
           {
             "name": "other",
-            "color": "hsl(322, 70%, 50%)",
             "children": [
               {
                 "name": "json",
-                "color": "hsl(268, 70%, 50%)",
                 "loc": 113195
               }
             ]
