@@ -33,9 +33,28 @@ const styles = {
 
 class Repository extends Component {
 
+
+  state = {
+    data: {
+      name: "",
+      contributors: [
+        {
+          name: "",
+          commits: 0,
+          additions: 0,
+          deletions: 0
+        }
+      ],
+      stats: [
+        {"":0}
+      ],
+      languages: {}
+    }
+  };
+
+  // Replace with server call
   getData = () => {
-    // const id = this.props.match.params.id;
-    const id = 1;
+    const id = this.props.match.params.id;
     return {
       name: `Repository #${id}`,
       contributors: [
@@ -117,7 +136,7 @@ class Repository extends Component {
                 "loc": 137732
               },
               {
-                "name": "anima.cppl",
+                "name": "anima.cpp",
                 "color": "hsl(217, 70%, 50%)",
                 "loc": 81132
               },
@@ -226,8 +245,13 @@ class Repository extends Component {
     }
   };
 
+
+  componentDidMount() {
+    this.setState({data: this.getData()});
+  }
+
   render() {
-    const data = this.getData();
+    const data = this.state.data;
 
     const {classes} = this.props;
 

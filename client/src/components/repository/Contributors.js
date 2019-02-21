@@ -23,7 +23,7 @@ class Contributors extends Component {
       <Grid item className={classes.contributors}>
         {
           this.props.contributors.map((contributor) => (
-            <ContributorCard data={contributor}/>
+            <ContributorCard data={contributor} key={contributor.name}/>
           ))
         }
 
