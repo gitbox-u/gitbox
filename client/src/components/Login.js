@@ -62,7 +62,7 @@ class Login extends Component {
 
     return (
       <div>
-        <div id={"bg"}></div>
+        <div id="bg"/>
         <Grid
           container
           alignItems="center"

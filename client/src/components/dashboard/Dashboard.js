@@ -40,7 +40,7 @@ class Dashboard extends Component {
         </Grid>
 
 
-        <Grid item className={[classes.dashboardSection, classes.repoHeader]}>
+        <Grid item className={[classes.dashboardSection, classes.repoHeader].join(" ")}>
           <Typography variant="h4">
             Repositories
           </Typography>
