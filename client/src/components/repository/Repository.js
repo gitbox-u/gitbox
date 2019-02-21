@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {withStyles, Button, Grid, Typography} from '@material-ui/core';
+import {withStyles, Grid, Typography} from '@material-ui/core';
 import CodeStream from "./CodeStream";
 import Paper from "@material-ui/core/Paper";
 import Contributors from "./Contributors";
+import LanguageBreakdown from "./LanguageBreakdown";
 
 const styles = {
   repoViewContainer: {
@@ -21,12 +22,37 @@ const styles = {
   contributors: {
     height: '80vh',
     width: '30vh',
+  },
+
+  langBreak: {
+    width: '40vh',
+    height: '40vh'
   }
 
 };
 
 class Repository extends Component {
 
+
+  state = {
+    data: {
+      name: "",
+      contributors: [
+        {
+          name: "",
+          commits: 0,
+          additions: 0,
+          deletions: 0
+        }
+      ],
+      stats: [
+        {"":0}
+      ],
+      languages: {}
+    }
+  };
+
+  // Replace with server call
   getData = () => {
     const id = this.props.match.params.id;
     return {
@@ -90,12 +116,118 @@ class Repository extends Component {
           "Howard": 65,
 
         }
-      ]
+      ],
+      languages: {
+        "name": "nivo",
+        "children": [
+          {
+            "name": "C++",
+            "children": [
+              {
+                "name": "address.cpp",
+                "loc": 72594
+              },
+              {
+                "name": "city.cpp",
+                "loc": 137732
+              },
+              {
+                "name": "anima.cpp",
+                "loc": 81132
+              },
+              {
+                "name": "movie.cpp",
+                "loc": 146492
+              },
+              {
+                "name": "user.cpp",
+                "loc": 49485
+              }
+            ]
+          },
+          {
+            "name": "javascript",
+            "children": [
+              {
+                "name": "clone.js",
+                "loc": 48385
+              },
+              {
+                "name": "shuffle.js",
+                "loc": 116587
+              },
+              {
+                "name": "pick.js",
+                "loc": 102176
+              },
+              {
+                "name": "plouc.js",
+                "loc": 136373
+              }
+            ]
+          },
+          {
+            "name": "java",
+            "children": [
+              {
+                "name": "main.java",
+                "loc": 35993
+              },
+              {
+                "name": "hello.java",
+                "loc": 146986
+              },
+              {
+                "name": "a.java",
+                "loc": 58568
+              },
+              {
+                "name": "sa.java",
+                "loc": 83987
+              },
+              {
+                "name": "repeat.java",
+                "loc": 138659
+              },
+              {
+                "name": "padLeft.java",
+                "loc": 22276
+              },
+              {
+                "name": "padRight.java",
+                "loc": 178134
+              },
+              {
+                "name": "sanitize.java",
+                "loc": 99550
+              },
+              {
+                "name": "ploucify.java",
+                "loc": 392
+              }
+            ]
+          },
+          {
+            "name": "other",
+            "children": [
+              {
+                "name": "json",
+                "loc": 113195
+              }
+            ]
+          }
+        ]
+      }
     }
   };
 
+
+  componentDidMount() {
+    this.setState({data: this.getData()});
+  }
+
   render() {
-    const data = this.getData();
+    const data = this.state.data;
 
     const {classes} = this.props;
 
@@ -136,13 +268,20 @@ class Repository extends Component {
             </Grid>
           </Grid>
 
+          <Grid item
+          >
+            <Grid item>
+              <Paper className={classes.langBreak}>
+                <LanguageBreakdown data={data.languages}/>
+              </Paper>
+            </Grid>
+          </Grid>
+
           <Grid item>
             <Contributors contributors={data.contributors}/>
           </Grid>
 
         </Grid>
-
-
       </Grid>
     );
   }
