@@ -22,7 +22,7 @@ const styles = theme => ({
   },
 });
 
-class ControlledExpansionPanels extends React.Component {
+class ExpansionList extends React.Component {
   state = {
     expanded: null,
   };
@@ -46,8 +46,12 @@ class ControlledExpansionPanels extends React.Component {
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Typography>
-              user info, buttons for things we want each user to have
+                info about user
             </Typography>
+            <Button fullWidth variant="outlined" color="primary" onClick={this.handleSubmit}
+                          className={classes.formButton}>Edit User</Button>
+            <Button fullWidth variant="outlined" color="primary" onClick={this.handleSubmit}
+                          className={classes.formButton}>Block User</Button>
           </ExpansionPanelDetails>
         </ExpansionPanel>
       </div>
@@ -55,8 +59,8 @@ class ControlledExpansionPanels extends React.Component {
   }
 }
 
-ControlledExpansionPanels.propTypes = {
+ExpansionList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ControlledExpansionPanels);
+export default withStyles(styles)(ExpansionList);
