@@ -30,7 +30,7 @@ const Repositories = (props) => {
           shownRepos.map(
             repo => (
               <Grid item>
-                <Repository name={repo.name} desc={repo.desc}/>
+                <Repository name={repo.name} desc={repo.desc} key={repo.name}/>
               </Grid>
             )
           )
