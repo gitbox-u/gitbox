@@ -43,7 +43,7 @@ function Repositories(props) {
 Repositories.propTypes = {
   shownRepos: PropTypes.any,
   updateSearch: PropTypes.any
-}
+};
 
 const mapStateToProps = state => {
   const {allRepos, search} = state.repos;
