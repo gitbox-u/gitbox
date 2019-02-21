@@ -10,7 +10,7 @@ class Repositories extends Component {
   handleChange = (e) => {
     const {value} = e.target;
     this.props.updateSearchField(value);
-  }
+  };
 
   render() {
 
@@ -48,7 +48,7 @@ class Repositories extends Component {
     )
   }
 
-};
+}
 
 const mapStateToProps = state => {
   const {repos} = state;
@@ -57,7 +57,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   updateSearchField
-}
+};
 
 export default connect(
   mapStateToProps,
