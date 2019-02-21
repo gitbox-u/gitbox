@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import Paper from "@material-ui/core/Paper";
+import React from 'react';
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
 import ContributorCard from "./ContributorCard";
@@ -14,22 +13,20 @@ const styles = {
 };
 
 
-class Contributors extends Component {
-  render() {
-    const {classes} = this.props;
+function Contributors(props) {
+  const {classes} = props;
 
 
-    return (
-      <Grid item className={classes.contributors}>
-        {
-          this.props.contributors.map((contributor) => (
-            <ContributorCard data={contributor} key={contributor.name}/>
-          ))
-        }
+  return (
+    <Grid item className={classes.contributors}>
+      {
+        props.contributors.map((contributor) => (
+          <ContributorCard data={contributor} key={contributor.name}/>
+        ))
+      }
 
-      </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
 

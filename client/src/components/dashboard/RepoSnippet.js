@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {withStyles} from '@material-ui/styles';
-import {Badge, Card, Typography, CardHeader} from '@material-ui/core';
-import {Avatar} from '@material-ui/core/es';
+import {Card, CardHeader} from '@material-ui/core';
 
 
 const styles = {
@@ -12,24 +11,21 @@ const styles = {
   },
 }
 
-class Repository extends Component {
+function Repository(props) {
+  const {classes} = props;
 
-  render() {
-    const {classes} = this.props;
+  const {name, desc} = props;
 
-    const {name, desc} = this.props;
-
-    return (
-      <Card className={classes.repoCard}>
-        <CardHeader
-          title={
-            `${name}`
-          }
-          subheader={`${desc}`}
-        />
-      </Card>
-    );
-  }
+  return (
+    <Card className={classes.repoCard}>
+      <CardHeader
+        title={
+          `${name}`
+        }
+        subheader={`${desc}`}
+      />
+    </Card>
+  );
 }
 
 export default withStyles(styles)(Repository);

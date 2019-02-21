@@ -1,5 +1,5 @@
-import React, {Component, PureComponent} from 'react';
-import {Card, CardHeader} from "@material-ui/core";
+import React from 'react';
+import {Card} from "@material-ui/core";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import LangPie from "./LangPie";
 
@@ -17,20 +17,18 @@ const styles = {
 };
 
 
-class QuickStats extends Component {
-  render() {
-    const {classes} = this.props;
+function QuickStats(props) {
+  const {classes} = props;
 
 
-    return (
-      <Card className={classes.quickStats}>
-        <div className={classes.languages}>
-          <LangPie/>
-        </div>
-      </Card>
+  return (
+    <Card className={classes.quickStats}>
+      <div className={classes.languages}>
+        <LangPie/>
+      </div>
+    </Card>
 
-    );
-  }
+  );
 }
 
 QuickStats.propTypes = {};

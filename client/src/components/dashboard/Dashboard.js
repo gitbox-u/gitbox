@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React from 'react';
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import Repositories from './Repos';
@@ -21,38 +20,36 @@ const style =
     }
   };
 
-class Dashboard extends Component {
-  render() {
-    const {classes} = this.props;
+function Dashboard(props) {
+  const {classes} = props;
 
-    return (
-      <Grid item
-            container
-            spacing={16}
-            direction="column"
-            alignItems="center"
-            justify="center"
-            className={classes.dashboardContainer}
-      >
+  return (
+    <Grid item
+          container
+          spacing={16}
+          direction="column"
+          alignItems="center"
+          justify="center"
+          className={classes.dashboardContainer}
+    >
 
-        <Grid item className={classes.dashboardSection}>
-          <QuickStats/>
-        </Grid>
-
-
-        <Grid item className={[classes.dashboardSection, classes.repoHeader].join(" ")}>
-          <Typography variant="h4">
-            Repositories
-          </Typography>
-        </Grid>
-
-        <Grid item className={classes.dashboardSection}>
-          <Repositories>
-          </Repositories>
-        </Grid>
+      <Grid item className={classes.dashboardSection}>
+        <QuickStats/>
       </Grid>
-    );
-  }
+
+
+      <Grid item className={[classes.dashboardSection, classes.repoHeader].join(" ")}>
+        <Typography variant="h4">
+          Repositories
+        </Typography>
+      </Grid>
+
+      <Grid item className={classes.dashboardSection}>
+        <Repositories>
+        </Repositories>
+      </Grid>
+    </Grid>
+  );
 }
 
 export default withStyles(style)(Dashboard);
