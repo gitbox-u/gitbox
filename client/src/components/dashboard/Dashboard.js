@@ -26,7 +26,7 @@ function Dashboard(props) {
   return (
     <Grid item
           container
-          spacing={16}
+          spacing={32}
           direction="column"
           alignItems="center"
           justify="center"
@@ -35,13 +35,6 @@ function Dashboard(props) {
 
       <Grid item className={classes.dashboardSection}>
         <QuickStats/>
-      </Grid>
-
-
-      <Grid item className={[classes.dashboardSection, classes.repoHeader].join(" ")}>
-        <Typography variant="h4">
-          Repositories
-        </Typography>
       </Grid>
 
       <Grid item className={classes.dashboardSection}>
