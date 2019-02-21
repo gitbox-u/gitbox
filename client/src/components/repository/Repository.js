@@ -54,7 +54,7 @@ class Repository extends Component {
   getData = () => {
     const id = this.props.match.params.id;
     return {
-      name: `Repository #${id}`,
+      name: `Repository "${id}"`,
       contributors: [
         {
           key: "1",

@@ -1,44 +1,17 @@
-const REPOS_PER_PAGE = 4;
+import {repos} from './sampleData';
+
+const REPOS_PER_PAGE = 10;
 
 const initial = {
-  allRepos: {
-    1451: {
-      name: "fpga-lightbike",
-      desc: "An FPGA port of the popular lightbike game"
-    },
-    1932: {
-      name: "CSC343A2",
-      desc: "(Private repo) of CSC343 assignment 2"
-    },
-    2542: {
-      name: "team01",
-      desc: "CSC309 repository for full stack development"
-    },
-    1353: {
-      name: "DE1-SOC-Viewer",
-      desc: "Converts the waveforms out of Modelsim into a visualized format"
-    },
-    3123: {
-      name: "Toaster Linear Algebra Library",
-      desc: "Implements some of the most useful linear algebra functions, provides a way to transform coordinates in n-space down to m-space"
-    },
-    5245: {
-      name: "Colour-A-Dinosaur-C",
-      desc: "Have you ever wanted to colour a dinosaur in c?"
-    },
-    1433: {
-      name: "NodeJS",
-      desc: "Javascript interpreter"
-    }
-  },
-
-  filteredRepos: [1451, 1932, 2542, 1353, 3123, 5245, 1433],
-  pageRepos: [1451, 1932, 2542, 1353],
+  allRepos: repos,
+  
+  filteredRepos: [],
+  pageRepos: [],
 
   search: "",
-  numPages: 2,
+  numPages: 0,
   pageOffset: 1,
-  
+
 };
 
 const ACTIONS = {
@@ -85,12 +58,12 @@ const changePage = (offset) => {
 
 
 const reposReducer = (state = initial, action) => {
-  const {type} = action;
+  const { type } = action;
 
   // TODO: make more elegant.
   if (type === ACTIONS.UPDATE_SEARCH) {
 
-    const {value} = action;
+    const { value } = action;
 
     const filtered = filterRepos(state.allRepos, value);
     const page = getPage(filtered, state.pageOffset);
@@ -103,9 +76,10 @@ const reposReducer = (state = initial, action) => {
       filteredRepos: filtered,
       pageRepos: page,
       numPages: pages,
+      pageOffset: 1,
     };
   } else if (type === ACTIONS.UPDATE_PAGE) {
-    const {offset} = action;
+    const { offset } = action;
 
     const page = getPage(state.filteredRepos, offset);
 
@@ -119,5 +93,5 @@ const reposReducer = (state = initial, action) => {
   return state;
 };
 
-export {updateSearchField, changePage};
+export { updateSearchField, changePage };
 export default reposReducer;
