@@ -1,3 +1,5 @@
+const REPOS_PER_PAGE = 4;
+
 const initial = {
   allRepos: {
     1451: {
@@ -30,38 +32,92 @@ const initial = {
     }
   },
 
-  search: ""
+  filteredRepos: [1451, 1932, 2542, 1353, 3123, 5245, 1433],
+  pageRepos: [1451, 1932, 2542, 1353],
+
+  search: "",
+  numPages: 2,
+  pageOffset: 1,
+  
 };
 
 const ACTIONS = {
-  UPDATE: 0,
+  UPDATE_SEARCH: 0,
+  UPDATE_PAGE: 1,
 };
+
+
+const filterRepos = (repos, filter) => {
+  const results = []
+
+  for (let id in repos) {
+    if (repos[id].name.toLowerCase().includes(filter.toLowerCase())) results.push(id);
+  }
+  return results;
+};
+
+const getNumPages = (filteredRepos) => {
+  return Math.ceil(filteredRepos.length / REPOS_PER_PAGE);
+}
+
+const getPage = (filteredRepos, offset) => {
+  const start = (offset - 1) * REPOS_PER_PAGE, end = (offset) * REPOS_PER_PAGE;
+  return filteredRepos.slice(start, end);
+}
 
 const updateSearchField = (value) => {
   return (dispatch) => {
-    console.log(value);
     dispatch({
-      type: ACTIONS.UPDATE,
+      type: ACTIONS.UPDATE_SEARCH,
       value
     });
   }
 };
 
+const changePage = (offset) => {
+  return (dispatch) => {
+    dispatch({
+      type: ACTIONS.UPDATE_PAGE,
+      offset
+    })
+  }
+}
+
 
 const reposReducer = (state = initial, action) => {
   const {type} = action;
 
-  if (type === ACTIONS.UPDATE) {
+  // TODO: make more elegant.
+  if (type === ACTIONS.UPDATE_SEARCH) {
 
     const {value} = action;
+
+    const filtered = filterRepos(state.allRepos, value);
+    const page = getPage(filtered, state.pageOffset);
+    const pages = getNumPages(filtered);
+
+
     return {
       ...state,
       search: value,
+      filteredRepos: filtered,
+      pageRepos: page,
+      numPages: pages,
     };
+  } else if (type === ACTIONS.UPDATE_PAGE) {
+    const {offset} = action;
+
+    const page = getPage(state.filteredRepos, offset);
+
+    return {
+      ...state,
+      pageOffset: offset,
+      pageRepos: page,
+    }
   }
 
   return state;
 };
 
-export {updateSearchField};
+export {updateSearchField, changePage};
 export default reposReducer;

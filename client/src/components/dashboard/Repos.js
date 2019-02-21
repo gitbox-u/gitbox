@@ -1,69 +1,118 @@
-import React from 'react';
-import {Grid, TextField} from "@material-ui/core";
+import React, { Component } from 'react';
+import { Grid, TextField } from "@material-ui/core";
 import Repository from './RepoSnippet';
-import {connect} from "react-redux";
-import {updateSearchField} from '../../reducers/reposReducer';
-import Pages from "./Pagination";
+import { connect } from "react-redux";
+import { updateSearchField, changePage } from '../../reducers/reposReducer';
 import * as PropTypes from "prop-types";
+import Pagination from '../core/Pagination';
+import { Typography, withStyles } from '@material-ui/core/es';
 
-const Repositories = (props) => {
-  const {shownRepos, updateSearch} = props;
-  return (
-    <div>
-      <TextField
-        placeholder="Search for a repo..."
-        id="outlined-bare"
-        margin="normal"
-        variant="outlined"
-        onChange={(e) => {
-          updateSearch(e.target.value);
-        }}
-      />
-      <Pages/>
+
+const styles = {
+  textInput: {
+    width: '60vh',
+  }
+}
+
+class Repositories extends Component {
+
+  componentDidMount = () => {
+    this.props.updateSearchField("");
+  }
+
+  handleChange = (e) => {
+    this.props.updateSearchField(e.target.value);
+  }
+
+  handleClick = (e, offset) => {
+    this.props.changePage(offset);
+  }
+
+  render() {
+
+    const { allRepos, numResults, pageRepos, search, numPages, pageOffset } = this.props;
+
+    const {classes} = this.props;
+
+    return (
       <Grid container
+        direction="column"
+        alignItems="center"
+        spacing={16}>
+
+        <Grid item>
+          <Typography variant="h4">
+            Repositories
+        </Typography>
+        </Grid>
+
+        <Grid item>
+          <Typography variant="h8">
+            {`${numResults == 0 ? "No" : numResults} results`}
+          </Typography>
+        </Grid>
+
+        <Grid item>
+          <TextField
+            placeholder="Search for a repo..."
+            id="outlined-bare"
+            margin="normal"
+            variant="outlined"
+            value={search}
+            onChange={this.handleChange}
+            className={classes.textInput}
+          />
+        </Grid>
+
+
+        <Grid item>
+          <Grid container
             direction="row"
             spacing={32}
             justify="center"
             alignItems="center"
-      >
-        {
-          shownRepos.map(
-            repo => (
-              <Grid item>
-                <Repository name={repo.name} desc={repo.desc}/>
-              </Grid>
-            )
-          )
-        }
-      </Grid>
-    </div>
-  );
-}
+          >
+            {
+              pageRepos.map(
+                repo => (
+                  <Grid item>
+                    <Repository name={allRepos[repo].name} desc={allRepos[repo].desc} />
+                  </Grid>
+                )
+              )
+            }
+          </Grid>
+        </Grid>
 
-Repositories.propTypes = {
-  shownRepos: PropTypes.any,
-  updateSearch: PropTypes.any
+        <Grid item>
+          <Pagination
+            max={numPages}
+            current={pageOffset}
+            onClick={this.handleClick}
+          />
+        </Grid>
+      </Grid>
+    );
+
+  }
 }
 
 const mapStateToProps = state => {
-  const {allRepos, search} = state.repos;
-  const shownRepos = filteredRepos(allRepos, search);
-  return {shownRepos};
+
+  const { repos } = state;
+  const { allRepos, filteredRepos, pageRepos, search, numPages, pageOffset } = repos;
+
+  const numResults = filteredRepos.length;
+
+  return { allRepos, numResults, pageRepos, search, numPages, pageOffset };
 };
 
-const mapDispatchToProps = dispatch => ({
-  updateSearch: val => dispatch(updateSearchField(val))
-});
-
-const filteredRepos = (repos, filter) => {
-  // https://stackoverflow.com/questions/11734417/javascript-equivalent-of-pythons-values-dictionary-method
-  const repoValues = Object.keys(repos).map((key) => {
-    return repos[key];
-  });
-  return repoValues.filter(r => r.name.toLowerCase().includes(filter.toLowerCase()));
+const mapDispatchToProps = {
+  updateSearchField,
+  changePage,
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Repositories);
+)(withStyles(styles)(Repositories));
