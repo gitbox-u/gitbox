@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Route, withRouter} from 'react-router-dom';
-import Login from './components/login';
-import Header from './components/header';
+import Login from './components/Login';
+import Header from './components/Header';
 import Dashboard from './components/dashboard/Dashboard';
 import Repository from './components/repository/Repository';
 
