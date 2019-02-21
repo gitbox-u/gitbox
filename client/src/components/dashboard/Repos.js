@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import { Grid, TextField } from "@material-ui/core";
-import Repository from './repo-snippet';
-import { connect } from "react-redux";
-import { updateSearchField } from '../../reducers/reposReducer';
-import Pages from "./pagination";
+import React, {Component} from 'react';
+import {Grid, TextField} from "@material-ui/core";
+import Repository from './RepoSnippet';
+import {connect} from "react-redux";
+import {updateSearchField} from '../../reducers/reposReducer';
+import Pages from "./Pagination";
 
 class Repositories extends Component {
 
   handleChange = (e) => {
-    const { value } = e.target;
+    const {value} = e.target;
     this.props.updateSearchField(value);
   }
 
   render() {
 
-    const { allRepos, search, filteredRepos } = this.props.repos;
+    const {allRepos, search, filteredRepos} = this.props.repos;
 
     return (
       <div>
@@ -26,18 +26,18 @@ class Repositories extends Component {
           onChange={this.handleChange}
           value={search}
         />
-        <Pages />
+        <Pages/>
         <Grid container
-          direction="row"
-          spacing={32}
-          justify="center"
-          alignItems="center"
+              direction="row"
+              spacing={32}
+              justify="center"
+              alignItems="center"
         >
           {
             filteredRepos.map(
               id => (
                 <Grid item>
-                  <Repository name={allRepos[id].name} desc={allRepos[id].desc} />
+                  <Repository name={allRepos[id].name} desc={allRepos[id].desc}/>
                 </Grid>
               )
             )
@@ -51,8 +51,8 @@ class Repositories extends Component {
 };
 
 const mapStateToProps = state => {
-  const { repos } = state;
-  return { repos }
+  const {repos} = state;
+  return {repos}
 };
 
 const mapDispatchToProps = {

@@ -6,30 +6,30 @@ import ContributorCard from "./ContributorCard";
 
 
 const styles = {
-    contributors: {
-        height: '80vh',
-        width: '30vh',
-    },
+  contributors: {
+    height: '80vh',
+    width: '30vh',
+  },
 
 };
 
 
 class Contributors extends Component {
-    render() {
-        const {classes} = this.props;
+  render() {
+    const {classes} = this.props;
 
 
-        return (
-            <Grid item className={classes.contributors}>
-                {
-                    this.props.contributors.map((contributor) => (
-                        <ContributorCard data={contributor}/>
-                    ))
-                }
+    return (
+      <Grid item className={classes.contributors}>
+        {
+          this.props.contributors.map((contributor) => (
+            <ContributorCard data={contributor}/>
+          ))
+        }
 
-            </Grid>
-        );
-    }
+      </Grid>
+    );
+  }
 }
 
 

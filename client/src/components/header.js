@@ -22,7 +22,7 @@ class Header extends Component {
         const { classes } = this.props;
         const { loggedIn, isAdmin } = this.props.login;
 
-        return (
+      return (
             <AppBar color="primary" position="fixed">
                 <Toolbar>
                     <IconButton color="inherit">

@@ -32,7 +32,7 @@ const initial = {
 
   search: "",
   filteredRepos: []
-}
+};
 
 const ACTIONS = {
   UPDATE: 0,
@@ -49,12 +49,12 @@ const updateSearchField = (value) => {
 
 
 const reposReducer = (state = initial, action) => {
-  const { type } = action;
+  const {type} = action;
 
 
   if (type === ACTIONS.UPDATE) {
 
-    const { value } = action;
+    const {value} = action;
     return {
       ...state,
       search: value,
@@ -64,5 +64,5 @@ const reposReducer = (state = initial, action) => {
   return state;
 };
 
-export { updateSearchField };
+export {updateSearchField};
 export default reposReducer;

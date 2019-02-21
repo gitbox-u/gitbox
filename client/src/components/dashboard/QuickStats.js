@@ -5,32 +5,32 @@ import LangPie from "./LangPie";
 
 
 const styles = {
-    quickStats: {
-        minWidth: '80vw',
-        height: 180,
-        padding: 24,
-    },
+  quickStats: {
+    minWidth: '80vw',
+    height: 180,
+    padding: 24,
+  },
 
-    languages: {
-        height: 200
-    }
+  languages: {
+    height: 200
+  }
 };
 
 
 class QuickStats extends Component {
-    render() {
-        const {classes} = this.props;
+  render() {
+    const {classes} = this.props;
 
 
-        return (
-            <Card className={classes.quickStats}>
-                <div className={classes.languages}>
-                    <LangPie />
-                </div>
-            </Card>
+    return (
+      <Card className={classes.quickStats}>
+        <div className={classes.languages}>
+          <LangPie/>
+        </div>
+      </Card>
 
-        );
-    }
+    );
+  }
 }
 
 QuickStats.propTypes = {};
