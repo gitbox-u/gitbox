@@ -6,8 +6,8 @@ import {updateSearchField} from '../../reducers/reposReducer';
 import Pages from "./Pagination";
 import * as PropTypes from "prop-types";
 
-function Repositories(props) {
-  let {shownRepos, updateSearch} = props;
+const Repositories = (props) => {
+  const {shownRepos, updateSearch} = props;
   return (
     <div>
       <TextField
@@ -47,7 +47,7 @@ Repositories.propTypes = {
 
 const mapStateToProps = state => {
   const {allRepos, search} = state.repos;
-  let shownRepos = filteredRepos(allRepos, search);
+  const shownRepos = filteredRepos(allRepos, search);
   return {shownRepos};
 };
 
