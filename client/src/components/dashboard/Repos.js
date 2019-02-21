@@ -71,6 +71,7 @@ class Repositories extends Component {
             spacing={32}
             justify="center"
             alignItems="center"
+<<<<<<< HEAD
           >
             {
               pageRepos.map(
@@ -91,11 +92,30 @@ class Repositories extends Component {
             onClick={this.handleClick}
           />
         </Grid>
+=======
+      >
+        {
+          shownRepos.map(
+            repo => (
+              <Grid item>
+                <Repository name={repo.name} desc={repo.desc} key={repo.name}/>
+              </Grid>
+            )
+          )
+        }
+>>>>>>> f4a83dddeb1be38f24852dad1b6776f6b791d7a5
       </Grid>
     );
 
+<<<<<<< HEAD
   }
 }
+=======
+Repositories.propTypes = {
+  shownRepos: PropTypes.any,
+  updateSearch: PropTypes.any
+};
+>>>>>>> f4a83dddeb1be38f24852dad1b6776f6b791d7a5
 
 const mapStateToProps = state => {
 

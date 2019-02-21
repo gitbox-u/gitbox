@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {withStyles} from '@material-ui/styles';
-import {Card, CardHeader} from '@material-ui/core';
+import {ButtonBase, Card, CardHeader} from '@material-ui/core';
+import {withRouter} from "react-router-dom";
 
 
 const styles = {
@@ -9,24 +10,45 @@ const styles = {
     height: 220,
     padding: 24,
   },
+};
+
+class RepoCard extends Component {
+
+  state = {
+    raised: false
+  };
+
+  routeChange = (path) => () => {
+    this.props.history.push(path);
+  };
+
+  toggleRaised = () => this.setState({raised: !this.state.raised});
+
+
+  render() {
+    const {classes} = this.props;
+
+    const {name, desc} = this.props;
+
+
+    return (
+      <ButtonBase onClick={this.routeChange(`/repository/${name}`)}>
+        <Card className={classes.repoCard}
+              onMouseOver={this.toggleRaised}
+              onMouseOut={this.toggleRaised}
+              raised={this.state.raised}
+        >
+          <CardHeader
+            title={
+              `${name}`
+            }
+            subheader={`${desc}`}
+          />
+        </Card>
+      </ButtonBase>
+    );
+  }
 }
 
-function Repository(props) {
-  const {classes} = props;
-
-  const {name, desc} = props;
-
-  return (
-    <Card className={classes.repoCard}>
-      <CardHeader
-        title={
-          `${name}`
-        }
-        subheader={`${desc}`}
-      />
-    </Card>
-  );
-}
-
-export default withStyles(styles)(Repository);
+export default withRouter(withStyles(styles)(RepoCard));
 
