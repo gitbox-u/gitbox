@@ -52,14 +52,14 @@ const reposReducer = (state = initial, action) => {
   const {type} = action;
 
 
-  if (type === ACTIONS.UPDATE) {
-
-    const {value} = action;
-    return {
-      ...state,
-      search: value,
-    };
-  }
+  // if (type === ACTIONS.UPDATE) {
+  //
+  //   const {value} = action;
+  //   return {
+  //     ...state,
+  //     search: value,
+  //   };
+  // }
 
   return state;
 };
