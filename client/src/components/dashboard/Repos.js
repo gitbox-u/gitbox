@@ -1,62 +1,57 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Grid, TextField} from "@material-ui/core";
 import Repository from './RepoSnippet';
 import {connect} from "react-redux";
 import {updateSearchField} from '../../reducers/reposReducer';
 import Pages from "./Pagination";
 
-class Repositories extends Component {
-
-  handleChange = (e) => {
-    const {value} = e.target;
-    this.props.updateSearchField(value);
-  };
-
-  render() {
-
-    const {allRepos, search, filteredRepos} = this.props.repos;
-
-    return (
-      <div>
-        <TextField
-          placeholder="Search for a repo..."
-          id="outlined-bare"
-          margin="normal"
-          variant="outlined"
-          onChange={this.handleChange}
-          value={search}
-        />
-        <Pages/>
-        <Grid container
-              direction="row"
-              spacing={32}
-              justify="center"
-              alignItems="center"
-        >
-          {
-            filteredRepos.map(
-              id => (
-                <Grid item>
-                  <Repository name={allRepos[id].name} desc={allRepos[id].desc}/>
-                </Grid>
-              )
-            )
-          }
-        </Grid>
-      </div>
-
-    )
-  }
-
-}
+const Repositories = ({shownRepos, updateSearch}) => (
+  <div>
+    <TextField
+      placeholder="Search for a repo..."
+      id="outlined-bare"
+      margin="normal"
+      variant="outlined"
+      onChange={(e) => {
+        updateSearch(e.target.value);
+      }}
+    />
+    <Pages/>
+    <Grid container
+          direction="row"
+          spacing={32}
+          justify="center"
+          alignItems="center"
+    >
+      {
+        shownRepos.map(
+          repo => (
+            <Grid item>
+              <Repository name={repo.name} desc={repo.desc}/>
+            </Grid>
+          )
+        )
+      }
+    </Grid>
+  </div>
+);
 
 const mapStateToProps = state => {
-  const {repos} = state;
-  return {repos}
+  const {allRepos, search} = state.repos;
+  let shownRepos = filteredRepos(allRepos, search);
+  return {shownRepos};
 };
 
-const mapDispatchToProps = {
-  updateSearchField
+const mapDispatchToProps = dispatch => ({
+  updateSearch: val => dispatch(updateSearchField(val))
+});
+
+const filteredRepos = (repos, filter) => {
+  // https://stackoverflow.com/questions/11734417/javascript-equivalent-of-pythons-values-dictionary-method
+  const repoValues = Object.keys(repos).map((key) => {
+    return repos[key];
+  });
+  return repoValues.filter(r => r.name.toLowerCase().includes(filter.toLowerCase()));
 };
 
 export default connect(

@@ -30,8 +30,7 @@ const initial = {
     }
   },
 
-  search: "",
-  filteredRepos: []
+  search: ""
 };
 
 const ACTIONS = {
@@ -40,6 +39,7 @@ const ACTIONS = {
 
 const updateSearchField = (value) => {
   return (dispatch) => {
+    console.log(value);
     dispatch({
       type: ACTIONS.UPDATE,
       value
@@ -51,15 +51,14 @@ const updateSearchField = (value) => {
 const reposReducer = (state = initial, action) => {
   const {type} = action;
 
+  if (type === ACTIONS.UPDATE) {
 
-  // if (type === ACTIONS.UPDATE) {
-  //
-  //   const {value} = action;
-  //   return {
-  //     ...state,
-  //     search: value,
-  //   };
-  // }
+    const {value} = action;
+    return {
+      ...state,
+      search: value,
+    };
+  }
 
   return state;
 };
