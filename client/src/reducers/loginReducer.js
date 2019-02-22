@@ -1,6 +1,7 @@
 const ACTIONS = {
   UPDATE: 0,
   AUTH: 1,
+  DEAUTH: 2,
 };
 
 const initial = {
@@ -29,6 +30,15 @@ const tryLogin = () => {
   }
 };
 
+const logout = () => {
+  console.log("logout!")
+  return (dispatch) => {
+    dispatch({
+      type: ACTIONS.DEAUTH,
+    });
+  }
+}
+
 const loginReducer = (state = initial, action) => {
   const {type} = action;
   if (type === ACTIONS.UPDATE) {
@@ -53,9 +63,17 @@ const loginReducer = (state = initial, action) => {
         isAdmin: true,
       }
     }
+  } else if (type === ACTIONS.DEAUTH) {
+    return {
+      ...state,
+      username: '',
+      password: '',
+      loggedIn: false,
+      isAdmin: false, 
+    }
   }
   return state;
 };
 
-export {updateLoginField, tryLogin};
+export {updateLoginField, tryLogin, logout};
 export default loginReducer;
