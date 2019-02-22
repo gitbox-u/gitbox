@@ -49,9 +49,47 @@ class ExpansionList extends React.Component {
             <Typography>
                 info about user
             </Typography>
-            <Button fullWidth variant="outlined" color="primary" onClick={this.handleSubmit}
+            <Button variant="outlined" color="primary" onClick={this.handleSubmit}
                           className={classes.formButton}>Edit User</Button>
-            <Button fullWidth variant="outlined" color="primary" onClick={this.handleSubmit}
+            <Button variant="outlined" color="primary" onClick={this.handleSubmit}
+                          className={classes.formButton}>Message User</Button>
+            <Button variant="outlined" color="primary" onClick={this.handleSubmit}
+                          className={classes.formButton}>Block User</Button>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+
+        <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handleChange('panel1')}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography className={classes.heading}>User 2</Typography>
+            <Typography className={classes.secondaryHeading}>500 repos - 200 commits</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Typography>
+                info about user
+            </Typography>
+            <Button variant="outlined" color="primary" onClick={this.handleSubmit}
+                          className={classes.formButton}>Edit User</Button>
+            <Button variant="outlined" color="primary" onClick={this.handleSubmit}
+                          className={classes.formButton}>Message User</Button>
+            <Button variant="outlined" color="primary" onClick={this.handleSubmit}
+                          className={classes.formButton}>Block User</Button>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+
+        <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handleChange('panel1')}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography className={classes.heading}>User 3</Typography>
+            <Typography className={classes.secondaryHeading}>500 repos - 200 commits</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Typography>
+                info about user
+            </Typography>
+            <Button variant="outlined" color="primary" onClick={this.handleSubmit}
+                          className={classes.formButton}>Edit User</Button>
+            <Button variant="outlined" color="primary" onClick={this.handleSubmit}
+                          className={classes.formButton}>Message User</Button>
+            <Button variant="outlined" color="primary" onClick={this.handleSubmit}
                           className={classes.formButton}>Block User</Button>
           </ExpansionPanelDetails>
         </ExpansionPanel>
