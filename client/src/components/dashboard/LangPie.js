@@ -38,24 +38,24 @@ function LangPie() {
       ]
       }
       margin={{
-        "top": 40,
-        "right": 80,
-        "bottom": 80,
-        "left": 80
+        "top": 55,
+        "right": 55,
+        "bottom": 55,
+        "left": 55
       }}
-      innerRadius={0.5}
+      innerRadius={0.7}
       padAngle={0.7}
-      cornerRadius={3}
+      // cornerRadius={3}
       colors="nivo"
       colorBy="id"
-      borderWidth={1}
+      // borderWidth={1}
       borderColor="inherit:darker(0.2)"
       radialLabelsSkipAngle={10}
-      radialLabelsTextXOffset={6}
+      radialLabelsTextXOffset={4}
       radialLabelsTextColor="#333333"
       radialLabelsLinkOffset={0}
-      radialLabelsLinkDiagonalLength={16}
-      radialLabelsLinkHorizontalLength={24}
+      radialLabelsLinkDiagonalLength={5}
+      radialLabelsLinkHorizontalLength={5}
       radialLabelsLinkStrokeWidth={1}
       radialLabelsLinkColor="inherit"
       slicesLabelsSkipAngle={10}

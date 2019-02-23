@@ -25,17 +25,17 @@ class Header extends Component {
         const { loggedIn, isAdmin, username } = this.props;
         const { logout } = this.props;
 
-        console.log(logout)
+        console.log(logout);
 
       return (
-            <AppBar color="primary" position="fixed">
+            <AppBar color="white" position="fixed">
                 <Toolbar>
                     <IconButton color="inherit">
                         <img src={logo} width="40" />
                     </IconButton>
-                    <Typography color="inherit" variant="h4">
-                        Gitmap
-                    </Typography>
+                    {/*<Typography color="inherit" variant="h4">*/}
+                        {/*Gitmap*/}
+                    {/*</Typography>*/}
 
                     <div className={classes.grow} />
 
@@ -43,15 +43,15 @@ class Header extends Component {
 
                     <div className={classes.grow} />
 
-                    <Button onClick={this.routeChange("/")} color="inherit" variant={"text"}>
+                    <Button onClick={this.routeChange("/")} color="inherit" variant="text">
                         Home
                     </Button>
                     {
                         isAdmin ?
-                        <Button onClick={this.routeChange("/dashboard")} color="inherit" variant={"text"}>
+                        <Button onClick={this.routeChange("/dashboard")} color="inherit" variant="text">
                                 Admin Panel
                         </Button> :
-                        <Button onClick={this.routeChange("/dashboard")} color="inherit" variant={"text"}>
+                        <Button onClick={this.routeChange("/dashboard")} color="inherit" variant="text">
                                 Dashboard
                         </Button>
                     }
@@ -60,10 +60,10 @@ class Header extends Component {
                         <Button onClick={e => {
                             logout();
                             this.routeChange("/login")();
-                        }} color="inherit" variant={"text"}>
+                        }} color="inherit" variant="text">
                             Logout
                         </Button> :
-                        <Button onClick={this.routeChange("/login")} color="inherit" variant={"text"}>
+                        <Button onClick={this.routeChange("/login")} color="inherit" variant="text">
                             Login
                         </Button> 
                     }
@@ -81,6 +81,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     logout
-}
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Header)));

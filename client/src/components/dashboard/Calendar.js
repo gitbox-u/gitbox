@@ -24,7 +24,7 @@ class Calendar extends Component {
         margin={{
           "top": 20,
           "right": 30,
-          "bottom": 60,
+          "bottom": 0,
           "left": 30
         }}
         monthBorderColor="#ffffff"
