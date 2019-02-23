@@ -11,8 +11,16 @@ const style =
       paddingTop: 100,
     },
 
-    dashboardSection: {
-      width: '80%'
+    stats: {
+      width: '80%',
+      maxWidth: '1000px',
+    },
+
+    repos: {
+      width: '90%',
+      maxWidth: '3000px',
+      display: 'flex',
+      alignItems: 'center'
     },
 
     repoHeader: {
@@ -33,11 +41,11 @@ function Dashboard(props) {
           className={classes.dashboardContainer}
     >
 
-      <Grid item className={classes.dashboardSection}>
+      <Grid item className={classes.stats}>
         <QuickStats/>
       </Grid>
 
-      <Grid item className={classes.dashboardSection}>
+      <Grid item className={classes.repos}>
         <Repositories>
         </Repositories>
       </Grid>

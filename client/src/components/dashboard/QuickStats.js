@@ -8,7 +8,7 @@ import Grid from "@material-ui/core/Grid";
 
 const styles = {
   quickStats: {
-    minWidth: '80vw',
+    // width: '70%',
     height: 200,
     // padding: 24,
   },

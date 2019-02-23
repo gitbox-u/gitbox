@@ -11,6 +11,11 @@ import { Typography, withStyles } from '@material-ui/core/es';
 const styles = {
   textInput: {
     width: '60vh',
+  },
+
+  container: {
+    width: '100%',
+    padding: '10px'
   }
 }
 
@@ -38,6 +43,7 @@ class Repositories extends Component {
       <Grid container
         direction="column"
         alignItems="center"
+            className={classes.container}
         spacing={16}>
 
         <Grid item>

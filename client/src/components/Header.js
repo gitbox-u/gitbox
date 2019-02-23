@@ -39,7 +39,7 @@ class Header extends Component {
 
                     <div className={classes.grow} />
 
-                    <Typography color="inherit" variant="h6">{`Logged in as ${username}`}</Typography>
+                    {/*<Typography color="inherit" variant="h6">{`Logged in as ${username}`}</Typography>*/}
 
                     <div className={classes.grow} />
 
