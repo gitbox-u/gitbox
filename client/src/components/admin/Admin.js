@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import {Typography} from "@material-ui/core";
 import SearchFields from "./searchFields";
-import ExpansionList from "./expansionList";
+import ExpansionList from "./Users";
 const style =
   {
     adminContainer: {

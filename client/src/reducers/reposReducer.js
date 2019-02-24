@@ -1,6 +1,6 @@
 import {repos} from './sampleData';
 
-const REPOS_PER_PAGE = 10;
+const REPOS_PER_PAGE = 8;
 
 const initial = {
   allRepos: repos,

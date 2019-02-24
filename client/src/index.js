@@ -10,11 +10,13 @@ import {BrowserRouter} from 'react-router-dom';
 
 import loginReducer from './reducers/loginReducer';
 import reposReducer from './reducers/reposReducer';
+import users from './reducers/users';
 import thunk from 'redux-thunk';
 
 const store = createStore(combineReducers({
   login: loginReducer,
-  repos: reposReducer
+  repos: reposReducer,
+  users: users
 }), applyMiddleware(thunk));
 
 ReactDOM.render(
