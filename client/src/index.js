@@ -8,14 +8,14 @@ import {createStore, applyMiddleware, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
 
-import loginReducer from './reducers/loginReducer';
-import reposReducer from './reducers/reposReducer';
+import login from './reducers/login';
+import repositories from './reducers/repositories';
 import users from './reducers/users';
 import thunk from 'redux-thunk';
 
 const store = createStore(combineReducers({
-  login: loginReducer,
-  repos: reposReducer,
+  login: login,
+  repos: repositories,
   users: users
 }), applyMiddleware(thunk));
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Grid, TextField } from "@material-ui/core";
 import Repository from './RepoSnippet';
 import { connect } from "react-redux";
-import { updateSearchField, changePage } from '../../reducers/reposReducer';
+import { updateSearchField, changePage } from '../../reducers/repositories';
 import Pagination from '../core/Pagination';
 import { Typography, withStyles } from '@material-ui/core/es';
 
@@ -20,7 +20,7 @@ const styles = {
 
 class Repositories extends Component {
 
-  componentDidMount = () => {
+  componentDidMount() {
     this.props.updateSearchField("");
   }
 

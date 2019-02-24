@@ -5,7 +5,7 @@ import logo from '../assets/logo.svg';
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 
-import {logout} from '../reducers/loginReducer';
+import {logout} from '../reducers/login';
 
 const styles = {
     grow: {

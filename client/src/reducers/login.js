@@ -39,7 +39,7 @@ const logout = () => {
   }
 }
 
-const loginReducer = (state = initial, action) => {
+const login = (state = initial, action) => {
   const {type} = action;
   if (type === ACTIONS.UPDATE) {
     const {field, value} = action;
@@ -76,4 +76,4 @@ const loginReducer = (state = initial, action) => {
 };
 
 export {updateLoginField, tryLogin, logout};
-export default loginReducer;
+export default login;

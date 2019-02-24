@@ -57,7 +57,7 @@ const changePage = (offset) => {
 }
 
 
-const reposReducer = (state = initial, action) => {
+const repositories = (state = initial, action) => {
   const { type } = action;
 
   // TODO: make more elegant.
@@ -94,4 +94,4 @@ const reposReducer = (state = initial, action) => {
 };
 
 export { updateSearchField, changePage };
-export default reposReducer;
+export default repositories;

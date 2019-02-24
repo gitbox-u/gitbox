@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Button, Card, TextField, withStyles, Grid, Typography, Tab, Tabs, Paper} from '@material-ui/core';
 import {connect} from 'react-redux';
-import {updateLoginField, tryLogin} from '../reducers/loginReducer';
+import {updateLoginField, tryLogin} from '../reducers/login';
 import {withRouter} from "react-router-dom";
 import logo from '../assets/logo.svg';
 
