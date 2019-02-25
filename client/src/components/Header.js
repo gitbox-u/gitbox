@@ -11,6 +11,14 @@ const styles = {
     grow: {
         flexGrow: 1,
     },
+
+    appBar: {
+        boxShadow: 'none',
+        borderBottomWidthWidth: 1,
+        borderBottomColor: 'lightgray',
+        borderBottom: 'solid'
+        // backgroundColor: 'lightblue'
+    }
 };
 
 class Header extends Component {
@@ -28,7 +36,7 @@ class Header extends Component {
         console.log(logout);
 
       return (
-            <AppBar color="white" position="fixed">
+            <AppBar className={classes.appBar} color="white" position="fixed" >
                 <Toolbar>
                     <IconButton color="inherit">
                         <img src={logo} width="40" />
