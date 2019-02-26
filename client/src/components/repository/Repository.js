@@ -4,6 +4,7 @@ import CodeStream from "./CodeStream";
 import Paper from "@material-ui/core/Paper";
 import Contributors from "./Contributors";
 import LanguageBreakdown from "./LanguageBreakdown";
+import FolderTree from "./FolderTree";
 
 const styles = {
   repoViewContainer: {
@@ -261,7 +262,7 @@ class Repository extends Component {
 
             <Grid item>
               <Paper className={classes.codeStream}>
-                <CodeStream stats={data.stats} contributors={contributorNames}/>
+                <FolderTree data={data.languages}/>
               </Paper>
             </Grid>
           </Grid>
