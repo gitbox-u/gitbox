@@ -14,9 +14,7 @@ const styles = {
 
     appBar: {
         boxShadow: 'none',
-        borderBottomWidthWidth: 1,
-        borderBottomColor: 'lightgray',
-        borderBottom: 'solid'
+        borderBottom: '1px solid #e5e5e5;'
         // backgroundColor: 'lightblue'
     }
 };
