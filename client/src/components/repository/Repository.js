@@ -1,10 +1,11 @@
-import React, {Component} from 'react';
-import {withStyles, Grid, Typography} from '@material-ui/core';
+import React, { Component } from 'react';
+import { withStyles, Grid, Typography } from '@material-ui/core';
 import CodeStream from "./CodeStream";
 import Paper from "@material-ui/core/Paper";
 import Contributors from "./Contributors";
 import LanguageBreakdown from "./LanguageBreakdown";
 import FolderTree from "./FolderTree";
+import GitGraph from './GitGraph';
 
 const styles = {
   repoViewContainer: {
@@ -16,6 +17,11 @@ const styles = {
     height: '30vh',
     width: '40vw',
     marginBottom: '2vh'
+  },
+
+  gitGraph: {
+    width: '80vw',
+    height: '200px',
   },
 
   repoName: {},
@@ -45,7 +51,7 @@ class Repository extends Component {
         }
       ],
       stats: [
-        {"":0}
+        { "": 0 }
       ],
       languages: {}
     }
@@ -222,47 +228,54 @@ class Repository extends Component {
 
 
   componentDidMount() {
-    this.setState({data: this.getData()});
+    this.setState({ data: this.getData() });
   }
 
   render() {
     const data = this.state.data;
 
-    const {classes} = this.props;
+    const { classes } = this.props;
 
     const contributorNames = data.contributors.map((c) => c.name);
 
     return (
 
       <Grid item
-            container
-            justify="center"
-            spacing={16}
-            direction="column"
-            className={classes.repoViewContainer}
+        container
+        justify="center"
+        spacing={16}
+        direction="column"
+        className={classes.repoViewContainer}
       >
         <Grid item>
           <Typography className={classes.repoName} variant="h4">
             {data.name}
           </Typography>
         </Grid>
+        <Grid item>
+          <Paper className={classes.gitGraph}>
+            <GitGraph>
+            </GitGraph>
+          </Paper>
+        </Grid>
+
         <Grid item
-              container
-              direction="row"
-              spacing={16}
+          container
+          direction="row"
+          spacing={16}
         >
 
           <Grid item
           >
             <Grid item>
               <Paper className={classes.codeStream}>
-                <CodeStream stats={data.stats} contributors={contributorNames}/>
+                <CodeStream stats={data.stats} contributors={contributorNames} />
               </Paper>
             </Grid>
 
             <Grid item>
               <Paper className={classes.codeStream}>
-                <FolderTree data={data.languages}/>
+                <FolderTree data={data.languages} />
               </Paper>
             </Grid>
           </Grid>
@@ -271,13 +284,13 @@ class Repository extends Component {
           >
             <Grid item>
               <Paper className={classes.langBreak}>
-                <LanguageBreakdown data={data.languages}/>
+                <LanguageBreakdown data={data.languages} />
               </Paper>
             </Grid>
           </Grid>
 
           <Grid item>
-            <Contributors contributors={data.contributors}/>
+            <Contributors contributors={data.contributors} />
           </Grid>
 
         </Grid>
