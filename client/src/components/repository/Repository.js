@@ -6,6 +6,7 @@ import Contributors from "./Contributors";
 import LanguageBreakdown from "./LanguageBreakdown";
 import FolderTree from "./FolderTree";
 import GitGraph from './GitGraph';
+import List from "./ContibutorList"
 
 const styles = {
   repoViewContainer: {
@@ -288,8 +289,11 @@ class Repository extends Component {
             </Grid>
           </Grid>
 
-          <Grid item>
+          {/* <Grid item>
             <Contributors contributors={data.contributors} />
+          </Grid> */}
+          <Grid item>
+            <List></List>
           </Grid>
 
         </Grid>
