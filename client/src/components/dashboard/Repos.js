@@ -16,7 +16,7 @@ const styles = {
     width: '100%',
     padding: '10px'
   }
-}
+};
 
 class Repositories extends Component {
 
@@ -26,17 +26,17 @@ class Repositories extends Component {
 
   handleChange = (e) => {
     this.props.updateSearchField(e.target.value);
-  }
+  };
 
   handleClick = (e, offset) => {
     this.props.changePage(offset);
-  }
+  };
 
   render() {
 
     const { allRepos, numResults, pageRepos, search, numPages, pageOffset } = this.props;
 
-    const {classes} = this.props;
+    const { classes } = this.props;
 
     return (
       <Grid container

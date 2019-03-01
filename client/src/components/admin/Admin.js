@@ -1,46 +1,85 @@
-import React from 'react';
-import Grid from "@material-ui/core/Grid";
+import React, { Component } from 'react';
+import {Grid, TextField} from "@material-ui/core";
 import withStyles from "@material-ui/core/es/styles/withStyles";
-import {Typography} from "@material-ui/core";
-import SearchFields from "./searchFields";
-import ExpansionList from "./Users";
+import Users from './Users'
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+
 const style =
   {
     adminContainer: {
       paddingTop: 100,
-      
+      width: '90%',
     },
 
     adminSection: {
-      width: '80%'
+      // width: '90%',
+      // width: '40%',
     },
 
+    button: {
+      margin: '5px 0',
+    }
   };
 
-function Admin(props) {
-  const {classes} = props;
+class Admin extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      adding: false,
+    };
 
-  return (
-    <Grid item
-          container
-          spacing={32}
-          direction="column"
-          alignItems="center"
-          justify="center"
-          className={classes.adminContainer}
-    >
+    this.add = this.add.bind(this);
+  }
 
-      <Grid item className={classes.adminSection}>
-      <Grid item>
-          <SearchFields></SearchFields>
+  add() {
+    console.log(this);
+    this.setState({
+      adding: true
+    });
+  }
+
+  render() {
+    const {classes} = this.props;
+
+    return (
+      <Grid item
+            container
+            spacing={16}
+        // direction="column"
+        // alignItems="center"
+            justify="center"
+            className={classes.adminContainer}
+      >
+
+        <Grid item className={classes.adminSection}>
+          <Grid item>
+            {/*<SearchFields></SearchFields>*/}
+          </Grid>
+        </Grid>
+
+        <Grid item className={classes.adminSection}>
+          <Users/>
+        </Grid>
+
+        <Grid item>
+          <Fab size="small" color="secondary" aria-label="Add" className={classes.button} onClick={this.add}>
+            <AddIcon/>
+          </Fab>
+          {this.state.adding ?
+            <TextField
+              placeholder="Username"
+              id="outlined-bare"
+              margin="normal"
+              variant="outlined"
+              // value={search}
+              // onChange={console.log(this)}
+              // className={classes.textInput}
+            /> : null}
         </Grid>
       </Grid>
-
-      <Grid item className={classes.adminSection}>
-      <ExpansionList></ExpansionList>
-      </Grid>
-    </Grid>
-  );
+    );
+  };
 }
 
 export default withStyles(style)(Admin);
