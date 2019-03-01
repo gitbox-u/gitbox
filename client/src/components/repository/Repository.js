@@ -10,8 +10,7 @@ import GitGraph from './GitGraph';
 
 const styles = {
   repoViewContainer: {
-    paddingTop: 100,
-    paddingLeft: 100
+    padding: 100,
   },
 
   codeStream: {
@@ -20,8 +19,15 @@ const styles = {
     marginBottom: '2vh'
   },
 
+  deleteAdd: {
+    height: '30vh',
+    width: '30vw',
+    marginBottom: '2vh',
+    marginTop: '2vh'
+  },
+
   gitGraph: {
-    width: '80vw',
+    width: '100%',
     height: '200px',
   },
 
@@ -33,8 +39,8 @@ const styles = {
   },
 
   langBreak: {
-    width: '40vh',
-    height: '40vh'
+    width: '30vh',
+    height: '30vh'
   }
 
 };
@@ -52,7 +58,7 @@ class Repository extends Component {
         }
       ],
       stats: [
-        { "": 0 }
+        {"": 0}
       ],
       languages: {}
     }
@@ -62,11 +68,11 @@ class Repository extends Component {
   getData = (id) => {
 
 
-    
+
     const {allRepos} = this.props;
     console.log(id);
     const {name, desc} = allRepos[id];
-    
+
 
     return {
       id,
@@ -243,18 +249,18 @@ class Repository extends Component {
   render() {
     const { data } = this.state;
 
-    const { classes } = this.props;
+    const {classes} = this.props;
 
     const contributorNames = data.contributors.map((c) => c.name);
 
     return (
 
       <Grid item
-        container
-        justify="center"
-        spacing={16}
-        direction="column"
-        className={classes.repoViewContainer}
+            container
+            justify="center"
+            spacing={16}
+            direction="column"
+            className={classes.repoViewContainer}
       >
         <Grid item>
           <Typography className={classes.repoName} variant="h4">
@@ -272,37 +278,56 @@ class Repository extends Component {
         </Grid>
 
         <Grid item
-          container
-          direction="row"
-          spacing={16}
+              container
+              direction="row"
+              spacing={16}
         >
 
-          <Grid item
-          >
+          <Grid item>
             <Grid item>
               <Paper className={classes.codeStream}>
-                <CodeStream stats={data.stats} contributors={contributorNames} />
+                <CodeStream stats={data.stats} contributors={contributorNames}/>
               </Paper>
             </Grid>
 
             <Grid item>
               <Paper className={classes.codeStream}>
-                <FolderTree data={data.languages} />
-              </Paper>
-            </Grid>
-          </Grid>
-
-          <Grid item
-          >
-            <Grid item>
-              <Paper className={classes.langBreak}>
-                <LanguageBreakdown data={data.languages} />
+                <FolderTree data={data.languages}/>
               </Paper>
             </Grid>
           </Grid>
 
           <Grid item>
-            <Contributors contributors={data.contributors} />
+            <Grid item container
+                  direction="row"
+                  spacing={16}
+
+            >
+
+              <Grid item>
+                <Paper className={classes.langBreak}>
+                  <LanguageBreakdown data={data.languages}/>
+                </Paper>
+              </Grid>
+
+
+              <Grid item>
+                <Paper className={classes.langBreak}>
+                  <LanguageBreakdown data={data.languages}/>
+                </Paper>
+              </Grid>
+            </Grid>
+
+            <Grid item>
+              <Paper className={classes.deleteAdd}>
+                <FolderTree data={data.languages}/>
+              </Paper>
+            </Grid>
+          </Grid>
+
+
+          <Grid item>
+            <Contributors contributors={data.contributors}/>
           </Grid>
 
         </Grid>
@@ -318,6 +343,6 @@ const mapStateToProps = (state) => {
   return {
     allRepos,
   }
-}
+};
 
 export default connect(mapStateToProps)(withStyles(styles)(Repository));
