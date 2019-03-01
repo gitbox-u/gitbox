@@ -9,6 +9,7 @@ const style =
   {
     dashboardContainer: {
       paddingTop: 100,
+      backgroundColor: 'rgb(247,247,247)'
     },
 
     stats: {

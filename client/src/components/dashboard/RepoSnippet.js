@@ -7,10 +7,19 @@ import {withRouter} from "react-router-dom";
 const styles = {
   repoCard: {
     width: 250,
-    height: 220,
-    padding: 24,
+    height: 200,
+    transition: 'box-shadow 100ms',
+    textAlign: 'left',
+  },
+
+  header: {
+    // backgroundColor: 'lightblue',
+    color: 'white',
+    // height: '1em',
   },
 };
+
+
 
 class RepoCard extends Component {
 
@@ -39,6 +48,7 @@ class RepoCard extends Component {
               raised={this.state.raised}
         >
           <CardHeader
+            className={classes.header}
             title={
               `${name}`
             }

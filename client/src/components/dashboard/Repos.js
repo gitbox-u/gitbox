@@ -73,7 +73,7 @@ class Repositories extends Component {
         <Grid item>
           <Grid container
             direction="row"
-            spacing={32}
+            spacing={16}
             justify="center"
             alignItems="center"
           >
