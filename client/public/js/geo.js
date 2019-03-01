@@ -86,17 +86,6 @@ function geometric() {
     }
     var ktmp;
     var k;
-    setInterval(function () {
-        var j = document.querySelector('#bg svg').childNodes.length;
-        ktmp = k;
-        k = parseInt(j * Math.random());
-        var polygon0 = document.querySelector('#bg svg').childNodes[ktmp];
-        var polygon1 = document.querySelector('#bg svg').childNodes[k];
-        var tmp = polygon1.getAttribute('fill');
-        // polygon0.setAttribute('fill', tmp);
-        // polygon1.setAttribute('fill', 'rgba(255,255,255,.7)');
-      }
-      , 500);
     refresh();
   }
 
@@ -123,6 +112,8 @@ function geometric() {
       animate.beginElement();
     }
     refreshTimeout = setTimeout(function () {
+      let a = document.getElementById("bg");
+      if(a === null) return;
       refresh();
     }, refreshDuration);
   }
