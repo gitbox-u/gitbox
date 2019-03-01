@@ -3,7 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import Repositories from './Repos';
 import QuickStats from "./QuickStats";
-import {Typography} from "@material-ui/core";
 
 const style =
   {
