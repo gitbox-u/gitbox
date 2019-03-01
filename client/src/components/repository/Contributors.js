@@ -6,7 +6,6 @@ import ContributorCard from "./ContributorCard";
 
 const styles = {
   contributors: {
-    height: '80vh',
     width: '30vh',
   },
 

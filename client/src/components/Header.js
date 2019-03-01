@@ -34,7 +34,7 @@ class Header extends Component {
         console.log(logout);
 
       return (
-            <AppBar className={classes.appBar} color="white" position="fixed" >
+            <AppBar className={classes.appBar} color="primary" position="fixed" >
                 <Toolbar>
                     <IconButton color="inherit">
                         <img src={logo} width="40" />

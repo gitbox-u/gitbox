@@ -46,7 +46,7 @@ class Repositories extends Component {
         spacing={16}>
 
         <Grid item>
-          <Typography variant="h4">
+          <Typography variant="h4" >
             Repositories
         </Typography>
         </Grid>

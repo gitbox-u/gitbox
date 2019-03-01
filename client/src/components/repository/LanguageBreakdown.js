@@ -16,7 +16,7 @@ function LanguageBreakdown(props) {
         "left": 20
       }}
       identity="name"
-      value="loc"
+      value="lines"
       cornerRadius={2}
       borderWidth={1}
       borderColor="white"

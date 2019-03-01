@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {Button, Card, TextField, withStyles, Grid, Typography, Tab, Tabs, Paper} from '@material-ui/core';
-import {connect} from 'react-redux';
-import {updateLoginField, tryLogin} from '../reducers/login';
-import {withRouter} from "react-router-dom";
+import React, { Component } from 'react';
+import { Button, Card, TextField, withStyles, Grid, Typography, Tab, Tabs, Paper } from '@material-ui/core';
+import { connect } from 'react-redux';
+import { updateLoginField, tryLogin } from '../reducers/login';
+import { withRouter } from "react-router-dom";
 import logo from '../assets/logo.svg';
 
 const styles = {
@@ -57,29 +57,29 @@ class Login extends Component {
 
   render() {
 
-    const {classes} = this.props;
-    const {username, password} = this.props;
+    const { classes } = this.props;
+    const { username, password } = this.props;
 
     return (
       <div>
-        <div id="bg"/>
+        <div id="bg" />
         <Grid
           container
           alignItems="center"
           spacing={0}
           justify="center"
           direction="column"
-          style={{minHeight: '85vh'}}
+          style={{ minHeight: '85vh' }}
         >
           <Grid item>
             <Paper className={classes.formContainer}>
               <Grid container
-                    direction="column"
-                    alignItems="center"
-                    spacing={8}
-                    justify="center">
+                direction="column"
+                alignItems="center"
+                spacing={8}
+                justify="center">
                 <Grid item>
-                  <img src={logo} className={classes.logo}/>
+                  <img src={logo} className={classes.logo} />
                 </Grid>
                 <Grid item>
                   <Typography variant="h4" className={classes.logoLabel}>
@@ -113,7 +113,7 @@ class Login extends Component {
                 </Grid>
                 <Grid item>
                   <Button fullWidth variant="outlined" color="primary" onClick={this.handleSubmit}
-                          className={classes.formButton}>Login</Button>
+                    className={classes.formButton}>Login</Button>
                 </Grid>
               </Grid>
             </Paper>
@@ -132,7 +132,7 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state) => {
-  const {username, password} = state;
+  const { username, password } = state;
 
   return {
     username, password

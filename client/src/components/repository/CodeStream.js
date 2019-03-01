@@ -36,19 +36,37 @@ function CodeStream(props) {
       borderColor="#000"
       defs={[
         {
-          "id": "dots",
+          "id": "dots0",
           "type": "patternDots",
-          "background": "inherit",
+          "background": "#1c897f",
           "color": "#2c998f",
           "size": 4,
           "padding": 2,
           "stagger": true
         },
         {
-          "id": "squares",
+          "id": "squares0",
           "type": "patternSquares",
-          "background": "inherit",
+          "background": "#d4b902",
           "color": "#e4c912",
+          "size": 6,
+          "padding": 2,
+          "stagger": true
+        },
+        {
+          "id": "dots1",
+          "type": "patternDots",
+          "background": "#8c91b3",
+          "color": "#9ca1c3",
+          "size": 4,
+          "padding": 2,
+          "stagger": true
+        },
+        {
+          "id": "squares1",
+          "type": "patternSquares",
+          "background": "#2b8ac9",
+          "color": "#3b9ad9",
           "size": 6,
           "padding": 2,
           "stagger": true
@@ -57,16 +75,28 @@ function CodeStream(props) {
       fill={[
         {
           "match": {
-            "id": "Paul"
+            "id": "Howard"
           },
-          "id": "dots"
+          "id": "dots0"
         },
         {
           "match": {
-            "id": "Marcel"
+            "id": "Lin"
           },
-          "id": "squares"
-        }
+          "id": "squares0"
+        },
+        {
+          "match": {
+            "id": "Eric"
+          },
+          "id": "dots1"
+        },
+        {
+          "match": {
+            "id": "Murad"
+          },
+          "id": "squares1"
+        },
       ]}
       dotSize={8}
       dotBorderWidth={2}

@@ -61,7 +61,7 @@ class Repository extends Component {
   getData = () => {
     const id = this.props.match.params.id;
     return {
-      name: `Repository "${id}"`,
+      name: id,
       contributors: [
         {
           key: "1",
@@ -98,7 +98,6 @@ class Repository extends Component {
           "Eric": 155,
           "Lin": 20,
           "Howard": 135,
-
         },
         {
           "Murad": 42,
@@ -123,30 +122,30 @@ class Repository extends Component {
         }
       ],
       languages: {
-        "name": "nivo",
+        "name": "language",
         "children": [
           {
             "name": "C++",
             "children": [
               {
                 "name": "address.cpp",
-                "loc": 72594
+                "lines": 72594
               },
               {
                 "name": "city.cpp",
-                "loc": 137732
+                "lines": 137732
               },
               {
                 "name": "anima.cpp",
-                "loc": 81132
+                "lines": 81132
               },
               {
                 "name": "movie.cpp",
-                "loc": 146492
+                "lines": 146492
               },
               {
                 "name": "user.cpp",
-                "loc": 49485
+                "lines": 49485
               }
             ]
           },
@@ -155,19 +154,19 @@ class Repository extends Component {
             "children": [
               {
                 "name": "clone.js",
-                "loc": 48385
+                "lines": 48385
               },
               {
                 "name": "shuffle.js",
-                "loc": 116587
+                "lines": 116587
               },
               {
                 "name": "pick.js",
-                "loc": 102176
+                "lines": 102176
               },
               {
                 "name": "plouc.js",
-                "loc": 136373
+                "lines": 136373
               }
             ]
           },
@@ -176,39 +175,39 @@ class Repository extends Component {
             "children": [
               {
                 "name": "main.java",
-                "loc": 35993
+                "lines": 35993
               },
               {
                 "name": "hello.java",
-                "loc": 146986
+                "lines": 146986
               },
               {
                 "name": "a.java",
-                "loc": 58568
+                "lines": 58568
               },
               {
                 "name": "sa.java",
-                "loc": 83987
+                "lines": 83987
               },
               {
                 "name": "repeat.java",
-                "loc": 138659
+                "lines": 138659
               },
               {
                 "name": "padLeft.java",
-                "loc": 22276
+                "lines": 22276
               },
               {
                 "name": "padRight.java",
-                "loc": 178134
+                "lines": 178134
               },
               {
                 "name": "sanitize.java",
-                "loc": 99550
+                "lines": 99550
               },
               {
                 "name": "ploucify.java",
-                "loc": 392
+                "lines": 392
               }
             ]
           },
@@ -217,7 +216,7 @@ class Repository extends Component {
             "children": [
               {
                 "name": "json",
-                "loc": 113195
+                "lines": 113195
               }
             ]
           }
@@ -249,7 +248,7 @@ class Repository extends Component {
       >
         <Grid item>
           <Typography className={classes.repoName} variant="h4">
-            {data.name}
+            {`Repository ${data.name}`}
           </Typography>
         </Grid>
         <Grid item>
