@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import { withStyles, Grid, Typography } from '@material-ui/core';
 import CodeStream from "./CodeStream";
 import Paper from "@material-ui/core/Paper";
@@ -7,11 +8,11 @@ import LanguageBreakdown from "./LanguageBreakdown";
 import FolderTree from "./FolderTree";
 import GitGraph from './GitGraph';
 import List from "./ContibutorList"
+import AddDelete from "./AddDelete";
 
 const styles = {
   repoViewContainer: {
-    paddingTop: 100,
-    paddingLeft: 100
+    padding: 100,
   },
 
   codeStream: {
@@ -20,8 +21,15 @@ const styles = {
     marginBottom: '2vh'
   },
 
+  deleteAdd: {
+    height: '30vh',
+    width: '30vw',
+    marginBottom: '2vh',
+    marginTop: '2vh'
+  },
+
   gitGraph: {
-    width: '80vw',
+    width: '100%',
     height: '200px',
   },
 
@@ -33,8 +41,8 @@ const styles = {
   },
 
   langBreak: {
-    width: '40vh',
-    height: '40vh'
+    width: '30vh',
+    height: '30vh'
   }
 
 };
@@ -52,17 +60,26 @@ class Repository extends Component {
         }
       ],
       stats: [
-        { "": 0 }
+        {"": 0}
       ],
       languages: {}
     }
   };
 
   // Replace with server call
-  getData = () => {
-    const id = this.props.match.params.id;
+  getData = (id) => {
+
+
+
+    const {allRepos} = this.props;
+    console.log(id);
+    const {name, desc} = allRepos[id];
+
+
     return {
-      name: id,
+      id,
+      name,
+      desc,
       contributors: [
         {
           key: "1",
@@ -228,28 +245,31 @@ class Repository extends Component {
 
 
   componentDidMount() {
-    this.setState({ data: this.getData() });
+    this.setState({ data: this.getData(this.props.match.params.id) });
   }
 
   render() {
-    const data = this.state.data;
+    const { data } = this.state;
 
-    const { classes } = this.props;
+    const {classes} = this.props;
 
     const contributorNames = data.contributors.map((c) => c.name);
 
     return (
 
       <Grid item
-        container
-        justify="center"
-        spacing={16}
-        direction="column"
-        className={classes.repoViewContainer}
+            container
+            justify="center"
+            spacing={16}
+            direction="column"
+            className={classes.repoViewContainer}
       >
         <Grid item>
           <Typography className={classes.repoName} variant="h4">
-            {`Repository ${data.name}`}
+            {`${data.name} | Repository #${data.id}`}
+          </Typography>
+          <Typography className={classes.repoName} variant="h6">
+            {data.desc}
           </Typography>
         </Grid>
         <Grid item>
@@ -260,31 +280,49 @@ class Repository extends Component {
         </Grid>
 
         <Grid item
-          container
-          direction="row"
-          spacing={16}
+              container
+              direction="row"
+              spacing={16}
         >
 
-          <Grid item
-          >
+          <Grid item>
             <Grid item>
               <Paper className={classes.codeStream}>
-                <CodeStream stats={data.stats} contributors={contributorNames} />
+                <CodeStream stats={data.stats} contributors={contributorNames}/>
               </Paper>
             </Grid>
 
             <Grid item>
               <Paper className={classes.codeStream}>
-                <FolderTree data={data.languages} />
+                <FolderTree data={data.languages}/>
               </Paper>
             </Grid>
           </Grid>
 
-          <Grid item
-          >
+          <Grid item>
+            <Grid item container
+                  direction="row"
+                  spacing={16}
+
+            >
+
+              <Grid item>
+                <Paper className={classes.langBreak}>
+                  <LanguageBreakdown data={data.languages}/>
+                </Paper>
+              </Grid>
+
+
+              <Grid item>
+                <Paper className={classes.langBreak}>
+                  <LanguageBreakdown data={data.languages}/>
+                </Paper>
+              </Grid>
+            </Grid>
+
             <Grid item>
-              <Paper className={classes.langBreak}>
-                <LanguageBreakdown data={data.languages} />
+              <Paper className={classes.deleteAdd}>
+                <AddDelete data={data.languages}/>
               </Paper>
             </Grid>
           </Grid>
@@ -302,4 +340,13 @@ class Repository extends Component {
   }
 }
 
-export default withStyles(styles)(Repository);
+const mapStateToProps = (state) => {
+  const { repos } = state;
+  const {allRepos} = repos;
+
+  return {
+    allRepos,
+  }
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(Repository));
