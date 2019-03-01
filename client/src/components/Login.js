@@ -132,7 +132,8 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state) => {
-  const { username, password } = state;
+  const {login} = state;
+  const { username, password } = login;
 
   return {
     username, password

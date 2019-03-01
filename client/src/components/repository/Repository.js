@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import { withStyles, Grid, Typography } from '@material-ui/core';
 import CodeStream from "./CodeStream";
 import Paper from "@material-ui/core/Paper";
@@ -58,10 +59,19 @@ class Repository extends Component {
   };
 
   // Replace with server call
-  getData = () => {
-    const id = this.props.match.params.id;
+  getData = (id) => {
+
+
+    
+    const {allRepos} = this.props;
+    console.log(id);
+    const {name, desc} = allRepos[id];
+    
+
     return {
-      name: id,
+      id,
+      name,
+      desc,
       contributors: [
         {
           key: "1",
@@ -227,11 +237,11 @@ class Repository extends Component {
 
 
   componentDidMount() {
-    this.setState({ data: this.getData() });
+    this.setState({ data: this.getData(this.props.match.params.id) });
   }
 
   render() {
-    const data = this.state.data;
+    const { data } = this.state;
 
     const { classes } = this.props;
 
@@ -248,7 +258,10 @@ class Repository extends Component {
       >
         <Grid item>
           <Typography className={classes.repoName} variant="h4">
-            {`Repository ${data.name}`}
+            {`${data.name} | Repository #${data.id}`}
+          </Typography>
+          <Typography className={classes.repoName} variant="h6">
+            {data.desc}
           </Typography>
         </Grid>
         <Grid item>
@@ -298,4 +311,13 @@ class Repository extends Component {
   }
 }
 
-export default withStyles(styles)(Repository);
+const mapStateToProps = (state) => {
+  const { repos } = state;
+  const {allRepos} = repos;
+
+  return {
+    allRepos,
+  }
+}
+
+export default connect(mapStateToProps)(withStyles(styles)(Repository));

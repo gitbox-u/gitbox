@@ -81,7 +81,7 @@ class Repositories extends Component {
               pageRepos.map(
                 repo => (
                   <Grid item>
-                    <Repository name={allRepos[repo].name} desc={allRepos[repo].desc} />
+                    <Repository id={repo} name={allRepos[repo].name} desc={allRepos[repo].desc} />
                   </Grid>
                 )
               )
