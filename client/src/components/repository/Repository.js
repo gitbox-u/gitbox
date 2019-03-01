@@ -7,6 +7,7 @@ import Contributors from "./Contributors";
 import LanguageBreakdown from "./LanguageBreakdown";
 import FolderTree from "./FolderTree";
 import GitGraph from './GitGraph';
+import AddDelete from "./AddDelete";
 
 const styles = {
   repoViewContainer: {
@@ -320,7 +321,7 @@ class Repository extends Component {
 
             <Grid item>
               <Paper className={classes.deleteAdd}>
-                <FolderTree data={data.languages}/>
+                <AddDelete data={data.languages}/>
               </Paper>
             </Grid>
           </Grid>
