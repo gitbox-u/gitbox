@@ -9,6 +9,7 @@ const styles = {
     width: 250,
     height: 220,
     padding: 24,
+    transition: 'box-shadow 100ms'
   },
 };
 
