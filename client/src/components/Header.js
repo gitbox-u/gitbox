@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { withStyles, AppBar, Typography, Toolbar, IconButton, Button } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import { withStyles, AppBar, Toolbar, IconButton, Button } from '@material-ui/core';
 import logo from '../assets/logo.svg';
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
@@ -37,7 +36,7 @@ class Header extends Component {
             <AppBar className={classes.appBar} color="primary" position="fixed" >
                 <Toolbar>
                     <IconButton color="inherit">
-                        <img src={logo} width="40" />
+                        <img src={logo} width="40" alt="Gitmap"/>
                     </IconButton>
                     {/*<Typography color="inherit" variant="h4">*/}
                         {/*Gitmap*/}
@@ -54,7 +53,7 @@ class Header extends Component {
                     </Button>
                     {
                         isAdmin ?
-                        <Button onClick={this.routeChange("/dashboard")} color="inherit" variant="text">
+                        <Button onClick={this.routeChange("/admin")} color="inherit" variant="text">
                                 Admin Panel
                         </Button> :
                         <Button onClick={this.routeChange("/dashboard")} color="inherit" variant="text">
@@ -67,7 +66,7 @@ class Header extends Component {
                             logout();
                             this.routeChange("/login")();
                         }} color="inherit" variant="text">
-                            Logout
+                            Logout {username}
                         </Button> :
                         <Button onClick={this.routeChange("/login")} color="inherit" variant="text">
                             Login

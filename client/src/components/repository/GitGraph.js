@@ -2,7 +2,7 @@
 // empty, but wanted to keep this handy :)
 
 // outputs: "hash | previous commits (parents) | (?) | message"
-import React, { Component } from 'react';
+import React from 'react';
 import Graph from 'react-graph-vis';
 import { gitNodes } from '../../reducers/sampleData'
 
