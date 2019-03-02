@@ -8,7 +8,7 @@ import Grid from "@material-ui/core/Grid";
 
 const styles = {
   quickStats: {
-    // width: '70%',
+    width: '70%',
     height: 200,
     // padding: 24,
   },
@@ -37,24 +37,25 @@ function QuickStats(props) {
 
 
   return (
-    <Card className={classes.quickStats}>
-      <Grid container
-            direction="column"
-            spacing={0}
-            className={classes.container}
-      >
-        <Grid item className={classes.languages}>
+    <Grid container
+          direction="column"
+          spacing={0}
+          className={classes.container}
+    >
+      <Grid item>
+        <Card className={classes.languages}>
           <LangPie/>
-        </Grid>
-
-        <Grid item className={classes.calendar}>
-          <Calendar/>
-        </Grid>
-
-
+        </Card>
       </Grid>
 
-    </Card>
+
+      <Grid item>
+        <Card className={classes.calendar}>
+          <Calendar/>
+        </Card>
+      </Grid>
+
+    </Grid>
 
   );
 }
