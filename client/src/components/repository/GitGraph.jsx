@@ -2,11 +2,18 @@
 // empty, but wanted to keep this handy :)
 
 // outputs: "hash | previous commits (parents) | (?) | message"
-import React from 'react';
+import React, { Component } from 'react';
 import Graph from 'react-graph-vis';
 import { gitNodes } from '../../reducers/sampleData'
 
 const options = {
+  interaction: {
+    dragNodes: false,
+    hover: true,
+    hoverConnectedEdges: false,
+    tooltipDelay: 300,
+    selectable: false,
+  },
   physics: {
     enabled: false,
   },
@@ -28,12 +35,28 @@ const options = {
   }
 };
 
-function GitGraph() {
-  return (
-    <Graph graph={gitNodes} options={options}>
+const eventListeners = {
+  zoom: (node) => {
+    console.log(node);
+  }
+}
 
-    </Graph>
-  );
+
+class GitGraph extends Component {
+
+  select = (node) => {
+    console.log(node);
+  }
+
+  render() {
+    return (
+      <Graph graph={gitNodes} options={options}
+      eventListeners={eventListeners}
+        >
+  
+      </Graph>
+    );
+  }
 }
 
 export default GitGraph;

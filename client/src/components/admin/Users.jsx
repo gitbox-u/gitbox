@@ -7,6 +7,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { connect } from "react-redux";
+import {removeUser} from "../../actions";
 
 const styles = theme => ({
   root: {
@@ -21,9 +22,17 @@ const styles = theme => ({
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary,
   },
+
+  button: {
+    margin: 100,
+},
 });
 
 class Users extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     expanded: null,
   };
@@ -44,7 +53,7 @@ class Users extends React.Component {
         {
           users.map(
             user => (
-              <ExpansionPanel expanded={expanded === user.username} onChange={this.handleChange(user.username)}>
+              <ExpansionPanel expanded={expanded === user.username} onChange={this.handleChange(user.username)} key={user.id}>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography className={classes.heading}>{user.username}</Typography>
                   <Typography className={classes.secondaryHeading}>{user.repos} repos - {user.commits} commits</Typography>
@@ -59,6 +68,8 @@ class Users extends React.Component {
                           className={classes.formButton}>Message User</Button>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
                           className={classes.formButton}>Block User</Button>
+                  <Button variant="outlined" color="primary" onClick={_ => this.props.handleRemove(user.id)}
+                          className={classes.formButton}>Remove User</Button>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
             )
@@ -73,6 +84,11 @@ const mapStateToProps = state => ({
   users: state.users
 });
 
+const mapDispatchToProps = dispatch => ({
+  handleRemove: id => dispatch(removeUser(id)),
+});
+
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(withStyles(styles)(Users));

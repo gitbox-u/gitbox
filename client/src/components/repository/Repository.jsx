@@ -7,6 +7,7 @@ import Contributors from "./Contributors";
 import LanguageBreakdown from "./LanguageBreakdown";
 import FolderTree from "./FolderTree";
 import GitGraph from './GitGraph';
+import List from "./ContibutorList"
 import AddDelete from "./AddDelete";
 
 const styles = {
@@ -326,9 +327,11 @@ class Repository extends Component {
             </Grid>
           </Grid>
 
-
+          {/* <Grid item>
+            <Contributors contributors={data.contributors} />
+          </Grid> */}
           <Grid item>
-            <Contributors contributors={data.contributors}/>
+            <List></List>
           </Grid>
 
         </Grid>

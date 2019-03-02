@@ -6,8 +6,10 @@ import {withRouter} from "react-router-dom";
 
 const styles = {
   repoCard: {
-    width: 250,
-    height: 200,
+    // width: '100%',
+    // width: '50%',
+    width: '100%',
+    height: '200px',
     transition: 'box-shadow 100ms',
     textAlign: 'left',
   },
@@ -16,6 +18,10 @@ const styles = {
     // backgroundColor: 'lightblue',
     color: 'white',
     // height: '1em',
+  },
+
+  full: {
+    width: '100%',
   },
 };
 
@@ -41,7 +47,9 @@ class RepoCard extends Component {
 
 
     return (
-      <ButtonBase onClick={this.routeChange(`/repository/${id}`)}>
+      <ButtonBase onClick={this.routeChange(`/repository/${id}`)}
+                  className={classes.full}
+      >
         <Card className={classes.repoCard}
               onMouseOver={this.toggleRaised}
               onMouseOut={this.toggleRaised}

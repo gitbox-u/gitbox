@@ -4,6 +4,7 @@ import withStyles from "@material-ui/core/es/styles/withStyles";
 import Users from './Users'
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
+import SearchFields from './searchFields';
 
 const style =
   {
@@ -40,7 +41,7 @@ class Admin extends Component {
   }
 
   render() {
-    const {classes} = this.props;
+    const {classes, search} = this.props;
 
     return (
       <Grid item
@@ -53,6 +54,18 @@ class Admin extends Component {
       >
 
         <Grid item className={classes.adminSection}>
+        <Grid item>
+          <TextField
+            placeholder="Search for a user..."
+            id="outlined-bare"
+            margin="normal"
+            variant="outlined"
+            value={search}
+            onChange={this.handleChange}
+            className={classes.textInput}
+          />
+        </Grid>
+
           <Grid item>
             {/*<SearchFields></SearchFields>*/}
           </Grid>
@@ -63,9 +76,9 @@ class Admin extends Component {
         </Grid>
 
         <Grid item>
-          <Fab size="small" color="secondary" aria-label="Add" className={classes.button} onClick={this.add}>
+          {/* <Fab size="small" color="secondary" aria-label="Add" className={classes.button} onClick={this.add}>
             <AddIcon/>
-          </Fab>
+          </Fab> */}
           {this.state.adding ?
             <TextField
               placeholder="Username"
