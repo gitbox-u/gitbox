@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Route, withRouter} from 'react-router-dom';
-import Login from './components/Login';
-import Header from './components/Header';
-import Dashboard from './components/dashboard/Dashboard';
-import Repository from './components/repository/Repository';
-import Admin from './components/admin/Admin';
+import Login from './Login';
+import Header from './Header';
+import Dashboard from './dashboard/Dashboard';
+import Repository from './repository/Repository';
+import Admin from './admin/Admin';
 
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core';
 
