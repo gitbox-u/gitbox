@@ -62,21 +62,21 @@ class Admin extends Component {
           <Users/>
         </Grid>
 
-        <Grid item>
-          <Fab size="small" color="secondary" aria-label="Add" className={classes.button} onClick={this.add}>
-            <AddIcon/>
-          </Fab>
-          {this.state.adding ?
-            <TextField
-              placeholder="Username"
-              id="outlined-bare"
-              margin="normal"
-              variant="outlined"
-              // value={search}
-              // onChange={console.log(this)}
-              // className={classes.textInput}
-            /> : null}
-        </Grid>
+        {/*<Grid item>*/}
+          {/*<Fab size="small" color="secondary" aria-label="Add" className={classes.button} onClick={this.add}>*/}
+            {/*<AddIcon/>*/}
+          {/*</Fab>*/}
+          {/*{this.state.adding ?*/}
+            {/*<TextField*/}
+              {/*placeholder="Username"*/}
+              {/*id="outlined-bare"*/}
+              {/*margin="normal"*/}
+              {/*variant="outlined"*/}
+              {/*// value={search}*/}
+              {/*// onChange={console.log(this)}*/}
+              {/*// className={classes.textInput}*/}
+            {/*/> : null}*/}
+        {/*</Grid>*/}
       </Grid>
     );
   };
