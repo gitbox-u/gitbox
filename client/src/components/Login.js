@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card, TextField, withStyles, Grid, Typography, Tab, Tabs, Paper } from '@material-ui/core';
+import { Button, TextField, withStyles, Grid, Typography, Paper } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { updateLoginField, tryLogin } from '../reducers/login';
 import { withRouter } from "react-router-dom";
@@ -79,7 +79,7 @@ class Login extends Component {
                 spacing={8}
                 justify="center">
                 <Grid item>
-                  <img src={logo} className={classes.logo} />
+                  <img src={logo} className={classes.logo} alt="Gitmap" />
                 </Grid>
                 <Grid item>
                   <Typography variant="h4" className={classes.logoLabel}>
@@ -132,7 +132,8 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state) => {
-  const { username, password } = state;
+  const {login} = state;
+  const { username, password } = login;
 
   return {
     username, password

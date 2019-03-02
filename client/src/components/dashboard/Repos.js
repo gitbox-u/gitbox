@@ -9,7 +9,7 @@ import { Typography, withStyles } from '@material-ui/core/es';
 
 const styles = {
   textInput: {
-    width: '60vh',
+    width: '60vw',
   },
 
   container: {
@@ -52,8 +52,8 @@ class Repositories extends Component {
         </Grid>
 
         <Grid item>
-          <Typography variant="h8">
-            {`${numResults == 0 ? "No" : numResults} results`}
+          <Typography>
+            {`${numResults === 0 ? "No" : numResults} results`}
           </Typography>
         </Grid>
 
@@ -80,8 +80,8 @@ class Repositories extends Component {
             {
               pageRepos.map(
                 repo => (
-                  <Grid item>
-                    <Repository name={allRepos[repo].name} desc={allRepos[repo].desc} />
+                  <Grid item key={repo}>
+                    <Repository id={repo} name={allRepos[repo].name} desc={allRepos[repo].desc} />
                   </Grid>
                 )
               )

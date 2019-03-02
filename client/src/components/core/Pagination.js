@@ -27,7 +27,7 @@ class Pagination extends Component {
   }
 
   render() {
-    const { max, current, onClick } = this.props;
+    const { max, current } = this.props;
     const {classes} = this.props;
 
     return (

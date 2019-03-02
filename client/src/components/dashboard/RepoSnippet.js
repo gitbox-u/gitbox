@@ -37,11 +37,11 @@ class RepoCard extends Component {
   render() {
     const {classes} = this.props;
 
-    const {name, desc} = this.props;
+    const {name, desc, id} = this.props;
 
 
     return (
-      <ButtonBase onClick={this.routeChange(`/repository/${name}`)}>
+      <ButtonBase onClick={this.routeChange(`/repository/${id}`)}>
         <Card className={classes.repoCard}
               onMouseOver={this.toggleRaised}
               onMouseOut={this.toggleRaised}

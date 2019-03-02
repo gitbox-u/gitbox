@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Paper from "./Contributors";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import Card from "@material-ui/core/Card";
 import {CardContent, Typography} from "@material-ui/core";
