@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import {Button} from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { connect } from "react-redux";
-import {removeUser} from "../../actions";
+import { removeUser } from "../../actions";
+import { initUsers } from '../../reducers/users';
 
 const styles = theme => ({
   root: {
@@ -25,10 +26,10 @@ const styles = theme => ({
 
   button: {
     margin: 100,
-},
+  },
 });
 
-class Users extends React.Component {
+class Users extends Component {
   constructor(props) {
     super(props);
   }
@@ -36,6 +37,10 @@ class Users extends React.Component {
   state = {
     expanded: null,
   };
+
+  componentDidMount() {
+    this.props.initUsers();
+  }
 
   handleChange = panel => (event, expanded) => {
     this.setState({
@@ -63,13 +68,13 @@ class Users extends React.Component {
                     info about user
                   </Typography>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                          className={classes.formButton}>Edit User</Button>
+                    className={classes.formButton}>Edit User</Button>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                          className={classes.formButton}>Message User</Button>
+                    className={classes.formButton}>Message User</Button>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                          className={classes.formButton}>Block User</Button>
+                    className={classes.formButton}>Block User</Button>
                   <Button variant="outlined" color="primary" onClick={_ => this.props.handleRemove(user.id)}
-                          className={classes.formButton}>Remove User</Button>
+                    className={classes.formButton}>Remove User</Button>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
             )
@@ -86,6 +91,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleRemove: id => dispatch(removeUser(id)),
+  initUsers,
 });
 
 export default connect(

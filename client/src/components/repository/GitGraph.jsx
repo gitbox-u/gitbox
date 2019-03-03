@@ -4,7 +4,7 @@
 // outputs: "hash | previous commits (parents) | (?) | message"
 import React, { Component } from 'react';
 import Graph from 'react-graph-vis';
-import { gitNodes } from '../../reducers/sampleData'
+import { connect } from "react-redux";
 
 const options = {
   interaction: {
@@ -35,28 +35,19 @@ const options = {
   }
 };
 
-const eventListeners = {
-  zoom: (node) => {
-    console.log(node);
-  }
-}
 
 
 class GitGraph extends Component {
 
-  select = (node) => {
-    console.log(node);
-  }
-
   render() {
+    const {graph} = this.props;
+
     return (
-      <Graph graph={gitNodes} options={options}
-      eventListeners={eventListeners}
-        >
-  
+      <Graph graph={graph} options={options}>
       </Graph>
     );
   }
 }
 
-export default GitGraph;
+
+export default (GitGraph);
