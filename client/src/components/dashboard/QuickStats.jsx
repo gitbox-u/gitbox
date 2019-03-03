@@ -7,28 +7,24 @@ import Grid from "@material-ui/core/Grid";
 
 
 const styles = {
-  quickStats: {
-    width: '70%',
-    height: 200,
-    // padding: 24,
+  container: {
+    width: '80vw',
+    height: '30vh',
+    padding: 24,
+    marginBottom: '5vh'
   },
 
   languages: {
-    height: '100%',
-    width: '30%',
+    width: '18vw',
+    height: '30vh',
     // padding: '50px 0'
   },
 
   calendar: {
-    height: '70%',
-    width: '70%',
-    // padding: '15% 0',
+    width: '50vw',
+    height: '30vh',
   },
 
-  container: {
-    height: '100%',
-    width: '100%',
-  }
 };
 
 
@@ -37,10 +33,11 @@ function QuickStats(props) {
 
 
   return (
-    <Grid container
-          direction="column"
-          spacing={0}
+    <Grid item container
+          direction="row"
+          spacing={16}
           className={classes.container}
+          alignItems='center'
     >
       <Grid item>
         <Card className={classes.languages}>
@@ -54,7 +51,6 @@ function QuickStats(props) {
           <Calendar/>
         </Card>
       </Grid>
-
     </Grid>
 
   );

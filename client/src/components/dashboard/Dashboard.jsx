@@ -13,10 +13,6 @@ const style =
       margin: '0'
     },
 
-    stats: {
-      width: '80%',
-      maxWidth: '1000px',
-    },
 
     repos: {
       width: '90%',
@@ -43,9 +39,7 @@ function Dashboard(props) {
           className={classes.dashboardContainer}
     >
 
-      <Grid item className={classes.stats}>
-        <QuickStats/>
-      </Grid>
+      <QuickStats/>
 
       <Grid item className={classes.repos}>
         <Repositories>
