@@ -7,7 +7,7 @@ import Contributors from "./Contributors";
 import LanguageBreakdown from "./LanguageBreakdown";
 import FolderTree from "./FolderTree";
 import GitGraph from './GitGraph';
-import List from "./ContibutorList"
+import ContributorList from "./ContributorList"
 import AddDelete from "./AddDelete";
 
 const styles = {
@@ -36,12 +36,12 @@ const styles = {
   repoName: {},
 
   contributors: {
-    height: '80vh',
-    width: '30vh',
+    height: '64vh',
+    width: '17vw',
   },
 
   langBreak: {
-    width: '30vh',
+    width: '14.5vw',
     height: '30vh'
   }
 
@@ -330,8 +330,8 @@ class Repository extends Component {
           {/* <Grid item>
             <Contributors contributors={data.contributors} />
           </Grid> */}
-          <Grid item>
-            <List></List>
+          <Grid item className={classes.contributors}>
+            <ContributorList contributors={data.contributors}/>
           </Grid>
 
         </Grid>

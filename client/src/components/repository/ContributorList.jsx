@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles, Typography } from '@material-ui/core';
+import {withStyles, Typography} from '@material-ui/core';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -15,11 +15,9 @@ import Avatar from '@material-ui/core/Avatar';
 const styles = theme => ({
   root: {
     width: '100%',
-    minWidth: 340,
+    height: '100%',
     backgroundColor: theme.palette.background.paper,
-    position: 'relative',
     overflow: 'auto',
-    maxHeight: 300,
   },
   listSection: {
     backgroundColor: 'inherit',
@@ -30,13 +28,13 @@ const styles = theme => ({
   },
 });
 
-class ContibutorsList extends React.Component {
+class ContributorList extends React.Component {
   state = {
     checked: [1],
   };
 
   handleToggle = value => () => {
-    const { checked } = this.state;
+    const {checked} = this.state;
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
 
@@ -52,29 +50,25 @@ class ContibutorsList extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const {classes} = this.props;
 
     return (
-      <List dense className={classes.root} style={{maxHeight: 400, overflow: 'auto'}}>
-        {[0, 1, 2, 3, 4, 5].map(value => (
-          <ListItem key={value} button style={{minHeight: 100}}>
+      <List dense className={classes.root}>
+        {this.props.contributors.map(contributor => (
+          <ListItem key={contributor} button style={{minHeight: 100}}>
             <ListItemAvatar>
               <Avatar
-                alt={`Avatar n°${value + 1}`}
-                src={`/static/images/avatar/${value + 1}.jpg`}
+                alt={`Avatar n°${contributor}`}
+                src={`/static/images/avatar/${contributor + 1}.jpg`}
               />
             </ListItemAvatar>
-            <ListItemText primary={`Line item ${value + 1}`} />
+            <ListItemText primary={contributor.name}/>
             <ListItemSecondaryAction>
               <Checkbox
-                onChange={this.handleToggle(value)}
-                checked={this.state.checked.indexOf(value) !== -1}
+                onChange={this.handleToggle(contributor)}
+                checked={this.state.checked.indexOf(contributor) !== -1}
               />
             </ListItemSecondaryAction>
-
-            {/* <Typography component="p">
-            Paper can be used to build surface or other elements for your application.
-            </Typography> */}
           </ListItem>
         ))}
       </List>
@@ -100,7 +94,7 @@ class ContibutorsList extends React.Component {
 //         </li>
 //       ))} */}
 
-      
+
 //     </List>
 //   );
 // }
@@ -110,8 +104,8 @@ class ContibutorsList extends React.Component {
 // };
 
 // export default withStyles(styles)(ContibutorsList);
-ContibutorsList.propTypes = {
+ContributorList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContibutorsList);
+export default withStyles(styles)(ContributorList);
