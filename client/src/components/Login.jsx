@@ -33,12 +33,14 @@ const styles = {
 };
 
 class Login extends Component {
-
-  constuctor() {
+  constructor(props) {
+    super(props);
     this.routeChange = this.routeChange.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
   }
 
-  routeChange = (path) => () => {
+  routeChange(path) {
     this.props.history.push(path);
   };
 
@@ -54,14 +56,14 @@ class Login extends Component {
     }
   }
 
-  handleLogin = _ => {
+  handleLogin() {
     this.props.tryLogin();
-    this.routeChange("dashboard")();
+    this.routeChange("dashboard");
   };
 
-  handleSignup = _ => {
-    this.routeChange("signup")();
-  }
+  handleSignup() {
+    this.routeChange("signup");
+  };
 
   render() {
 
