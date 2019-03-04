@@ -24,15 +24,11 @@ const styles = theme => ({
   },
 
   button: {
-    margin: 100,
+    margin: '0 10px',
   },
 });
 
 class Users extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     expanded: null,
   };
@@ -63,17 +59,14 @@ class Users extends Component {
                   <Typography className={classes.secondaryHeading}>{user.repos} repos - {user.commits} commits</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
-                  <Typography>
-                    info about user
-                  </Typography>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                    className={classes.formButton}>Edit User</Button>
+                    className={classes.button}>Edit User</Button>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                    className={classes.formButton}>Message User</Button>
+                    className={classes.button}>Message User</Button>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                    className={classes.formButton}>Block User</Button>
-                  <Button variant="outlined" color="primary" onClick={_ => this.props.removeUser(user.id)}
-                    className={classes.formButton}>Remove User</Button>
+                    className={classes.button}>Block User</Button>
+                  <Button variant="outlined" color="primary" onClick={() => this.props.removeUser(user.id)}
+                    className={classes.button}>Remove User</Button>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
             )
