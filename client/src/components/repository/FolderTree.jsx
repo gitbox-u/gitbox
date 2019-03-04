@@ -23,7 +23,7 @@ function FolderTree(props) {
       labelFormat=".0s"
       labelSkipSize={12}
       labelTextColor="inherit:darker(1.2)"
-      colors="nivo"
+      colors="green_blue"
       colorBy="depth"
       borderColor="inherit:darker(0.3)"
       animate={true}

@@ -16,11 +16,11 @@ const initial = {
 };
 
 const ACTIONS = {
-  UPDATE_SEARCH: 0,
-  UPDATE_PAGE: 1,
+  UPDATE_SEARCH: 'REPOSITORIES_UPDATE_SEARCH',
+  UPDATE_PAGE: 'REPOSITORIES_UPDATE_PAGE',
 
-  SET_REPOS: 2,
-  SET_REPO_DATA: 3,
+  SET_REPOS: 'REPOSITORIES_SET_REPOS',
+  SET_REPO_DATA: 'REPOSITORIES_SET_REPO_DATA',
 };
 
 const initRepos = () => (dispatch) => {
@@ -90,6 +90,7 @@ const repositories = (state = initial, action) => {
   // TODO: make more elegant.
   if (type === ACTIONS.UPDATE_SEARCH) {
 
+    
     const { value } = action;
 
     const filtered = filterRepos(state.allRepos, value);
