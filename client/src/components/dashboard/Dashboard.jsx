@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/es/styles/withStyles";
-import Repositories from './Repos';
+import Repositories from './RepoGrid';
 import QuickStats from "./QuickStats";
 
 const style =

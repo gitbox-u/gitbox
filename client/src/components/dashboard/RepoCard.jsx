@@ -6,18 +6,14 @@ import {withRouter} from "react-router-dom";
 
 const styles = {
   repoCard: {
-    // width: '100%',
-    // width: '50%',
-    width: '100%',
-    height: '200px',
+    width: '70%',
+    height: '150px',
     transition: 'box-shadow 100ms',
     textAlign: 'left',
   },
 
   header: {
-    // backgroundColor: 'lightblue',
     color: 'white',
-    // height: '1em',
   },
 
   full: {
