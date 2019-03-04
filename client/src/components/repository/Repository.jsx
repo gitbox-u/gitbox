@@ -37,7 +37,7 @@ const styles = {
 
   contributors: {
     height: '64vh',
-    width: '17vw',
+    width: '15vw',
   },
 
   langBreak: {
@@ -168,6 +168,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   initDataForRepo,
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Repository));
