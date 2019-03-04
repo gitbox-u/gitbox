@@ -3,8 +3,12 @@ import { withStyles, AppBar, Toolbar, IconButton, Button } from '@material-ui/co
 import logo from '../assets/logo.svg';
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
+import Mail from '@material-ui/icons/MailOutline'
+import Badge from '@material-ui/core/Badge';
 
 import { logout } from '../reducers/login';
+
+import PopUp from './PopupMenu';
 
 const styles = {
     grow: {
@@ -45,6 +49,12 @@ class Header extends Component {
                     {/*<Typography color="inherit" variant="h6">{`Logged in as ${username}`}</Typography>*/}
 
                     <div className={classes.grow} />
+
+                    <PopUp></PopUp>
+
+                    <IconButton color='inherit'>
+                    <Badge className={classes.margin} badgeContent={99} color="secondary"><Mail></Mail></Badge>
+                    </IconButton>
 
                     <Button onClick={this.routeChange("/")} color="inherit" variant="text">
                         Home
