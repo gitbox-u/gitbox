@@ -38,6 +38,7 @@ function QuickStats(props) {
           spacing={16}
           className={classes.container}
           alignItems='center'
+          justify='center'
     >
       <Grid item>
         <Card className={classes.languages}>
@@ -47,8 +48,15 @@ function QuickStats(props) {
 
 
       <Grid item>
-        <Card className={classes.calendar}>
-          <Calendar/>
+        <Card >
+          <Grid container
+                direction='row'
+                alignItems='center'
+                justify='center'>
+            <Grid item className={classes.calendar}>
+              <Calendar/>
+            </Grid>
+          </Grid>
         </Card>
       </Grid>
     </Grid>

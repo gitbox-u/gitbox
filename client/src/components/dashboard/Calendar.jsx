@@ -12,7 +12,7 @@ class Calendar extends Component {
           }
         ]
         }
-        from="2016-01-1"
+        from="2016-01-02"
         to="2016-07-12"
         emptyColor="#eeeeee"
         colors={[
@@ -22,13 +22,15 @@ class Calendar extends Component {
           "#87c0f4"
         ]}
         margin={{
-          "top": 20,
+          "top": 60,
           "right": 30,
           "bottom": 0,
           "left": 30
         }}
+        padding={{
+          "bottom": 0
+        }}
         monthBorderColor="#ffffff"
-        monthLegendOffset={10}
         dayBorderWidth={2}
         dayBorderColor="#ffffff"
       />
