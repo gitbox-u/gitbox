@@ -20,7 +20,7 @@ function LanguageBreakdown(props) {
       cornerRadius={2}
       borderWidth={1}
       borderColor="white"
-      colors="nivo"
+      colors="red_yellow_blue"
       colorBy="id"
       childColor="inherit"
       animate={true}

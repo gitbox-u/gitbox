@@ -50,6 +50,8 @@ function AddDelete(props) {
       dotBorderColor="#ffffff"
       enableDotLabel={true}
       dotLabel="y"
+      colors="red_yellow_blue"
+      colorBy="id"
       dotLabelYOffset={-12}
       animate={true}
       motionStiffness={90}

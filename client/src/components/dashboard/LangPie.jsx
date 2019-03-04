@@ -46,7 +46,7 @@ function LangPie() {
       innerRadius={0.7}
       padAngle={0.7}
       // cornerRadius={3}
-      colors="nivo"
+      colors="red_yellow_blue"
       colorBy="id"
       // borderWidth={1}
       borderColor="inherit:darker(0.2)"

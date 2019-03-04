@@ -41,6 +41,7 @@ class GitGraph extends Component {
 
   render() {
     const {graph} = this.props;
+    
 
     return (
       <Graph graph={graph} options={options}>
