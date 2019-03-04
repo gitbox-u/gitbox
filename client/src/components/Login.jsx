@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { updateLoginField, tryLogin } from '../reducers/login';
 import { withRouter } from "react-router-dom";
 import logo from '../assets/logo.svg';
+import { geometric } from '../geo/geo.js'
 
 const styles = {
   formContainer: {
@@ -46,7 +47,7 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    window.geometric();
+    geometric();
   }
 
   handleSubmit = _ => {

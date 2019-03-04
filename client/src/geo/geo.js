@@ -1,5 +1,5 @@
 //source: https://codepen.io/laurentschoonbrodt/pen/NqdPpy
-function geometric() {
+export const geometric = () => {
   var refreshDuration = 10000;
   var refreshTimeout;
   var numPointsX;
