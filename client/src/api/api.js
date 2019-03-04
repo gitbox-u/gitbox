@@ -59,7 +59,7 @@ export async function getRepositoryData(id, auth) {
       },
       {
         key: "3",
-        name: "Lin",
+        name: "Linwen",
         commits: 300,
         additions: 2000,
         deletions: 400
