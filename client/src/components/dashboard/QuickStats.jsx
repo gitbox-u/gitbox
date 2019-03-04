@@ -17,7 +17,6 @@ const styles = {
   languages: {
     width: '18vw',
     height: '30vh',
-    // padding: '50px 0'
   },
 
   calendar: {
