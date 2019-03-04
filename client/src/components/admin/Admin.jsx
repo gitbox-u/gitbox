@@ -67,7 +67,7 @@ class Admin extends Component {
         </Grid>
 
           <Grid item>
-            <SearchFields></SearchFields>
+            {/*<SearchFields></SearchFields>*/}
           </Grid>
         </Grid>
 

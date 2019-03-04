@@ -1,25 +1,21 @@
-const initial = [
-  {
-    username: "What's",
-    repos: 30,
-    commits: 554
-  },
+import { getUsers } from '../api/api';
 
-  {
-    username: "Up",
-    repos: 3000,
-    commits: 1
-  },
+const initial = [];
 
-  {
-    username: "Dude",
-    repos: 0,
-    commits: 0
-  }
-];
+const initUsers = () => (dispatch) => {
+  return getUsers().then(
+    res => {
+      res.forEach(i => dispatch({
+        ...i,
+        type: 'ADD_USER',
+      }));
+    }
+  )
+}
 
 const users = (state = initial, action) => {
-  let { username, repos, commits } = action;
+  let { username, id, repos, commits } = action;
+  // console.log(state);
 
   switch (action.type) {
     case 'ADD_USER':
@@ -27,9 +23,12 @@ const users = (state = initial, action) => {
         ...state,
         { username, repos, commits }
       ];
+    case 'REMOVE_USER':
+      return state.filter(user => user.id !== id);
     default:
       return state;
   }
 };
 
+export { initUsers };
 export default users

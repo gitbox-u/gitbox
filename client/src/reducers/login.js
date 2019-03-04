@@ -31,7 +31,6 @@ const tryLogin = () => {
 };
 
 const logout = () => {
-  console.log("logout!")
   return (dispatch) => {
     dispatch({
       type: ACTIONS.DEAUTH,

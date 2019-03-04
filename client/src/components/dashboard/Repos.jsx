@@ -2,26 +2,40 @@ import React, { Component } from 'react';
 import { Grid, TextField } from "@material-ui/core";
 import Repository from './RepoSnippet';
 import { connect } from "react-redux";
-import { updateSearchField, changePage } from '../../reducers/repositories';
+import { updateSearchField, changePage, initRepos } from '../../reducers/repositories';
 import Pagination from '../core/Pagination';
 import { Typography, withStyles } from '@material-ui/core/es';
 
 
 const styles = {
   textInput: {
-    width: '60vw',
+    width: '100%',
   },
 
   container: {
     width: '100%',
-    padding: '10px'
-  }
+    // padding: '10px'
+  },
+
+  subcontainer: {
+    width: '70%',
+    // display: 'block'
+    // padding: '10px'
+    // marginLeft: '20vw',
+  },
+
+  repo: {
+    // flex: '1 0 21%',
+    width: '100%',
+  },
 };
 
 class Repositories extends Component {
 
   componentDidMount() {
-    this.props.updateSearchField("");
+    this.props.initRepos().then(
+      (_) => this.props.updateSearchField(""),
+    );
   }
 
   handleChange = (e) => {
@@ -42,46 +56,62 @@ class Repositories extends Component {
       <Grid container
         direction="column"
         alignItems="center"
-            className={classes.container}
+        className={classes.container}
         spacing={16}>
 
-        <Grid item>
-          <Typography variant="h4" >
-            Repositories
-        </Typography>
-        </Grid>
+        <Grid container
+          direction="column"
+          alignItems="left"
+          className={classes.subcontainer}
+        >
+          <Grid item>
+            <Typography variant="h4">
+              Repositories
+            </Typography>
+          </Grid>
 
-        <Grid item>
-          <Typography>
-            {`${numResults === 0 ? "No" : numResults} results`}
-          </Typography>
-        </Grid>
+          <Grid item>
+            <Typography>
+              {`${numResults === 0 ? "No" : numResults} results`}
+            </Typography>
+          </Grid>
 
-        <Grid item>
-          <TextField
-            placeholder="Search for a repo..."
-            id="outlined-bare"
-            margin="normal"
-            variant="outlined"
-            value={search}
-            onChange={this.handleChange}
-            className={classes.textInput}
-          />
+          <Grid item>
+            <TextField
+              placeholder="Search for a repo..."
+              id="outlined-bare"
+              margin="normal"
+              variant="outlined"
+              value={search}
+              onChange={this.handleChange}
+              className={classes.textInput}
+            />
+          </Grid>
         </Grid>
-
 
         <Grid item>
           <Grid container
             direction="row"
             spacing={16}
-            justify="center"
+            justify="space-evenly"
             alignItems="center"
           >
             {
               pageRepos.map(
                 repo => (
-                  <Grid item key={repo}>
-                    <Repository id={repo} name={allRepos[repo].name} desc={allRepos[repo].desc} />
+                  <Grid item
+                    key={repo}
+                    // lg="3"
+                    // md="3"
+                    // sm="6"
+                    // xs="12"
+                    className={classes.repo}
+                  >
+                    <Repository id={repo}
+                      name={allRepos[repo].name}
+                      desc={allRepos[repo].desc}
+                      className={classes.repo}
+                    />
                   </Grid>
                 )
               )
@@ -114,6 +144,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   updateSearchField,
   changePage,
+  initRepos,
 };
 
 export default connect(

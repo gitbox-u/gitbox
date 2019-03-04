@@ -1,10 +1,11 @@
-import {repos} from './sampleData';
+import { getRepositories, getRepositoryData } from '../api/api';
 
 const REPOS_PER_PAGE = 8;
 
 const initial = {
-  allRepos: repos,
-  
+  allRepos: {},
+  repoData: {},
+
   filteredRepos: [],
   pageRepos: [],
 
@@ -17,7 +18,33 @@ const initial = {
 const ACTIONS = {
   UPDATE_SEARCH: 0,
   UPDATE_PAGE: 1,
+
+  SET_REPOS: 2,
+  SET_REPO_DATA: 3,
 };
+
+const initRepos = () => (dispatch) => {
+  return getRepositories().then(
+    res => {
+      dispatch({
+        type: ACTIONS.SET_REPOS,
+        allRepos: res,
+      })
+    }
+  );
+}
+
+const initDataForRepo = (id) => (dispatch) => {
+  return getRepositoryData(id).then(
+    res => {
+      dispatch({
+        type: ACTIONS.SET_REPO_DATA,
+        data: res,
+        id: id,
+      })
+    }
+  )
+}
 
 
 const filterRepos = (repos, filter) => {
@@ -88,10 +115,27 @@ const repositories = (state = initial, action) => {
       pageOffset: offset,
       pageRepos: page,
     }
+  } else if (type === ACTIONS.SET_REPOS) {
+    const { allRepos } = action;
+
+    return {
+      ...state,
+      allRepos,
+    }
+  } else if (type === ACTIONS.SET_REPO_DATA) {
+    const { data, id } = action;
+
+    return {
+      ...state,
+      repoData: {
+        ...state.repoData,
+        [id]: data,
+      }
+    }
   }
 
   return state;
 };
 
-export { updateSearchField, changePage };
+export { updateSearchField, changePage, initRepos, initDataForRepo };
 export default repositories;
