@@ -1,5 +1,10 @@
 import { getUsers } from '../api/api';
 
+const ACTIONS = {
+  ADD_USER: "USERS_ADD_USER",
+  REMOVE_USER: "USERS_REMOVE_USER",
+}
+
 const initial = [];
 
 const initUsers = () => (dispatch) => {
@@ -7,7 +12,7 @@ const initUsers = () => (dispatch) => {
     res => {
       res.forEach(i => dispatch({
         ...i,
-        type: 'ADD_USER',
+        type: ACTIONS.ADD_USER,
       }));
     }
   )
@@ -18,12 +23,12 @@ const users = (state = initial, action) => {
   // console.log(state);
 
   switch (action.type) {
-    case 'ADD_USER':
+    case ACTIONS.ADD_USER:
       return [
         ...state,
         { username, repos, commits }
       ];
-    case 'REMOVE_USER':
+    case ACTIONS.REMOVE_USER:
       return state.filter(user => user.id !== id);
     default:
       return state;

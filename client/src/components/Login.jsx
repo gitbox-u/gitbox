@@ -41,16 +41,15 @@ class Login extends Component {
     this.props.history.push(path);
   };
 
-  handleChange = name => event => {
+  handleLoginChange = name => event => {
     this.props.updateLoginField(name, event.target.value);
   };
 
   componentDidMount() {
     window.geometric();
-
   }
 
-  handleSubmit = event => {
+  handleSubmit = _ => {
     this.props.tryLogin();
     this.routeChange("dashboard")();
   };
@@ -92,7 +91,7 @@ class Login extends Component {
                       disableUnderline: true,
                     }}
                     value={username}
-                    onChange={this.handleChange("username")}
+                    onChange={this.handleLoginChange("username")}
                     fullWidth
                     placeholder="Username"
                     className={classes.formInput}
@@ -104,7 +103,7 @@ class Login extends Component {
                       disableUnderline: true,
                     }}
                     value={password}
-                    onChange={this.handleChange("password")}
+                    onChange={this.handleLoginChange("password")}
                     fullWidth
                     type="password"
                     placeholder="Password"

@@ -1,7 +1,7 @@
 const ACTIONS = {
-  UPDATE: 0,
-  AUTH: 1,
-  DEAUTH: 2,
+  UPDATE: 'LOGIN_UPDATE',
+  AUTH: 'LOGIN_AUTH',
+  DEAUTH: 'LOGIN_DEAUTH',
 };
 
 const initial = {
@@ -32,6 +32,7 @@ const tryLogin = () => {
 
 const logout = () => {
   return (dispatch) => {
+    console.log('logged out');
     dispatch({
       type: ACTIONS.DEAUTH,
     });
@@ -49,6 +50,8 @@ const login = (state = initial, action) => {
   } else if (type === ACTIONS.AUTH) {
     const {username, password} = state;
 
+    console.log(`Auth ${username} ${password}`);
+
     if (username === "user" && password === "user") {
       return {
         ...state,
@@ -63,6 +66,8 @@ const login = (state = initial, action) => {
       }
     }
   } else if (type === ACTIONS.DEAUTH) {
+
+    console.log(`Deauth`);
     return {
       ...state,
       username: '',
