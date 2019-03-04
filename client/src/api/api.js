@@ -58,7 +58,7 @@ export async function getRepositoryData(id, auth) {
       },
       {
         key: "3",
-        name: "Lin",
+        name: "Linwen",
         commits: 300,
         additions: 2000,
         deletions: 400
@@ -75,27 +75,27 @@ export async function getRepositoryData(id, auth) {
       {
         "Murad": 93,
         "Eric": 155,
-        "Lin": 20,
+        "Linwen": 20,
         "Howard": 135,
       },
       {
         "Murad": 42,
         "Eric": 4,
-        "Lin": 57,
+        "Linwen": 57,
         "Howard": 140,
 
       },
       {
         "Murad": 170,
         "Eric": 44,
-        "Lin": 2,
+        "Linwen": 2,
         "Howard": 77,
 
       },
       {
         "Murad": 55,
         "Eric": 4,
-        "Lin": 140,
+        "Linwen": 140,
         "Howard": 65,
 
       }
