@@ -1,5 +1,6 @@
 import React from 'react';
-import { ResponsiveStream } from '@nivo/stream'
+import { ResponsiveStream } from '@nivo/stream';
+import withStyles from "@material-ui/core/es/styles/withStyles";
 
 function CodeStream(props) {
   const { stats } = props;
@@ -32,13 +33,16 @@ function CodeStream(props) {
         "legendOffset": -40
       }}
       offsetType="none"
+      colors="category10"
       fillOpacity={0.85}
       borderColor="#000"
+    
       dotSize={8}
       dotBorderWidth={2}
       dotBorderColor="inherit:brighter(0.7)"
       animate={true}
       motionStiffness={90}
+      colors={['#466289', '#DBE8F9','#FA6121','#FFB739']}
       motionDamping={15}
       legends={[
         {
@@ -66,4 +70,4 @@ function CodeStream(props) {
 
 CodeStream.propTypes = {};
 
-export default CodeStream;
+export default (CodeStream);
