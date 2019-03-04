@@ -48,6 +48,10 @@ class Users extends Component {
     });
   };
 
+  handleRemove = (user) => () => {
+    this.props.removeUser(user);
+  }
+
   render() {
     const { classes } = this.props;
     const { expanded } = this.state;
@@ -73,7 +77,7 @@ class Users extends Component {
                     className={classes.formButton}>Message User</Button>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
                     className={classes.formButton}>Block User</Button>
-                  <Button variant="outlined" color="primary" onClick={_ => this.props.handleRemove(user.id)}
+                  <Button variant="outlined" color="primary" onClick={_ => this.handleRemove(user.id)}
                     className={classes.formButton}>Remove User</Button>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
@@ -89,10 +93,10 @@ const mapStateToProps = state => ({
   users: state.users
 });
 
-const mapDispatchToProps = dispatch => ({
-  handleRemove: id => dispatch(removeUser(id)),
+const mapDispatchToProps = {
+  removeUser,
   initUsers,
-});
+};
 
 export default connect(
   mapStateToProps,

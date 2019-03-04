@@ -1,6 +1,5 @@
 import { repos, gitNodes } from './sampleData';
-import { useDebugValue } from 'react';
-
+import Cookies from 'js-cookie';
 // Replace all of this with server calls.
 
 // auth: authentication token for a user
@@ -203,4 +202,39 @@ export async function getRepositoryData(id, auth) {
       ]
     }
   };
+}
+
+export async function apiLogin(user, pass) {
+  let ret;
+  if (user === "user" && pass === "user") {
+    ret = {
+      secret: "ae9cf109-f09cda193",
+      loggedIn: true,
+      isAdmin: false,
+    }
+  } else if (user === "admin" && pass === "admin") {
+    ret = {
+      secret: "acdf193c-c1039c121",
+      loggedIn: true,
+      isAdmin: true,
+    }
+  } else {
+    ret = {
+      secret: undefined,
+      loggedIn: false,
+      isAdmin: false,
+    }
+  }
+
+  Cookies.set('login', ret);
+
+  return ret;
+}
+
+export async function apiLogout(auth) {
+  return {
+    secret: undefined,
+    loggedIn: false,
+    admin: false,
+  }
 }

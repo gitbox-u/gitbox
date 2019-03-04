@@ -47,13 +47,21 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    geometric();
+    try {
+      geometric();
+    } catch (e) {
+      console.err("*hug* this background");
+    }
   }
 
-  handleSubmit = _ => {
+  handleLogin = _ => {
     this.props.tryLogin();
     this.routeChange("dashboard")();
   };
+
+  handleSignup = _ => {
+    this.routeChange("signup")();
+  }
 
   render() {
 
@@ -112,8 +120,10 @@ class Login extends Component {
                   />
                 </Grid>
                 <Grid item>
-                  <Button fullWidth variant="outlined" color="primary" onClick={this.handleSubmit}
+                  <Button fullWidth variant="outlined" color="primary" onClick={this.handleLogin}
                     className={classes.formButton}>Login</Button>
+                  <Button fullWidth variant="outlined" color="primary" onClick={this.handleSignup}
+                    className={classes.formButton}>Sign Up</Button>
                 </Grid>
               </Grid>
             </Paper>
@@ -132,7 +142,7 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state) => {
-  const {login} = state;
+  const { login } = state;
   const { username, password } = login;
 
   return {

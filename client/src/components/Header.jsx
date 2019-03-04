@@ -36,13 +36,7 @@ class Header extends Component {
                     <IconButton color="inherit">
                         <img src={logo} width="40" alt="Gitmap" />
                     </IconButton>
-                    {/*<Typography color="inherit" variant="h4">*/}
-                    {/*Gitmap*/}
-                    {/*</Typography>*/}
 
-                    <div className={classes.grow} />
-
-                    {/*<Typography color="inherit" variant="h6">{`Logged in as ${username}`}</Typography>*/}
 
                     <div className={classes.grow} />
 
@@ -64,7 +58,7 @@ class Header extends Component {
                                 logout();
                                 this.routeChange("/login")();
                             }} color="inherit" variant="text">
-                                Logout {username}
+                                {`Logout ${username}`}
                             </Button> :
                             <Button onClick={this.routeChange("/login")} color="inherit" variant="text">
                                 Login

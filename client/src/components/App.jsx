@@ -7,6 +7,8 @@ import Repository from './repository/Repository';
 import Admin from './admin/Admin';
 
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core';
+import { connect } from 'react-redux';
+import {initLogin} from '../reducers/login';
 
 const theme = createMuiTheme({
   palette: {
@@ -34,6 +36,10 @@ const theme = createMuiTheme({
 });
 
 class App extends Component {
+  componentDidMount() {
+    this.props.initLogin();
+  }
+
   render() {
     const {location} = this.props;
     return (
@@ -48,4 +54,8 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+const mapDispatchToProps = {
+  initLogin,
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(App));
