@@ -25,7 +25,7 @@ const initLogin = () => (dispatch) => {
     type: ACTIONS.INIT,
     login,
   })
-}
+};
 
 const updateLoginField = (field, value) => {
   return (dispatch) => {
@@ -55,7 +55,7 @@ const logout = () => (dispatch, getState) => {
       result
     })
   )
-}
+};
 
 const login = (state = initial, action) => {
   const { type } = action;

@@ -7,8 +7,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { connect } from "react-redux";
-import { removeUser } from "../../actions";
-import { initUsers } from '../../reducers/users';
+import { removeUser, initUsers } from '../../reducers/users';
 
 const styles = theme => ({
   root: {
@@ -48,10 +47,6 @@ class Users extends Component {
     });
   };
 
-  handleRemove = (user) => () => {
-    this.props.removeUser(user);
-  }
-
   render() {
     const { classes } = this.props;
     const { expanded } = this.state;
@@ -77,7 +72,7 @@ class Users extends Component {
                     className={classes.formButton}>Message User</Button>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
                     className={classes.formButton}>Block User</Button>
-                  <Button variant="outlined" color="primary" onClick={_ => this.handleRemove(user.id)}
+                  <Button variant="outlined" color="primary" onClick={_ => this.props.removeUser(user.id)}
                     className={classes.formButton}>Remove User</Button>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
