@@ -34,11 +34,13 @@ class Repositories extends Component {
 
   componentDidMount() {
     this.props.initRepos().then(
-      (_) => this.props.updateSearchField(""),
+      (_) => {
+        this.props.updateSearchField("");
+      }
     );
   }
 
-  handleChange = (e) => {
+  handleSearchFieldChange = (e) => {
     this.props.updateSearchField(e.target.value);
   };
 
@@ -61,7 +63,7 @@ class Repositories extends Component {
 
         <Grid container
           direction="column"
-          alignItems="left"
+          alignItems="flex-start"
           className={classes.subcontainer}
         >
           <Grid item>
@@ -83,7 +85,7 @@ class Repositories extends Component {
               margin="normal"
               variant="outlined"
               value={search}
-              onChange={this.handleChange}
+              onChange={this.handleSearchFieldChange}
               className={classes.textInput}
             />
           </Grid>

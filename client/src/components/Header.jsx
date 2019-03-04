@@ -4,7 +4,7 @@ import logo from '../assets/logo.svg';
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 
-import {logout} from '../reducers/login';
+import { logout } from '../reducers/login';
 
 const styles = {
     grow: {
@@ -30,16 +30,14 @@ class Header extends Component {
         const { loggedIn, isAdmin, username } = this.props;
         const { logout } = this.props;
 
-        console.log(logout);
-
-      return (
+        return (
             <AppBar className={classes.appBar} color="primary" position="fixed" >
                 <Toolbar>
                     <IconButton color="inherit">
-                        <img src={logo} width="40" alt="Gitmap"/>
+                        <img src={logo} width="40" alt="Gitmap" />
                     </IconButton>
                     {/*<Typography color="inherit" variant="h4">*/}
-                        {/*Gitmap*/}
+                    {/*Gitmap*/}
                     {/*</Typography>*/}
 
                     <div className={classes.grow} />
@@ -53,24 +51,24 @@ class Header extends Component {
                     </Button>
                     {
                         isAdmin ?
-                        <Button onClick={this.routeChange("/admin")} color="inherit" variant="text">
+                            <Button onClick={this.routeChange("/admin")} color="inherit" variant="text">
                                 Admin Panel
                         </Button> :
-                        <Button onClick={this.routeChange("/dashboard")} color="inherit" variant="text">
+                            <Button onClick={this.routeChange("/dashboard")} color="inherit" variant="text">
                                 Dashboard
                         </Button>
                     }
                     {
-                        loggedIn ? 
-                        <Button onClick={e => {
-                            logout();
-                            this.routeChange("/login")();
-                        }} color="inherit" variant="text">
-                            Logout {username}
-                        </Button> :
-                        <Button onClick={this.routeChange("/login")} color="inherit" variant="text">
-                            Login
-                        </Button> 
+                        loggedIn ?
+                            <Button onClick={e => {
+                                logout();
+                                this.routeChange("/login")();
+                            }} color="inherit" variant="text">
+                                Logout {username}
+                            </Button> :
+                            <Button onClick={this.routeChange("/login")} color="inherit" variant="text">
+                                Login
+                        </Button>
                     }
                 </Toolbar>
             </AppBar>
