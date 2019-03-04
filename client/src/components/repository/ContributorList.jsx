@@ -6,6 +6,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
+import Circle from '@material-ui/icons/Brightness1'
+
 
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -57,10 +59,7 @@ class ContributorList extends React.Component {
         {this.props.contributors.map(contributor => (
           <ListItem key={contributor} button style={{minHeight: 100}}>
             <ListItemAvatar>
-              <Avatar
-                alt={`Avatar n°${contributor}`}
-                src={`/static/images/avatar/${contributor + 1}.jpg`}
-              />
+              <Circle style={{fill: getRandomColor()}}></Circle>
             </ListItemAvatar>
             <ListItemText primary={contributor.name}/>
             <ListItemSecondaryAction>
@@ -76,34 +75,15 @@ class ContributorList extends React.Component {
   }
 }
 
-// function ContibutorsList(props) {
-//   const { classes } = props;
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
-//   return (
-//     <List className={classes.root} subheader={<li />}>
-//       {/* {[0, 1, 2, 3, 4].map(sectionId => (
-//         <li key={`section-${sectionId}`} className={classes.listSection}>
-//           <ul className={classes.ul}>
-//             <ListSubheader>{`I'm sticky ${sectionId}`}</ListSubheader>
-//             {[0, 1, 2].map(item => (
-//               <ListItem key={`item-${sectionId}-${item}`}>
-//                 <ListItemText primary={`Item ${item}`} />
-//               </ListItem>
-//             ))}
-//           </ul>
-//         </li>
-//       ))} */}
-
-
-//     </List>
-//   );
-// }
-
-// ContibutorsList.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
-
-// export default withStyles(styles)(ContibutorsList);
 ContributorList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
