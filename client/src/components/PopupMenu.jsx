@@ -26,12 +26,6 @@ class SimpleMenu extends React.Component {
     return (
       <div>
 
-        {/* <IconButton color='inherit'
-        aria-owns={anchorEl ? 'simple-menu' : undefined}
-        aria-haspopup="true"
-        onClick={this.handleClick}>
-                    <Badge className={classes.margin} badgeContent={99} color="secondary"><Mail></Mail></Badge>
-                    </IconButton> */}
         <IconButton
           aria-owns={anchorEl ? 'simple-menu' : undefined}
           aria-haspopup="true"
@@ -47,9 +41,7 @@ class SimpleMenu extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-          <MenuItem onClick={this.handleClose}>My account</MenuItem>
-          <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+          <MenuItem onClick={this.handleClose}>Messages</MenuItem>
         </Menu>
       </div>
     );
