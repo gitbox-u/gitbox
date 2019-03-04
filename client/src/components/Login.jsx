@@ -66,9 +66,7 @@ class Login extends Component {
   };
 
   render() {
-
-    const { classes } = this.props;
-    const { username, password } = this.props;
+    const { username, password, classes } = this.props;
 
     return (
       <div>
@@ -132,11 +130,9 @@ class Login extends Component {
           </Grid>
         </Grid>
       </div>
-
-
     );
   }
-};
+}
 
 const mapDispatchToProps = {
   updateLoginField,
@@ -147,9 +143,7 @@ const mapStateToProps = (state) => {
   const { login } = state;
   const { username, password } = login;
 
-  return {
-    username, password
-  }
+  return { username, password };
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login)));

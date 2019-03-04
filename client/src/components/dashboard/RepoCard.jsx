@@ -21,9 +21,12 @@ const styles = {
   },
 };
 
-
-
 class RepoCard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggleRaised = this.toggleRaised.bind(this);
+  }
 
   state = {
     raised: false
@@ -33,14 +36,12 @@ class RepoCard extends Component {
     this.props.history.push(path);
   };
 
-  toggleRaised = () => this.setState({raised: !this.state.raised});
-
+  toggleRaised() {
+    this.setState({raised: !this.state.raised});
+  }
 
   render() {
-    const {classes} = this.props;
-
-    const {name, desc, id} = this.props;
-
+    const { classes, name, desc, id } = this.props;
 
     return (
       <ButtonBase onClick={this.routeChange(`/repository/${id}`)}
@@ -53,10 +54,8 @@ class RepoCard extends Component {
         >
           <CardHeader
             className={classes.header}
-            title={
-              `${name}`
-            }
-            subheader={`${desc}`}
+            title={name}
+            subheader={desc}
           />
         </Card>
       </ButtonBase>

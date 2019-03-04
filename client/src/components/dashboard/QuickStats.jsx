@@ -23,9 +23,7 @@ const styles = {
     width: '50vw',
     height: '30vh',
   },
-
 };
-
 
 function QuickStats(props) {
   const {classes} = props;
@@ -47,7 +45,7 @@ function QuickStats(props) {
 
 
       <Grid item>
-        <Card >
+        <Card>
           <Grid container
                 direction='row'
                 alignItems='center'
