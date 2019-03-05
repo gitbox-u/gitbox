@@ -55,7 +55,7 @@ export async function getRepositoryData(id, auth) {
         commits: 300,
         additions: 2000,
         deletions: 400,
-        color: getRandomColor(),
+        color: "red",
       },
       {
         key: "2",
@@ -63,7 +63,7 @@ export async function getRepositoryData(id, auth) {
         commits: 300,
         additions: 2000,
         deletions: 400,
-        color: getRandomColor(),
+        color: "blue",
       },
       {
         key: "3",
@@ -71,7 +71,7 @@ export async function getRepositoryData(id, auth) {
         commits: 300,
         additions: 2000,
         deletions: 400,
-        color: getRandomColor(),
+        color: "hotpink",
       },
       {
         key: "4",
@@ -79,7 +79,7 @@ export async function getRepositoryData(id, auth) {
         commits: 300,
         additions: 2000,
         deletions: 400,
-        color: getRandomColor(),
+        color: "green",
       },
     ],
     stats: [
