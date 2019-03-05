@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {Button, TextField, withStyles, Grid, Typography} from '@material-ui/core';
-import {connect} from 'react-redux';
-import {updateLoginField, tryLogin} from '../../reducers/login';
+import React, { Component } from 'react';
+import { Button, TextField, withStyles, Grid, Typography } from '@material-ui/core';
+import { connect } from 'react-redux';
+import { updateLoginField, tryLogin } from '../../reducers/login';
 import logo from '../../assets/logo.svg';
 
 const styles = {
@@ -34,8 +34,12 @@ class Login extends Component {
   };
 
   handleLogin = () => {
-    this.props.tryLogin();
-    this.routeChange('dashboard');
+    this.props.tryLogin().then(
+      res => {
+        if (res.result.loggedIn)
+          this.routeChange('dashboard');
+      }
+    );
   };
 
   handleSignup = () => {
@@ -43,16 +47,16 @@ class Login extends Component {
   };
 
   render() {
-    const {username, password, classes} = this.props;
+    const { username, password, classes } = this.props;
 
     return (
       <Grid container
-            direction='column'
-            alignItems='center'
-            spacing={8}
-            justify='center'>
+        direction='column'
+        alignItems='center'
+        spacing={8}
+        justify='center'>
         <Grid item>
-          <img src={logo} className={classes.logo} alt='Gitmap'/>
+          <img src={logo} className={classes.logo} alt='Gitmap' />
         </Grid>
         <Grid item>
           <Typography variant='h4' className={classes.logoLabel}>
@@ -86,9 +90,9 @@ class Login extends Component {
         </Grid>
         <Grid item>
           <Button fullWidth variant='outlined' color='primary' onClick={this.handleLogin}
-                  className={classes.formButton}>Login</Button>
+            className={classes.formButton}>Login</Button>
           <Button fullWidth variant='outlined' color='primary' onClick={this.handleSignup}
-                  className={classes.formButton}>Register</Button>
+            className={classes.formButton}>Register</Button>
         </Grid>
       </Grid>
     );
@@ -101,10 +105,10 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state) => {
-  const {login} = state;
-  const {username, password} = login;
+  const { login } = state;
+  const { username, password } = login;
 
-  return {username, password};
+  return { username, password };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login));

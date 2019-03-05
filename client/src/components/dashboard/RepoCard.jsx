@@ -12,6 +12,7 @@ const styles = {
     height: '250px',
     transition: 'box-shadow 100ms',
     textAlign: 'left',
+    padding: "20px",
   },
 
   header: {
@@ -61,7 +62,7 @@ class RepoCard extends Component {
           />
           <Grid container
             spacing={16}
-            justify="space-evenly"
+            justify="flex-start"
             className={classes.full}
             alignItems="center"
             >
