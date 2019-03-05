@@ -5,7 +5,6 @@ import LangPie from "./LangPie";
 import Calendar from "./Calendar";
 import Grid from "@material-ui/core/Grid";
 
-
 const styles = {
   container: {
     width: '80vw',
@@ -27,7 +26,6 @@ const styles = {
 
 function QuickStats(props) {
   const {classes} = props;
-
 
   return (
     <Grid item container
@@ -60,7 +58,5 @@ function QuickStats(props) {
 
   );
 }
-
-QuickStats.propTypes = {};
 
 export default withStyles(styles)(QuickStats);

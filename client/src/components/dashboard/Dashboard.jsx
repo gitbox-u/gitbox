@@ -40,8 +40,7 @@ function Dashboard({classes}) {
       <QuickStats/>
 
       <Grid item className={classes.repos}>
-        <Repositories>
-        </Repositories>
+        <Repositories/>
       </Grid>
     </Grid>
   );

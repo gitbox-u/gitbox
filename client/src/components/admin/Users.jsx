@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Button } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { connect } from "react-redux";
-import { removeUser, initUsers } from '../../reducers/users';
+import { removeUser, initUsers, filterUsers, updateSearch } from '../../reducers/users';
 
 const styles = theme => ({
   root: {
@@ -43,6 +43,10 @@ class Users extends Component {
     });
   };
 
+  handleSearch = e => {
+    this.props.updateSearch(e.target.value);
+  };
+
   render() {
     const { classes } = this.props;
     const { expanded } = this.state;
@@ -50,6 +54,15 @@ class Users extends Component {
 
     return (
       <div className={classes.root}>
+        <TextField
+          placeholder="Search for a user..."
+          id="outlined-bare"
+          margin="normal"
+          variant="outlined"
+          // value={search}
+          onChange={this.handleSearch}
+          className={classes.textInput}
+        />
         {
           users.map(
             user => (
@@ -77,13 +90,20 @@ class Users extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  users: state.users
-});
+const mapStateToProps = state => {
+  const { users, filter } = state.users;
+  console.log(state);
+  console.log(filterUsers(users, filter));
+
+  return {
+    users: filterUsers(users, filter)
+  };
+};
 
 const mapDispatchToProps = {
   removeUser,
   initUsers,
+  updateSearch,
 };
 
 export default connect(

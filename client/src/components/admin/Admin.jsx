@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {Grid, TextField} from "@material-ui/core";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import Users from './Users'
@@ -11,8 +11,6 @@ const style =
     },
 
     adminSection: {
-      // width: '90%',
-      // width: '40%',
     },
 
     button: {
@@ -42,38 +40,14 @@ class Admin extends Component {
       <Grid item
             container
             spacing={16}
-        // direction="column"
-        // alignItems="center"
             justify="center"
             className={classes.adminContainer}
       >
-
-        <Grid item className={classes.adminSection}>
-        <Grid item>
-          <TextField
-            placeholder="Search for a user..."
-            id="outlined-bare"
-            margin="normal"
-            variant="outlined"
-            value={search}
-            onChange={this.handleChange}
-            className={classes.textInput}
-          />
-        </Grid>
-
-          <Grid item>
-            {/*<SearchFields></SearchFields>*/}
-          </Grid>
-        </Grid>
-
         <Grid item className={classes.adminSection}>
           <Users/>
         </Grid>
 
         <Grid item>
-          {/* <Fab size="small" color="secondary" aria-label="Add" className={classes.button} onClick={this.add}>
-            <AddIcon/>
-          </Fab> */}
           {this.state.adding ?
             <TextField
               placeholder="Username"

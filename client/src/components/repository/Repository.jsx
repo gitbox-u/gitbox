@@ -4,7 +4,6 @@ import {withStyles, Grid, Typography} from '@material-ui/core';
 import CodeStream from "./CodeStream";
 import Paper from "@material-ui/core/Paper";
 import LanguageBreakdown from "./LanguageBreakdown";
-import FolderTree from "./FolderTree";
 import GitGraph from './GitGraph';
 import ContributorList from "./ContributorList"
 import AddDelete from "./AddDelete";
@@ -103,14 +102,17 @@ class Repository extends Component {
 
           <Grid item>
             <Grid item>
-              <Paper className={classes.codeStream}>
+              <Paper className={classes.codeStream} title={'Code Stream'}>
                 <CodeStream stats={data.stats} contributors={contributorNames}/>
               </Paper>
             </Grid>
 
             <Grid item>
               <Paper className={classes.codeStream}>
-                <FolderTree data={data.languages}/>
+                <Typography variant="h5" component="h3">
+                  Folder Tree
+                </Typography>
+                {/*<FolderTree data={data.languages}/>*/}
               </Paper>
             </Grid>
           </Grid>
@@ -119,9 +121,7 @@ class Repository extends Component {
             <Grid item container
                   direction="row"
                   spacing={16}
-
             >
-
               <Grid item>
                 <Paper className={classes.langBreak}>
                   <LanguageBreakdown data={data.languages}/>
