@@ -1,13 +1,14 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {withStyles, Grid, Typography} from '@material-ui/core';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withStyles, Grid, Typography } from '@material-ui/core';
 import CodeStream from "./CodeStream";
 import Paper from "@material-ui/core/Paper";
 import LanguageBreakdown from "./LanguageBreakdown";
 import GitGraph from './GitGraph';
 import ContributorList from "./ContributorList"
 import AddDelete from "./AddDelete";
-import {initDataForRepo} from '../../reducers/repositories';
+import { initDataForRepo } from '../../reducers/repositories';
+import FolderTree from './FolderTree';
 
 const styles = {
   repoViewContainer: {
@@ -56,8 +57,8 @@ class Repository extends Component {
 
     const id = this.props.match.params.id;
 
-    const {classes} = this.props;
-    const {repoData, allRepos} = this.props;
+    const { classes } = this.props;
+    const { repoData, allRepos } = this.props;
 
     const data = repoData[id];
 
@@ -67,17 +68,17 @@ class Repository extends Component {
         {`No data for repository #${id}`}
       </div>);
 
-    const {graph} = data;
+    const { graph } = data;
 
     const contributorNames = data.contributors.map((c) => c.name);
     return (
 
       <Grid item
-            container
-            justify="center"
-            spacing={16}
-            direction="column"
-            className={classes.repoViewContainer}
+        container
+        justify="center"
+        spacing={16}
+        direction="column"
+        className={classes.repoViewContainer}
       >
         <Grid item>
           <Typography className={classes.repoName} variant="h4">
@@ -95,43 +96,40 @@ class Repository extends Component {
         </Grid>
 
         <Grid item
-              container
-              direction="row"
-              spacing={16}
+          container
+          direction="row"
+          spacing={16}
         >
 
           <Grid item>
             <Grid item>
               <Paper className={classes.codeStream} title={'Code Stream'}>
-                <CodeStream stats={data.stats} contributors={contributorNames}/>
+                <CodeStream stats={data.stats} contributors={contributorNames} />
               </Paper>
             </Grid>
 
             <Grid item>
               <Paper className={classes.codeStream}>
-                <Typography variant="h5" component="h3">
-                  Folder Tree
-                </Typography>
-                {/*<FolderTree data={data.languages}/>*/}
+                <FolderTree data={data.languages} />
               </Paper>
             </Grid>
           </Grid>
 
           <Grid item>
             <Grid item container
-                  direction="row"
-                  spacing={16}
+              direction="row"
+              spacing={16}
             >
               <Grid item>
                 <Paper className={classes.langBreak}>
-                  <LanguageBreakdown data={data.languages}/>
+                  <LanguageBreakdown data={data.languages} />
                 </Paper>
               </Grid>
 
 
               <Grid item>
                 <Paper className={classes.langBreak}>
-                  <LanguageBreakdown data={data.languages}/>
+                  <LanguageBreakdown data={data.languages} />
                 </Paper>
               </Grid>
             </Grid>
@@ -139,7 +137,7 @@ class Repository extends Component {
 
             <Grid item>
               <Paper className={classes.deleteAdd}>
-                <AddDelete data={data.languages}/>
+                <AddDelete data={data.languages} />
               </Paper>
             </Grid>
           </Grid>
@@ -148,7 +146,7 @@ class Repository extends Component {
             <Contributors contributors={data.contributors} />
           </Grid> */}
           <Grid item className={classes.contributors}>
-            <ContributorList contributors={data.contributors}/>
+            <ContributorList contributors={data.contributors} />
           </Grid>
 
         </Grid>
@@ -158,8 +156,8 @@ class Repository extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const {repos} = state;
-  const {allRepos, repoData} = repos;
+  const { repos } = state;
+  const { allRepos, repoData } = repos;
 
   return {
     allRepos,

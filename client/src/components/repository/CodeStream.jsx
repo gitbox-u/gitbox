@@ -32,7 +32,6 @@ function CodeStream(props) {
         "legendOffset": -40
       }}
       offsetType="none"
-      colors="category10"
       fillOpacity={0.85}
       borderColor="#000"
     
