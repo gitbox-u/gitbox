@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles, Typography} from '@material-ui/core';
+import {withStyles
+} from '@material-ui/core';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
 
 import Circle from '@material-ui/icons/Brightness1'
 
@@ -12,7 +12,6 @@ import Circle from '@material-ui/icons/Brightness1'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Checkbox from '@material-ui/core/Checkbox';
-import Avatar from '@material-ui/core/Avatar';
 
 const styles = theme => ({
   root: {
@@ -59,7 +58,7 @@ class ContributorList extends React.Component {
         {this.props.contributors.map(contributor => (
           <ListItem key={contributor} button style={{minHeight: 100}}>
             <ListItemAvatar>
-              <Circle style={{fill: getRandomColor()}}></Circle>
+              <Circle style={{fill: getRandomColor()}}/>
             </ListItemAvatar>
             <ListItemText primary={contributor.name}/>
             <ListItemSecondaryAction>
