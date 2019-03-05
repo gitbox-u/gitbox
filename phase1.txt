@@ -1,0 +1,69 @@
+Phase 1 instructions for Starting and using Web App
+
+Intial Start Up Instructions
+------
+
+
+
+
+------
+
+Login in Credentials:
+General User:
+Username: user
+Password: user
+
+Admin:
+Username: admin
+Password: admin
+
+------
+Sign Up page
+- users can log in using their credentials
+- clicking on the register user will allow users to make a account
+------
+User Functionality:
+Messages Notifcation 
+- User can click on the envelope to see what messages they have (which will be
+sent by the admin/general notifcations)
+- User can logout using the logout user button
+-Dashboard page contains the users repos
+	- there is a add repos options that users can add a link in that
+	will allow them to update or upload their repos
+	- All their repos will be stored on this page and there is a search
+	bar that allows users to search through all the repos they have 
+	connected with their accounts
+	- repos page also has pages that allows you to go throuh mutliple 
+	pages of repos
+	-the circle graph at the top gives a break down of the languges
+	used in all the repos connected to the user, hovering over each 
+	colour gives additional info 
+	- the calendar stat gives info about how many commits a user has on
+	a given day (hovering over any coloured box gives this info)
+	- users can click on any of their repos (which have coloured circles
+	indicating the languages used in each repo) click on a repo opens up
+	a seperate page for that repo
+
+-Repository Page
+	- each repo connected to the user will have a repo page
+	- the contributors list on the side shows users that have contributed 
+	to a repo, checking the check box will allow for the graphs to be
+	updated to reflect that users contributions once the back end is 
+	finished
+	- each graph provides different statistics that are calculated 
+	for each repo (including top right: code stream (contributions per 
+	user, bottom right - file tree (break down of files/folders), top 
+	left (langauge breakdowns, and info about each file), bottom left
+	(deletions/additions) 
+	- the top graph is a break down of the git commit branches
+-----
+Admin Functionality:
+- the admins also have their own dashboard for repos (same as a general user)
+- they also have an additional Admin Panel
+	- this panel allows them to add users 
+	- they can search through users as well based on name, and block
+	the user, message the user, delete the user, or edit the user
+	- each user block provide info about the number of commits and repos
+	that each user has
+-----
+Additional Notes:
