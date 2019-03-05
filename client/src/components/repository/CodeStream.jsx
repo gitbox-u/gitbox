@@ -1,6 +1,5 @@
 import React from 'react';
 import { ResponsiveStream } from '@nivo/stream';
-import withStyles from "@material-ui/core/es/styles/withStyles";
 
 function CodeStream(props) {
   const { stats } = props;
