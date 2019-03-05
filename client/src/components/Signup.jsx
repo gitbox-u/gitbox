@@ -1,7 +1,6 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {Grid, Button, TextField, Typography, withStyles} from '@material-ui/core'
 import logo from '../assets/logo.svg';
-import {geometric} from "../geo/geo";
 
 const styles = {
   formInput: {
@@ -24,14 +23,6 @@ const styles = {
 };
 
 function Signup({classes}) {
-  useEffect(() => {
-    try {
-      geometric();
-    } catch (e) {
-      console.err("*hug* this background");
-    }
-  });
-
   return (
     <Grid container
           direction="column"

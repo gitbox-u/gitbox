@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import {Button, TextField, withStyles, Grid, Typography} from '@material-ui/core';
 import {connect} from 'react-redux';
 import {updateLoginField, tryLogin} from '../reducers/login';
-import {withRouter} from 'react-router-dom';
 import logo from '../assets/logo.svg';
-import {geometric} from '../geo/geo.js'
 
 const styles = {
   formInput: {
@@ -27,14 +25,6 @@ const styles = {
 };
 
 class Login extends Component {
-  componentDidMount() {
-    try {
-      geometric();
-    } catch (e) {
-      console.err('*hug* this background');
-    }
-  }
-
   routeChange = path => {
     this.props.history.push(path);
   };
@@ -117,4 +107,4 @@ const mapStateToProps = (state) => {
   return {username, password};
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login));

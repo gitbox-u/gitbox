@@ -32,7 +32,15 @@ const styles = {
   }
 };
 
-function Auth({classes}) {
+function Auth({classes, location}) {
+  useEffect(() => {
+    try {
+      geometric();
+    } catch (e) {
+      console.err("*hug* this background");
+    }
+  });
+
   return (
     <div>
       <div id="bg"/>
@@ -55,4 +63,4 @@ function Auth({classes}) {
   );
 }
 
-export default withStyles(styles)(Auth);
+export default withRouter(withStyles(styles)(Auth));
