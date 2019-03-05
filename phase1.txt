@@ -86,3 +86,5 @@ Additional Notes:
 		random strings.
 - Repository and usernames are hardcoded, as they require interaction with the backend
 	- fetching the repository names by id, for example.
+- All server calls are in `./client/src/api/api.js`, and are called whenever
+	interaction with the server is needed.

@@ -242,6 +242,15 @@ export async function apiLogin(user, pass) {
   return ret;
 }
 
+export async function apiLogout(auth) {
+  return {
+    secret: undefined,
+    loggedIn: false,
+    admin: false,
+  }
+}
+
+// this is just a small helper function.
 function getRandomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';
@@ -249,12 +258,4 @@ function getRandomColor() {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
-}
-
-export async function apiLogout(auth) {
-  return {
-    secret: undefined,
-    loggedIn: false,
-    admin: false,
-  }
 }
