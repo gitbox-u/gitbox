@@ -61,7 +61,7 @@ class ContributorList extends React.Component {
         {this.props.contributors.map(contributor => (
           <ListItem key={contributor} button style={{minHeight: 100}}>
             <ListItemAvatar>
-              <Circle style={{fill: getRandomColor()}}/>
+              <Circle style={{fill: contributor.color}}/>
             </ListItemAvatar>
             <ListItemText primary={contributor.name}/>
             <ListItemSecondaryAction>

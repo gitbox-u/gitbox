@@ -47,28 +47,32 @@ export async function getRepositoryData(id, auth) {
         name: "Murad",
         commits: 300,
         additions: 2000,
-        deletions: 400
+        deletions: 400,
+        color: getRandomColor(),
       },
       {
         key: "2",
         name: "Eric",
         commits: 300,
         additions: 2000,
-        deletions: 400
+        deletions: 400,
+        color: getRandomColor(),
       },
       {
         key: "3",
         name: "Linwen",
         commits: 300,
         additions: 2000,
-        deletions: 400
+        deletions: 400,
+        color: getRandomColor(),
       },
       {
         key: "4",
         name: "Howard",
         commits: 300,
         additions: 2000,
-        deletions: 400
+        deletions: 400,
+        color: getRandomColor(),
       },
     ],
     stats: [
@@ -229,6 +233,15 @@ export async function apiLogin(user, pass) {
   Cookies.set('login', ret);
 
   return ret;
+}
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
 export async function apiLogout(auth) {
