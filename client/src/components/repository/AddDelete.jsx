@@ -11,7 +11,7 @@ function AddDelete(props) {
       data={[
         {
           "id": "additions",
-          "color": "hsl(23, 70%, 50%)",
+          "color": "green",
           "data": [
             {
               "x": 1,
@@ -45,7 +45,7 @@ function AddDelete(props) {
         },
         {
           "id": "deletions",
-          "color": "hsl(0, 84%, 58%)",
+          "color": "red",
           "data": [
             {
               "x": 1,
@@ -109,7 +109,7 @@ function AddDelete(props) {
       enableGridY={false}
       enableDotLabel={true}
       dotLabel="y"
-      colorBy='d => d.color'
+      colorBy={function(e){return e.color}}
       dotLabelYOffset={-12}
       animate={true}
       motionStiffness={90}

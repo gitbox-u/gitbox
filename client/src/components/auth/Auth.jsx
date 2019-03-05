@@ -37,7 +37,7 @@ const styles = {
     minHeight: '700px',
   },
 
-  height: {
+  fullHeight: {
     height: '100%',
   },
 };
@@ -60,8 +60,7 @@ function Auth({classes}) {
         spacing={0}
         justify="center"
         direction="column"
-        // style={{minHeight: '85vh'}}
-        className={classes.height}
+        className={classes.fullHeight}
       >
         <Grid item>
           <Paper className={classes.formContainer}>
