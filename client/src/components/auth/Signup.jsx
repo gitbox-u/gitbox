@@ -1,6 +1,6 @@
 import React from 'react'
 import {Grid, Button, TextField, Typography, withStyles} from '@material-ui/core'
-import logo from '../assets/logo.svg';
+import logo from '../../assets/logo.svg';
 
 const styles = {
   formInput: {
@@ -75,7 +75,7 @@ function Signup({classes, history}) {
           // onChange={this.handleLoginChange("password")}
           fullWidth
           type="password"
-          placeholder="Confirm password"
+          placeholder="Confirm"
           className={classes.formInput}
         />
       </Grid>

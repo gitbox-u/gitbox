@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {withStyles, AppBar, Toolbar, IconButton, Button} from '@material-ui/core';
-import logo from '../assets/logo.svg';
+import logo from '../../assets/logo.svg';
 import {withRouter} from "react-router-dom";
 import {connect} from 'react-redux';
 import Mail from '@material-ui/icons/MailOutline'
 import Badge from '@material-ui/core/Badge';
 
-import {logout} from '../reducers/login';
+import {logout} from '../../reducers/login';
 
-import PopUp from './PopupMenu';
+import PopUp from '../PopupMenu';
 
 const styles = {
   grow: {

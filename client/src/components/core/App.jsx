@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {Route, withRouter} from 'react-router-dom';
 import Header from './Header';
-import Dashboard from './dashboard/Dashboard';
-import Repository from './repository/Repository';
-import Admin from './admin/Admin';
+import Dashboard from '../dashboard/Dashboard';
+import Repository from '../repository/Repository';
+import Admin from '../admin/Admin';
 
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core';
 import {connect} from 'react-redux';
-import {initLogin} from '../reducers/login';
-import Auth from "./Auth";
+import {initLogin} from '../../reducers/login';
+import Auth from "../auth/Auth";
 
 const theme = createMuiTheme({
   palette: {

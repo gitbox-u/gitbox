@@ -1,16 +1,16 @@
-import React, {useEffect} from 'react'
-import {Grid, Paper, Button, TextField, Typography, withStyles} from '@material-ui/core'
+import React from 'react'
+import {Grid, Paper, withStyles} from '@material-ui/core'
 import {Route, withRouter} from "react-router-dom";
-import logo from '../assets/logo.svg';
-import {geometric} from "../geo/geo";
 import Login from './Login';
 import Signup from './Signup';
 
 const styles = {
   formContainer: {
+    position: 'relative',
+    top: '-10%',
     padding: '50px 90px',
     margin: '10px',
-    minWidth: 300,
+    width: '350px',
   },
 
   formInput: {
@@ -29,21 +29,31 @@ const styles = {
 
   logoLabel: {
     letterSpacing: '0.1em'
-  }
+  },
+
+  blue: {
+    backgroundColor: '#296bbb',
+    height: '100%',
+    minHeight: '700px',
+  },
+
+  height: {
+    height: '100%',
+  },
 };
 
-function Auth({classes, location}) {
-  useEffect(() => {
-    try {
-      geometric();
-    } catch (e) {
-      console.err("*hug* this background");
-    }
-  });
+function Auth({classes}) {
+  // useEffect(() => {
+  //   try {
+  //     geometric();
+  //   } catch (e) {
+  //     console.err("*hug* this background");
+  //   }
+  // });
 
   return (
-    <div>
-      <div id="bg"/>
+    <div className={classes.blue}>
+      {/*<div id="bg"/>*/}
       <Grid
         container
         alignItems="center"
@@ -51,6 +61,7 @@ function Auth({classes, location}) {
         justify="center"
         direction="column"
         style={{minHeight: '85vh'}}
+        className={classes.height}
       >
         <Grid item>
           <Paper className={classes.formContainer}>

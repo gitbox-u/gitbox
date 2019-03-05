@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Button, TextField, withStyles, Grid, Typography} from '@material-ui/core';
 import {connect} from 'react-redux';
-import {updateLoginField, tryLogin} from '../reducers/login';
-import logo from '../assets/logo.svg';
+import {updateLoginField, tryLogin} from '../../reducers/login';
+import logo from '../../assets/logo.svg';
 
 const styles = {
   formInput: {
