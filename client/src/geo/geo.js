@@ -6,7 +6,7 @@ export const geometric = () => {
   let numPointsY;
   let unitWidth;
   let unitHeight;
-  var points;
+  let points;
 
 
   function onLoad() {
@@ -104,7 +104,7 @@ export const geometric = () => {
     randomize();
     for (let i = 0; i < document.querySelector('#bg svg').childNodes.length; i++) {
       let polygon = document.querySelector('#bg svg').childNodes[i];
-      if (polygon) {
+      if (polygon && points) {
         let animate = polygon.childNodes[0];
         if (animate.getAttribute('to')) {
           animate.setAttribute('from', animate.getAttribute('to'));

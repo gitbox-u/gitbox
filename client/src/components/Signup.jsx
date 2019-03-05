@@ -22,7 +22,11 @@ const styles = {
   }
 };
 
-function Signup({classes}) {
+function Signup({classes, history}) {
+  const handleRegister = () => {
+    history.push('login');
+  };
+
   return (
     <Grid container
           direction="column"
@@ -76,7 +80,7 @@ function Signup({classes}) {
         />
       </Grid>
       <Grid item>
-        <Button fullWidth variant="outlined" color="primary" onClick={console.log('TODO')}
+        <Button fullWidth variant="outlined" color="primary" onClick={handleRegister}
                 className={classes.formButton}>Register</Button>
       </Grid>
     </Grid>
