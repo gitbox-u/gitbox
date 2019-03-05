@@ -1,18 +1,12 @@
 import React, {Component} from 'react';
-import {Button, TextField, withStyles, Grid, Typography, Paper} from '@material-ui/core';
+import {Button, TextField, withStyles, Grid, Typography} from '@material-ui/core';
 import {connect} from 'react-redux';
 import {updateLoginField, tryLogin} from '../reducers/login';
-import {withRouter} from "react-router-dom";
+import {withRouter} from 'react-router-dom';
 import logo from '../assets/logo.svg';
 import {geometric} from '../geo/geo.js'
 
 const styles = {
-  formContainer: {
-    padding: '50px 90px',
-    margin: '10px',
-    minWidth: 300,
-  },
-
   formInput: {
     marginTop: '5px',
     borderBottom: '1px solid black',
@@ -37,7 +31,7 @@ class Login extends Component {
     try {
       geometric();
     } catch (e) {
-      console.err("*hug* this background");
+      console.err('*hug* this background');
     }
   }
 
@@ -51,78 +45,62 @@ class Login extends Component {
 
   handleLogin = () => {
     this.props.tryLogin();
-    this.routeChange("dashboard");
+    this.routeChange('dashboard');
   };
 
   handleSignup = () => {
-    this.routeChange("signup");
+    this.routeChange('signup');
   };
 
   render() {
     const {username, password, classes} = this.props;
 
     return (
-      <div>
-        <div id="bg"/>
-        <Grid
-          container
-          alignItems="center"
-          spacing={0}
-          justify="center"
-          direction="column"
-          style={{minHeight: '85vh'}}
-        >
-          <Grid item>
-            <Paper className={classes.formContainer}>
-              <Grid container
-                    direction="column"
-                    alignItems="center"
-                    spacing={8}
-                    justify="center">
-                <Grid item>
-                  <img src={logo} className={classes.logo} alt="Gitmap"/>
-                </Grid>
-                <Grid item>
-                  <Typography variant="h4" className={classes.logoLabel}>
-                    GITBOX
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <TextField
-                    InputProps={{
-                      disableUnderline: true,
-                    }}
-                    value={username}
-                    onChange={this.handleLoginChange("username")}
-                    fullWidth
-                    placeholder="Username"
-                    className={classes.formInput}
-                  />
-                </Grid>
-                <Grid item>
-                  <TextField
-                    InputProps={{
-                      disableUnderline: true,
-                    }}
-                    value={password}
-                    onChange={this.handleLoginChange("password")}
-                    fullWidth
-                    type="password"
-                    placeholder="Password"
-                    className={classes.formInput}
-                  />
-                </Grid>
-                <Grid item>
-                  <Button fullWidth variant="outlined" color="primary" onClick={this.handleLogin}
-                          className={classes.formButton}>Login</Button>
-                  <Button fullWidth variant="outlined" color="primary" onClick={this.handleSignup}
-                          className={classes.formButton}>Register</Button>
-                </Grid>
-              </Grid>
-            </Paper>
-          </Grid>
+      <Grid container
+            direction='column'
+            alignItems='center'
+            spacing={8}
+            justify='center'>
+        <Grid item>
+          <img src={logo} className={classes.logo} alt='Gitmap'/>
         </Grid>
-      </div>
+        <Grid item>
+          <Typography variant='h4' className={classes.logoLabel}>
+            GITBOX
+          </Typography>
+        </Grid>
+        <Grid item>
+          <TextField
+            InputProps={{
+              disableUnderline: true,
+            }}
+            value={username}
+            onChange={this.handleLoginChange('username')}
+            fullWidth
+            placeholder='Username'
+            className={classes.formInput}
+          />
+        </Grid>
+        <Grid item>
+          <TextField
+            InputProps={{
+              disableUnderline: true,
+            }}
+            value={password}
+            onChange={this.handleLoginChange('password')}
+            fullWidth
+            type='password'
+            placeholder='Password'
+            className={classes.formInput}
+          />
+        </Grid>
+        <Grid item>
+          <Button fullWidth variant='outlined' color='primary' onClick={this.handleLogin}
+                  className={classes.formButton}>Login</Button>
+          <Button fullWidth variant='outlined' color='primary' onClick={this.handleSignup}
+                  className={classes.formButton}>Register</Button>
+        </Grid>
+      </Grid>
     );
   }
 }
