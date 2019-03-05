@@ -153,7 +153,7 @@ class Repository extends Component {
                     Top 5 in last 5 months
                   </Typography>
                   <div className={classes.langBreak}>
-                    <MiniCalendar data={data.languages}/>
+                    <MiniCalendar data={data.calendar}/>
                   </div>
                 </Paper>
               </Grid>

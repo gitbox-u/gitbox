@@ -111,6 +111,44 @@ export async function getRepositoryData(id, auth) {
 
       }
     ],
+    calendar: [
+      {
+        name: "Murad",
+        "1": 20,
+        "2": 20,
+        "3": 55,
+        "4": 20,
+        "5": 33,
+      },{
+        name: "Linwen",
+        "1": 34,
+        "2": 20,
+        "3": 20,
+        "4": 20,
+        "5": 3,
+      },{
+        name: "Eric",
+        "1": 20,
+        "2": 20,
+        "3": 21,
+        "4": 20,
+        "5": 20,
+      },{
+        name: "Howard",
+        "1": 20,
+        "2": 33,
+        "3": 21,
+        "4": 4,
+        "5": 33,
+      },{
+        name: "Mark",
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 1,
+      }
+    ],
     languages: {
       "name": "language",
       "children": [
