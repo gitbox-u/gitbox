@@ -6,26 +6,33 @@ function MiniCalendar() {
     <ResponsiveHeatMap
       data={[
         {
-          "name": "Murad",
+          name: "Murad",
           "1": 20,
           "2": 20,
-          "3": 20,
+          "3": 55,
           "4": 20,
-          "5": 20,
+          "5": 33,
         },{
           name: "Linwen",
-          "1": 20,
+          "1": 34,
           "2": 20,
           "3": 20,
           "4": 20,
-          "5": 20,
+          "5": 3,
         },{
           name: "Eric",
           "1": 20,
           "2": 20,
-          "3": 20,
+          "3": 21,
           "4": 20,
           "5": 20,
+        },{
+          name: "Howard",
+          "1": 20,
+          "2": 33,
+          "3": 21,
+          "4": 4,
+          "5": 33,
         },{
           name: "Mark",
           "1": 0,
@@ -44,12 +51,20 @@ function MiniCalendar() {
       ]}
       indexBy="name"
       margin={{
-        "top": 100,
-        "right": 60,
-        "bottom": 60,
+        "top": 20,
+        "right": 10,
+        "bottom": 10,
         "left": 60
       }}
+      colors="GnBu"
       forceSquare={true}
+      axistLeft={{
+        "orient": "left",
+        "tickSize": 5,
+        "tickPadding": 5,
+        "tickRotation": -90,
+        "legendOffset": -40
+      }}
       axisTop={{
         "orient": "top",
         "tickSize": 5,
@@ -57,17 +72,6 @@ function MiniCalendar() {
         "tickRotation": -90,
         "legend": "",
         "legendOffset": 36
-      }}
-      axisRight
-      axisBottom
-      axisLeft={{
-        "orient": "left",
-        "tickSize": 5,
-        "tickPadding": 5,
-        "tickRotation": 0,
-        "legend": "contributor",
-        "legendPosition": "middle",
-        "legendOffset": -40
       }}
       cellOpacity={1}
       cellBorderColor="inherit:darker(0.4)"
