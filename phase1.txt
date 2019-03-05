@@ -4,7 +4,7 @@ Initial Start Up Instructions
 ------
 Comment: (We asked our TA about using react, and they said it was fine if we provided instructions on how to
 start the react web app. The reason we didn't compile and provide the html files was because it is 
-impossible to compile to html, js while preserving the routing.)
+impossible to compile to html, js while preserving the routing.) The issue will be resolved once the website is hosted.
 
 Please email me at edt.chen@mail.utoronto.ca if you have any questions or concerns!
 
@@ -15,7 +15,7 @@ Please email me at edt.chen@mail.utoronto.ca if you have any questions or concer
 		- If you encounter any errors installing dependencies, just delete `node_modules` folder and retry.
 	- run `npm start`
 
-	- Your web browser should pop up with the react app. (if not, nagivate to `localhost:3000`)
+	- Your web browser should pop up with the react app. (if not, naivete to `localhost:3000`)
 
 ------
 
@@ -34,9 +34,9 @@ Sign Up page
 - clicking on the register user will allow users to make a account (Not fully implemented, requires backend)
 ------
 User Functionality:
-Messages Notifcation 
+Messages Notification
 - User can click on the envelope to see what messages they have (which will be
-sent by the admin/general notifcations)
+sent by the admin/general notifications)
 - User can logout using the logout user button
 - Dashboard page contains the users repos
 	- there is a add repos options that users can add a link in that
@@ -68,6 +68,7 @@ sent by the admin/general notifcations)
 	(deletions/additions) 
 	- the top graph is a break down of the git commit branches, which shows
 	the topology of your git repository over time. (left is most recent)
+	The graph can be navigated like a map, with zoom/unzoom gestures.
 -----
 Admin Functionality:
 - the admins also have their own dashboard for repos (same as a general user)
