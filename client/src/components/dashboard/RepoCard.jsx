@@ -6,18 +6,14 @@ import {withRouter} from "react-router-dom";
 
 const styles = {
   repoCard: {
-    // width: '100%',
-    // width: '50%',
-    width: '100%',
-    height: '200px',
+    width: '70%',
+    height: '150px',
     transition: 'box-shadow 100ms',
     textAlign: 'left',
   },
 
   header: {
-    // backgroundColor: 'lightblue',
     color: 'white',
-    // height: '1em',
   },
 
   full: {
@@ -25,26 +21,27 @@ const styles = {
   },
 };
 
-
-
 class RepoCard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggleRaised = this.toggleRaised.bind(this);
+  }
 
   state = {
     raised: false
   };
 
-  routeChange = (path) => () => {
+  routeChange = path => () => {
     this.props.history.push(path);
   };
 
-  toggleRaised = () => this.setState({raised: !this.state.raised});
-
+  toggleRaised = () => {
+    this.setState({raised: !this.state.raised});
+  };
 
   render() {
-    const {classes} = this.props;
-
-    const {name, desc, id} = this.props;
-
+    const { classes, name, desc, id } = this.props;
 
     return (
       <ButtonBase onClick={this.routeChange(`/repository/${id}`)}
@@ -57,10 +54,8 @@ class RepoCard extends Component {
         >
           <CardHeader
             className={classes.header}
-            title={
-              `${name}`
-            }
-            subheader={`${desc}`}
+            title={name}
+            subheader={desc}
           />
         </Card>
       </ButtonBase>

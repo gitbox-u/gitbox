@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Button } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { connect } from "react-redux";
-import { removeUser } from "../../actions";
-import { initUsers } from '../../reducers/users';
+import { removeUser, initUsers, filterUsers, updateSearch } from '../../reducers/users';
 
 const styles = theme => ({
   root: {
@@ -25,15 +24,11 @@ const styles = theme => ({
   },
 
   button: {
-    margin: 100,
+    margin: '0 10px',
   },
 });
 
 class Users extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     expanded: null,
   };
@@ -48,9 +43,9 @@ class Users extends Component {
     });
   };
 
-  handleRemove = (user) => () => {
-    this.props.removeUser(user);
-  }
+  handleSearch = e => {
+    this.props.updateSearch(e.target.value);
+  };
 
   render() {
     const { classes } = this.props;
@@ -59,6 +54,15 @@ class Users extends Component {
 
     return (
       <div className={classes.root}>
+        <TextField
+          placeholder="Search for a user..."
+          id="outlined-bare"
+          margin="normal"
+          variant="outlined"
+          // value={search}
+          onChange={this.handleSearch}
+          className={classes.textInput}
+        />
         {
           users.map(
             user => (
@@ -68,17 +72,14 @@ class Users extends Component {
                   <Typography className={classes.secondaryHeading}>{user.repos} repos - {user.commits} commits</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
-                  <Typography>
-                    info about user
-                  </Typography>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                    className={classes.formButton}>Edit User</Button>
+                    className={classes.button}>Edit User</Button>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                    className={classes.formButton}>Message User</Button>
+                    className={classes.button}>Message User</Button>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                    className={classes.formButton}>Block User</Button>
-                  <Button variant="outlined" color="primary" onClick={_ => this.handleRemove(user.id)}
-                    className={classes.formButton}>Remove User</Button>
+                    className={classes.button}>Block User</Button>
+                  <Button variant="outlined" color="primary" onClick={() => this.props.removeUser(user.id)}
+                    className={classes.button}>Remove User</Button>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
             )
@@ -89,13 +90,20 @@ class Users extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  users: state.users
-});
+const mapStateToProps = state => {
+  const { users, filter } = state.users;
+  console.log(state);
+  console.log(filterUsers(users, filter));
+
+  return {
+    users: filterUsers(users, filter)
+  };
+};
 
 const mapDispatchToProps = {
   removeUser,
   initUsers,
+  updateSearch,
 };
 
 export default connect(

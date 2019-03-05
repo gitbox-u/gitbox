@@ -40,6 +40,12 @@ class SimpleMenu extends React.Component {
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
+          PaperProps={{
+            style: {
+            //   maxHeight: ITEM_HEIGHT * 4.5,
+              width: 200,
+            },
+}}
         >
           <MenuItem onClick={this.handleClose}>Messages</MenuItem>
         </Menu>

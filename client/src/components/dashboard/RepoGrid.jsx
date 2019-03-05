@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, TextField } from "@material-ui/core";
-import Repository from './RepoSnippet';
+import Repository from './RepoCard';
 import { connect } from "react-redux";
 import { updateSearchField, changePage, initRepos } from '../../reducers/repositories';
 import Pagination from '../core/Pagination';
@@ -13,34 +13,27 @@ const styles = {
   },
 
   container: {
-    width: '100%',
-    // padding: '10px'
   },
 
   subcontainer: {
-    width: '70%',
-    // display: 'block'
-    // padding: '10px'
-    // marginLeft: '20vw',
+    width: '65%',
   },
 
   repo: {
-    // flex: '1 0 21%',
     width: '100%',
   },
 };
 
-class Repositories extends Component {
-
+class RepoGrid extends Component {
   componentDidMount() {
     this.props.initRepos().then(
-      (_) => {
+      () => {
         this.props.updateSearchField("");
       }
     );
   }
 
-  handleSearchFieldChange = (e) => {
+  handleSearchFieldChange = e => {
     this.props.updateSearchField(e.target.value);
   };
 
@@ -78,7 +71,9 @@ class Repositories extends Component {
             </Typography>
           </Grid>
 
-          <Grid item>
+          <Grid item
+                className={classes.textInput}
+          >
             <TextField
               placeholder="Search for a repo..."
               id="outlined-bare"
@@ -135,11 +130,9 @@ class Repositories extends Component {
 }
 
 const mapStateToProps = state => {
-  const { repos } = state;
-  const { allRepos, filteredRepos, pageRepos, search, numPages, pageOffset } = repos;
+  const { allRepos, filteredRepos, pageRepos, search, numPages, pageOffset } = state.repos;
 
   const numResults = filteredRepos.length;
-
   return { allRepos, numResults, pageRepos, search, numPages, pageOffset };
 };
 
@@ -152,4 +145,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withStyles(styles)(Repositories));
+)(withStyles(styles)(RepoGrid));

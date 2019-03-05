@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/es/styles/withStyles";
-import Repositories from './Repos';
+import Repositories from './RepoGrid';
 import QuickStats from "./QuickStats";
 
 const style =
@@ -26,9 +26,7 @@ const style =
     }
   };
 
-function Dashboard(props) {
-  const {classes} = props;
-
+function Dashboard({classes}) {
   return (
     <Grid item
           container
@@ -42,8 +40,7 @@ function Dashboard(props) {
       <QuickStats/>
 
       <Grid item className={classes.repos}>
-        <Repositories>
-        </Repositories>
+        <Repositories/>
       </Grid>
     </Grid>
   );
