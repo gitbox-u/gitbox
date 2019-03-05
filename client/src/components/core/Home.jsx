@@ -27,7 +27,6 @@ const Home = (props) => {
       direction="column"
       className={classes.fullHeight}
     >
-
       <Grid item>
         <img src={logo} className={classes.logo} alt='Gitmap' />
       </Grid>

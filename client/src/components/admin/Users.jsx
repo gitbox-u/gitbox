@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Button, TextField } from '@material-ui/core';
+import { Button, TextField, IconButton } from '@material-ui/core';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { connect } from "react-redux";
-import { removeUser, initUsers, filterUsers, updateSearch } from '../../reducers/users';
+import { addUser, removeUser, initUsers, filterUsers, updateSearch, updateUsername } from '../../reducers/users';
+
+
+import Add from '@material-ui/icons/Add';
 
 const styles = theme => ({
   root: {
@@ -26,6 +29,15 @@ const styles = theme => ({
   button: {
     margin: '0 10px',
   },
+
+  topbar: {
+    display: "flex",
+    alignContent: "center",
+  },
+
+  grow: {
+    flexGrow: 1,
+  }
 });
 
 class Users extends Component {
@@ -43,6 +55,14 @@ class Users extends Component {
     });
   };
 
+  handleUsername = (e) => {
+    this.props.updateUsername(e.target.value);
+  }
+
+  addUser = (e) => {
+    this.props.addUser();
+  }
+
   handleSearch = e => {
     this.props.updateSearch(e.target.value);
   };
@@ -50,23 +70,37 @@ class Users extends Component {
   render() {
     const { classes } = this.props;
     const { expanded } = this.state;
-    const users = this.props.users;
+
+    const {username, users} = this.props;
 
     return (
       <div className={classes.root}>
-        <TextField
-          placeholder="Search for a user..."
-          id="outlined-bare"
-          margin="normal"
-          variant="outlined"
-          // value={search}
-          onChange={this.handleSearch}
-          className={classes.textInput}
-        />
+        <div className={classes.topbar}>
+          <TextField
+            placeholder="Search for a user..."
+            id="outlined-bare"
+            margin="normal"
+            variant="outlined"
+            onChange={this.handleSearch}
+            className={classes.textInput}
+          />
+          <div className={classes.grow}></div>
+          <TextField
+            placeholder="New user..."
+            id="outlined-bare"
+            margin="normal"
+            variant="outlined"
+            value={username}
+            className={classes.textInput}
+          />
+          <IconButton onClick={this.addUser}>
+            <Add></Add>
+          </IconButton>
+        </div>
         {
           users.map(
             user => (
-              <ExpansionPanel expanded={expanded === user.username} onChange={this.handleChange(user.username)} key={user.id}>
+              <ExpansionPanel expanded={expanded === user.id} onChange={this.handleChange(user.id)} key={user.id}>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography className={classes.heading}>{user.username}</Typography>
                   <Typography className={classes.secondaryHeading}>{user.repos} repos - {user.commits} commits</Typography>
@@ -91,12 +125,11 @@ class Users extends Component {
 }
 
 const mapStateToProps = state => {
-  const { users, filter } = state.users;
-  console.log(state);
-  console.log(filterUsers(users, filter));
+  const { users, filter, username } = state.users;
 
   return {
-    users: filterUsers(users, filter)
+    users: filterUsers(users, filter),
+    username,
   };
 };
 
@@ -104,6 +137,8 @@ const mapDispatchToProps = {
   removeUser,
   initUsers,
   updateSearch,
+  updateUsername,
+  addUser,
 };
 
 export default connect(

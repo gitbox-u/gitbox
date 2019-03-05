@@ -2,13 +2,17 @@ import { getUsers } from '../api/api';
 
 const ACTIONS = {
   SET_USERS: 'USERS_SET_USER',
+  ADD_USER: 'USERS_ADD_USER',
   REMOVE_USER: 'USERS_REMOVE_USER',
   UPDATE_SEARCH: 'USERS_UPDATE_SEARCH',
+  UPDATE_USERNAME: 'USERS_UPDATE_USERNAME',
+
 };
 
 const initial = {
   users: [],
   filter: '',
+  username: '',
 };
 
 function filterUsers(users, filter) {
@@ -16,7 +20,7 @@ function filterUsers(users, filter) {
 }
 
 const initUsers = () => (dispatch, getState) => {
-  const {secret} = getState().login;
+  const { secret } = getState().login;
 
   return getUsers(secret).then(
     res => {
@@ -27,6 +31,12 @@ const initUsers = () => (dispatch, getState) => {
     }
   )
 };
+
+const addUser = () => (dispatch, getState) => {
+  dispatch({
+    type: ACTIONS.ADD_USER,
+  })
+}
 
 const removeUser = id => dispatch => {
   dispatch({
@@ -42,18 +52,29 @@ const updateSearch = filter => dispatch => {
   })
 };
 
+const updateUsername = username => dispatch => {
+  dispatch({
+    type: ACTIONS.UPDATE_USERNAME,
+    username,
+  })
+}
+
 const users = (state = initial, action) => {
   switch (action.type) {
     case ACTIONS.SET_USERS:
-      return {users: action.users, filter: ''};
+      return { users: action.users, filter: '' };
+    case ACTIONS.ADD_USER:
+      return { ...state, users: [...state.users, { username: "hardcoded name", id: Math.floor(Math.random() * 1000000000), commits: 0, repos: 0 }] }
     case ACTIONS.REMOVE_USER:
-      return {users: state.users.filter(user => user.id !== action.id), filter: ''};
+      return { users: state.users.filter(user => user.id !== action.id), filter: '' };
     case ACTIONS.UPDATE_SEARCH:
-      return {users: state.users, filter: action.filter};
+      return { users: state.users, filter: action.filter };
+    case ACTIONS.UPDATE_USERNAME:
+      return { ...state, username: action.username };
     default:
       return state;
   }
 };
 
-export { removeUser, initUsers, filterUsers, updateSearch };
+export { addUser, removeUser, initUsers, filterUsers, updateSearch, updateUsername };
 export default users

@@ -29,8 +29,8 @@ export async function getUsers(auth) {
     },
 
     {
-      username: "MuradS",
-      id: 2,
+      username: "Murad",
+      id: 3,
       repos: 0,
       commits: 0
     }

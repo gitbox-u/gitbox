@@ -6,8 +6,8 @@ import { Typography } from '@material-ui/core/es';
 const styles = {
   back: {
     background: "lightgrey",
-    borderRadius: '10px',
-    padding: 2,
+    borderRadius: 25,
+    paddingRight: 10,
     display: "flex",
     alignContent: "center",
   },
