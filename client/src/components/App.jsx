@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Route, withRouter} from 'react-router-dom';
 import Login from './Login';
+import Signup from './Signup';
 import Header from './Header';
 import Dashboard from './dashboard/Dashboard';
 import Repository from './repository/Repository';
@@ -44,8 +45,9 @@ class App extends Component {
     const {location} = this.props;
     return (
       <MuiThemeProvider theme={theme}>
-        {location.pathname !== '/login' && <Header/>}
+        {location.pathname !== '/login' && location.pathname !== '/signup' && <Header/>}
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/signup" component={Signup}/>
         <Route exact path="/dashboard" component={Dashboard}/>
         <Route exact path="/repository/:id" component={Repository}/>
         <Route exact path="/admin" component={Admin}/>

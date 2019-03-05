@@ -20,7 +20,7 @@ const styles = {
   },
 
   formButton: {
-    marginTop: '20px',
+    marginTop: '10px',
   },
 
   logo: {
@@ -116,7 +116,7 @@ class Login extends Component {
                   <Button fullWidth variant="outlined" color="primary" onClick={this.handleLogin}
                           className={classes.formButton}>Login</Button>
                   <Button fullWidth variant="outlined" color="primary" onClick={this.handleSignup}
-                          className={classes.formButton}>Sign Up</Button>
+                          className={classes.formButton}>Register</Button>
                 </Grid>
               </Grid>
             </Paper>

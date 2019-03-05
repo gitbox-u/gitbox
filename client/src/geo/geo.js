@@ -6,7 +6,7 @@ export const geometric = () => {
   let numPointsY;
   let unitWidth;
   let unitHeight;
-  let points;
+  var points;
 
 
   function onLoad() {
@@ -129,7 +129,4 @@ export const geometric = () => {
 
   onLoad();
   window.onresize = onResize;
-}
-
-
-
+};

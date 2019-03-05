@@ -25,7 +25,6 @@ const styles = {
 };
 
 class RepoGrid extends Component {
-
   componentDidMount() {
     this.props.initRepos().then(
       () => {
@@ -131,11 +130,9 @@ class RepoGrid extends Component {
 }
 
 const mapStateToProps = state => {
-  const { repos } = state;
-  const { allRepos, filteredRepos, pageRepos, search, numPages, pageOffset } = repos;
+  const { allRepos, filteredRepos, pageRepos, search, numPages, pageOffset } = state.repos;
 
   const numResults = filteredRepos.length;
-
   return { allRepos, numResults, pageRepos, search, numPages, pageOffset };
 };
 

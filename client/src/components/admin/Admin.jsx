@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import {Grid, TextField} from "@material-ui/core";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import Users from './Users'
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
-import SearchFields from './searchFields';
 
 const style =
   {
