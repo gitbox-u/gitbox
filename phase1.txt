@@ -11,9 +11,9 @@ Please email me at edt.chen@mail.utoronto.ca if you have any questions or concer
 
 - Once you have the repo cloned to your local machine (and made sure you have node and npm installed):
 	- cd into the `client` directory.
-	- run `npm install`
+	- run `npm install` (will take a while)
 		- If you encounter any errors installing dependencies, just delete `node_modules` folder and retry.
-	- run `npm start`
+	- run `npm start` (will take a while)
 
 	- Your web browser should pop up with the react app. (if not, naivete to `localhost:3000`)
 
