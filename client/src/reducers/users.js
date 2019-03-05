@@ -47,7 +47,7 @@ const users = (state = initial, action) => {
     case ACTIONS.SET_USERS:
       return {users: action.users, filter: ''};
     case ACTIONS.REMOVE_USER:
-      return {users: state.filter(user => user.id !== action.id), filter: ''};
+      return {users: state.users.filter(user => user.id !== action.id), filter: ''};
     case ACTIONS.UPDATE_SEARCH:
       return {users: state.users, filter: action.filter};
     default:
