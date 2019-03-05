@@ -8,21 +8,28 @@ import Cookies from 'js-cookie';
 export async function getUsers(auth) {
   return [
     {
-      username: "What's",
+      username: "Linwen",
       id: 0,
       repos: 30,
       commits: 554
     },
 
     {
-      username: "Up",
+      username: "Eric",
       id: 1,
       repos: 3000,
       commits: 1
     },
 
     {
-      username: "Dude",
+      username: "Howard",
+      id: 2,
+      repos: 0,
+      commits: 0
+    },
+
+    {
+      username: "MuradS",
       id: 2,
       repos: 0,
       commits: 0
