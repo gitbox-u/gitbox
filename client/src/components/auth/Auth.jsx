@@ -13,14 +13,14 @@ const styles = {
     width: '350px',
   },
 
+  formButton: {
+    marginTop: '10px',
+  },
+
   formInput: {
     marginTop: '5px',
     borderBottom: '1px solid black',
     padding: '0 5px',
-  },
-
-  formButton: {
-    marginTop: '10px',
   },
 
   logo: {
@@ -60,7 +60,7 @@ function Auth({classes}) {
         spacing={0}
         justify="center"
         direction="column"
-        style={{minHeight: '85vh'}}
+        // style={{minHeight: '85vh'}}
         className={classes.height}
       >
         <Grid item>

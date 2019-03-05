@@ -19,7 +19,7 @@ const styles = {
 
   logoLabel: {
     letterSpacing: '0.1em'
-  }
+  },
 };
 
 function Signup({classes, history}) {
@@ -75,7 +75,7 @@ function Signup({classes, history}) {
           // onChange={this.handleLoginChange("password")}
           fullWidth
           type="password"
-          placeholder="Confirm"
+          placeholder="Confirm password"
           className={classes.formInput}
         />
       </Grid>
