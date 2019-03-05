@@ -68,7 +68,7 @@ sent by the admin/general notifications)
 	(deletions/additions) 
 	- the top graph is a break down of the git commit branches, which shows
 	the topology of your git repository over time. (left is most recent)
-	The graph can be navigated like a map, with zoom/unzoom gestures.
+	The graph can be dragged to navigate.
 -----
 Admin Functionality:
 - the admins also have their own dashboard for repos (same as a general user)
