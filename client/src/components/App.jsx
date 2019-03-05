@@ -7,7 +7,7 @@ import Repository from './repository/Repository';
 import Admin from './admin/Admin';
 
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import {initLogin} from '../reducers/login';
 
 const theme = createMuiTheme({

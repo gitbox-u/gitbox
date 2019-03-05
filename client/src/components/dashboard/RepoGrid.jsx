@@ -28,13 +28,13 @@ class RepoGrid extends Component {
 
   componentDidMount() {
     this.props.initRepos().then(
-      (_) => {
+      () => {
         this.props.updateSearchField("");
       }
     );
   }
 
-  handleSearchFieldChange = (e) => {
+  handleSearchFieldChange = e => {
     this.props.updateSearchField(e.target.value);
   };
 

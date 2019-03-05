@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Button, TextField, withStyles, Grid, Typography, Paper } from '@material-ui/core';
-import { connect } from 'react-redux';
-import { updateLoginField, tryLogin } from '../reducers/login';
-import { withRouter } from "react-router-dom";
+import React, {Component} from 'react';
+import {Button, TextField, withStyles, Grid, Typography, Paper} from '@material-ui/core';
+import {connect} from 'react-redux';
+import {updateLoginField, tryLogin} from '../reducers/login';
+import {withRouter} from "react-router-dom";
 import logo from '../assets/logo.svg';
-import { geometric } from '../geo/geo.js'
+import {geometric} from '../geo/geo.js'
 
 const styles = {
   formContainer: {
@@ -33,21 +33,6 @@ const styles = {
 };
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.routeChange = this.routeChange.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleSignup = this.handleSignup.bind(this);
-  }
-
-  routeChange(path) {
-    this.props.history.push(path);
-  };
-
-  handleLoginChange = name => event => {
-    this.props.updateLoginField(name, event.target.value);
-  };
-
   componentDidMount() {
     try {
       geometric();
@@ -56,38 +41,46 @@ class Login extends Component {
     }
   }
 
-  handleLogin() {
+  routeChange = path => {
+    this.props.history.push(path);
+  };
+
+  handleLoginChange = name => event => {
+    this.props.updateLoginField(name, event.target.value);
+  };
+
+  handleLogin = () => {
     this.props.tryLogin();
     this.routeChange("dashboard");
   };
 
-  handleSignup() {
+  handleSignup = () => {
     this.routeChange("signup");
   };
 
   render() {
-    const { username, password, classes } = this.props;
+    const {username, password, classes} = this.props;
 
     return (
       <div>
-        <div id="bg" />
+        <div id="bg"/>
         <Grid
           container
           alignItems="center"
           spacing={0}
           justify="center"
           direction="column"
-          style={{ minHeight: '85vh' }}
+          style={{minHeight: '85vh'}}
         >
           <Grid item>
             <Paper className={classes.formContainer}>
               <Grid container
-                direction="column"
-                alignItems="center"
-                spacing={8}
-                justify="center">
+                    direction="column"
+                    alignItems="center"
+                    spacing={8}
+                    justify="center">
                 <Grid item>
-                  <img src={logo} className={classes.logo} alt="Gitmap" />
+                  <img src={logo} className={classes.logo} alt="Gitmap"/>
                 </Grid>
                 <Grid item>
                   <Typography variant="h4" className={classes.logoLabel}>
@@ -121,9 +114,9 @@ class Login extends Component {
                 </Grid>
                 <Grid item>
                   <Button fullWidth variant="outlined" color="primary" onClick={this.handleLogin}
-                    className={classes.formButton}>Login</Button>
+                          className={classes.formButton}>Login</Button>
                   <Button fullWidth variant="outlined" color="primary" onClick={this.handleSignup}
-                    className={classes.formButton}>Sign Up</Button>
+                          className={classes.formButton}>Sign Up</Button>
                 </Grid>
               </Grid>
             </Paper>
@@ -140,10 +133,10 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state) => {
-  const { login } = state;
-  const { username, password } = login;
+  const {login} = state;
+  const {username, password} = login;
 
-  return { username, password };
+  return {username, password};
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login)));

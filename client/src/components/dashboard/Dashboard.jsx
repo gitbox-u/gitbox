@@ -26,9 +26,7 @@ const style =
     }
   };
 
-function Dashboard(props) {
-  const {classes} = props;
-
+function Dashboard({classes}) {
   return (
     <Grid item
           container

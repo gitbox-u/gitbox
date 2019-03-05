@@ -32,13 +32,13 @@ class RepoCard extends Component {
     raised: false
   };
 
-  routeChange = (path) => () => {
+  routeChange = path => () => {
     this.props.history.push(path);
   };
 
-  toggleRaised() {
+  toggleRaised = () => {
     this.setState({raised: !this.state.raised});
-  }
+  };
 
   render() {
     const { classes, name, desc, id } = this.props;

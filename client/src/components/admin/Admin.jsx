@@ -29,16 +29,14 @@ class Admin extends Component {
     this.state = {
       adding: false,
     };
-
-    this.add = this.add.bind(this);
   }
 
-  add() {
+  add = () => {
     console.log(this);
     this.setState({
       adding: true
     });
-  }
+  };
 
   render() {
     const {classes, search} = this.props;
