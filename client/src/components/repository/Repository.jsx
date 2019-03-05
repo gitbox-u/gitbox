@@ -165,7 +165,7 @@ class Repository extends Component {
                   Additions and Deletions
                 </Typography>
                 <div className={classes.deleteAdd}>
-                  <AddDelete data={data.languages}/>
+                  <AddDelete data={data.addDelete}/>
                 </div>
               </Paper>
             </Grid>
