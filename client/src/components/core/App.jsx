@@ -50,7 +50,7 @@ class App extends Component {
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/repository/:id" component={Repository} />
         <Route exact path="/admin" component={Admin} />
-        <Redirect path="/" to="/login"/>
+        {/* <Redirect path="/" to="/login"/> */}
       </MuiThemeProvider>
     );
   }

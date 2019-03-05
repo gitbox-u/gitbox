@@ -72,7 +72,7 @@ class RepoGrid extends Component {
           </Grid>
 
           <Grid item
-                className={classes.textInput}
+            className={classes.textInput}
           >
             <TextField
               placeholder="Search for a repo..."
@@ -91,6 +91,7 @@ class RepoGrid extends Component {
             direction="row"
             spacing={16}
             justify="space-evenly"
+            className={classes.repo}
             alignItems="center"
           >
             {
@@ -98,15 +99,15 @@ class RepoGrid extends Component {
                 repo => (
                   <Grid item
                     key={repo}
-                    // lg="3"
-                    // md="3"
-                    // sm="6"
-                    // xs="12"
-                    className={classes.repo}
+                  // lg={3}
+                  // md={3}
+                  // sm={6}
+                  // xs={12}
                   >
                     <Repository id={repo}
                       name={allRepos[repo].name}
                       desc={allRepos[repo].desc}
+                      breakdown={allRepos[repo].breakdown}
                       className={classes.repo}
                     />
                   </Grid>
