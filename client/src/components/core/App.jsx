@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, Redirect, withRouter } from 'react-router-dom';
 import Header from './Header';
 import Dashboard from '../dashboard/Dashboard';
 import Repository from '../repository/Repository';
 import Admin from '../admin/Admin';
-import FourOhFour from '../core/FourOhFour';
 
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import { connect } from 'react-redux';
@@ -51,6 +50,7 @@ class App extends Component {
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/repository/:id" component={Repository} />
         <Route exact path="/admin" component={Admin} />
+        <Redirect path="/" to="/login"/>
       </MuiThemeProvider>
     );
   }
