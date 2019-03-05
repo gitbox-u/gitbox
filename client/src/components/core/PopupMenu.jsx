@@ -6,11 +6,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Mail from '@material-ui/icons/MailOutline'
 import Badge from '@material-ui/core/Badge';
 
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import Typography from '@material-ui/core/Typography';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
-import PriorityHighIcon from '@material-ui/icons/PriorityHigh';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
 
 
 class SimpleMenu extends React.Component {
@@ -51,25 +50,40 @@ class SimpleMenu extends React.Component {
             style: {
             //   maxHeight: ITEM_HEIGHT * 4.5,
               width: 400,
+              maxHeight: 500,
+              overflowY: 'auto',
+              overflowX: 'hidden',
+
             },
 }}
         >
 
-          <MenuItem onClick={this.handleClose} style={{whiteSpace: 'normal', paddingTop: "40px", paddingBottom: "40px"}}>  
+        
+    
+          <ListSubheader style={{backgroundColor:'white'}}>{'Notifications'}</ListSubheader>
+          <ListItem onClick={this.handleClose} style={{width: "380px", whiteSpace: 'normal', paddingTop: "5px", paddingBottom: "5px"}}>  
             <p>This song is just six words long. This song is just six words long.  This song is just six words long.  This song is just six words long.</p> 
-          </MenuItem>
+          </ListItem>
 
-          <MenuItem onClick={this.handleClose} style={{whiteSpace: 'normal', paddingTop: "40px", paddingBottom: "40px"}}>  
+          <ListItem onClick={this.handleClose} style={{width: "380px",whiteSpace: 'normal', paddingTop: "5px", paddingBottom: "5px"}}>  
             <p>This is a super short message</p> 
-          </MenuItem>
+          </ListItem>
 
-          <MenuItem onClick={this.handleClose} style={{whiteSpace: 'normal', paddingTop: "40px", paddingBottom: "40px"}}>  
+          <ListItem onClick={this.handleClose} style={{width: "380px",whiteSpace: 'normal', paddingTop: "5px", paddingBottom: "5px"}}>  
             <p> HULLLLLOO WHAT IS UP FJKSHKJFHSFHSJKFJNSCNSKJNFJKSFKJSDHDJK FJKSHFJSJKF FJSHFJKSFJK FSJHFKJS </p>
-          </MenuItem>
+          </ListItem>
 
-          <MenuItem onClick={this.handleClose} style={{whiteSpace: 'normal', paddingTop: "40px", paddingBottom: "40px"}}>  
+          <ListItem onClick={this.handleClose} style={{width: "380px",whiteSpace: 'normal', paddingTop: "5px", paddingBottom: "5px"}}>  
             <p>This song is just six words long. </p> 
-          </MenuItem>
+          </ListItem>
+
+          <ListItem onClick={this.handleClose} style={{width: "380px",whiteSpace: 'normal', paddingTop: "5px", paddingBottom: "5px"}}>  
+            <p>This song is just six words long. This song is just six words long.  This song is just six words long.  This song is just six words long.</p> 
+          </ListItem>
+
+          <ListItem onClick={this.handleClose} style={{width: "380px",whiteSpace: 'normal', paddingTop: "5px", paddingBottom: "5px"}}>  
+            <p>This song is just six words long. This song is just six words long.  This song is just six words long.  This song is just six words long.</p> 
+          </ListItem>
           {/* <MenuItem onClick={this.handleClose} style={{whiteSpace: 'normal'}}>
 
           <ListItemIcon>
