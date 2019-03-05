@@ -9,6 +9,7 @@ import ContributorList from "./ContributorList"
 import AddDelete from "./AddDelete";
 import {initDataForRepo} from '../../reducers/repositories';
 import FolderTree from './FolderTree';
+import MiniCalendar from "./MiniCalendar";
 
 const styles = {
   repoViewContainer: {
@@ -120,7 +121,7 @@ class Repository extends Component {
 
             <Paper>
               <Typography variant="h6" className={classes.cardHeader}>
-                Language Breakdown
+                Folder Tree
               </Typography>
               <div className={classes.codeStream}>
                 <FolderTree data={data.languages}/>
@@ -149,10 +150,10 @@ class Repository extends Component {
               <Grid item>
                 <Paper>
                   <Typography variant="h6" className={classes.cardHeader}>
-                    Language Breakdown
+                    Top 5 in last 5 months
                   </Typography>
                   <div className={classes.langBreak}>
-                    <LanguageBreakdown data={data.languages}/>
+                    <MiniCalendar data={data.languages}/>
                   </div>
                 </Paper>
               </Grid>

@@ -8,6 +8,7 @@
     "@material-ui/styles": "^3.0.0-alpha.10",
     "@nivo/calendar": "^0.52.1",
     "@nivo/core": "^0.52.1",
+    "@nivo/heatmap": "^0.52.1",
     "@nivo/line": "^0.52.1",
     "@nivo/pie": "^0.52.1",
     "@nivo/stream": "^0.52.1",
