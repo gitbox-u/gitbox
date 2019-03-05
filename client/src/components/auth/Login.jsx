@@ -36,8 +36,13 @@ class Login extends Component {
   handleLogin = () => {
     this.props.tryLogin().then(
       res => {
-        if (res.result.loggedIn)
-          this.routeChange('dashboard');
+        if (res.result.loggedIn) {
+          if (res.result.isAdmin)
+            this.routeChange('admin');
+          else
+            this.routeChange('dashboard');
+
+        }
       }
     );
   };
