@@ -5,7 +5,10 @@ const ACTIONS = {
   REMOVE_USER: "USERS_REMOVE_USER",
 };
 
-const initial = [];
+const initial = {
+  users: [],
+
+};
 
 const initUsers = () => (dispatch, getState) => {
   const {secret} = getState().login;

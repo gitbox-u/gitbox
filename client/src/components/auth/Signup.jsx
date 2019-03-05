@@ -1,6 +1,6 @@
 import React from 'react'
 import {Grid, Button, TextField, Typography, withStyles} from '@material-ui/core'
-import logo from '../assets/logo.svg';
+import logo from '../../assets/logo.svg';
 
 const styles = {
   formInput: {
@@ -19,7 +19,7 @@ const styles = {
 
   logoLabel: {
     letterSpacing: '0.1em'
-  }
+  },
 };
 
 function Signup({classes, history}) {
