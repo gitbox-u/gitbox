@@ -10,7 +10,7 @@ function LanguageBreakdown(props) {
     <ResponsiveSunburst
       data={data}
       margin={{
-        "top": 40,
+        "top": 0,
         "right": 20,
         "bottom": 20,
         "left": 20

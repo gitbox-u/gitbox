@@ -9,7 +9,7 @@ function CodeStream(props) {
       data={stats}
       keys={props.contributors}
       margin={{
-        "top": 50,
+        "top": 20,
         "right": 110,
         "bottom": 50,
         "left": 60
