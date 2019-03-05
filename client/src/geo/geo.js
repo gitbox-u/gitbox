@@ -104,29 +104,32 @@ export const geometric = () => {
     randomize();
     for (let i = 0; i < document.querySelector('#bg svg').childNodes.length; i++) {
       let polygon = document.querySelector('#bg svg').childNodes[i];
-      let animate = polygon.childNodes[0];
-      if (animate.getAttribute('to')) {
-        animate.setAttribute('from', animate.getAttribute('to'));
+      if (polygon) {
+        let animate = polygon.childNodes[0];
+        if (animate.getAttribute('to')) {
+          animate.setAttribute('from', animate.getAttribute('to'));
+        }
+        animate.setAttribute('to', points[polygon.point1].x + ',' + points[polygon.point1].y + ' ' + points[polygon.point2].x + ',' + points[polygon.point2].y + ' ' + points[polygon.point3].x + ',' + points[polygon.point3].y);
+        // animate.beginElement();
       }
-      animate.setAttribute('to', points[polygon.point1].x + ',' + points[polygon.point1].y + ' ' + points[polygon.point2].x + ',' + points[polygon.point2].y + ' ' + points[polygon.point3].x + ',' + points[polygon.point3].y);
-      // animate.beginElement();
     }
     refreshTimeout = setTimeout(function () {
       let a = document.getElementById("bg");
-      if(a === null) return;
+      if (a === null) return;
       refresh();
     }, refreshDuration);
   }
 
   function onResize() {
-    document.querySelector('#bg svg').remove();
+    let bg = document.querySelector('#bg svg');
+    if (bg) bg.remove();
     clearTimeout(refreshTimeout);
     onLoad();
   }
 
   onLoad();
   window.onresize = onResize;
-};
+}
 
 
 
