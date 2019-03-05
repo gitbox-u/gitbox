@@ -79,7 +79,7 @@ function AddDelete(props) {
         }
       ]}
       margin={{
-        "top": 50,
+        "top": 30,
         "right": 20,
         "bottom": 50,
         "left": 60

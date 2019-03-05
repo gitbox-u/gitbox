@@ -1,10 +1,10 @@
 Phase 1 instructions for Starting and using the React Web App
 
-Intial Start Up Instructions
+Initial Start Up Instructions
 ------
 Comment: (We asked our TA about using react, and they said it was fine if we provided instructions on how to
 start the react web app. The reason we didn't compile and provide the html files was because it is 
-impossible to compile to html, js while preserving the routing.)
+impossible to compile to html, js while preserving the routing.) The issue will be resolved once the website is hosted.
 
 Please email me at edt.chen@mail.utoronto.ca if you have any questions or concerns!
 
@@ -15,7 +15,7 @@ Please email me at edt.chen@mail.utoronto.ca if you have any questions or concer
 		- If you encounter any errors installing dependencies, just delete `node_modules` folder and retry.
 	- run `npm start` (will take a while)
 
-	- Your web browser should pop up with the react app. (if not, nagivate to `localhost:3000`)
+	- Your web browser should pop up with the react app. (if not, naivete to `localhost:3000`)
 
 ------
 
@@ -34,9 +34,9 @@ Sign Up page
 - clicking on the register user will allow users to make a account (Not fully implemented, requires backend)
 ------
 User Functionality:
-Messages Notifcation 
+Messages Notification
 - User can click on the envelope to see what messages they have (which will be
-sent by the admin/general notifcations)
+sent by the admin/general notifications)
 - User can logout using the logout user button
 - Dashboard page contains the users repos
 	- there is a add repos options that users can add a link in that
@@ -44,16 +44,16 @@ sent by the admin/general notifcations)
 	- All their repos will be stored on this page and there is a search
 	bar that allows users to search through all the repos they have 
 	connected with their accounts
-	- repos page also has pages that allows you to go throuh mutliple 
+	- repos page also has pages that allows you to go through multiple
 	pages of repos
-	-the circle graph at the top gives a break down of the languges
+	-the circle graph at the top gives a break down of the languages
 	used in all the repos connected to the user, hovering over each 
 	colour gives additional info 
 	- the calendar stat gives info about how many commits a user has on
 	a given day (hovering over any coloured box gives this info)
 	- users can click on any of their repos (which have coloured circles
 	indicating the languages used in each repo) click on a repo opens up
-	a seperate page for that repo
+	a separate page for that repo
 
 - Repository Page
 	- each repo connected to the user will have a repo page
@@ -64,10 +64,11 @@ sent by the admin/general notifcations)
 	- each graph provides different statistics that are calculated 
 	for each repo (including top right: code stream (contributions per 
 	user, bottom right - file tree (break down of files/folders), top 
-	left (langauge breakdowns, and info about each file), bottom left
+	left (language breakdowns, and info about each file), bottom left
 	(deletions/additions) 
 	- the top graph is a break down of the git commit branches, which shows
 	the topology of your git repository over time. (left is most recent)
+	The graph can be navigated like a map, with zoom/unzoom gestures.
 -----
 Admin Functionality:
 - the admins also have their own dashboard for repos (same as a general user)
