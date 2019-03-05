@@ -37,6 +37,6 @@ const Home = (props) => {
       </Grid>
     </Grid>
   )
-}
+};
 
 export default withStyles(styles)(Home);

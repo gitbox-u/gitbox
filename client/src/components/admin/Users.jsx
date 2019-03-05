@@ -57,11 +57,11 @@ class Users extends Component {
 
   handleUsername = (e) => {
     this.props.updateUsername(e.target.value);
-  }
+  };
 
   addUser = (e) => {
     this.props.addUser();
-  }
+  };
 
   handleSearch = e => {
     this.props.updateSearch(e.target.value);

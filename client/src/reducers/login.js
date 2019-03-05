@@ -1,4 +1,4 @@
-import { apiLogin, apiLogout } from './../api/api';
+import {apiLogin, apiLogout} from './../api/api';
 import Cookies from 'js-cookie';
 
 const ACTIONS = {

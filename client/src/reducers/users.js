@@ -36,7 +36,7 @@ const addUser = () => (dispatch, getState) => {
   dispatch({
     type: ACTIONS.ADD_USER,
   })
-}
+};
 
 const removeUser = id => dispatch => {
   dispatch({
@@ -57,14 +57,14 @@ const updateUsername = username => dispatch => {
     type: ACTIONS.UPDATE_USERNAME,
     username,
   })
-}
+};
 
 const users = (state = initial, action) => {
   switch (action.type) {
     case ACTIONS.SET_USERS:
       return { users: action.users, filter: '' };
     case ACTIONS.ADD_USER:
-      return { ...state, users: [...state.users, { username: "hardcoded name", id: Math.floor(Math.random() * 1000000000), commits: 0, repos: 0 }] }
+      return { ...state, users: [...state.users, { username: "hardcoded name", id: Math.floor(Math.random() * 1000000000), commits: 0, repos: 0 }] };
     case ACTIONS.REMOVE_USER:
       return { users: state.users.filter(user => user.id !== action.id), filter: '' };
     case ACTIONS.UPDATE_SEARCH:

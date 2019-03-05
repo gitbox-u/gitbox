@@ -126,6 +126,6 @@ export const geometric = () => {
 
   onLoad();
   window.onresize = onResize;
-}
+};
 
 

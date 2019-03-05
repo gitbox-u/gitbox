@@ -25,7 +25,7 @@ const Language = (props) => {
       <Brightness style={{fill: colour}} className={classes.inline}></Brightness><Typography className={classes.inline}>{language}</Typography>
     </div>
   );
-}
+};
 
 
 export default withStyles(styles)(Language);
