@@ -8,7 +8,7 @@ import Badge from '@material-ui/core/Badge';
 
 import {logout} from '../../reducers/login';
 
-import PopUp from '../PopupMenu';
+import PopUp from './PopupMenu';
 
 const styles = {
   grow: {
@@ -46,13 +46,9 @@ class Header extends Component {
 
           <PopUp></PopUp>
 
-          <IconButton color='inherit'>
-            <Badge className={classes.margin} badgeContent={99} color="secondary"><Mail></Mail></Badge>
-          </IconButton>
-
-          <Button onClick={this.routeChange("/")} color="inherit" variant="text">
+          {/* <Button onClick={this.routeChange("/")} color="inherit" variant="text">
             Home
-          </Button>
+          </Button> */}
           {
             isAdmin ?
               <Button onClick={this.routeChange("/admin")} color="inherit" variant="text">
