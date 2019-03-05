@@ -37,7 +37,7 @@ class Header extends Component {
     return (
       <AppBar className={classes.appBar} color="primary" position="fixed">
         <Toolbar>
-          <IconButton color="inherit">
+          <IconButton disabled color="inherit">
             <img src={logo} width="40" alt="Gitmap"/>
           </IconButton>
 
