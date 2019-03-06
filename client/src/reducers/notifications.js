@@ -2,7 +2,7 @@ const ACTIONS = {
   PUSH_NOTIFICATION: 'NOTIFICATIONS_PUSH',
 };
 
-const initial = [{message: 'test'}];
+const initial = [{message: 'test'},{message: 'this thing'}];
 
 const addNotification = message => dispatch => dispatch({
   type: ACTIONS.PUSH_NOTIFICATION,

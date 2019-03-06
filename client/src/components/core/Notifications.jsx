@@ -3,7 +3,6 @@ import {IconButton, Menu} from '@material-ui/core';
 import {Notifications} from '@material-ui/icons'
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/ListItem';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import {connect} from 'react-redux';
 
 class NotificationMenu extends React.Component {
@@ -44,14 +43,13 @@ class NotificationMenu extends React.Component {
               maxHeight: 500,
               overflowY: 'auto',
               overflowX: 'hidden',
-
             },
           }}
         >
           {
             notifications.map((n, i) => (
                 <MenuItem key={i} onClick={this.handleClose}
-                          style={{outline: 'none'}}>
+                          >
                   <p>{n.message}</p>
                 </MenuItem>
               )
