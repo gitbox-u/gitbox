@@ -11,12 +11,14 @@ import {BrowserRouter} from 'react-router-dom';
 import login from './reducers/login';
 import repositories from './reducers/repositories';
 import users from './reducers/users';
+import notifications from './reducers/notifications';
 import thunk from 'redux-thunk';
 
 const store = createStore(combineReducers({
-  login: login,
-  repos: repositories,
-  users: users
+  login,
+  repos: repositories, // TODO: Rename consistently
+  users,
+  notifications,
 }), applyMiddleware(thunk));
 
 ReactDOM.render(

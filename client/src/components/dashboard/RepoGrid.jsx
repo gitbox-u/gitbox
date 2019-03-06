@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, TextField } from "@material-ui/core";
 import Repository from './RepoCard';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import { updateSearchField, changePage, initRepos } from '../../reducers/repositories';
 import Pagination from '../core/Pagination';
 import { Typography, withStyles } from '@material-ui/core/es';

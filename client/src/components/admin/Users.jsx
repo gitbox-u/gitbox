@@ -92,8 +92,6 @@ class Users extends Component {
 
 const mapStateToProps = state => {
   const { users, filter } = state.users;
-  console.log(state);
-  console.log(filterUsers(users, filter));
 
   return {
     users: filterUsers(users, filter)
