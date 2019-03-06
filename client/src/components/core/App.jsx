@@ -42,16 +42,16 @@ class App extends Component {
   }
 
   render() {
-    const { location } = this.props;
+    const {location} = this.props;
     return (
       <MuiThemeProvider theme={theme}>
-        {location.pathname !== '/login' && location.pathname !== '/signup' && <Header />}
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Auth} />
-        <Route exact path="/signup" component={Auth} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/repository/:id" component={Repository} />
-        <Route exact path="/admin" component={Admin} />
+        {location.pathname !== '/login' && location.pathname !== '/signup' && <Header/>}
+        <Route exact path="/" component={Home}/>
+        <Route exact path="/login" component={Auth}/>
+        <Route exact path="/signup" component={Auth}/>
+        <Route exact path="/dashboard" component={Dashboard}/>
+        <Route exact path="/repository/:id" component={Repository}/>
+        <Route exact path="/admin" component={Admin}/>
       </MuiThemeProvider>
     );
   }

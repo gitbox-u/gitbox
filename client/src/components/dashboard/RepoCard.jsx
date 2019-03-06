@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {withStyles} from '@material-ui/styles';
 import {ButtonBase, Card, CardHeader, Grid} from '@material-ui/core';
 import {withRouter} from "react-router-dom";
-
 import {getRandomColor} from '../../api/colours';
 import Language from './Language';
 

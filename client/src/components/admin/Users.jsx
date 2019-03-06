@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { Button, TextField, IconButton } from '@material-ui/core';
+import React, {Component} from 'react';
+import {withStyles} from '@material-ui/core/styles';
+import {Button, TextField, IconButton} from '@material-ui/core';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { connect } from "react-redux";
-import { addUser, removeUser, initUsers, filterUsers, updateSearch, updateUsername } from '../../reducers/users';
+import {connect} from "react-redux";
+import {addUser, removeUser, initUsers, filterUsers, updateSearch, updateUsername} from '../../reducers/users';
 
 
 import Add from '@material-ui/icons/Add';
@@ -68,8 +68,8 @@ class Users extends Component {
   };
 
   render() {
-    const { classes } = this.props;
-    const { expanded } = this.state;
+    const {classes} = this.props;
+    const {expanded} = this.state;
 
     const {username, users} = this.props;
 
@@ -101,19 +101,20 @@ class Users extends Component {
           users.map(
             user => (
               <ExpansionPanel expanded={expanded === user.id} onChange={this.handleChange(user.id)} key={user.id}>
-                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
                   <Typography className={classes.heading}>{user.username}</Typography>
-                  <Typography className={classes.secondaryHeading}>{user.repos} repos - {user.commits} commits</Typography>
+                  <Typography className={classes.secondaryHeading}>{user.repos} repos
+                    - {user.commits} commits</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                    className={classes.button}>Edit User</Button>
+                          className={classes.button}>Edit User</Button>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                    className={classes.button}>Message User</Button>
+                          className={classes.button}>Message User</Button>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                    className={classes.button}>Block User</Button>
+                          className={classes.button}>Block User</Button>
                   <Button variant="outlined" color="primary" onClick={() => this.props.removeUser(user.id)}
-                    className={classes.button}>Remove User</Button>
+                          className={classes.button}>Remove User</Button>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
             )
@@ -125,7 +126,7 @@ class Users extends Component {
 }
 
 const mapStateToProps = state => {
-  const { users, filter, username } = state.users;
+  const {users, filter, username} = state.users;
 
   return {
     users: filterUsers(users, filter),

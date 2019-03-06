@@ -10,7 +10,7 @@ const addNotification = message => dispatch => dispatch({
 });
 
 const notifications = (state = initial, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'NOTIFICATIONS_PUSH':
       return [...state, {message: action.message}];
     default:
@@ -18,5 +18,5 @@ const notifications = (state = initial, action) => {
   }
 };
 
-export { addNotification };
+export {addNotification};
 export default notifications;

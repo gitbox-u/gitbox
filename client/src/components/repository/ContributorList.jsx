@@ -3,14 +3,10 @@ import {withStyles} from '@material-ui/core';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-
 import Circle from '@material-ui/icons/Brightness1'
-
-
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Checkbox from '@material-ui/core/Checkbox';
-
 import ListSubheader from '@material-ui/core/ListSubheader';
 
 const styles = theme => ({
@@ -55,7 +51,7 @@ class ContributorList extends React.Component {
 
     return (
       <List dense className={classes.root}>
-      <ListSubheader style={{backgroundColor:'white'}}>{'Contributors'}</ListSubheader>
+        <ListSubheader style={{backgroundColor: 'white'}}>{'Contributors'}</ListSubheader>
         {this.props.contributors.map(contributor => (
           <ListItem key={contributor} button style={{minHeight: 100}}>
             <ListItemAvatar>
