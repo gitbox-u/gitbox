@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import {withStyles} from '@material-ui/styles';
 import {ButtonBase, Card, CardHeader, Grid} from '@material-ui/core';
-import {withRouter} from "react-router-dom";
+import {withRouter} from 'react-router-dom';
 import {getRandomColor} from '../../api/colours';
 import Language from './Language';
 
 const styles = {
   repoCard: {
-    width: '20vw',
+    width: '300px',
     height: '250px',
     transition: 'box-shadow 100ms',
     textAlign: 'left',
-    padding: "20px",
+    padding: '20px',
   },
 
   header: {
@@ -61,9 +61,9 @@ class RepoCard extends Component {
           />
           <Grid container
                 spacing={16}
-                justify="flex-start"
+                justify='flex-start'
                 className={classes.full}
-                alignItems="center"
+                alignItems='center'
           >
             {
               breakdown.map(
