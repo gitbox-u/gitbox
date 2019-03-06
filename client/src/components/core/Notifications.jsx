@@ -48,11 +48,10 @@ class NotificationMenu extends React.Component {
             },
           }}
         >
-          {/*<ListSubheader style={{backgroundColor: 'white'}}>{'Notifications'}</ListSubheader>*/}
           {
             notifications.map((n, i) => (
                 <MenuItem key={i} onClick={this.handleClose}
-                          style={{width: '380px', whiteSpace: 'normal', paddingTop: '5px', paddingBottom: '5px'}}>
+                          style={{outline: 'none'}}>
                   <p>{n.message}</p>
                 </MenuItem>
               )
