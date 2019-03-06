@@ -1,7 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {withStyles
-} from '@material-ui/core';
+import {withStyles} from '@material-ui/core';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -77,17 +75,5 @@ class ContributorList extends React.Component {
   }
 }
 
-function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
-ContributorList.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(ContributorList);

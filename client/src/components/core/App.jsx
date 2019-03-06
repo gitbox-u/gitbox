@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import { Route, Redirect, withRouter } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Route, withRouter} from 'react-router-dom';
 import Header from './Header';
 import Dashboard from '../dashboard/Dashboard';
 import Repository from '../repository/Repository';
 import Admin from '../admin/Admin';
 
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
-import { connect } from 'react-redux';
-import { initLogin } from '../../reducers/login';
+import {createMuiTheme, MuiThemeProvider} from '@material-ui/core';
+import {connect} from 'react-redux';
+import {initLogin} from '../../reducers/login';
 import Auth from "../auth/Auth";
+import Home from './Home';
 
 const theme = createMuiTheme({
   palette: {
@@ -44,13 +45,13 @@ class App extends Component {
     const { location } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
-        {location.pathname !== '/login' && location.pathname !== '/signup' && <Header/>}
+        {location.pathname !== '/login' && location.pathname !== '/signup' && <Header />}
+        <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Auth} />
         <Route exact path="/signup" component={Auth} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/repository/:id" component={Repository} />
         <Route exact path="/admin" component={Admin} />
-        <Redirect path="/" to="/login"/>
       </MuiThemeProvider>
     );
   }

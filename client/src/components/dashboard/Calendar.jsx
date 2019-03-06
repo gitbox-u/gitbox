@@ -12,7 +12,7 @@ function Calendar() {
       ]
       }
       from="2016-01-02"
-      to="2016-07-12"
+      to="2016-12-31"
       emptyColor="#eeeeee"
       colors={[
         "#0727b5",

@@ -1,12 +1,10 @@
-import React, {Component} from 'react';
-import {withStyles, AppBar, Toolbar, IconButton, Button} from '@material-ui/core';
+import React, { Component } from 'react';
+import { withStyles, AppBar, Toolbar, IconButton, Button } from '@material-ui/core';
 import logo from '../../assets/logo.svg';
-import {withRouter} from "react-router-dom";
-import {connect} from 'react-redux';
-import Mail from '@material-ui/icons/MailOutline'
-import Badge from '@material-ui/core/Badge';
+import { withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
 
-import {logout} from '../../reducers/login';
+import { logout } from '../../reducers/login';
 
 import PopUp from './PopupMenu';
 
@@ -30,33 +28,31 @@ class Header extends Component {
 
   render() {
 
-    const {classes} = this.props;
-    const {loggedIn, isAdmin, username} = this.props;
-    const {logout} = this.props;
+    const { classes } = this.props;
+    const { loggedIn, isAdmin, username } = this.props;
+    const { logout } = this.props;
 
     return (
       <AppBar className={classes.appBar} color="primary" position="fixed">
         <Toolbar>
           <IconButton disabled color="inherit">
-            <img src={logo} width="40" alt="Gitmap"/>
+            <img src={logo} width="40" alt="Gitmap" />
           </IconButton>
 
 
-          <div className={classes.grow}/>
+          <div className={classes.grow} />
 
-          <PopUp></PopUp>
-
-          {/* <Button onClick={this.routeChange("/")} color="inherit" variant="text">
-            Home
-          </Button> */}
           {
-            isAdmin ?
+            loggedIn && <PopUp></PopUp>
+          }
+          {
+            loggedIn ? isAdmin ?
               <Button onClick={this.routeChange("/admin")} color="inherit" variant="text">
                 Admin Panel
               </Button> :
               <Button onClick={this.routeChange("/dashboard")} color="inherit" variant="text">
                 Dashboard
-              </Button>
+              </Button> : <div></div>
           }
           {
             loggedIn ?
@@ -77,9 +73,9 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => {
-  const {login} = state;
-  const {loggedIn, isAdmin, username} = login;
-  return {loggedIn, isAdmin, username}
+  const { login } = state;
+  const { loggedIn, isAdmin, username } = login;
+  return { loggedIn, isAdmin, username }
 };
 
 const mapDispatchToProps = {

@@ -1,15 +1,18 @@
-import React, {Component} from 'react';
-import {withStyles} from '@material-ui/styles';
-import {ButtonBase, Card, CardHeader} from '@material-ui/core';
-import {withRouter} from "react-router-dom";
+import React, { Component } from 'react';
+import { withStyles } from '@material-ui/styles';
+import { ButtonBase, Card, CardHeader, Grid } from '@material-ui/core';
+import { withRouter } from "react-router-dom";
 
+import { getRandomColor } from '../../api/colours';
+import Language from './Language';
 
 const styles = {
   repoCard: {
-    width: '70%',
-    height: '150px',
+    width: '20vw',
+    height: '250px',
     transition: 'box-shadow 100ms',
     textAlign: 'left',
+    padding: "20px",
   },
 
   header: {
@@ -37,26 +40,47 @@ class RepoCard extends Component {
   };
 
   toggleRaised = () => {
-    this.setState({raised: !this.state.raised});
+    this.setState({ raised: !this.state.raised });
   };
 
   render() {
-    const { classes, name, desc, id } = this.props;
+    const { classes, name, desc, id, breakdown } = this.props;
 
     return (
       <ButtonBase onClick={this.routeChange(`/repository/${id}`)}
-                  className={classes.full}
+        className={classes.full}
       >
         <Card className={classes.repoCard}
-              onMouseOver={this.toggleRaised}
-              onMouseOut={this.toggleRaised}
-              raised={this.state.raised}
+          onMouseOver={this.toggleRaised}
+          onMouseOut={this.toggleRaised}
+          raised={this.state.raised}
         >
           <CardHeader
             className={classes.header}
             title={name}
             subheader={desc}
           />
+          <Grid container
+            spacing={16}
+            justify="flex-start"
+            className={classes.full}
+            alignItems="center"
+            >
+            {
+              breakdown.map(
+                (lang) => {
+                  const { language, proportion } = lang;
+                  const colour = getRandomColor();
+
+                  return (
+                    <Grid item>
+                      <Language colour={colour} language={language} proportion={proportion} />
+                    </Grid>
+                  )
+                }
+              )
+            }
+          </Grid>
         </Card>
       </ButtonBase>
     );

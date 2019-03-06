@@ -15,7 +15,7 @@ const styles = {
   grey: {
     color: '#888888'
   }
-}
+};
 
 
 
@@ -24,7 +24,7 @@ class Pagination extends Component {
   
   handleClick = (changeTo) => (e) => {
     this.props.onClick(e, changeTo);
-  }
+  };
 
   render() {
     const { max, current } = this.props;

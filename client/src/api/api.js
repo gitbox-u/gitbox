@@ -8,22 +8,29 @@ import Cookies from 'js-cookie';
 export async function getUsers(auth) {
   return [
     {
-      username: "What's",
+      username: "Linwen",
       id: 0,
       repos: 30,
       commits: 554
     },
 
     {
-      username: "Up",
+      username: "Eric",
       id: 1,
       repos: 3000,
       commits: 1
     },
 
     {
-      username: "Dude",
+      username: "Howard",
       id: 2,
+      repos: 0,
+      commits: 0
+    },
+
+    {
+      username: "Murad",
+      id: 3,
       repos: 0,
       commits: 0
     }
@@ -48,7 +55,7 @@ export async function getRepositoryData(id, auth) {
         commits: 300,
         additions: 2000,
         deletions: 400,
-        color: getRandomColor(),
+        color: "red",
       },
       {
         key: "2",
@@ -56,7 +63,7 @@ export async function getRepositoryData(id, auth) {
         commits: 300,
         additions: 2000,
         deletions: 400,
-        color: getRandomColor(),
+        color: "blue",
       },
       {
         key: "3",
@@ -64,7 +71,7 @@ export async function getRepositoryData(id, auth) {
         commits: 300,
         additions: 2000,
         deletions: 400,
-        color: getRandomColor(),
+        color: "hotpink",
       },
       {
         key: "4",
@@ -72,7 +79,7 @@ export async function getRepositoryData(id, auth) {
         commits: 300,
         additions: 2000,
         deletions: 400,
-        color: getRandomColor(),
+        color: "green",
       },
     ],
     stats: [
@@ -102,6 +109,44 @@ export async function getRepositoryData(id, auth) {
         "Linwen": 140,
         "Howard": 65,
 
+      }
+    ],
+    calendar: [
+      {
+        name: "Murad",
+        "1": 20,
+        "2": 20,
+        "3": 55,
+        "4": 20,
+        "5": 33,
+      },{
+        name: "Linwen",
+        "1": 34,
+        "2": 20,
+        "3": 20,
+        "4": 20,
+        "5": 3,
+      },{
+        name: "Eric",
+        "1": 20,
+        "2": 20,
+        "3": 21,
+        "4": 20,
+        "5": 20,
+      },{
+        name: "Howard",
+        "1": 20,
+        "2": 33,
+        "3": 21,
+        "4": 4,
+        "5": 33,
+      },{
+        name: "Mark",
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 1,
       }
     ],
     languages: {
@@ -204,7 +249,77 @@ export async function getRepositoryData(id, auth) {
           ]
         }
       ]
-    }
+    },
+    addDelete: [
+      {
+        "id": "additions",
+        "color": "green",
+        "data": [
+          {
+            "x": 1,
+            "y": 297
+          },
+          {
+            "x": 2,
+            "y": 168
+          },
+          {
+            "x": 3,
+            "y": 57
+          },
+          {
+            "x": 4,
+            "y": 259
+          },
+          {
+            "x": 5,
+            "y": 221
+          },
+          {
+            "x": 6,
+            "y": 144
+          },
+          {
+            "x": 7,
+            "y": 149
+          }
+        ]
+      },
+      {
+        "id": "deletions",
+        "color": "red",
+        "data": [
+          {
+            "x": 1,
+            "y": -29
+          },
+          {
+            "x": 2,
+            "y": -20
+          },
+          {
+            "x": 3,
+            "y": -57
+          },
+          {
+            "x": 4,
+            "y": -259
+          },
+          {
+            "x": 5,
+            "y": -21
+          },
+          {
+            "x": 6,
+            "y": -244
+          },
+          {
+            "x": 7,
+            "y": -300
+          }
+        ]
+      }
+    ]
   };
 }
 
@@ -235,6 +350,15 @@ export async function apiLogin(user, pass) {
   return ret;
 }
 
+export async function apiLogout(auth) {
+  return {
+    secret: undefined,
+    loggedIn: false,
+    admin: false,
+  }
+}
+
+// this is just a small helper function.
 function getRandomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';
@@ -242,12 +366,4 @@ function getRandomColor() {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
-}
-
-export async function apiLogout(auth) {
-  return {
-    secret: undefined,
-    loggedIn: false,
-    admin: false,
-  }
 }
