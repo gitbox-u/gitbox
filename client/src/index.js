@@ -32,6 +32,7 @@ ReactDOM.render(
 document.querySelector('html').style.height = '100%';
 document.querySelector('body').style.height = '100%';
 document.querySelector('#root').style.height = '100%';
+document.querySelector('#root').style.minWidth = '1000px';
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

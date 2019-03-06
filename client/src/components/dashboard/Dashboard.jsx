@@ -10,7 +10,8 @@ const style =
       paddingTop: 100,
       width: '100%',
       backgroundColor: 'rgb(247,247,247)',
-      margin: '0'
+      margin: '0',
+      // minWidth: '1500px',
     },
 
 

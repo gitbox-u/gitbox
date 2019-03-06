@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { withStyles, AppBar, Toolbar, IconButton, Button } from '@material-ui/core';
+import React, {Component} from 'react';
+import {withStyles, AppBar, Toolbar, IconButton, Button} from '@material-ui/core';
 import logo from '../../assets/logo.svg';
-import { withRouter } from "react-router-dom";
-import { connect } from 'react-redux';
+import {withRouter} from "react-router-dom";
+import {connect} from 'react-redux';
 
-import { logout } from '../../reducers/login';
+import {logout} from '../../reducers/login';
 
 import PopUp from './Notifications';
 
@@ -16,7 +16,6 @@ const styles = {
   appBar: {
     boxShadow: 'none',
     borderBottom: '1px solid #e5e5e5;'
-    // backgroundColor: 'lightblue'
   }
 };
 
@@ -28,19 +27,19 @@ class Header extends Component {
 
   render() {
 
-    const { classes } = this.props;
-    const { loggedIn, isAdmin, username } = this.props;
-    const { logout } = this.props;
+    const {classes} = this.props;
+    const {loggedIn, isAdmin, username} = this.props;
+    const {logout} = this.props;
 
     return (
       <AppBar className={classes.appBar} color="primary" position="fixed">
         <Toolbar>
           <IconButton disabled color="inherit">
-            <img src={logo} width="40" alt="Gitmap" />
+            <img src={logo} width="40" alt="Gitmap"/>
           </IconButton>
 
 
-          <div className={classes.grow} />
+          <div className={classes.grow}/>
 
           {
             loggedIn && <PopUp></PopUp>
@@ -73,9 +72,9 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => {
-  const { login } = state;
-  const { loggedIn, isAdmin, username } = login;
-  return { loggedIn, isAdmin, username }
+  const {login} = state;
+  const {loggedIn, isAdmin, username} = login;
+  return {loggedIn, isAdmin, username}
 };
 
 const mapDispatchToProps = {
