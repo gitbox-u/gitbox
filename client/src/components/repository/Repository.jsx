@@ -74,13 +74,13 @@ class Repository extends Component {
       <div
         className={classes.repoViewContainer}>
         {`No data for repository #${id}`}
-      </div>);
+      </div>
+    );
 
     const {graph} = data;
 
     const contributorNames = data.contributors.map((c) => c.name);
     return (
-
       <Grid item
             container
             justify="center"
@@ -102,13 +102,11 @@ class Repository extends Component {
             </GitGraph>
           </Paper>
         </Grid>
-
         <Grid item
               container
               direction="row"
               spacing={16}
         >
-
           <Grid item>
             <Paper>
               <Typography variant="h6" className={classes.cardHeader}>
@@ -158,8 +156,6 @@ class Repository extends Component {
                 </Paper>
               </Grid>
             </Grid>
-
-
             <Grid item>
               <Paper className={classes.addDelCon}>
                 <Typography variant="h6" className={classes.cardHeader}>
