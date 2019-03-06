@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import { logout } from '../../reducers/login';
 
-import PopUp from './PopupMenu';
+import PopUp from './Notifications';
 
 const styles = {
   grow: {

@@ -1,9 +1,8 @@
 import React from 'react';
-import {IconButton} from '@material-ui/core';
-import Menu from '@material-ui/core/Menu';
-import Mail from '@material-ui/icons/MailOutline'
+import {IconButton, Menu} from '@material-ui/core';
+import {Notifications} from '@material-ui/icons'
 import Badge from '@material-ui/core/Badge';
-import ListItem from '@material-ui/core/ListItem';
+import MenuItem from '@material-ui/core/ListItem';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import {connect} from 'react-redux';
 
@@ -32,7 +31,7 @@ class NotificationMenu extends React.Component {
           onClick={this.handleClick}
           color='inherit'
         >
-          <Badge badgeContent={notifications.length} color='secondary'><Mail/></Badge>
+          <Badge badgeContent={notifications.length} color='secondary'><Notifications/></Badge>
         </IconButton>
         <Menu
           id='simple-menu'
@@ -49,13 +48,13 @@ class NotificationMenu extends React.Component {
             },
           }}
         >
-          <ListSubheader style={{backgroundColor: 'white'}}>{'Notifications'}</ListSubheader>
+          {/*<ListSubheader style={{backgroundColor: 'white'}}>{'Notifications'}</ListSubheader>*/}
           {
             notifications.map((n, i) => (
-                <ListItem key={i} onClick={this.handleClose}
+                <MenuItem key={i} onClick={this.handleClose}
                           style={{width: '380px', whiteSpace: 'normal', paddingTop: '5px', paddingBottom: '5px'}}>
                   <p>{n.message}</p>
-                </ListItem>
+                </MenuItem>
               )
             )
           }
