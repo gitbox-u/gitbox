@@ -52,8 +52,8 @@ class ContributorList extends React.Component {
     return (
       <List dense className={classes.root}>
         <ListSubheader style={{backgroundColor: 'white'}}>{'Contributors'}</ListSubheader>
-        {this.props.contributors.map(contributor => (
-          <ListItem key={contributor} button style={{minHeight: 100}}>
+        {this.props.contributors.map((contributor, i) => ( // TODO: Change ALL keys to non-index values
+          <ListItem key={i} button style={{minHeight: 100}}>
             <ListItemAvatar>
               <Circle style={{fill: contributor.color}}/>
             </ListItemAvatar>

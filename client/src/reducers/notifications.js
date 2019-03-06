@@ -2,7 +2,10 @@ const ACTIONS = {
   PUSH_NOTIFICATION: 'NOTIFICATIONS_PUSH',
 };
 
-const initial = [{message: 'test'},{message: 'this thing'}];
+const initial = [
+  {message: 'Repository \'adorable car\' was made private.'},
+  {message: 'Some repository settings require your attention.'}
+  ];
 
 const addNotification = message => dispatch => dispatch({
   type: ACTIONS.PUSH_NOTIFICATION,

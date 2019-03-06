@@ -1,9 +1,18 @@
 import React from 'react';
-import {IconButton, Menu} from '@material-ui/core';
+import {IconButton, Menu, withStyles} from '@material-ui/core';
 import {Notifications} from '@material-ui/icons'
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/ListItem';
 import {connect} from 'react-redux';
+
+const styles = {
+  listItem: {
+    outline: 'none',
+    '&:hover': {
+      backgroundColor: 'rgba(147, 147, 147, 0.1)',
+    },
+  },
+};
 
 class NotificationMenu extends React.Component {
   state = {
@@ -20,7 +29,7 @@ class NotificationMenu extends React.Component {
 
   render() {
     const {anchorEl} = this.state;
-    const {notifications} = this.props;
+    const {notifications, classes} = this.props;
 
     return (
       <div>
@@ -48,7 +57,9 @@ class NotificationMenu extends React.Component {
         >
           {
             notifications.map((n, i) => (
-                <MenuItem key={i} onClick={this.handleClose}
+                <MenuItem key={i}
+                          onClick={this.handleClose}
+                          className={classes.listItem}
                           >
                   <p>{n.message}</p>
                 </MenuItem>
@@ -65,4 +76,4 @@ const mapStateToProps = state => ({notifications: state.notifications});
 
 export default connect(
   mapStateToProps,
-)(NotificationMenu);
+)(withStyles(styles)(NotificationMenu));

@@ -1,7 +1,3 @@
 svg polygon {
   transition: 2.5s all;
 }
-
-html, body, #root {
-  height: 100%;
-}

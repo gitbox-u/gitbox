@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html, body, #root {
+  height: 100%;
+}
+
 body {
   position: relative;
   width: 100%;
@@ -29,4 +33,5 @@ code {
   top: 0;
   left: calc(50vw - 50%);
   width: 100%;
+  min-width: 1000px;
 }
