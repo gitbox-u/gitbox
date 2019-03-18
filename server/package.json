@@ -4,7 +4,7 @@
   "description": "Backend server for csc309 project.",
   "main": "index.mjs",
   "scripts": {
-    "start": "node --experimental-modules index.mjs"
+    "start": "nodemon --exec node --experimental-modules index.mjs"
   },
   "author": "Team01",
   "license": "ISC",
@@ -12,5 +12,8 @@
     "express": "^4.16.4",
     "mongodb": "^3.1.13",
     "mongoose": "^5.4.19"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
   }
 }
