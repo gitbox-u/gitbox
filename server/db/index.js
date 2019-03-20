@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 const { Schema, connect, model } = mongoose;
 
-export const init = () => connect('mongodb://localhost:27017').then(() => {
+const init = () => connect('mongodb://localhost:27017').then(() => {
   console.log('connected');
 });
 
@@ -10,7 +10,7 @@ export const init = () => connect('mongodb://localhost:27017').then(() => {
 // To use this: .create()/.insertMany()/.findOne()...
 // Be sure to save it to Mongo: .save(callback)
 // https://mongoosejs.com/docs/models.html
-export const Repository = model('Repository', new Schema({
+const Repository = model('Repository', new Schema({
   uuid: String, // TODO: See if we can validate the length of this
   name: String,
   remoteUrl: String,
@@ -21,9 +21,15 @@ export const Repository = model('Repository', new Schema({
  * An entity that may perform operations on repositories
  * (usually a human user).
  */
-export const Entity = model('Entity', new Schema({
+const Entity = model('Entity', new Schema({
   uuid: String, // TODO: How do we ensure this matches auth UUIDs?
-  // authorizedRepos: [
-  //
-  // ],
+  authorized: [ // Authorized repo UUIDs
+    {type: String},
+  ],
 }));
+
+module.exports = {
+  init,
+  Repository,
+  Entity
+};

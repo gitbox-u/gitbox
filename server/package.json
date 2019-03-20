@@ -2,14 +2,15 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Backend server for csc309 project.",
-  "main": "index.mjs",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec node --experimental-modules index.mjs"
+    "start": "nodemon --exec node index.js"
   },
   "author": "Team01",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.1.13",
     "mongoose": "^5.4.19"
   },

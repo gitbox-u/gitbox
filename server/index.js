@@ -1,7 +1,7 @@
-import express from 'express';
-import { init } from './db';
-import {authenticationRouter} from './routes/authentication'
-import bodyParser from 'body-parser';
+const express = require('express');
+const {init} = require('./db');
+const {authenticationRouter} = require('./routes/authentication');
+const bodyParser = require('body-parser');
 
 const app = express();
 const port = 3000;
