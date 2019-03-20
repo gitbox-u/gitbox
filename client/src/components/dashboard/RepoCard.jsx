@@ -43,7 +43,7 @@ class RepoCard extends Component {
   };
 
   render() {
-    const {classes, name, desc, id, breakdown} = this.props;
+    const {classes, name, desc, id, breakdown, allLangs} = this.props;
 
     return (
       <ButtonBase onClick={this.routeChange(`/repository/${id}`)}
@@ -69,7 +69,7 @@ class RepoCard extends Component {
               breakdown.map(
                 (lang, i) => {
                   const {language, proportion} = lang;
-                  const colour = getRandomColor();
+                  const colour = allLangs[lang.language];
 
                   return (
                     <Grid item key={i}>
