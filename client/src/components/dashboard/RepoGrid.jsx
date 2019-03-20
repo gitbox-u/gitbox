@@ -88,11 +88,11 @@ class RepoGrid extends Component {
               className={classes.textInput}
             />
 
-            {/*<Button onClick={() => {this.props.history.push('new')}}>*/}
-              {/*<Fab size='small' color='primary' aria-label='Add' className={classes.fab}>*/}
-                {/*<AddIcon/>*/}
-              {/*</Fab>*/}
-            {/*</Button>*/}
+              <Button onClick={() => {this.props.history.push('new')}}>
+                <Fab size='small' color='primary' aria-label='Add' className={classes.fab}>
+                  <AddIcon/>
+                </Fab>
+              </Button>
           </Grid>
         </Grid>
 
