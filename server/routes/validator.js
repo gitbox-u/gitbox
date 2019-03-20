@@ -3,7 +3,7 @@ const bodyHasParameters = (params) => {
   return (req, res, next) => {
     const { body } = req;
 
-    console.log(typeof body);
+    console.log(body);
 
     if (body === undefined) {
       res.status(400).json({ message: "Request to this endpoint requires a body" });
