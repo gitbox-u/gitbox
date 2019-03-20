@@ -19,6 +19,6 @@ const bodyHasParameters = (params) => {
 
     next();
   }
-}
+};
 
 module.exports = { bodyHasParameters };

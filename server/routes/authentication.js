@@ -1,26 +1,21 @@
-const { bodyHasParameters } = require("./validator");
+const {bodyHasParameters} = require("./validator");
+const router = require('express').Router();
 
 const users = {
   // user: { uuid, pass, [ secrets ] }
 
-}
-
-
-const authenticationRouter = (app) => {
-
-  app.post(
-    "/api/login",
-    bodyHasParameters(
-      [ "username", "password" ],
-    ),
-    (req, res) => {
-      const { username, password } = req.body;
-
-    }
-  );
-
 };
 
-module.exports = {
-  authenticationRouter
-}
+router.post(
+  "/login",
+  bodyHasParameters(
+    ["username", "password"],
+  ),
+  (req, res) => {
+    const {username, password} = req.body;
+
+  }
+);
+
+
+module.exports = router;
