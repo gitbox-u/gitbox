@@ -1,5 +1,5 @@
 import express from 'express';
-import { conn } from './db';
+import { init } from './db';
 import {authenticationRouter} from './routes/authentication'
 import bodyParser from 'body-parser';
 
@@ -8,7 +8,7 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-conn();
+init();
 authenticationRouter(app);
 app.get('/', (req, res) => res.send("Hello world!"));
 
