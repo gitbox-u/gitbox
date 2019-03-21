@@ -21,7 +21,7 @@ const hashWithSalt = (password, salt) => {
   return hash;
 }
 
-const hash = (password) => {
+const enc = (password) => {
   const salt = genSalt(16);
   const hash = hashWithSalt(password, salt);
 
@@ -31,7 +31,7 @@ const hash = (password) => {
 }
 
 const check = (hashed, salt, attempt) => {
-  return hashWithSalt(password, salt) === hashed;
+  return hashWithSalt(attempt, salt) === hashed;
 }
 
-module.exports = { hash, check }
+module.exports = { enc, check }
