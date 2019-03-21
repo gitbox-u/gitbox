@@ -49,7 +49,7 @@ const addEntity = () => {
   entityRecord.save(); // TODO: Error check
 };
 
-const getEntity = (uuid) => Entity.findOne({ uuid });
+const getEntity = (uuid) => Entity.findOne({ uuid }); // TODO: Handle failed promises
 
 /**
  * Adds a repository record for an entity.
@@ -78,7 +78,7 @@ const addRepo = (entityUUID, name, remoteUrl) => {
 /**
  * Retrieves a repository record by its UUID.
  *
- * @returns {Repository} or {null}.
+ * @returns {Promise} for {Repository}.
  */
 // TODO: Restrict info (.findOne().select()...)
 const getRepo = (uuid) => Repository.findOne({ uuid });
