@@ -11,6 +11,8 @@ const init = () => connect('mongodb://localhost:27017').then(() => {
   // addRepo('test123', 'TEST', 'URL');
   // getRepo('test456').then(console.log);
   // getEntity('test123').then(console.log);
+}).catch((err) => {
+  
 });
 
 // TODO: Move Schema/model definitions into logical files & use this to export them
