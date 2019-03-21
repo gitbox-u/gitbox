@@ -43,7 +43,7 @@ const Entity = model('Entity', new Schema({
 
 const addEntity = () => {
   const entityRecord = new Entity({
-    uuid: 'test123',
+    uuid: uuid(),
     authorized: [],
   });
   entityRecord.save(); // TODO: Error check
@@ -70,7 +70,7 @@ const addRepo = (entityUUID, name, remoteUrl) => {
   repoRecord.save(); // TODO: Error check
 
   getEntity(entityUUID).then((entity) => {
-    entity.authorized.push(repoRecord.uuid);
+    entity.authorized.push(repoRecord.uuid); // TODO: Check if already there (use a map)
     entity.save();
   });
 };
