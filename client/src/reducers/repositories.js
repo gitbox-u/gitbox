@@ -1,10 +1,13 @@
 import { getRepositories, getRepositoryData } from '../api/api';
+import {getRandomColor} from '../api/colours'
 
 const REPOS_PER_PAGE = 8;
 
 const initial = {
   allRepos: {},
   repoData: {},
+
+  allLangs:{},
 
   filteredRepos: [],
   pageRepos: [],
@@ -95,6 +98,20 @@ const repositories = (state = initial, action) => {
     const page = getPage(filtered, state.pageOffset);
     const pages = getNumPages(filtered);
 
+    let allLangs = {}
+    for (let id in state.allRepos) {
+      state.allRepos[id].breakdown.forEach(
+        function(lang) {
+          if(Object.keys(allLangs).length === 0 && allLangs.constructor === Object){
+            allLangs[lang.language] = getRandomColor();
+          }
+          else if(!(lang.language in allLangs)){
+              allLangs[lang.language] = getRandomColor();
+            }
+        });
+      }
+
+
     return {
       ...state,
       search: value,
@@ -102,6 +119,7 @@ const repositories = (state = initial, action) => {
       pageRepos: page,
       numPages: pages,
       pageOffset: 1,
+      langs: allLangs,
     };
   } else if (type === ACTIONS.UPDATE_PAGE) {
     const { offset } = action;
