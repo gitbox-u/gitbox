@@ -11,8 +11,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 init();
-app.use('/api/auth',  require('./routes/authentication'));
-app.use('/api/repo',  require('./routes/repoStats'));
+app.use('/api/auth/',  require('./routes/authentication'));
+app.use('/api/repo/',  require('./routes/repoStats'));
 
 app.use(express.static('../client/build'));
 

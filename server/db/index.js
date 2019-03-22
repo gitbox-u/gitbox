@@ -43,9 +43,9 @@ const Entity = model('Entity', new Schema({
   ],
 }));
 
-const addEntity = () => {
+const addEntity = (uuid) => {
   const entityRecord = new Entity({
-    uuid: uuid(),
+    uuid: uuid,
     authorized: [],
   });
   entityRecord.save(); // TODO: Error check

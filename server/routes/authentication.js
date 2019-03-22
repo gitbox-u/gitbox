@@ -1,6 +1,6 @@
-const { bodyHasParameters } = require("./validator");
-const { enc, check } = require("../authenticator/hasher");
-const { secret } = require('../authenticator/secret');
+const {bodyHasParameters} = require("./validator");
+const {enc, check} = require("../authenticator/hasher");
+const {secret} = require('../authenticator/secret');
 const uuidv4 = require("uuid/v4");
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
@@ -15,24 +15,24 @@ router.post(
     ["username", "password"],
   ),
   (req, res) => {
-    const { username, password } = req.body;
+    const {username, password} = req.body;
 
     if (username in users) {
       const user = users[username];
-      const { hash, salt, uuid } = user;
+      const {hash, salt, uuid} = user;
       if (check(hash, salt, password)) {
         const token = jwt.sign(
-          { id: uuid },
+          {id: uuid},
           secret,
-          { expiresIn: 86400 } // 24 hrs
-        )
+          {expiresIn: 86400} // 24 hrs
+        );
 
-        res.status(200).json({ auth: true, token });
+        res.status(200).json({auth: true, token});
       } else {
-        res.status(401).json({ auth: false, token: null });
+        res.status(401).json({auth: false, token: null});
       }
     } else {
-      res.status(401).json({ auth: false, token: null });
+      res.status(401).json({auth: false, token: null});
     }
   }
 );
@@ -51,7 +51,7 @@ router.post(
       // username is free
 
       const cred = enc(password);
-      const { hash, salt } = cred;
+      const {hash, salt} = cred;
 
       console.log(cred);
 
@@ -61,10 +61,12 @@ router.post(
         uuid: uuidv4(),
         secrets: [],
       };
-      res.status(201).json({ message: `${username} created` });
+
+
+      res.status(201).json({message: `${username} created`});
     }
   },
-)
+);
 
 
 module.exports = router;
