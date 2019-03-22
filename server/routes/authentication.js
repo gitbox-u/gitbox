@@ -1,11 +1,9 @@
-const {bodyHasParameters} = require("./validator");
-const {enc, check} = require("../authenticator/hasher");
-const {secret} = require('../authenticator/secret');
+const { bodyHasParameters } = require("./validator");
+const { enc, check } = require("../authenticator/hasher");
+const { secret } = require('../authenticator/secret');
+const { addUser, getUser } = require('../db/index');
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
-const {addUser} = require('../db');
-
-const users = [];
 
 router.post(
   "/login",
@@ -13,25 +11,24 @@ router.post(
     ["username", "password"],
   ),
   (req, res) => {
-    const {username, password} = req.body;
+    const { username, password } = req.body;
 
-    if (username in users) {
-      const user = users[username];
-      const {hash, salt, uuid} = user;
+    getUser(username).then((user) => {
+      const { hash, salt, uuid } = user;
       if (check(hash, salt, password)) {
         const token = jwt.sign(
-          {id: uuid},
+          { id: uuid },
           secret,
-          {expiresIn: 86400} // 24 hrs
+          { expiresIn: 86400 } // 24 hrs
         );
 
-        res.status(200).json({auth: true, token});
+        res.status(200).json({ auth: true, token });
       } else {
-        res.status(401).json({auth: false, token: null});
+        res.status(401).json({ auth: false, token: null });
       }
-    } else {
-      res.status(401).json({auth: false, token: null});
-    }
+    }).catch((err) => {
+      res.status(401).json({ auth: false, token: null });
+    });
   }
 );
 
@@ -41,25 +38,15 @@ router.post(
     ["username", "password"],
   ),
   (req, res) => {
-    const {username, password} = req.body;
+    const { username, password } = req.body;
+    const cred = enc(password);
+    const { hash, salt } = cred;
 
-    if (username in users) {
-      res.status(400).json({message: `${username} is taken, try another.`});
-    } else {
-      // username is free
-
-      const cred = enc(password);
-      const {hash, salt} = cred;
-
-      console.log(cred);
-
-      addUser(username, hash, salt)
-        .then(() => res.status(201).json({message: `${username} created`}))
-        .catch(console.error)
-
-
-
-    }
+    addUser(username, salt, hash).then((user) => {
+      return res.status(201).json({ message: `${username} created` });
+    }).catch((err) => {
+      return res.status(400).json({ message: `${username} is taken, try another.` });
+    });
   },
 );
 

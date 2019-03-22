@@ -46,8 +46,8 @@ const Entity = model('Entity', new Schema({
 }));
 
 const User = model('User', new Schema({
-  uuid: String,
   user: String,
+  uuid: String,
   hash: String,
   salt: String,
 }));
@@ -65,7 +65,7 @@ const getEntity = (uuid) => Entity.findOne({ uuid }); // TODO: Handle failed pro
 
 const addUser = async (user, salt, hash) => {
   return getUser(user).then(
-    (res, rej) => {
+    (res, err) => {
       if (res === null) {
         addEntity(uuid)
           .then(() => {
@@ -77,7 +77,8 @@ const addUser = async (user, salt, hash) => {
 
 
       } else {
-        throw "user exists";
+        console.log("User exists");
+        return Promise.reject();
       }
     }
   );
