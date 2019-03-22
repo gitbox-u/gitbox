@@ -24,7 +24,7 @@ const addRepo = (entityUUID, name, remoteUrl) => {
     name,
     auth: {
       username: '',
-      pasGETsword: '',
+      password: '',
       privateKey: '',
     },
     remoteUrl,
@@ -47,9 +47,9 @@ const addRepo = (entityUUID, name, remoteUrl) => {
 const getRepo = (uuid) => Repository.findOne({uuid});
 
 const getUserRepos = async (useruuid) => {
-  const user  = await getEntity(useruuid);
+  const user = await getEntity(useruuid);
 
-  return Promise.all(user.authorized.map(getRepo));
+  return Promise.all(user.authorized.map(getRepo)).map(res => res.uuid);
 
 };
 
