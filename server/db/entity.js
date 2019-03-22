@@ -12,7 +12,7 @@ const Entity = model('Entity', new Schema({
 }));
 
 /**
- * 
+ * Adds a new user/other entity the database
  * @param {String} uuid, the uuid of the entity (if is a user, needs to be the same as the user.)
  */
 const addEntity = (uuid) => {

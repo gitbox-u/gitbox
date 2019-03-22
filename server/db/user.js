@@ -1,4 +1,6 @@
 const { Schema, model } = require('mongoose');
+const { addEntity } = require('./entity');
+const uuid = require('uuid/v4');
 
 const User = model('User', new Schema({
   user: String,
@@ -11,14 +13,16 @@ const User = model('User', new Schema({
 const addUser = (user, salt, hash) => {
   return getUser(user).then(
     (res, err) => {
+      console.log(res, err);
+
       if (res === null) {
         // gen new uuid
         const id = uuid();
 
-        return addEntity(id).then(() => {
+        return addEntity(id).then((entity) => {
           return new User({
             user, salt, hash, uuid: id, admin: false,
-          }).save()
+          }).save();
         });
       } else {
         return Promise.reject();
