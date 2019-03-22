@@ -35,4 +35,4 @@ const getUser = (user) => User.findOne({ user });
 
 module.exports = {
   User, addUser, getUser,
-}
+};
