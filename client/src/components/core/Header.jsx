@@ -28,7 +28,7 @@ class Header extends Component {
   render() {
 
     const {classes} = this.props;
-    const {loggedIn, isAdmin, username} = this.props;
+    const {auth, admin, username} = this.props;
     const {logout} = this.props;
 
     return (
@@ -42,10 +42,10 @@ class Header extends Component {
           <div className={classes.grow}/>
 
           {
-            loggedIn && <PopUp></PopUp>
+            auth && <PopUp></PopUp>
           }
           {
-            loggedIn ? isAdmin ?
+            auth ? admin ?
               <Button onClick={this.routeChange("/admin")} color="inherit" variant="text">
                 Admin Panel
               </Button> :
@@ -54,7 +54,7 @@ class Header extends Component {
               </Button> : <div></div>
           }
           {
-            loggedIn ?
+            auth ?
               <Button onClick={e => {
                 logout();
                 this.routeChange("/login")();
@@ -73,8 +73,8 @@ class Header extends Component {
 
 const mapStateToProps = state => {
   const {login} = state;
-  const {loggedIn, isAdmin, username} = login;
-  return {loggedIn, isAdmin, username}
+  const {auth, admin, username} = login;
+  return {auth, admin, username}
 };
 
 const mapDispatchToProps = {

@@ -11,23 +11,23 @@ router.post(
     ["username", "password"],
   ),
   (req, res) => {
+    console.log(req.body);
     const { username, password } = req.body;
 
     getUser(username).then((user) => {
-      const { hash, salt, uuid } = user;
+      const { hash, salt, uuid, admin } = user;
       if (check(hash, salt, password)) {
         const token = jwt.sign(
           { id: uuid },
           secret,
           { expiresIn: 86400 } // 24 hrs
         );
-
-        res.status(200).json({ auth: true, token });
+        res.status(200).json({ auth: true, token, admin, username });
       } else {
-        res.status(401).json({ auth: false, token: null });
+        res.status(401).json({ auth: false, token: null, admin: false });
       }
     }).catch((err) => {
-      res.status(401).json({ auth: false, token: null });
+      res.status(401).json({ auth: false, token: null, admin: false });
     });
   }
 );
