@@ -1,4 +1,4 @@
-import {apiLogin, apiLogout} from './../api/api';
+import {apiLogin, apiLogout, apiRegister} from './../api/api';
 import Cookies from 'js-cookie';
 
 const ACTIONS = {
@@ -11,10 +11,11 @@ const ACTIONS = {
 const initial = {
   username: '',
   password: '',
+  confirm: '',
 
-  secret: undefined,
-  loggedIn: false,
-  isAdmin: false,
+  token: undefined,
+  auth: false,
+  admin: false,
 };
 
 const initLogin = () => (dispatch) => {
@@ -37,6 +38,15 @@ const updateLoginField = (field, value) => {
   }
 };
 
+const tryRegister = () => (dispatch, getState) => {
+  const { username, password, confirm } = getState().login; 
+  if (password !== confirm) {
+    return Promise.reject();
+  }
+
+  return apiRegister(username, password);
+}
+
 const tryLogin = () => (dispatch, getState) => {
   const { username, password } = getState().login;
   return apiLogin(username, password).then(
@@ -48,11 +58,10 @@ const tryLogin = () => (dispatch, getState) => {
 };
 
 const logout = () => (dispatch, getState) => {
-  const { secret } = getState().login;
-  return apiLogout(secret).then(
+  return apiLogout().then(
     result => dispatch({
       type: ACTIONS.DEAUTH,
-      result
+      result,
     })
   )
 };
@@ -77,6 +86,7 @@ const login = (state = initial, action) => {
     return {
       ...state,
       password: '',
+      confirm: '',
       ...result,
     }
 
@@ -87,6 +97,7 @@ const login = (state = initial, action) => {
       ...state,
       username: '',
       password: '',
+      confirm: '',
       ...result,
     }
   }
@@ -94,5 +105,5 @@ const login = (state = initial, action) => {
   return state;
 };
 
-export { updateLoginField, tryLogin, logout, initLogin };
+export { updateLoginField, tryLogin, tryRegister, logout, initLogin };
 export default login;

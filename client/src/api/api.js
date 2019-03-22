@@ -4,6 +4,28 @@ import Cookies from 'js-cookie';
 
 // auth: authentication token for a user
 
+const apiRoot = "http://localhost:3000/api/";
+const authEnd = "auth/";
+
+
+const postData = (url = ``, data = {}) => {
+  // Default options are marked with *
+    return fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, cors, *same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+            "Content-Type": "application/json",
+            // "Content-Type": "application/x-www-form-urlencoded",
+        },
+        redirect: "follow", // manual, *follow, error
+        referrer: "no-referrer", // no-referrer, *client
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+    })
+    .then(response => response.json()); // parses JSON response into native Javascript objects 
+}
+
 /// ADMIN
 export async function getUsers(auth) {
   return [
@@ -323,37 +345,33 @@ export async function getRepositoryData(id, auth) {
   };
 }
 
-export async function apiLogin(user, pass) {
-  let ret;
-  if (user === "user" && pass === "user") {
-    ret = {
-      secret: "ae9cf109-f09cda193",
-      loggedIn: true,
-      isAdmin: false,
-    }
-  } else if (user === "admin" && pass === "admin") {
-    ret = {
-      secret: "acdf193c-c1039c121",
-      loggedIn: true,
-      isAdmin: true,
-    }
-  } else {
-    ret = {
-      secret: undefined,
-      loggedIn: false,
-      isAdmin: false,
-    }
+export function apiRegister(username, password) {
+  const req = {
+    username, password,
   }
 
-  Cookies.set('login', ret);
+  return postData(`${apiRoot}${authEnd}register`, req);
+}
 
-  return ret;
+export function apiLogin(username, password) {
+  const req = {
+    username, password,
+  };
+
+  return postData(`${apiRoot}${authEnd}login`, req).then(
+    ret => {
+      Cookies.set('login', ret);
+      return ret;
+    }
+  );
 }
 
 export async function apiLogout(auth) {
+  Cookies.remove('login');
+
   return {
-    secret: undefined,
-    loggedIn: false,
+    token: undefined,
+    auth: false,
     admin: false,
   }
 }
