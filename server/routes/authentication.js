@@ -1,13 +1,8 @@
 const {bodyHasParameters} = require("./validator");
 const {enc, check} = require("../authenticator/hasher");
 const {secret} = require('../authenticator/secret');
-const uuidv4 = require("uuid/v4");
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
-
-const users = {
-  // user: { hash, salt, uuid }
-};
 
 router.post(
   "/login",

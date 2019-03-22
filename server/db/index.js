@@ -43,15 +43,33 @@ const Entity = model('Entity', new Schema({
   ],
 }));
 
-const addEntity = (uuid) => {
+const User = model('User', new Schema({
+  uuid: String,
+  user: String,
+  hash: String,
+  salt: String,
+}))
+
+const addEntity = async (uuid) => {
   const entityRecord = new Entity({
     uuid: uuid,
     authorized: [],
   });
-  entityRecord.save(); // TODO: Error check
+
+  return entityRecord.save();
 };
 
 const getEntity = (uuid) => Entity.findOne({ uuid }); // TODO: Handle failed promises
+
+const addUser = async (user, salt, hash) => {
+  const user = new User({
+    uuid: uuid(),
+    user,
+    hash,
+    salt,
+  })
+}
+
 
 /**
  * Adds a repository record for an entity.
@@ -92,6 +110,7 @@ module.exports = {
   init,
   Repository,
   Entity,
+  User,
   addEntity,
   getEntity,
   addRepo,
