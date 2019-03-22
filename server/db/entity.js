@@ -11,7 +11,10 @@ const Entity = model('Entity', new Schema({
   ],
 }));
 
-
+/**
+ * 
+ * @param {String} uuid, the uuid of the entity (if is a user, needs to be the same as the user.)
+ */
 const addEntity = (uuid) => {
   return new Entity({
     uuid: uuid,

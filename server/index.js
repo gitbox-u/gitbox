@@ -1,3 +1,7 @@
+/**
+ * Our entry point into the backend server.
+ */
+
 const express = require('express');
 const { init } = require('./db');
 const { authenticationRouter } = require('./routes/authentication');

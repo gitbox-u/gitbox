@@ -5,6 +5,7 @@ const User = model('User', new Schema({
   uuid: String,
   hash: String,
   salt: String,
+  admin: Boolean,
 }));
 
 const addUser = (user, salt, hash) => {
@@ -16,7 +17,7 @@ const addUser = (user, salt, hash) => {
 
         return addEntity(id).then(() => {
           return new User({
-            user, salt, hash, uuid: id,
+            user, salt, hash, uuid: id, admin: false,
           }).save()
         });
       } else {
