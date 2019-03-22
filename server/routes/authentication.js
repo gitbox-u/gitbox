@@ -43,6 +43,8 @@ router.post(
     const { hash, salt } = cred;
 
     addUser(username, salt, hash).then((user) => {
+      
+    }).then((user) => {
       return res.status(201).json({ message: `${username} created` });
     }).catch((err) => {
       return res.status(400).json({ message: `${username} is taken, try another.` });
