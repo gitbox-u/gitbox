@@ -59,6 +59,7 @@ const filterRepos = (repos, filter) => {
   return results;
 };
 
+
 const getNumPages = (filteredRepos) => {
   return Math.ceil(filteredRepos.length / REPOS_PER_PAGE);
 };
@@ -153,5 +154,5 @@ const repositories = (state = initial, action) => {
   return state;
 };
 
-export { updateSearchField, changePage, initRepos, initDataForRepo };
+export { updateSearchField, changePage, initRepos, initDataForRepo};
 export default repositories;

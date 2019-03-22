@@ -5,15 +5,16 @@ import { Typography } from '@material-ui/core/es';
 
 const styles = {
   back: {
-    background: "lightgrey",
+    background: "#DCDCDC",
     borderRadius: 25,
-    paddingRight: 10,
+    paddingRight: 8,
     display: "flex",
-    alignContent: "center",
+    // alignContent: "center",
   },
 
   inline: {
-    display: 'inline-block',
+    // display: 'inline-block',
+    margin: '3px',
   }
 };
 
@@ -22,7 +23,7 @@ const Language = (props) => {
 
   return (
     <div className={classes.back}>
-      <Brightness style={{fill: colour}} className={classes.inline}></Brightness><Typography className={classes.inline}>{language}</Typography>
+      <Brightness style={{fill: colour, fontSize: 15}} className={classes.inline}></Brightness><Typography>{language}</Typography>
     </div>
   );
 };
