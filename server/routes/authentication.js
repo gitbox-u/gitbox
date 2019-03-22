@@ -3,6 +3,9 @@ const {enc, check} = require("../authenticator/hasher");
 const {secret} = require('../authenticator/secret');
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
+const {addUser} = require('../db');
+
+const users = [];
 
 router.post(
   "/login",
@@ -50,15 +53,12 @@ router.post(
 
       console.log(cred);
 
-      users[username] = {
-        hash,
-        salt,
-        uuid: uuidv4(),
-        secrets: [],
-      };
+      addUser(username, hash, salt)
+        .then(() => res.status(201).json({message: `${username} created`}))
+        .catch(console.error)
 
 
-      res.status(201).json({message: `${username} created`});
+
     }
   },
 );
