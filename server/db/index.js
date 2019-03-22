@@ -12,7 +12,7 @@ const init = () => connect('mongodb://localhost:27017').then(() => {
   // getRepo('test456').then(console.log);
   // getEntity('test123').then(console.log);
 }).catch((err) => {
-  
+
 });
 
 // TODO: Move Schema/model definitions into logical files & use this to export them
@@ -85,6 +85,9 @@ const addRepo = (entityUUID, name, remoteUrl) => {
 // TODO: Restrict info (.findOne().select()...)
 const getRepo = (uuid) => Repository.findOne({ uuid });
 
+// By remote URL
+const getRepoRemote = (remote) => Repository.findOne({ remoteUrl: remote });
+
 module.exports = {
   init,
   Repository,
@@ -92,5 +95,6 @@ module.exports = {
   addEntity,
   getEntity,
   addRepo,
-  getRepo
+  getRepo,
+  getRepoRemote,
 };
