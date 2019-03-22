@@ -1,6 +1,7 @@
 const { authenticate } = require('./validator');
 const express = require('express');
-const {getEntity} = require('../db');
+const {getEntity, addRepo} = require('../db');
+const {registerRepo} = require('../git');
 const router = express.Router();
 
 router.use(authenticate);
@@ -11,10 +12,10 @@ router.get("/commiters/:id", (req, res) => {
       if(!(entity.authorized.includes(req.params.id ))) res.status(403).json({message: "Repo Access denied"});
       else res.status(200).json({message: "Hello, World!"})
     })
-    .catch(res.status(500).json({message: "Repo Not found"}));
+    .catch(res.status(500).json({message: "Invalid User"}));
 });
 
-router.get("/api/stats/:id", (req, res) => {
+router.get("/stats/:id", (req, res) => {
   getEntity(req.body.uuid)
     .then((entity) => {
       if(!(entity.authorized.includes(req.params.id))) res.status(403).json({message: "Repo Access denied"});
@@ -22,6 +23,15 @@ router.get("/api/stats/:id", (req, res) => {
     })
     .catch(res.status(500).json({message: "Repo Not found"}));
 });
+
+router.post("/add", (req, res) => {
+    addRepo(req.body.uuid, req.body.name, req.body.remoteUrl)
+      .then(registerRepo(req.body.remoteUrl))
+      .then(res.status(200).json({message: "repo created"}))
+      .catch(res.status(500).json({message: "error creating a repo"}))
+});
+
+
 
 
 module.exports = router;

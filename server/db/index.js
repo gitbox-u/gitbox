@@ -50,7 +50,7 @@ const User = model('User', new Schema({
   uuid: String,
   hash: String,
   salt: String,
-}))
+}));
 
 const addEntity = async (uuid) => {
   const entityRecord = new Entity({
@@ -67,17 +67,22 @@ const addUser = async (user, salt, hash) => {
   return getUser(user).then(
     (res, err) => {
       if (res === null) {
-        console.log("New user")
-        return new User({
-          user, salt, hash, uuid: uuid(),
-        }).save();
+        addEntity(uuid)
+          .then(() => {
+            return new User({
+              user, salt, hash, uuid: uuid(),
+            }).save()
+          })
+          .catch(err => {throw err});
+
+
       } else {
         console.log("User exists");
         return Promise.reject();
       }
     }
   );
-}
+};
 
 const getUser = (user) => User.findOne({ user });
 
