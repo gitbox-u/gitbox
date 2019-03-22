@@ -65,13 +65,15 @@ const getEntity = (uuid) => Entity.findOne({ uuid }); // TODO: Handle failed pro
 
 const addUser = async (user, salt, hash) => {
   return getUser(user).then(
-    (res, rej) => {
+    (res, err) => {
       if (res === null) {
+        console.log("New user")
         return new User({
           user, salt, hash, uuid: uuid(),
-        }).save()
+        }).save();
       } else {
-        throw "user exists";
+        console.log("User exists");
+        return Promise.reject();
       }
     }
   );
