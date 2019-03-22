@@ -5,11 +5,14 @@ const router = express.Router();
 router.use(authenticate)
 
 router.get("/commiters/:id", (req, res) => {
-  res.status(200).json({message: "Hello, World!"})
+  const {id} = req.body;
+  res.status(200);
 });
 
-router.get("/api/repository/:id", (req, res) => {
-  res.status(200).json({ id: req.body.id })
+router.get("/repository/:id", (req, res) => {
+  const {id} = req.body;
+  console.log(id);
+  res.status(200).send({id});
 });
 
 
