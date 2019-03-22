@@ -1,7 +1,7 @@
 const { bodyHasParameters } = require("./validator");
 const { enc, check } = require("../authenticator/hasher");
 const { secret } = require('../authenticator/secret');
-const { addUser, getUser } = require('../db/index');
+const { addUser, getUser, addEntity } = require('../db/index');
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 
