@@ -14,8 +14,6 @@ init();
 app.use('/api/auth/',  require('./routes/authentication'));
 app.use('/api/repo/',  require('./routes/repoStats'));
 
-registerRepo('https://github.com/eric-lindau/SpaceInvaders');
-
 app.use(express.static('../client/build'));
 
 app.get('*', (req, res) => {
