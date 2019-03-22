@@ -50,7 +50,6 @@ class RepoGrid extends Component {
     const {allRepos, numResults, pageRepos, search, numPages, pageOffset, langs} = this.props;
 
     const {classes} = this.props;
-    console.log(langs)
 
     return (
       <Grid container

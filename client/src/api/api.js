@@ -39,7 +39,6 @@ export async function getUsers(auth) {
 
 /// USER REPOSITORIES
 export async function getRepositories(auth) {
-  console.log(repos);
   return repos;
 }
 

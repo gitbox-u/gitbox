@@ -1,5 +1,6 @@
 import React from 'react';
 import {ResponsivePie} from "@nivo/pie";
+import repositories from "./RepoGrid"
 
 function LangPie() {
   return (
