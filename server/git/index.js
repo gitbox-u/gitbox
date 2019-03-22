@@ -13,11 +13,11 @@ const registerRepo = (remote) => {
       } // Assuming repo is added before this (i.e. in DB with 'remote' field)
 
       const store = path.join(root, r.uuid, 'repo');
-      if (fs.existsSync()) { // $ROOT/r.uuid/repo/REPO DATA
-        shell.mkdir('-p', store);
+      if (fs.existsSync(store)) { // $ROOT/r.uuid/repo/REPO DATA
         git(store).pull('origin', 'master').then(console.log); // TODO: Handle this
         resolve()
       } else { // Does not yet exist
+        shell.mkdir('-p', store);
         git(store).clone(remote, '').then(() => {
           resolve();
         }).catch((err) => {
