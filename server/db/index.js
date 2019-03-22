@@ -3,6 +3,8 @@ const uuid = require('uuid/v4');
 const mongoose = require('mongoose');
 const { Schema, connect, model } = mongoose;
 
+const invert  = p  => new Promise((res, rej) => p.then(rej, res));
+
 const init = () => connect('mongodb://localhost:27017').then(() => {
   console.log('connected');
 
@@ -44,8 +46,8 @@ const Entity = model('Entity', new Schema({
 }));
 
 const User = model('User', new Schema({
-  uuid: String,
   user: String,
+  uuid: String,
   hash: String,
   salt: String,
 }))
@@ -62,14 +64,20 @@ const addEntity = async (uuid) => {
 const getEntity = (uuid) => Entity.findOne({ uuid }); // TODO: Handle failed promises
 
 const addUser = async (user, salt, hash) => {
-  const user = new User({
-    uuid: uuid(),
-    user,
-    hash,
-    salt,
-  })
+  return getUser(user).then(
+    (res, rej) => {
+      if (res === null) {
+        return new User({
+          user, salt, hash, uuid: uuid(),
+        }).save()
+      } else {
+        throw "user exists";
+      }
+    }
+  );
 }
 
+const getUser = (user) => User.findOne({ user });
 
 /**
  * Adds a repository record for an entity.
@@ -111,6 +119,8 @@ module.exports = {
   Repository,
   Entity,
   User,
+  addUser,
+  getUser,
   addEntity,
   getEntity,
   addRepo,
