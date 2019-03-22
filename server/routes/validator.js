@@ -28,9 +28,9 @@ const authenticate = (req, res, next) => {
     if (err) return res.status(401).json({ message: 'Failed to authenticate token' });
 
     // token is a valid token
-    req.body.id = decoded.id;
+    req.body.uuid = decoded.id;
     next();
   });
-}
+};
 
 module.exports = { bodyHasParameters, authenticate };

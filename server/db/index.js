@@ -12,7 +12,7 @@ const init = () => connect('mongodb://localhost:27017').then(() => {
   // getRepo('test456').then(console.log);
   // getEntity('test123').then(console.log);
 }).catch((err) => {
-  
+
 });
 
 // TODO: Move Schema/model definitions into logical files & use this to export them
@@ -43,15 +43,33 @@ const Entity = model('Entity', new Schema({
   ],
 }));
 
-const addEntity = () => {
+const User = model('User', new Schema({
+  uuid: String,
+  user: String,
+  hash: String,
+  salt: String,
+}))
+
+const addEntity = async (uuid) => {
   const entityRecord = new Entity({
-    uuid: uuid(),
+    uuid: uuid,
     authorized: [],
   });
-  entityRecord.save(); // TODO: Error check
+
+  return entityRecord.save();
 };
 
 const getEntity = (uuid) => Entity.findOne({ uuid }); // TODO: Handle failed promises
+
+const addUser = async (user, salt, hash) => {
+  const user = new User({
+    uuid: uuid(),
+    user,
+    hash,
+    salt,
+  })
+}
+
 
 /**
  * Adds a repository record for an entity.
@@ -85,12 +103,17 @@ const addRepo = (entityUUID, name, remoteUrl) => {
 // TODO: Restrict info (.findOne().select()...)
 const getRepo = (uuid) => Repository.findOne({ uuid });
 
+// By remote URL
+const getRepoRemote = (remote) => Repository.findOne({ remoteUrl: remote });
+
 module.exports = {
   init,
   Repository,
   Entity,
+  User,
   addEntity,
   getEntity,
   addRepo,
-  getRepo
+  getRepo,
+  getRepoRemote,
 };
