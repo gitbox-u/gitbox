@@ -17,18 +17,22 @@ const Repository = model('Repository', new Schema({
 /**
  * Adds a repository record for an entity.
  */
-const addRepo = (entityUUID, name, remoteUrl) => {
+const addRepo = (entityUUID, name, remoteUrl, credentials) => {
   // TODO: Add fingerprint to check if repo already exists - hash remoteUrl / something else?
+  let auth;
+
+  if(credentials) auth = credentials;
+  else auth = {
+    username: '',
+    password: '',
+    privateKey: '',
+  };
+
   const repoRecord = new Repository({
     uuid: uuid(),
     name,
-    auth: {
-      username: '',
-      password: '',
-      privateKey: '',
-    },
+    auth,
     remoteUrl,
-    stats: '',
   });
   return repoRecord.save()
     .then(() => getEntity(entityUUID))
