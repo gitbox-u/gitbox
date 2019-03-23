@@ -23,7 +23,7 @@ const registerRepo = (remote, auth) => {
           if (auth) remote = `https://${auth.username}:${auth.password}@${remote.split('://')[1]}`;
           shell.mkdir('-p', store);
           git(store)
-            .clone(remote, '')
+            .clone(remote, null)
             .then(() => {
               resolve();
             })
@@ -32,7 +32,7 @@ const registerRepo = (remote, auth) => {
             });
         }
       })
-      .catch(() => reject())
+      .catch((err) => {reject();console.log(err)})
   });
 };
 
