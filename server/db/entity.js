@@ -27,4 +27,4 @@ const getEntity = (uuid) => Entity.findOne({ uuid }); // TODO: Handle failed pro
 
 module.exports = {
   Entity, addEntity, getEntity,
-}
+};

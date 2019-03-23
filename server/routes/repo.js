@@ -25,8 +25,8 @@ router.get("/stats/:id", (req, res) => {
 });
 
 router.post("/add", (req, res) => {
-  addRepo(req.body.uuid, req.query.name, req.query.remoteUrl. req.body.auth)
-    .then(registerRepo(req.body.remoteUrl, req.body.auth))
+  addRepo(req.body.uuid, req.query.name, req.query.remoteUrl, req.body.auth)
+    .then(registerRepo(req.query.remoteUrl, req.body.auth))
     .then(res.status(200).json({message: "repo created"}))
     .catch(res.status(500).json({message: "error creating a repo"}))
 });
