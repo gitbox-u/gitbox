@@ -21,7 +21,7 @@ const addRepo = (entityUUID, name, remoteUrl, credentials) => {
   // TODO: Add fingerprint to check if repo already exists - hash remoteUrl / something else?
   let auth;
 
-  if(credentials) auth = credentials;
+  if (credentials) auth = credentials;
   else auth = {
     username: '',
     password: '',
@@ -53,7 +53,8 @@ const getRepo = (uuid) => Repository.findOne({uuid});
 const getUserRepos = async (useruuid) => {
   const user = await getEntity(useruuid);
 
-  return Promise.all(user.authorized.map(getRepo)).map(res => res.uuid);
+  return Promise.all(user.authorized.map(getRepo))
+    .then(res => res.map(r => ({uuid: r.uuid, name: r.name})));
 
 };
 
