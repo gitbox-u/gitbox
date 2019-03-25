@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+    build: .
+    depends_on:
+      - mongo
+    ports:
+    - "3000:3000"
+    links:
+    - mongo
+  mongo:
+    expose:
+    - "27017"
+    image: mongo

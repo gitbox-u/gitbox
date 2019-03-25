@@ -22,10 +22,12 @@ const bodyHasParameters = (params) => {
 
 const authenticate = (req, res, next) => {
   const token = req.headers['x-access-token'];
-  if (token === undefined) return res.status(401).json({ message: 'Requests to this resource must be accompanied by a token' })
+  if (token === undefined)
+    return res.status(401).json({ auth: false, token: null, admin: false }); // TODO: Notify user not logged in?
 
   jwt.verify(token, secret, (err, decoded) => {
-    if (err) return res.status(401).json({ message: 'Failed to authenticate token' });
+    if (err)
+      return res.status(401).json({ message: 'Failed to authenticate token' });
 
     // token is a valid token
     req.body.uuid = decoded.id;

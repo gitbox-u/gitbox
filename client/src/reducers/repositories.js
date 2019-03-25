@@ -29,10 +29,17 @@ const ACTIONS = {
 const initRepos = () => (dispatch) => {
   return getRepositories().then(
     res => {
-      dispatch({
-        type: ACTIONS.SET_REPOS,
-        allRepos: res,
-      })
+      if (res.auth) {
+        dispatch({
+          type: ACTIONS.SET_REPOS,
+          allRepos: res,
+        })
+      } else {
+        dispatch({
+          type: ACTIONS.DEAUTH,
+          res
+        })
+      }
     }
   );
 };

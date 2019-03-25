@@ -1,14 +1,15 @@
-import React, {Component} from 'react';
-import {Route, withRouter} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom';
 import Header from './Header';
 import Dashboard from '../dashboard/Dashboard';
 import Repository from '../repository/Repository';
 import Admin from '../admin/Admin';
 
-import {createMuiTheme, MuiThemeProvider} from '@material-ui/core';
-import {connect} from 'react-redux';
-import {initLogin} from '../../reducers/login';
-import Auth from "../auth/Auth";
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
+import { connect } from 'react-redux';
+import { initLogin } from '../../reducers/login';
+import Auth from '../auth/Auth';
+import PrivRoute from '../auth/PrivRoute';
 import Home from './Home';
 
 const theme = createMuiTheme({
@@ -42,16 +43,16 @@ class App extends Component {
   }
 
   render() {
-    const {location} = this.props;
+    const { location } = this.props;
     return (
-      <MuiThemeProvider theme={theme}>
-        {location.pathname !== '/login' && location.pathname !== '/signup' && <Header/>}
-        <Route exact path="/" component={Home}/>
-        <Route exact path="/login" component={Auth}/>
-        <Route exact path="/signup" component={Auth}/>
-        <Route exact path="/dashboard" component={Dashboard}/>
-        <Route exact path="/repository/:id" component={Repository}/>
-        <Route exact path="/admin" component={Admin}/>
+      <MuiThemeProvider theme={ theme }>
+        { location.pathname !== '/login' && location.pathname !== '/signup' && <Header/> }
+        <Route exact path='/' component={ Home }/>
+        <Route exact path='/login' component={ Auth }/>
+        <Route exact path='/signup' component={ Auth }/>
+        <PrivRoute exact path='/dashboard' component={ Dashboard }/>
+        <PrivRoute exact path='/repository/:id' component={ Repository }/>
+        <PrivRoute exact path='/admin' component={ Admin }/>
       </MuiThemeProvider>
     );
   }
