@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Switch } from 'react-router-dom';
 import Header from './Header';
 import Dashboard from '../dashboard/Dashboard';
 import Repository from '../repository/Repository';
@@ -43,23 +43,25 @@ class App extends Component {
   }
 
   render() {
-    const { location } = this.props;
+    const { location, auth } = this.props;
     return (
       <MuiThemeProvider theme={ theme }>
         { location.pathname !== '/login' && location.pathname !== '/signup' && <Header/> }
         <Route exact path='/' component={ Home }/>
         <Route exact path='/login' component={ Auth }/>
         <Route exact path='/signup' component={ Auth }/>
-        <PrivRoute exact path='/dashboard' component={ Dashboard }/>
-        <PrivRoute exact path='/repository/:id' component={ Repository }/>
-        <PrivRoute exact path='/admin' component={ Admin }/>
+        <PrivRoute exact path='/dashboard' component={ Dashboard } auth={auth}/>
+        <PrivRoute exact path='/repository/:id' component={ Repository } auth={auth}/>
+        <PrivRoute exact path='/admin' component={ Admin } auth={auth}/>
       </MuiThemeProvider>
     );
   }
 }
 
+const mapStateToProps = state => ({ auth: state.login.auth });
+
 const mapDispatchToProps = {
   initLogin,
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
