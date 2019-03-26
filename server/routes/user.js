@@ -24,8 +24,10 @@ router.get("/calendar", (req, res) => {
 });
 
 router.get("/repos", (req, res) => {
+  console.log('gettherepos');
   getUserRepos(req.body.uuid)
     .then((repos) => {
+      console.log(repos);
       res.status(200).json(repos)
     })
     .catch(e => {

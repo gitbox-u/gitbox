@@ -21,7 +21,9 @@ const bodyHasParameters = (params) => {
 };
 
 const authenticate = (req, res, next) => {
-  const token = req.headers['x-access-token'];
+  console.log(req.headers);
+  const token = req.headers['Authorization'];
+  console.log(token);
   if (token === undefined)
     return res.status(401).json({ auth: false, token: null, admin: false }); // TODO: Notify user not logged in?
 
