@@ -41,7 +41,9 @@ const getData = (url = ``) => {
     redirect: "follow", // manual, *follow, error
     referrer: "no-referrer", // no-referrer, *client
   })
-    .then(response => {console.log(response);response.json()})// parses JSON response into native Javascript objects
+    .then(response => response.json())
+    .catch(err => console.log(err));// parses JSON response into native Javascript objects
+  // TODO: INVOKE DEAUTH EVENT IF THE SERVER INDICATES IT
 };
 
 /// ADMIN
@@ -79,7 +81,7 @@ export async function getUsers() {
 
 /// USER REPOSITORIES
 export async function getRepositories() {
-  return getData(`${apiRoot}${userEnd}repos`).then(ret => {console.log(ret);return ret});
+  return getData(`${apiRoot}${userEnd}repos`).then(ret => ret);
 }
 
 export async function getRepositoryData(id, auth) {
