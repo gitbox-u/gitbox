@@ -14,9 +14,10 @@ const postData = (url = ``, data = {}) => {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     mode: "cors", // no-cors, cors, *same-origin
     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, *same-origin, omit
+    credentials: "omit", // include, *same-origin, omit
     headers: {
       "Content-Type": "application/json",
+      "Authorization": "Bearer " + Cookies.get('token'),
       // "Content-Type": "application/x-www-form-urlencoded",
     },
     redirect: "follow", // manual, *follow, error
@@ -31,19 +32,20 @@ const getData = (url = ``) => {
     method: "GET", // *GET, POST, PUT, DELETE, etc.
     mode: "cors", // no-cors, cors, *same-origin
     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, *same-origin, omit
+    credentials: "omit", // include, *same-origin, omit
     headers: {
       "Content-Type": "application/json",
+      "Authorization": "Bearer " + Cookies.get('token'),
       // "Content-Type": "application/x-www-form-urlencoded",
     },
     redirect: "follow", // manual, *follow, error
     referrer: "no-referrer", // no-referrer, *client
   })
-    .then(response => response.json())// parses JSON response into native Javascript objects
+    .then(response => {console.log(response);response.json()})// parses JSON response into native Javascript objects
 };
 
 /// ADMIN
-export async function getUsers(auth) {
+export async function getUsers() {
   return [
     {
       username: "Linwen",
@@ -364,7 +366,7 @@ export async function getRepositoryData(id, auth) {
 export function apiRegister(username, password) {
   const req = {
     username, password,
-  }
+  };
 
   return postData(`${apiRoot}${authEnd}register`, req);
 }
@@ -376,14 +378,14 @@ export function apiLogin(username, password) {
 
   return postData(`${apiRoot}${authEnd}login`, req).then(
     ret => {
-      Cookies.set('login', ret);
+      Cookies.set('token', ret.token);
       return ret;
     }
   );
 }
 
 export async function apiLogout(auth) {
-  Cookies.remove('login');
+  Cookies.remove('token');
 
   return {
     token: undefined,

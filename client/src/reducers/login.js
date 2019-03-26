@@ -14,12 +14,13 @@ const initial = {
   confirm: '',
 
   token: undefined,
-  auth: Cookies.getJSON('login') !== undefined,
+  auth: Cookies.get('token') !== undefined,
   admin: false,
 };
 
 const initLogin = () => (dispatch) => {
-  const login = Cookies.getJSON('login');
+  const login = Cookies.get('token');
+  console.log(login);
   if (login === undefined) return;
 
   dispatch({
@@ -45,7 +46,7 @@ const tryRegister = () => (dispatch, getState) => {
   }
 
   return apiRegister(username, password);
-}
+};
 
 const tryLogin = () => (dispatch, getState) => {
   const { username, password } = getState().login;
