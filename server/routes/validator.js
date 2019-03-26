@@ -31,6 +31,7 @@ const authenticate = (req, res, next) => {
 
     // token is a valid token
     req.body.uuid = decoded.id;
+    res.locals.uuid = decoded.id; // TODO: Use this - more proper than modifying req.body
     next();
   });
 };

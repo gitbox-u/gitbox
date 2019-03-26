@@ -14,7 +14,7 @@ const initial = {
   confirm: '',
 
   token: undefined,
-  auth: false,
+  auth: Cookies.getJSON('login') !== undefined,
   admin: false,
 };
 

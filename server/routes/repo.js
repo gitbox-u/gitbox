@@ -24,7 +24,7 @@ router.get("/stats/:id", (req, res) => {
     .catch(res.status(500).json({message: "Repo Not found"}));
 });
 
-router.post("/add", (req, res) => {
+router.post("/add", (req, res) => { // TODO: Assume authenticated, add to authorized repos
   addRepo(req.body.uuid, req.query.name, req.query.remoteUrl, req.body.auth)
     .then(() => registerRepo(req.query.remoteUrl, req.body.auth))
     .then(() => res.status(200).json({message: "repo created"}))

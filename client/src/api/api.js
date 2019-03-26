@@ -26,6 +26,22 @@ const postData = (url = ``, data = {}) => {
     .then(response => response.json())// parses JSON response into native Javascript objects
 };
 
+const getData = (url = ``) => {
+  return fetch(url, {
+    method: "GET", // *GET, POST, PUT, DELETE, etc.
+    mode: "cors", // no-cors, cors, *same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "same-origin", // include, *same-origin, omit
+    headers: {
+      "Content-Type": "application/json",
+      // "Content-Type": "application/x-www-form-urlencoded",
+    },
+    redirect: "follow", // manual, *follow, error
+    referrer: "no-referrer", // no-referrer, *client
+  })
+    .then(response => response.json())// parses JSON response into native Javascript objects
+};
+
 /// ADMIN
 export async function getUsers(auth) {
   return [
@@ -60,8 +76,8 @@ export async function getUsers(auth) {
 }
 
 /// USER REPOSITORIES
-export async function getRepositories(auth) {
-  return postData(`${apiRoot}${userEnd}repos`).then(ret => ret);
+export async function getRepositories() {
+  return getData(`${apiRoot}${userEnd}repos`).then(ret => {console.log(ret);return ret});
 }
 
 export async function getRepositoryData(id, auth) {
