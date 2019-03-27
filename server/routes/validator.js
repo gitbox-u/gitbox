@@ -1,5 +1,6 @@
-const {secret} = require('../authenticator/secret');
+const { secret } = require('../authenticator/secret');
 const jwt = require('jsonwebtoken');
+const { getEntity } = require('../db');
 
 // params: [ "a", "b" ]
 const bodyHasParameters = (params) => {
@@ -21,15 +22,23 @@ const bodyHasParameters = (params) => {
 };
 
 const authenticate = (req, res, next) => {
-  const token = req.headers['x-access-token'];
-  if (token === undefined) return res.status(401).json({ message: 'Requests to this resource must be accompanied by a token' })
+  const token = req.headers['authorization'].split(' ')[1]; // TODO: Intermediate error checks?
+  if (token === undefined)
+    return res.status(401).json({ auth: false, token: null, admin: false }); // TODO: Notify user not logged in?
 
   jwt.verify(token, secret, (err, decoded) => {
-    if (err) return res.status(401).json({ message: 'Failed to authenticate token' });
+    if (err)
+      return res.status(401).json({ message: 'Failed to authenticate token' }); // TODO: Notify
 
-    // token is a valid token
-    req.body.uuid = decoded.id;
-    next();
+    getEntity(decoded.id).then((e) => {
+      if (!e) {
+        return res.status(401).json({ auth: false, token: null, admin: false }); // TODO: Notify
+      }
+      // token is a valid token
+      req.body.uuid = decoded.id;
+      res.locals.uuid = decoded.id; // TODO: Use this - more proper than modifying req.body
+      next();
+    });
   });
 };
 

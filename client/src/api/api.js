@@ -6,28 +6,48 @@ import Cookies from 'js-cookie';
 
 const apiRoot = "http://localhost:3000/api/";
 const authEnd = "auth/";
-
+const userEnd = "user/";
 
 const postData = (url = ``, data = {}) => {
   // Default options are marked with *
-    return fetch(url, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, cors, *same-origin
-        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: "same-origin", // include, *same-origin, omit
-        headers: {
-            "Content-Type": "application/json",
-            // "Content-Type": "application/x-www-form-urlencoded",
-        },
-        redirect: "follow", // manual, *follow, error
-        referrer: "no-referrer", // no-referrer, *client
-        body: JSON.stringify(data), // body data type must match "Content-Type" header
-    })
-    .then(response => response.json()); // parses JSON response into native Javascript objects 
-}
+  return fetch(url, {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    mode: "cors", // no-cors, cors, *same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "omit", // include, *same-origin, omit
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + Cookies.get('token'),
+      // "Content-Type": "application/x-www-form-urlencoded",
+    },
+    redirect: "follow", // manual, *follow, error
+    referrer: "no-referrer", // no-referrer, *client
+    body: JSON.stringify(data), // body data type must match "Content-Type" header
+  })
+    .then(response => response.json())// parses JSON response into native Javascript objects
+};
+
+const getData = (url = ``) => {
+  return fetch(url, {
+    method: "GET", // *GET, POST, PUT, DELETE, etc.
+    mode: "cors", // no-cors, cors, *same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "omit", // include, *same-origin, omit
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + Cookies.get('token'),
+      // "Content-Type": "application/x-www-form-urlencoded",
+    },
+    redirect: "follow", // manual, *follow, error
+    referrer: "no-referrer", // no-referrer, *client
+  })
+    .then(response => response.json())
+    .catch(err => console.log(err));// parses JSON response into native Javascript objects
+  // TODO: INVOKE DEAUTH EVENT IF THE SERVER INDICATES IT
+};
 
 /// ADMIN
-export async function getUsers(auth) {
+export async function getUsers() {
   return [
     {
       username: "Linwen",
@@ -60,8 +80,8 @@ export async function getUsers(auth) {
 }
 
 /// USER REPOSITORIES
-export async function getRepositories(auth) {
-  return repos;
+export async function getRepositories() {
+  return getData(`${apiRoot}${userEnd}repos`).then(ret => ret);
 }
 
 export async function getRepositoryData(id, auth) {
@@ -141,28 +161,28 @@ export async function getRepositoryData(id, auth) {
         "3": 55,
         "4": 20,
         "5": 33,
-      },{
+      }, {
         name: "Linwen",
         "1": 34,
         "2": 20,
         "3": 20,
         "4": 20,
         "5": 3,
-      },{
+      }, {
         name: "Eric",
         "1": 20,
         "2": 20,
         "3": 21,
         "4": 20,
         "5": 20,
-      },{
+      }, {
         name: "Howard",
         "1": 20,
         "2": 33,
         "3": 21,
         "4": 4,
         "5": 33,
-      },{
+      }, {
         name: "Mark",
         "1": 0,
         "2": 0,
@@ -348,7 +368,7 @@ export async function getRepositoryData(id, auth) {
 export function apiRegister(username, password) {
   const req = {
     username, password,
-  }
+  };
 
   return postData(`${apiRoot}${authEnd}register`, req);
 }
@@ -360,14 +380,14 @@ export function apiLogin(username, password) {
 
   return postData(`${apiRoot}${authEnd}login`, req).then(
     ret => {
-      Cookies.set('login', ret);
+      Cookies.set('token', ret.token);
       return ret;
     }
   );
 }
 
 export async function apiLogout(auth) {
-  Cookies.remove('login');
+  Cookies.remove('token');
 
   return {
     token: undefined,
