@@ -32,6 +32,7 @@ function Calendar() {
       monthBorderColor="#ffffff"
       dayBorderWidth={2}
       dayBorderColor="#ffffff"
+      
     />
   );
 }

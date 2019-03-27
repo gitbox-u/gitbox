@@ -9,7 +9,7 @@ import {Typography, withStyles} from '@material-ui/core/es';
 
 const styles = {
   textInput: {
-    width: '85%',
+    width: '90%',
     marginRight: '10px',
   },
 
@@ -79,7 +79,7 @@ class RepoGrid extends Component {
                 className={classes.textInput}
           >
             <TextField
-              placeholder='Search for a repo...'
+              placeholder='Search for a repository...'
               id='outlined-bare'
               margin='normal'
               variant='outlined'
@@ -88,8 +88,8 @@ class RepoGrid extends Component {
               className={classes.textInput}
             />
 
-              <Button onClick={() => {this.props.history.push('new')}}>
-                <Fab size='small' color='primary' aria-label='Add' className={classes.fab}>
+              <Button onClick={() => {this.props.history.push('new')}} style={{margin: "0"}}>
+                <Fab size='medium' color='primary' aria-label='Add' className={classes.fab} style={{boxShadow: "none"}}>
                   <AddIcon/>
                 </Fab>
               </Button>
