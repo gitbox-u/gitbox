@@ -28,7 +28,6 @@ const addRepo = (entityUUID, name, remoteUrl, credentials) => {
     privateKey: '',
   };
 
-  console.log(entityUUID);
   const repoRecord = new Repository({
     uuid: uuid(),
     name,
@@ -55,14 +54,25 @@ const getUserRepos = async (useruuid) => {
   const user = await getEntity(useruuid);
 
   return Promise.all(user.authorized.map(getRepo))
-    .then(res => res.map(r => {
-      if (r && r.name) {
-        return { name: r.name };
-      } else if (r && r.remoteUrl) {
-        return { name: r.remoteUrl };
-      }
-    }));
-
+    .then(res => {
+      let l = {};
+      res.map(r => { // TODO: Clean this ugly stuff up
+        if (r && r.name && r.uuid) {
+          return {
+            uuid: r.uuid,
+            name: r.name,
+            desc: '',
+            breakdown: [],
+          };
+        } else if (r && r.remoteUrl) {
+          return { name: r.remoteUrl };
+        }
+      }).forEach((rep) => {
+        l.auth = true;
+        l[rep.uuid] = rep;
+      });
+      return l;
+    })
 };
 
 // By remote URL
