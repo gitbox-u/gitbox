@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const { addEntity } = require('./entity');
+const { enc } = require('../authenticator/hasher');
 const uuid = require('uuid/v4');
 
 const User = model('User', new Schema({
@@ -32,7 +33,17 @@ const addUser = (user, salt, hash) => {
 };
 
 const getUser = (user) => User.findOne({ user });
+const getUserByUUID = (uuid) => User.findOne({ uuid });
+const getAllUsers = (uuid) => User.find();
+const updatePassword = (user, password) => {
+  const cred = enc(password);
+  return User.findOneAndUpdate({user}, {...cred}).then(res => {
+    if (res) return Promise.resolve();
+    return Promise.reject();
+  })
+}
+
 
 module.exports = {
-  User, addUser, getUser,
+  User, addUser, getUser, getUserByUUID, getAllUsers, updatePassword
 };
