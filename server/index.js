@@ -18,6 +18,7 @@ init();
 app.use('/api/auth/',  require('./routes/authentication'));
 app.use('/api/repo/',  require('./routes/repo'));
 app.use('/api/user/',  require('./routes/user'));
+app.use('/api/admin/',  require('./routes/admin'));
 
 app.use(express.static('../client/build'));
 

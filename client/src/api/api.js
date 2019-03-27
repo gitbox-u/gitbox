@@ -7,6 +7,7 @@ import Cookies from 'js-cookie';
 const apiRoot = "http://localhost:3000/api/";
 const authEnd = "auth/";
 const userEnd = "user/";
+const adminEnd = "admin/";
 
 const postData = (url = ``, data = {}) => {
   // Default options are marked with *
@@ -47,36 +48,37 @@ const getData = (url = ``) => {
 };
 
 /// ADMIN
-export async function getUsers() {
-  return [
-    {
-      username: "Linwen",
-      id: 0,
-      repos: 30,
-      commits: 554
-    },
+export function getUsers() {
+  // return [
+  //   {
+  //     username: "Linwen",
+  //     id: 0,
+  //     repos: 30,
+  //     commits: 554
+  //   },
 
-    {
-      username: "Eric",
-      id: 1,
-      repos: 3000,
-      commits: 1
-    },
+  //   {
+  //     username: "Eric",
+  //     id: 1,
+  //     repos: 3000,
+  //     commits: 1
+  //   },
 
-    {
-      username: "Howard",
-      id: 2,
-      repos: 0,
-      commits: 0
-    },
+  //   {
+  //     username: "Howard",
+  //     id: 2,
+  //     repos: 0,
+  //     commits: 0
+  //   },
 
-    {
-      username: "Murad",
-      id: 3,
-      repos: 0,
-      commits: 0
-    }
-  ];
+  //   {
+  //     username: "Murad",
+  //     id: 3,
+  //     repos: 0,
+  //     commits: 0
+  //   }
+  // ];
+  return getData(`${apiRoot}${adminEnd}users`);
 }
 
 /// USER REPOSITORIES
