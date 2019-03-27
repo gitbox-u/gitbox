@@ -1,5 +1,5 @@
-const {Schema, model} = require('mongoose');
-const {getEntity} = require('./entity');
+const { Schema, model } = require('mongoose');
+const { getEntity } = require('./entity');
 const uuid = require('uuid/v4');
 
 const Repository = model('Repository', new Schema({
@@ -28,6 +28,7 @@ const addRepo = (entityUUID, name, remoteUrl, credentials) => {
     privateKey: '',
   };
 
+  console.log(entityUUID);
   const repoRecord = new Repository({
     uuid: uuid(),
     name,
@@ -48,18 +49,24 @@ const addRepo = (entityUUID, name, remoteUrl, credentials) => {
  * @returns {Promise} for {Repository}.
  */
 // TODO: Restrict info (.findOne().select()...)
-const getRepo = (uuid) => Repository.findOne({uuid});
+const getRepo = (uuid) => Repository.findOne({ uuid });
 
 const getUserRepos = async (useruuid) => {
   const user = await getEntity(useruuid);
 
   return Promise.all(user.authorized.map(getRepo))
-    .then(res => res.map(r => ({uuid: r.uuid, name: r.name})));
+    .then(res => res.map(r => {
+      if (r && r.name) {
+        return { name: r.name };
+      } else if (r && r.remoteUrl) {
+        return { name: r.remoteUrl };
+      }
+    }));
 
 };
 
 // By remote URL
-const getRepoRemote = (remote) => Repository.findOne({remoteUrl: remote});
+const getRepoRemote = (remote) => Repository.findOne({ remoteUrl: remote });
 
 module.exports = {
   Repository, getRepo, getRepoRemote, addRepo, getUserRepos
