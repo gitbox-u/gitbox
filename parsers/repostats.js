@@ -13,7 +13,32 @@ if (!('path' in yargs_argv)) {
 }
 
 const path = yargs_argv["path"];
-branches().then(console.log);
+commit_files().then(console.log);
+
+async function commit_files() {
+  const git = `cd ${path}
+  git log --numstat --pretty="C:%cn:%at" --no-merges | sed '/^$/d'`;
+  const {stdout, stderr} = await exec(git);
+
+  const committers = {};
+  const stats_commiters ={};
+  const stats_global = {};
+
+  let curr = null;
+
+  stdout.split('\n').forEach((commit, index) => {
+    if (commit[0] === 'C') {
+      // new commit
+      curr = commit.split(':')[1];
+      if (committers[curr] === undefined) committers[curr] = {commits: 1, add: 0, delete: 0};
+      else committers[curr].commits++
+    }else{
+
+    }
+  });
+
+  return  committers
+}
 
 
 async function branches() {
