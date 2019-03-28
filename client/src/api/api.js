@@ -5,8 +5,8 @@ import Cookies from 'js-cookie';
 // auth: authentication token for a user
 
 let host = 'localhost';
-if (process.env.APIHOST) {
-  host = process.env.APIHOST;
+if (process.env.REACT_APP_APIHOST) {
+  host = process.env.REACT_APP_APIHOST;
 }
 
 const apiRoot = 'http://' + host + ':3000/api/';
@@ -34,6 +34,7 @@ const postData = (url = ``, data = {}) => {
 };
 
 const getData = (url = ``) => {
+  console.log(url);
   return fetch(url, {
     method: 'GET', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, cors, *same-origin
