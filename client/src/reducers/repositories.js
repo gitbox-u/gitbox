@@ -30,6 +30,7 @@ const initRepos = () => (dispatch) => {
   return getRepositories().then(
     res => {
       if (res.auth) {
+        console.log('INIT: ' + res);
         dispatch({
           type: ACTIONS.SET_REPOS,
           allRepos: res,
@@ -61,7 +62,7 @@ const filterRepos = (repos, filter) => {
   const results = [];
 
   for (let id in repos) {
-    if (repos[id].name.toLowerCase().includes(filter.toLowerCase())) results.push(id);
+    if (repos[id].name && repos[id].name.toLowerCase().includes(filter.toLowerCase())) results.push(id);
   }
   return results;
 };
@@ -102,21 +103,25 @@ const repositories = (state = initial, action) => {
   if (type === ACTIONS.UPDATE_SEARCH) {
     const { value } = action;
 
+    console.log('ALL');
+    console.log(state.allRepos);
     const filtered = filterRepos(state.allRepos, value);
     const page = getPage(filtered, state.pageOffset);
     const pages = getNumPages(filtered);
 
     let allLangs = {}
     for (let id in state.allRepos) {
-      state.allRepos[id].breakdown.forEach(
-        function(lang) {
-          if(Object.keys(allLangs).length === 0 && allLangs.constructor === Object){
-            allLangs[lang.language] = getRandomColor();
-          }
-          else if(!(lang.language in allLangs)){
+      if (state.allRepos[id].breakdown) {
+        state.allRepos[id].breakdown.forEach(
+          function (lang) {
+            if (Object.keys(allLangs).length === 0 && allLangs.constructor === Object) {
               allLangs[lang.language] = getRandomColor();
             }
-        });
+            else if (!(lang.language in allLangs)) {
+              allLangs[lang.language] = getRandomColor();
+            }
+          });
+      }
       }
 
 
@@ -140,6 +145,7 @@ const repositories = (state = initial, action) => {
       pageRepos: page,
     }
   } else if (type === ACTIONS.SET_REPOS) {
+    console.log('set allRepos to ' + action.allRepos);
     const { allRepos } = action;
 
     return {

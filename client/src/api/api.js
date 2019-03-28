@@ -42,7 +42,7 @@ const getData = (url = ``) => {
     referrer: "no-referrer", // no-referrer, *client
   })
     .then(response => response.json())
-    .catch(err => console.log(err));// parses JSON response into native Javascript objects
+    // .catch(err => err);// parses JSON response into native Javascript objects
   // TODO: INVOKE DEAUTH EVENT IF THE SERVER INDICATES IT
 };
 
@@ -81,7 +81,7 @@ export async function getUsers() {
 
 /// USER REPOSITORIES
 export async function getRepositories() {
-  return getData(`${apiRoot}${userEnd}repos`).then(ret => ret);
+  return getData(`${apiRoot}${userEnd}repos`);
 }
 
 export async function getRepositoryData(id, auth) {

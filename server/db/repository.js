@@ -57,16 +57,18 @@ const getUserRepos = async (useruuid) => {
     .then(res => {
       let l = {};
       res.map(r => { // TODO: Clean this ugly stuff up
+        let name, uuid = '';
         if (r && r.name && r.uuid) {
-          return {
-            uuid: r.uuid,
-            name: r.name,
-            desc: '',
-            breakdown: [],
-          };
+          name = r.name;
         } else if (r && r.remoteUrl) {
-          return { name: r.remoteUrl };
+          name = r.remoteUrl;
         }
+        return {
+          uuid: r.uuid,
+          name: r.name,
+          desc: '',
+          breakdown: [],
+        };
       }).forEach((rep) => {
         l.auth = true;
         l[rep.uuid] = rep;
