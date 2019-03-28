@@ -3,16 +3,22 @@ services:
   web:
     environment:
       - CLIENTBUILDPATH=/build/
+      - MONGOHOST=mongo
     build: .
     depends_on:
       - mongo
     ports:
       - "3000:3000"
-    links:
-      - mongo
+    networks:
+      - tunn
   mongo:
     volumes:
-      - ~/MONGOdata:/data/db
+      - /MONGOdata:/data/db
     ports:
       - "27017:27017"
     image: mongo
+    networks:
+      - tunn
+networks:
+  tunn:
+    driver: "bridge"
