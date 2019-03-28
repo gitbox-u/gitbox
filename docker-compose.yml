@@ -4,6 +4,7 @@ services:
     environment:
       - CLIENTBUILDPATH=/build/
       - MONGOHOST=mongo
+      - APIHOST=ec2-3-85-142-144.compute-1.amazonaws.com
     build: .
     depends_on:
       - mongo
