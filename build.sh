@@ -2,4 +2,4 @@
 
 docker system prune -f
 docker rmi team01_web
-docker-compose up
+docker-compose build
