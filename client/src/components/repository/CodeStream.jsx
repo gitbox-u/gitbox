@@ -18,7 +18,7 @@ function CodeStream(props) {
       axisBottom={{
         "orient": "bottom",
         "tickSize": 5,
-        "tickPadding": 5,
+        "tickPadding": 15,
         "tickRotation": 0,
         "legend": "",
         "legendOffset": 36

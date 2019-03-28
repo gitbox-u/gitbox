@@ -22,7 +22,7 @@ const Home = (props) => {
     <Grid
       container
       alignItems="center"
-      spacing={32}
+      // spacing={32}
       justify="center"
       direction="column"
       className={classes.fullHeight}

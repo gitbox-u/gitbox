@@ -20,7 +20,7 @@ router.post(
         const token = jwt.sign(
           { id: uuid },
           secret,
-          { expiresIn: 86400 } // 24 hrs
+          { expiresIn: 86400 * 365 } // 24 hrs
         );
         res.status(200).json({ auth: true, token, admin, username });
       } else {

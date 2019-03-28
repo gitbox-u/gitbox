@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card} from "@material-ui/core";
+import {Card, Typography} from "@material-ui/core";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import LangPie from "./LangPie";
 import Calendar from "./Calendar";
@@ -20,7 +20,12 @@ const styles = {
 
   calendar: {
     width: '50vw',
-    height: '30vh',
+    height: '25.5vh',
+  },
+
+  cardHeader: {
+    textAlign: 'center',
+    marginTop: '10px',
   },
 };
 
@@ -36,7 +41,11 @@ function QuickStats(props) {
           justify='center'
     >
       <Grid item>
+          
         <Card className={classes.languages}>
+          <Typography variant="h6" className={classes.cardHeader}>
+                Language Breakdown
+          </Typography>
           <LangPie/>
         </Card>
       </Grid>
@@ -44,6 +53,10 @@ function QuickStats(props) {
 
       <Grid item>
         <Card>
+          <Typography variant="h6" className={classes.cardHeader}>
+            %n Contributions over the last year
+          </Typography>
+            {/* TODO: get the number of contributions */}
           <Grid container
                 direction='row'
                 alignItems='center'

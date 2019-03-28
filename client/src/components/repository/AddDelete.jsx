@@ -27,7 +27,7 @@ function AddDelete(props) {
       axisBottom={{
         "orient": "bottom",
         "tickSize": 5,
-        "tickPadding": 5,
+        "tickPadding": 15,
         "tickRotation": 0,
         "legend": "time",
         "legendOffset": 36,

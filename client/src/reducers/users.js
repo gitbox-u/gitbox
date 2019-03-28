@@ -19,11 +19,10 @@ function filterUsers(users, filter) {
   return users.filter(user => user.username.toLowerCase().includes(filter.toLowerCase()));
 }
 
-const initUsers = () => (dispatch, getState) => {
-  const { secret } = getState().login;
-
-  return getUsers(secret).then(
+const initUsers = () => (dispatch) => {
+  return getUsers().then(
     res => {
+      console.log(res);
       dispatch({
         type: ACTIONS.SET_USERS,
         users: res,
@@ -32,7 +31,7 @@ const initUsers = () => (dispatch, getState) => {
   )
 };
 
-const addUser = () => (dispatch, getState) => {
+const addUser = () => (dispatch) => {
   dispatch({
     type: ACTIONS.ADD_USER,
   })
@@ -64,7 +63,7 @@ const users = (state = initial, action) => {
     case ACTIONS.SET_USERS:
       return { users: action.users, filter: '' };
     case ACTIONS.ADD_USER:
-      return { ...state, users: [...state.users, { username: "hardcoded name", id: Math.floor(Math.random() * 1000000000), commits: 0, repos: 0 }] };
+      return { ...state, users: [...state.users, { user: "hardcoded name", uuid: Math.floor(Math.random() * 1000000000), commits: 0, repos: 0 }] };
     case ACTIONS.REMOVE_USER:
       return { users: state.users.filter(user => user.id !== action.id), filter: '' };
     case ACTIONS.UPDATE_SEARCH:

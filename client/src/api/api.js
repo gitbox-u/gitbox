@@ -7,12 +7,13 @@ import Cookies from 'js-cookie';
 const apiRoot = "http://localhost:3000/api/";
 const authEnd = "auth/";
 const userEnd = "user/";
+const adminEnd = "admin/";
 
 const postData = (url = ``, data = {}) => {
   // Default options are marked with *
   return fetch(url, {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
-    mode: "cors", // no-cors, cors, *same-origin
+    mode: "git ", // no-cors, cors, *same-origin
     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
     credentials: "omit", // include, *same-origin, omit
     headers: {
@@ -42,46 +43,47 @@ const getData = (url = ``) => {
     referrer: "no-referrer", // no-referrer, *client
   })
     .then(response => response.json())
-    .catch(err => console.log(err));// parses JSON response into native Javascript objects
+    // .catch(err => err);// parses JSON response into native Javascript objects
   // TODO: INVOKE DEAUTH EVENT IF THE SERVER INDICATES IT
 };
 
 /// ADMIN
-export async function getUsers() {
-  return [
-    {
-      username: "Linwen",
-      id: 0,
-      repos: 30,
-      commits: 554
-    },
+export function getUsers() {
+  // return [
+  //   {
+  //     username: "Linwen",
+  //     id: 0,
+  //     repos: 30,
+  //     commits: 554
+  //   },
 
-    {
-      username: "Eric",
-      id: 1,
-      repos: 3000,
-      commits: 1
-    },
+  //   {
+  //     username: "Eric",
+  //     id: 1,
+  //     repos: 3000,
+  //     commits: 1
+  //   },
 
-    {
-      username: "Howard",
-      id: 2,
-      repos: 0,
-      commits: 0
-    },
+  //   {
+  //     username: "Howard",
+  //     id: 2,
+  //     repos: 0,
+  //     commits: 0
+  //   },
 
-    {
-      username: "Murad",
-      id: 3,
-      repos: 0,
-      commits: 0
-    }
-  ];
+  //   {
+  //     username: "Murad",
+  //     id: 3,
+  //     repos: 0,
+  //     commits: 0
+  //   }
+  // ];
+  return getData(`${apiRoot}${adminEnd}users`);
 }
 
 /// USER REPOSITORIES
 export async function getRepositories() {
-  return getData(`${apiRoot}${userEnd}repos`).then(ret => ret);
+  return getData(`${apiRoot}${userEnd}repos`);
 }
 
 export async function getRepositoryData(id, auth) {
