@@ -100,9 +100,9 @@ class Users extends Component {
         {
           users.map(
             user => (
-              <ExpansionPanel expanded={expanded === user.id} onChange={this.handleChange(user.id)} key={user.id}>
+              <ExpansionPanel expanded={expanded === user.uuid} onChange={this.handleChange(user.uuid)} key={user.uuid}>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
-                  <Typography className={classes.heading}>{user.username}</Typography>
+                  <Typography className={classes.heading}>{user.user}</Typography>
                   <Typography className={classes.secondaryHeading}>{user.repos} repos
                     - {user.commits} commits</Typography>
                 </ExpansionPanelSummary>
