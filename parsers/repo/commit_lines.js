@@ -47,20 +47,24 @@ async function commitLines(path) {
         name: lang,
         children: {}
       };
-      if (stats_global.languages[lang][file] === undefined) stats_global.languages[lang][file] = {name: file, lines: 0};
-      if (stats_commiters[curr_committer].languages[lang][file] === undefined) stats_commiters[curr_committer].languages[lang][file] = {
+      if (stats_global.languages[lang].children[file] === undefined) stats_global.languages[lang].children[file] = {name: file, lines: 0};
+      if (stats_commiters[curr_committer].languages[lang].children[file] === undefined) stats_commiters[curr_committer].languages[lang].children[file] = {
         name: file,
         lines: 0
       };
 
-      stats_commiters[curr_committer].languages[lang][file].lines += add;
-      stats_global.languages[lang][file].lines += add;
-      stats_global.languages[lang][file].lines -= del;
-      stats_global.languages[lang][file].lines -= del;
+      stats_commiters[curr_committer].languages[lang].children[file].lines += add;
+      stats_commiters[curr_committer].languages[lang].children[file].lines -= del;
+      stats_global.languages[lang].children[file].lines += add;
+      stats_global.languages[lang].children[file].lines -= del;
     }
   });
 
-  return [stats_global]
+  stats_global.languages = getLangArray(stats_global.languages);
+  for (let committer of Object.keys(stats_commiters)){
+    stats_commiters[committer].languages = getLangArray(stats_commiters[committer].languages);
+  }
+  return stats_commiters
 }
 
 const IGNORED_EXTENSIONS = [
@@ -98,6 +102,14 @@ const languages = {
 function getLanguage(extension) {
   const lang = languages[extension];
   return lang === undefined ? 'Other' : lang;
+}
+
+function getLangArray(languages){
+  for (let lang of Object.keys(languages)){
+    languages[lang].children = Object.values(languages[lang].children);
+  }
+
+  return Object.values(languages);
 }
 
 module.exports = commitLines;
