@@ -1,57 +1,7 @@
-const fs = require("fs");
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
-const yargs = require('yargs').option('path', {
-  url: 'string' // Allows you to have an array of arguments for particular command
-});
-
-const yargs_argv = yargs.argv;
-
-if (!('path' in yargs_argv)) {
-  process.exit(1)
-}
-
-const path = yargs_argv["path"];
-commit_files().then(console.log);
-
-async function commit_files() {
-  const git = `cd ${path}
-  git log --numstat --pretty="C:%cn:%at" --no-merges | sed '/^$/d'`;
-  const {stdout, stderr} = await exec(git);
-
-  const committers = {};
-  const stats_commiters ={};
-  const stats_global = {};
-
-  let curr = null;
-
-  stdout.split('\n').forEach((commit, index) => {
-    if(commit ==='') return;
-    if (commit[0] === 'C') {
-      // new commit
-      curr = commit.split(':')[1];
-      if (committers[curr] === undefined) committers[curr] = {commits: 1, add: 0, delete: 0};
-      else committers[curr].commits++
-    }else{
-
-        const [add, del, file] = commit.split('\t');
-        if(file.includes('=>')) return;
-        if(IGNORED_EXTENSIONS.includes(file.split('.').pop())) return;
-        if(file.split())
-
-        if(!isNaN(parseInt(add))) committers[curr].add += parseInt(add);
-        if(!isNaN(parseInt(del))) committers[curr].delete += parseInt(del);
-
-
-    }
-  });
-
-  return  committers
-}
-
-
-async function branches() {
+async function branches(path) {
   const git = `cd ${path}
   git log --all --date-order --pretty="%h|%p|%d|%s"`;
 
@@ -141,13 +91,6 @@ async function branches() {
 
 }
 
-const IGNORED_EXTENSIONS =[
-  'xml',
-  'json',
-  'txt',
-  'csv'
-];
-
 const COLOURS = [
   "#e11d21",
   "#fbca04",
@@ -170,3 +113,5 @@ const COLOURS = [
   "#ffffff",
   "#cc317c",
 ];
+
+module.exports = branches;
