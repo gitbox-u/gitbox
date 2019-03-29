@@ -1,6 +1,6 @@
 const git = require('simple-git/promise');
-const {getRepoRemote} = require('../db/index');
-const {root} = require('../env');
+const { getRepoRemote } = require('../db/index');
+const { root } = require('../env');
 const path = require('path');
 const fs = require('fs');
 const shell = require('shelljs');
@@ -22,6 +22,7 @@ const registerRepo = (remote, auth) => {
         } else { // Does not yet exist
           if (auth) remote = `https://${auth.username}:${auth.password}@${remote.split('://')[1]}`;
           shell.mkdir('-p', store);
+          console.log('dir created');
           git(store)
             .clone(remote, null)
             .then(() => {
@@ -32,7 +33,10 @@ const registerRepo = (remote, auth) => {
             });
         }
       })
-      .catch((err) => {reject();console.log(err)})
+      .catch((err) => {
+        reject();
+        console.log(err)
+      })
   });
 };
 
