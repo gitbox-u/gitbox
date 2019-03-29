@@ -1,6 +1,7 @@
 const fs = require("fs");
 const commit_lines = require('./commit_lines');
 const branches = require('./branches');
+const tree = require('./tree');
 
 
 const yargs = require('yargs').option('path', {
@@ -14,7 +15,8 @@ if (!('path' in yargs_argv)) {
 }
 
 const path = yargs_argv["path"];
-commit_lines(path).then(JSON.stringify).then(console.log);
+// commit_lines(path).then(JSON.stringify).then(console.log);
+console.log(tree(path))
 
 
 

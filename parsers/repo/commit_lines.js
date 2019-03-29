@@ -64,7 +64,7 @@ async function commitLines(path) {
   for (let committer of Object.keys(stats_commiters)){
     stats_commiters[committer].languages = getLangArray(stats_commiters[committer].languages);
   }
-  return stats_commiters
+  return committers
 }
 
 const IGNORED_EXTENSIONS = [
