@@ -14,7 +14,7 @@ if (!('path' in yargs_argv)) {
 }
 
 const path = yargs_argv["path"];
-branches(path).then(console.log);
+commit_lines(path).then(JSON.stringify).then(console.log);
 
 
 
