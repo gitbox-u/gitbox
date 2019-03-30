@@ -7,7 +7,8 @@ async function commitLines(path) {
   const {stdout, stderr} = await exec(git);
 
   const committers = {};
-  const stats_commiters = {};
+  const stats_committers = {};
+  const extensions = new Set([]);
 
   const stats_global = {
     languages: {}
@@ -22,7 +23,7 @@ async function commitLines(path) {
       curr_committer = commit.split(':')[1];
       if (committers[curr_committer] === undefined) {
         committers[curr_committer] = {commits: 1, add: 0, delete: 0};
-        stats_commiters[curr_committer] = {languages: {}};
+        stats_committers[curr_committer] = {languages: {}};
       } else committers[curr_committer].commits++
     } else {
 
@@ -31,6 +32,7 @@ async function commitLines(path) {
       const [name, extension] = file.split('.');
       if (name.split('/').pop() === '') return;
       if (IGNORED_EXTENSIONS.includes(extension)) return;
+      extensions.add(extension);
 
 
       let add, del;
@@ -43,28 +45,29 @@ async function commitLines(path) {
 
       const lang = getLanguage(extension);
       if (stats_global.languages[lang] === undefined) stats_global.languages[lang] = {name: lang, children: {}};
-      if (stats_commiters[curr_committer].languages[lang] === undefined) stats_commiters[curr_committer].languages[lang] = {
+      if (stats_committers[curr_committer].languages[lang] === undefined) stats_committers[curr_committer].languages[lang] = {
         name: lang,
         children: {}
       };
       if (stats_global.languages[lang].children[file] === undefined) stats_global.languages[lang].children[file] = {name: file, lines: 0};
-      if (stats_commiters[curr_committer].languages[lang].children[file] === undefined) stats_commiters[curr_committer].languages[lang].children[file] = {
+      if (stats_committers[curr_committer].languages[lang].children[file] === undefined) stats_committers[curr_committer].languages[lang].children[file] = {
         name: file,
         lines: 0
       };
 
-      stats_commiters[curr_committer].languages[lang].children[file].lines += add;
-      stats_commiters[curr_committer].languages[lang].children[file].lines -= del;
+      stats_committers[curr_committer].languages[lang].children[file].lines += add;
+      stats_committers[curr_committer].languages[lang].children[file].lines -= del;
       stats_global.languages[lang].children[file].lines += add;
       stats_global.languages[lang].children[file].lines -= del;
     }
   });
 
   stats_global.languages = getLangArray(stats_global.languages);
-  for (let committer of Object.keys(stats_commiters)){
-    stats_commiters[committer].languages = getLangArray(stats_commiters[committer].languages);
+  for (let committer of Object.keys(stats_committers)){
+    stats_committers[committer].languages = getLangArray(stats_committers[committer].languages);
   }
-  return committers
+
+  return {extensions: [... extensions], committers, stats_global, stats_committers};
 }
 
 const IGNORED_EXTENSIONS = [
