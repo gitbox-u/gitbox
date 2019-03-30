@@ -57,7 +57,8 @@ class ContributorList extends React.Component {
             <ListItemAvatar>
               <Circle style={{fill: contributor.color}}/>
             </ListItemAvatar>
-            <ListItemText primary={contributor.name}/>
+            <ListItemText primary={contributor.name}
+            secondary={'Secondary text'}/>
             <ListItemSecondaryAction>
               <Checkbox
                 onChange={this.handleToggle(contributor)}
