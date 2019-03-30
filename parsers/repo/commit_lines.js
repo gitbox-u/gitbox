@@ -1,6 +1,8 @@
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
+const interval = 86400;
+
 async function commitLines(path) {
   const git = `cd ${path}
   git log --numstat --pretty="C:%cn:%at" --no-merges | sed '/^$/d'`;
@@ -10,19 +12,25 @@ async function commitLines(path) {
   const stats_commiters = {};
 
   const stats_global = {
-    languages: {}
+    languages: {},
+    addDelete: [{'id': 'additions', 'color': 'green', 'data': {}}, {'id': 'deletions', 'color': 'red', 'data': {}}],
   };
 
   let curr_committer = null;
+  let curr_time = null;
 
   stdout.split('\n').forEach((commit, index) => {
     if (commit === '') return;
     if (commit[0] === 'C') {
       // new commit
-      curr_committer = commit.split(':')[1];
+      const [ _, com, time ] = commit.split(':');
+
+      curr_committer = com;
+      curr_time = Math.floor(parseInt(time) / interval) * interval; // floor to nearest day
+
       if (committers[curr_committer] === undefined) {
         committers[curr_committer] = {commits: 1, add: 0, delete: 0};
-        stats_commiters[curr_committer] = {languages: {}};
+        stats_commiters[curr_committer] = {languages: {}, addDelete: [{'id': 'additions', 'color': 'green', 'data': {}}, {'id': 'deletions', 'color': 'red', 'data': {}}]};
       } else committers[curr_committer].commits++
     } else {
 
@@ -33,12 +41,12 @@ async function commitLines(path) {
       if (IGNORED_EXTENSIONS.includes(extension)) return;
 
 
-      let add, del;
+      let add = 0, del = 0;
       if (!isNaN(parseInt(adds))) add = parseInt(adds);
       if (!isNaN(parseInt(dels))) del = parseInt(dels);
 
-      committers[curr_committer].add += parseInt(add);
-      committers[curr_committer].delete += parseInt(del);
+      committers[curr_committer].add += add;
+      committers[curr_committer].delete += del;
 
 
       const lang = getLanguage(extension);
@@ -57,14 +65,37 @@ async function commitLines(path) {
       stats_commiters[curr_committer].languages[lang].children[file].lines -= del;
       stats_global.languages[lang].children[file].lines += add;
       stats_global.languages[lang].children[file].lines -= del;
+
+
+      const stats_add_data = stats_commiters[curr_committer][0].data;
+      const stats_del_data = stats_commiters[curr_committer][1].data;
+      const global_add_data = stats_global[0].data;
+      const global_del_data = stats_global[1].data;
+      // addDelete stats, init if needed
+      if (stats_add_data[curr_time] === undefined || stats_del_data[curr_time] === undefined) {
+        stats_add_data[curr_time] = {y: 0};
+        stats_del_data[curr_time] = {y: 0};
+      }
+      
+      if (global_add_data[curr_time] === undefined || stats_del_data[curr_time] === undefined) {
+        global_add_data[curr_time] = {y: 0};
+        global_del_data[curr_time] = {y: 0};
+      }
+
+      stats_add_data[curr_time].y += add;
+      stats_del_data[curr_time].y += del;
+      global_add_data[curr_time].y += add;
+      global_add_data[curr_time].y += del;
     }
   });
 
   stats_global.languages = getLangArray(stats_global.languages);
-  for (let committer of Object.keys(stats_commiters)){
+  stats_global.addDelete = getKeyedObjectAsArray(stats_global.addDelete, 'x');
+  for (let committer in stats_commiters){
     stats_commiters[committer].languages = getLangArray(stats_commiters[committer].languages);
+    stats_committers[committer].addDelete = getKeyedObjectAsArray(stats_committers[comitter].addDelete, 'x');
   }
-  return committers
+  return stats_commiters;
 }
 
 const IGNORED_EXTENSIONS = [
@@ -112,4 +143,16 @@ function getLangArray(languages){
   return Object.values(languages);
 }
 
+function getKeyedObjectAsArray(obj, name) {
+  const ret = [];
+  for (let key in obj) {
+    const toPush = {[name]: key, ...obj[key]};
+    ret.push(toPush);
+  }
+
+  return ret;
+}
+
 module.exports = commitLines;
+
+
