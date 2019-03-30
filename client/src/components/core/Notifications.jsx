@@ -76,7 +76,7 @@ class MenuListComposition extends React.Component {
                 <Paper>
                   <ClickAwayListener onClickAway={this.handleClose}>
                   
-                    <MenuList>
+                    <MenuList> 
                       <MenuItem onClick={this.handleClose}>notifcation 1</MenuItem>
                       <MenuItem onClick={this.handleClose}>notification 2</MenuItem>
                       <MenuItem onClick={this.handleClose}>notification 3</MenuItem>
