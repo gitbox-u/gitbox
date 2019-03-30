@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {updateSearchField, changePage, initRepos} from '../../reducers/repositories';
 import Pagination from '../core/Pagination';
 import {Typography, withStyles} from '@material-ui/core/es';
+import Addrepo from './AddRepo';
 
 const styles = {
   textInput: {
@@ -75,8 +76,9 @@ class RepoGrid extends Component {
             </Typography>
           </Grid>
 
-          <Grid item
+          <Grid container
                 className={classes.textInput}
+                alignItems='inline'
           >
             <TextField
               placeholder='Search for a repository...'
@@ -88,11 +90,7 @@ class RepoGrid extends Component {
               className={classes.textInput}
             />
 
-              <Button onClick={() => {this.props.history.push('new')}} style={{margin: "0"}}>
-                <Fab size='medium' color='primary' aria-label='Add' className={classes.fab} style={{boxShadow: "none"}}>
-                  <AddIcon/>
-                </Fab>
-              </Button>
+              <Addrepo></Addrepo> 
           </Grid>
         </Grid>
 

@@ -4,7 +4,10 @@ services:
     environment:
       - CLIENTBUILDPATH=/build/
       - MONGOHOST=mongo
+      - REPODIR=/REPOdata/
     build: .
+    volumes:
+      - /REPOdata:/REPOdata
     depends_on:
       - mongo
     ports:
