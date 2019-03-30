@@ -44,17 +44,6 @@ class MenuListComposition extends React.Component {
     return (
       <div className={classes.root}>
         <div>
-
-          {/* <IconButton
-//           aria-owns={anchorEl ? 'simple-menu' : undefined}
-//           aria-haspopup='true'
-//           onClick={this.handleClick}
-//           color='inherit'
-//         >
-//           <Badge badgeContent={notifications.length} color='secondary'><Notifications/></Badge>
-          
-//         </IconButton>
- */}
           <IconButton
             buttonRef={node => {
               this.anchorEl = node;
