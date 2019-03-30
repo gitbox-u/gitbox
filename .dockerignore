@@ -2,4 +2,4 @@
 *Dockerfile*
 *docker-compose*
 *.dockerignore*
-*node_modules*
+node_modules

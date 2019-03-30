@@ -20,7 +20,6 @@ const initial = {
 
 const initLogin = () => (dispatch) => {
   const login = Cookies.get('token');
-  console.log(login);
   if (login === undefined) return;
 
   dispatch({

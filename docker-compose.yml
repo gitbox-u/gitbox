@@ -1,14 +1,27 @@
 version: '3'
 services:
   web:
+    environment:
+      - CLIENTBUILDPATH=/build/
+      - MONGOHOST=mongo
+      - REPODIR=/REPOdata/
     build: .
+    volumes:
+      - /REPOdata:/REPOdata
     depends_on:
       - mongo
     ports:
-    - "3000:3000"
-    links:
-    - mongo
+      - "3000:3000"
+    networks:
+      - tunn
   mongo:
-    expose:
-    - "27017"
+    volumes:
+      - /MONGOdata:/data/db
+    ports:
+      - "27017:27017"
     image: mongo
+    networks:
+      - tunn
+networks:
+  tunn:
+    driver: "bridge"
