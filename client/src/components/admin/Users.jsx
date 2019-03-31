@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {withStyles} from '@material-ui/core/styles';
-import {Button, TextField, IconButton} from '@material-ui/core';
+import {Button, TextField, IconButton, Fab} from '@material-ui/core';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {connect} from "react-redux";
 import {addUser, removeUser, initUsers, filterUsers, updateSearch, updateUsername} from '../../reducers/users';
+import AddIcon from '@material-ui/icons/Add';
 
 
 import Add from '@material-ui/icons/Add';
@@ -93,9 +94,14 @@ class Users extends Component {
             value={username}
             className={classes.textInput}
           />
-          <IconButton onClick={this.addUser}>
+          <Button onClick={this.addUser} style={{marginTop: '10px'}}>
+                <Fab size='medium' color='primary' aria-label='Add' style={{boxShadow: "none"}}>
+                  <AddIcon/>
+                </Fab>
+        </Button>
+          {/* <IconButton onClick={this.addUser}>
             <Add></Add>
-          </IconButton>
+          </IconButton> */}
         </div>
         {
           users.map(

@@ -58,7 +58,7 @@ class ContributorList extends React.Component {
               <Circle style={{fill: contributor.color}}/>
             </ListItemAvatar>
             <ListItemText primary={contributor.name}
-            secondary={'Commits: Additions: Deletions:'}/>  
+            secondary={'Commits: \nAdditions: \nDeletions:'}/>  
             {/* TODO: make sure to udpate the commits, additions deletions to include the values */}
             <ListItemSecondaryAction>
               <Checkbox
