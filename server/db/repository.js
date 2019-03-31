@@ -1,5 +1,5 @@
-const { Schema, model } = require('mongoose');
-const { getEntity } = require('./entity');
+const {Schema, model} = require('mongoose');
+const {getEntity} = require('./entity');
 const uuid = require('uuid/v4');
 
 const Repository = model('Repository', new Schema({
@@ -48,7 +48,7 @@ const addRepo = (entityUUID, name, remoteUrl, credentials) => {
  * @returns {Promise} for {Repository}.
  */
 // TODO: Restrict info (.findOne().select()...)
-const getRepo = (uuid) => Repository.findOne({ uuid });
+const getRepo = (uuid) => Repository.findOne({uuid});
 
 const getUserRepos = async (useruuid) => {
   const user = await getEntity(useruuid);
@@ -78,7 +78,7 @@ const getUserRepos = async (useruuid) => {
 };
 
 // By remote URL
-const getRepoRemote = (remote) => Repository.findOne({ remoteUrl: remote });
+const getRepoRemote = (remote) => Repository.findOne({remoteUrl: remote});
 
 module.exports = {
   Repository, getRepo, getRepoRemote, addRepo, getUserRepos

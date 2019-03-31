@@ -44,17 +44,6 @@ class MenuListComposition extends React.Component {
     return (
       <div className={classes.root}>
         <div>
-
-          {/* <IconButton
-//           aria-owns={anchorEl ? 'simple-menu' : undefined}
-//           aria-haspopup='true'
-//           onClick={this.handleClick}
-//           color='inherit'
-//         >
-//           <Badge badgeContent={notifications.length} color='secondary'><Notifications/></Badge>
-          
-//         </IconButton>
- */}
           <IconButton
             buttonRef={node => {
               this.anchorEl = node;
@@ -76,7 +65,7 @@ class MenuListComposition extends React.Component {
                 <Paper>
                   <ClickAwayListener onClickAway={this.handleClose}>
                   
-                    <MenuList>
+                    <MenuList> 
                       <MenuItem onClick={this.handleClose}>notifcation 1</MenuItem>
                       <MenuItem onClick={this.handleClose}>notification 2</MenuItem>
                       <MenuItem onClick={this.handleClose}>notification 3</MenuItem>
