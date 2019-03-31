@@ -13,15 +13,38 @@ async function topfive(path) {
     const prev = d.toISOString();
 
     const git = `cd ${path}
-    git shortlog -sn --no-merges --since="${prev}" --until="${curr}"`;
-    months_sdout[i] = await exec(git);
+    git shortlog HEAD -sn --no-merges --since="${prev}" --until="${curr}"`;
+    months_sdout[i] = (await exec(git)).stdout;
   }
 
-  months_sdout.forEach((sdout, mi) => {
-    stdout.split('\n').forEach((user, index) => {
+  const stats_month = [{}, {}, {}, {}, {}];
+  const committers = {};
+
+  months_sdout.forEach((stdout, mi) => {
+    stdout.split('\n').forEach((line, index) => {
+      const [cs, user] = line.split('\t');
+      const commits = parseInt(cs);
+      stats_month[mi][user] = commits;
+
+      if (typeof(committers[user]) === "undefined") committers[user] = commits;
+      else committers[user] += commits;
     });
   });
 
+  const sorted = Object.keys(committers).sort(function (a, b) {
+    return committers[a] - committers[b]
+  });
+
+  const top5 = sorted.slice(0, 5);
+
+  return top5.map(u => {
+    const out = {name: u};
+    stats_month.forEach((data, mi) => {
+      out[mi] = data[u] === undefined ? 0 : data[u];
+    });
+
+    return out;
+  })
 
 }
 
