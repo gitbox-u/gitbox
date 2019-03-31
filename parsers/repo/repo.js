@@ -16,7 +16,7 @@ if (!('path' in yargs_argv)) {
 }
 
 const path = yargs_argv["path"];
-commit_lines(path).then((res) => console.log(JSON.stringify(res.stats_global.languages)));
+commit_lines(path).then((res) => console.log(JSON.stringify(res.stats_global.addDelete)));
 // console.log(JSON.stringify(tree(path, ['jsx', 'js', 'sh'])));
 // topfive(path).then(console.log);
 

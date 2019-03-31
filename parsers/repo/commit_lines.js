@@ -6,7 +6,7 @@ const interval = 86400;
 async function commitLines(path) {
   const git = `cd ${path}
   git log --numstat --pretty="C:%cn:%at" --no-merges --reverse| sed '/^$/d'`;
-  const {stdout, stderr} = await exec(git);
+  const { stdout, stderr } = await exec(git);
 
   const committers = {};
   const stats_committers = {};
@@ -14,7 +14,7 @@ async function commitLines(path) {
 
   const stats_global = {
     languages: {},
-    addDelete: [{'id': 'additions', 'color': 'green', 'data': {}}, {'id': 'deletions', 'color': 'red', 'data': {}}],
+    addDelete: [{ 'id': 'additions', 'color': 'green', 'data': {} }, { 'id': 'deletions', 'color': 'red', 'data': {} }],
   };
 
   let curr_committer = null;
@@ -30,10 +30,10 @@ async function commitLines(path) {
       curr_time = Math.floor(parseInt(time) / interval) * interval; // floor to nearest day
 
       if (committers[curr_committer] === undefined) {
-        committers[curr_committer] = {commits: 1, add: 0, delete: 0};
+        committers[curr_committer] = { commits: 1, add: 0, delete: 0 };
         stats_committers[curr_committer] = {
           languages: {},
-          addDelete: [{'id': 'additions', 'color': 'green', 'data': {}}, {
+          addDelete: [{ 'id': 'additions', 'color': 'green', 'data': {} }, {
             'id': 'deletions',
             'color': 'red',
             'data': {}
@@ -48,8 +48,8 @@ async function commitLines(path) {
 
       // moving logic
       if (file.includes('=>')) {
-        if(file.includes('}/')) return; // hell to handle
-        if(!file.includes('}')) return; // hell to handle
+        if (file.includes('}/')) return; // hell to handle
+        if (!file.includes('}')) return; // hell to handle
         let [path, rest] = file.split('{');
 
         rest = rest.split('}')[0];
@@ -60,7 +60,7 @@ async function commitLines(path) {
         const lang_to = getLanguage(to.split('.').pop());
 
 
-        if (stats_global.languages[lang_to] === undefined) stats_global.languages[lang_to] = {name: lang_to, children: {}};
+        if (stats_global.languages[lang_to] === undefined) stats_global.languages[lang_to] = { name: lang_to, children: {} };
         stats_global.languages[lang_to].children[path + to] = stats_global.languages[lang_from].children[path + frm];
 
 
@@ -70,11 +70,11 @@ async function commitLines(path) {
         delete stats_global.languages[lang_from].children[path + frm];
 
         for (let cont of Object.keys(stats_committers)) {
-          if (typeof (stats_committers[cont].languages[lang_from]) === "undefined"||
+          if (typeof (stats_committers[cont].languages[lang_from]) === "undefined" ||
             typeof (stats_committers[cont].languages[lang_from].children[path + frm]) === "undefined") continue;
 
 
-          if (stats_committers[cont].languages[lang_to] === undefined) stats_committers[cont].languages[lang_to] = {name: lang_to, children: {}};
+          if (stats_committers[cont].languages[lang_to] === undefined) stats_committers[cont].languages[lang_to] = { name: lang_to, children: {} };
 
           stats_committers[cont].languages[lang_to].children[path + to] = stats_committers[cont].languages[lang_from].children[path + frm];
           stats_committers[cont].languages[lang_to].children[path + to].name = path + to;
@@ -100,7 +100,7 @@ async function commitLines(path) {
 
 
       const lang = getLanguage(extension);
-      if (stats_global.languages[lang] === undefined) stats_global.languages[lang] = {name: lang, children: {}};
+      if (stats_global.languages[lang] === undefined) stats_global.languages[lang] = { name: lang, children: {} };
       if (stats_committers[curr_committer].languages[lang] === undefined) stats_committers[curr_committer].languages[lang] = {
         name: lang,
         children: {}
@@ -120,35 +120,37 @@ async function commitLines(path) {
       stats_global.languages[lang].children[file].lines -= del;
 
 
-      // const stats_add_data = stats_committers[curr_committer][0].data;
-      // const stats_del_data = stats_committers[curr_committer][1].data;
-      // const global_add_data = stats_global[0].data;
-      // const global_del_data = stats_global[1].data;
-      // // addDelete stats, init if needed
-      // if (stats_add_data[curr_time] === undefined || stats_del_data[curr_time] === undefined) {
-      //   stats_add_data[curr_time] = {y: 0};
-      //   stats_del_data[curr_time] = {y: 0};
-      // }
-      //
-      // if (global_add_data[curr_time] === undefined || stats_del_data[curr_time] === undefined) {
-      //   global_add_data[curr_time] = {y: 0};
-      //   global_del_data[curr_time] = {y: 0};
-      // }
-      //
-      // stats_add_data[curr_time].y += add;
-      // stats_del_data[curr_time].y += del;
-      // global_add_data[curr_time].y += add;
-      // global_add_data[curr_time].y += del;
+      const stats_add_data = stats_committers[curr_committer].addDelete[0].data;
+      const stats_del_data = stats_committers[curr_committer].addDelete[1].data;
+      const global_add_data = stats_global.addDelete[0].data;
+      const global_del_data = stats_global.addDelete[1].data;
+      // addDelete stats, init if needed
+      if (stats_add_data[curr_time] === undefined || stats_del_data[curr_time] === undefined) {
+        stats_add_data[curr_time] = { y: 0 };
+        stats_del_data[curr_time] = { y: 0 };
+      }
+
+      if (global_add_data[curr_time] === undefined || stats_del_data[curr_time] === undefined) {
+        global_add_data[curr_time] = { y: 0 };
+        global_del_data[curr_time] = { y: 0 };
+      }
+
+      stats_add_data[curr_time].y += add;
+      stats_del_data[curr_time].y -= del;
+      global_add_data[curr_time].y += add;
+      global_del_data[curr_time].y -= del;
     }
   });
 
   stats_global.languages = getLangArray(stats_global.languages);
-  stats_global.addDelete = getKeyedObjectAsArray(stats_global.addDelete, 'x');
+  stats_global.addDelete[0].data = getKeyedObjectAsArray(stats_global.addDelete[0].data, 'x');
+  stats_global.addDelete[1].data = getKeyedObjectAsArray(stats_global.addDelete[1].data, 'x');
   for (let committer in stats_committers) {
     stats_committers[committer].languages = getLangArray(stats_committers[committer].languages);
-    stats_committers[committer].addDelete = getKeyedObjectAsArray(stats_committers[committer].addDelete, 'x');
+    stats_committers[committer].addDelete[0].data = getKeyedObjectAsArray(stats_committers[committer].addDelete[0].data, 'x');
+    stats_committers[committer].addDelete[1].data = getKeyedObjectAsArray(stats_committers[committer].addDelete[1].data, 'x');
   }
-  return {stats_global};
+  return { stats_global };
 }
 
 const IGNORED_EXTENSIONS = [
@@ -199,7 +201,7 @@ function getLangArray(languages) {
 function getKeyedObjectAsArray(obj, name) {
   const ret = [];
   for (let key in obj) {
-    const toPush = {[name]: key, ...obj[key]};
+    const toPush = { [name]: key, ...obj[key] };
     ret.push(toPush);
   }
 
