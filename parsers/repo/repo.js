@@ -15,8 +15,8 @@ if (!('path' in yargs_argv)) {
 }
 
 const path = yargs_argv["path"];
-commit_lines(path).then(JSON.stringify).then(console.log);
-// console.log(tree(path))
+// commit_lines(path).then(JSON.stringify).then(console.log);
+console.log(JSON.stringify(tree(path, ['jsx', 'js', 'sh'])));
 
 
 
