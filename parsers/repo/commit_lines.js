@@ -5,7 +5,7 @@ const interval = 86400;
 
 async function commitLines(path) {
   const git = `cd ${path}
-  git log --numstat --pretty="C:%cn:%at" --no-merges | sed '/^$/d'`;
+  git log --numstat --pretty="C:%cn:%at" --no-merges --reverse| sed '/^$/d'`;
   const {stdout, stderr} = await exec(git);
 
   const committers = {};
@@ -24,19 +24,67 @@ async function commitLines(path) {
     if (commit === '') return;
     if (commit[0] === 'C') {
       // new commit
-      const [ _, com, time ] = commit.split(':');
+      const [_, com, time] = commit.split(':');
 
       curr_committer = com;
       curr_time = Math.floor(parseInt(time) / interval) * interval; // floor to nearest day
 
       if (committers[curr_committer] === undefined) {
         committers[curr_committer] = {commits: 1, add: 0, delete: 0};
-        stats_committers[curr_committer] = {languages: {}, addDelete: [{'id': 'additions', 'color': 'green', 'data': {}}, {'id': 'deletions', 'color': 'red', 'data': {}}]};
+        stats_committers[curr_committer] = {
+          languages: {},
+          addDelete: [{'id': 'additions', 'color': 'green', 'data': {}}, {
+            'id': 'deletions',
+            'color': 'red',
+            'data': {}
+          }]
+        };
       } else committers[curr_committer].commits++
     } else {
 
-      const [adds, dels, file] = commit.split('\t');
-      if (file.includes('=>') || file.split('.').length < 2) return;
+      let [adds, dels, file] = commit.split('\t');
+      if (file.split('.').length < 2) return;
+
+
+      // moving logic
+      if (file.includes('=>')) {
+        if(file.includes('}/')) return; // hell to handle
+        if(!file.includes('}')) return; // hell to handle
+        let [path, rest] = file.split('{');
+
+        rest = rest.split('}')[0];
+
+        const [frm, to] = rest.split(' => ');
+
+        const lang_from = getLanguage(frm.split('.').pop());
+        const lang_to = getLanguage(to.split('.').pop());
+
+
+        if (stats_global.languages[lang_to] === undefined) stats_global.languages[lang_to] = {name: lang_to, children: {}};
+        stats_global.languages[lang_to].children[path + to] = stats_global.languages[lang_from].children[path + frm];
+
+
+        stats_global.languages[lang_to].children[path + to].name = path + to;
+
+
+        delete stats_global.languages[lang_from].children[path + frm];
+
+        for (let cont of Object.keys(stats_committers)) {
+          if (typeof (stats_committers[cont].languages[lang_from]) === "undefined"||
+            typeof (stats_committers[cont].languages[lang_from].children[path + frm]) === "undefined") continue;
+
+
+          if (stats_committers[cont].languages[lang_to] === undefined) stats_committers[cont].languages[lang_to] = {name: lang_to, children: {}};
+
+          stats_committers[cont].languages[lang_to].children[path + to] = stats_committers[cont].languages[lang_from].children[path + frm];
+          stats_committers[cont].languages[lang_to].children[path + to].name = path + to;
+          delete stats_committers[cont].languages[lang_from].children[path + frm];
+        }
+
+        file = path + to;
+      }
+
+
       const [name, extension] = file.split('.');
       if (name.split('/').pop() === '') return;
       if (IGNORED_EXTENSIONS.includes(extension)) return;
@@ -57,7 +105,10 @@ async function commitLines(path) {
         name: lang,
         children: {}
       };
-      if (stats_global.languages[lang].children[file] === undefined) stats_global.languages[lang].children[file] = {name: file, lines: 0};
+      if (stats_global.languages[lang].children[file] === undefined) stats_global.languages[lang].children[file] = {
+        name: file,
+        lines: 0
+      };
       if (stats_committers[curr_committer].languages[lang].children[file] === undefined) stats_committers[curr_committer].languages[lang].children[file] = {
         name: file,
         lines: 0
@@ -93,7 +144,7 @@ async function commitLines(path) {
 
   stats_global.languages = getLangArray(stats_global.languages);
   stats_global.addDelete = getKeyedObjectAsArray(stats_global.addDelete, 'x');
-  for (let committer in stats_committers){
+  for (let committer in stats_committers) {
     stats_committers[committer].languages = getLangArray(stats_committers[committer].languages);
     stats_committers[committer].addDelete = getKeyedObjectAsArray(stats_committers[committer].addDelete, 'x');
   }
@@ -137,8 +188,8 @@ function getLanguage(extension) {
   return lang === undefined ? 'Other' : lang;
 }
 
-function getLangArray(languages){
-  for (let lang of Object.keys(languages)){
+function getLangArray(languages) {
+  for (let lang of Object.keys(languages)) {
     languages[lang].children = Object.values(languages[lang].children);
   }
 
