@@ -20,16 +20,17 @@ function MiniCalendar(props) {
         "top": 20,
         "right": 10,
         "bottom": 10,
-        "left": 60
+        "left": 90
       }}
       colors="GnBu"
       forceSquare={true}
-      axistLeft={{
+      axisLeft={{
         "orient": "left",
-        "tickSize": 5,
-        "tickPadding": 5,
-        "tickRotation": -90,
-        "legendOffset": -40
+        "tickSize": 1,
+        "tickPadding": 3,
+        "tickRotation": -10,
+        "legend": "user",
+        "legendOffset": 60
       }}
       axisTop={{
         "orient": "top",

@@ -1,0 +1,1339 @@
+{
+  "Eric Lindau": {
+    "languages": [
+      {
+        "name": "Shell",
+        "children": [
+          {
+            "name": "deploy.sh",
+            "lines": 6
+          },
+          {
+            "name": "payload.sh",
+            "lines": 5
+          },
+          {
+            "name": "build.sh",
+            "lines": 5
+          }
+        ]
+      },
+      {
+        "name": "Javascript",
+        "children": [
+          {
+            "name": "server/env/index.js",
+            "lines": 9
+          },
+          {
+            "name": "server/git/index.js",
+            "lines": 34
+          },
+          {
+            "name": "server/routes/validator.js",
+            "lines": 10
+          },
+          {
+            "name": "client/src/api/api.js",
+            "lines": 25
+          },
+          {
+            "name": "server/index.js",
+            "lines": 12
+          },
+          {
+            "name": "server/db/index.js",
+            "lines": 66
+          },
+          {
+            "name": "client/src/reducers/login.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/reducers/repositories.js",
+            "lines": 10
+          },
+          {
+            "name": "server/db/repository.js",
+            "lines": 19
+          },
+          {
+            "name": "server/routes/user.js",
+            "lines": 0
+          },
+          {
+            "name": "server/routes/repo.js",
+            "lines": 0
+          },
+          {
+            "name": "server/db/index.mjs",
+            "lines": 29
+          },
+          {
+            "name": "server/index.mjs",
+            "lines": 1
+          },
+          {
+            "name": "client/src/index.js",
+            "lines": 10
+          },
+          {
+            "name": "client/src/reducers/notifications.js",
+            "lines": 25
+          },
+          {
+            "name": "client/src/reducers/users.js",
+            "lines": 65
+          },
+          {
+            "name": "client/src/geo/geo.js",
+            "lines": -1
+          },
+          {
+            "name": "client/src/actions/index.js",
+            "lines": 12
+          },
+          {
+            "name": "client/src/components/admin/Admin.js",
+            "lines": 39
+          },
+          {
+            "name": "client/src/components/admin/Users.js",
+            "lines": 90
+          },
+          {
+            "name": "client/src/App.js",
+            "lines": 14
+          },
+          {
+            "name": "client/src/components/dashboard/Repos.js",
+            "lines": -1
+          },
+          {
+            "name": "client/src/components/dashboard/RepoSnippet.js",
+            "lines": 46
+          },
+          {
+            "name": "client/src/components/dashboard/Dashboard.js",
+            "lines": 67
+          },
+          {
+            "name": "client/src/components/Header.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/Login.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/admin/expansionList.js",
+            "lines": -105
+          },
+          {
+            "name": "client/src/reducers/reposReducer.js",
+            "lines": -1
+          },
+          {
+            "name": "client/src/components/dashboard/QuickStats.js",
+            "lines": 8
+          },
+          {
+            "name": "client/src/components/dashboard/Calendar.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/dashboard/LangPie.js",
+            "lines": 0
+          },
+          {
+            "name": "client/public/js/geo.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/dashboard/dashboard.js",
+            "lines": -59
+          },
+          {
+            "name": "client/src/components/dashboard/repo-snippet.js",
+            "lines": -36
+          },
+          {
+            "name": "client/src/components/header.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/login.js",
+            "lines": 13
+          },
+          {
+            "name": "client/src/components/repository/CodeStream.js",
+            "lines": -2
+          },
+          {
+            "name": "client/src/components/repository/ContributorCard.js",
+            "lines": -2
+          },
+          {
+            "name": "client/src/components/repository/Contributors.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/repository/Repository.js",
+            "lines": 21
+          },
+          {
+            "name": "client/src/reducers/loginReducer.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/serviceWorker.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/dashboard/repos.js",
+            "lines": 6
+          },
+          {
+            "name": "client/src/containers/availableRepos.js",
+            "lines": 10
+          },
+          {
+            "name": "client/src/reducers/repos.js",
+            "lines": 5
+          },
+          {
+            "name": "client/src/redux/reducer.js",
+            "lines": 0
+          },
+          {
+            "name": "client/public/js/index.js",
+            "lines": 0
+          }
+        ]
+      },
+      {
+        "name": "React.js",
+        "children": [
+          {
+            "name": "client/src/components/auth/PrivRoute.jsx",
+            "lines": 24
+          },
+          {
+            "name": "client/src/components/core/App.jsx",
+            "lines": 3
+          },
+          {
+            "name": "client/src/components/dashboard/Dashboard.jsx",
+            "lines": -2
+          },
+          {
+            "name": "client/src/components/dashboard/RepoGrid.jsx",
+            "lines": 4
+          },
+          {
+            "name": "client/src/components/repository/New.jsx",
+            "lines": 43
+          },
+          {
+            "name": "client/src/components/repository/Repository.jsx",
+            "lines": -4
+          },
+          {
+            "name": "client/src/components/admin/searchFields.jsx",
+            "lines": -58
+          },
+          {
+            "name": "client/src/components/core/Notifications.jsx",
+            "lines": 8
+          },
+          {
+            "name": "client/src/components/repository/ContributorList.jsx",
+            "lines": -4
+          },
+          {
+            "name": "client/src/components/core/Header.jsx",
+            "lines": -1
+          },
+          {
+            "name": "client/src/components/dashboard/RepoCard.jsx",
+            "lines": -2
+          },
+          {
+            "name": "client/src/components/admin/Users.jsx",
+            "lines": 7
+          },
+          {
+            "name": "client/src/components/core/PopupMenu.jsx",
+            "lines": -52
+          },
+          {
+            "name": "client/src/components/auth/Auth.jsx",
+            "lines": -1
+          },
+          {
+            "name": "client/src/components/admin/Admin.jsx",
+            "lines": -31
+          },
+          {
+            "name": "client/src/components/dashboard/QuickStats.jsx",
+            "lines": -7
+          },
+          {
+            "name": "client/src/components/repository/Stat.jsx",
+            "lines": 19
+          },
+          {
+            "name": "client/src/components/auth/Signup.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/Signup.jsx",
+            "lines": 90
+          },
+          {
+            "name": "client/src/components/Auth.jsx",
+            "lines": 66
+          },
+          {
+            "name": "client/src/components/Login.jsx",
+            "lines": -43
+          },
+          {
+            "name": "client/src/components/App.jsx",
+            "lines": 1
+          },
+          {
+            "name": "client/src/components/core/SearchField.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/Header.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/dashboard/Calendar.jsx",
+            "lines": -2
+          },
+          {
+            "name": "client/src/components/repository/FolderTree.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/dashboard/RepoSnippet.jsx",
+            "lines": 8
+          },
+          {
+            "name": "client/src/components/dashboard/Repos.jsx",
+            "lines": 28
+          }
+        ]
+      },
+      {
+        "name": "CSS",
+        "children": [
+          {
+            "name": "client/public/css/style.css",
+            "lines": -9
+          },
+          {
+            "name": "client/src/index.css",
+            "lines": 0
+          }
+        ]
+      },
+      {
+        "name": "HTML",
+        "children": [
+          {
+            "name": "client/public/index.html",
+            "lines": -27
+          }
+        ]
+      },
+      {
+        "name": "Other",
+        "children": [
+          {
+            "name": "client/src/App.test.js",
+            "lines": 0
+          }
+        ]
+      }
+    ]
+  },
+  "Murad Akhundov": {
+    "languages": [
+      {
+        "name": "Javascript",
+        "children": [
+          {
+            "name": "parsers/repo/commit_lines.js",
+            "lines": 115
+          },
+          {
+            "name": "parsers/repo/repo.js",
+            "lines": 22
+          },
+          {
+            "name": "parsers/repo/tree.js",
+            "lines": 11
+          },
+          {
+            "name": "parsers/repostats.js",
+            "lines": 172
+          },
+          {
+            "name": "server/index.js",
+            "lines": 11
+          },
+          {
+            "name": "server/db/repository.js",
+            "lines": 14
+          },
+          {
+            "name": "server/db/entity.js",
+            "lines": 0
+          },
+          {
+            "name": "server/git/index.js",
+            "lines": 12
+          },
+          {
+            "name": "server/routes/repo.js",
+            "lines": -2
+          },
+          {
+            "name": "server/routes/user.js",
+            "lines": 39
+          },
+          {
+            "name": "server/db/user.js",
+            "lines": 0
+          },
+          {
+            "name": "server/db/index.js",
+            "lines": 6
+          },
+          {
+            "name": "server/routes/authentication.js",
+            "lines": -3
+          },
+          {
+            "name": "server/routes/repoStats.js",
+            "lines": 25
+          },
+          {
+            "name": "server/routes/validator.js",
+            "lines": 0
+          },
+          {
+            "name": "server/index.mjs",
+            "lines": 5
+          },
+          {
+            "name": "server/routes/authentication.mjs",
+            "lines": 12
+          },
+          {
+            "name": "client/src/api/api.js",
+            "lines": 108
+          },
+          {
+            "name": "client/src/api/sampleData.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/geo/geo.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/reducers/login.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/reducers/users.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/dashboard/QuickStats.js",
+            "lines": 57
+          },
+          {
+            "name": "client/src/components/repository/AddDelete.js",
+            "lines": 87
+          },
+          {
+            "name": "client/src/components/repository/Repository.js",
+            "lines": 296
+          },
+          {
+            "name": "client/public/js/geo.js",
+            "lines": -11
+          },
+          {
+            "name": "client/src/components/repository/FolderTree.js",
+            "lines": 36
+          },
+          {
+            "name": "client/src/components/Header.js",
+            "lines": 6
+          },
+          {
+            "name": "client/src/components/dashboard/Calendar.js",
+            "lines": 39
+          },
+          {
+            "name": "client/src/components/dashboard/Repos.js",
+            "lines": 9
+          },
+          {
+            "name": "client/src/components/dashboard/RepoSnippet.js",
+            "lines": 18
+          },
+          {
+            "name": "client/src/components/dashboard/Dashboard.js",
+            "lines": -3
+          },
+          {
+            "name": "client/src/components/dashboard/LangPie.js",
+            "lines": 71
+          },
+          {
+            "name": "client/src/components/repository/CodeStream.js",
+            "lines": 105
+          },
+          {
+            "name": "client/src/components/repository/Contributors.js",
+            "lines": 33
+          },
+          {
+            "name": "client/src/components/repository/LanguageBreakdown.js",
+            "lines": 34
+          },
+          {
+            "name": "client/src/components/repository/ContributorCard.js",
+            "lines": 62
+          },
+          {
+            "name": "client/src/components/header.js",
+            "lines": 8
+          },
+          {
+            "name": "client/src/components/login.js",
+            "lines": -27
+          },
+          {
+            "name": "client/src/App.js",
+            "lines": -1
+          },
+          {
+            "name": "client/src/components/dashboard/dashboard.js",
+            "lines": 25
+          },
+          {
+            "name": "client/src/components/dashboard/searchbar.js",
+            "lines": -1
+          },
+          {
+            "name": "client/public/js/index.js",
+            "lines": 2
+          },
+          {
+            "name": "client/src/components/dashboard.js",
+            "lines": 71
+          },
+          {
+            "name": "client/src/components/dashboardRepos.js",
+            "lines": 17
+          }
+        ]
+      },
+      {
+        "name": "React.js",
+        "children": [
+          {
+            "name": "client/src/components/dashboard/RepoGrid.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/repository/MiniCalendar.jsx",
+            "lines": 70
+          },
+          {
+            "name": "client/src/components/repository/Repository.jsx",
+            "lines": 26
+          },
+          {
+            "name": "client/src/components/repository/ContributorList.jsx",
+            "lines": -5
+          },
+          {
+            "name": "client/src/components/admin/Users.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/core/App.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/core/Home.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/core/Pagination.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/dashboard/Language.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/repository/AddDelete.jsx",
+            "lines": -37
+          },
+          {
+            "name": "client/src/components/dashboard/Calendar.jsx",
+            "lines": 2
+          },
+          {
+            "name": "client/src/components/repository/CodeStream.jsx",
+            "lines": -1
+          },
+          {
+            "name": "client/src/components/repository/LanguageBreakdown.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/dashboard/QuickStats.jsx",
+            "lines": 4
+          },
+          {
+            "name": "client/src/components/Login.jsx",
+            "lines": 1
+          },
+          {
+            "name": "client/src/components/repository/ContributorCard.jsx",
+            "lines": -59
+          },
+          {
+            "name": "client/src/components/repository/Contributors.jsx",
+            "lines": -32
+          },
+          {
+            "name": "client/src/components/dashboard/Dashboard.jsx",
+            "lines": -6
+          }
+        ]
+      },
+      {
+        "name": "HTML",
+        "children": [
+          {
+            "name": "client/public/index.html",
+            "lines": 1
+          }
+        ]
+      },
+      {
+        "name": "CSS",
+        "children": [
+          {
+            "name": "client/public/css/style.css",
+            "lines": 3
+          }
+        ]
+      }
+    ]
+  },
+  "Linwen": {
+    "languages": [
+      {
+        "name": "React.js",
+        "children": [
+          {
+            "name": "client/src/components/repository/AddDelete.jsx",
+            "lines": 3
+          },
+          {
+            "name": "client/src/components/repository/CodeStream.jsx",
+            "lines": 4
+          },
+          {
+            "name": "client/src/components/core/Notifications.jsx",
+            "lines": 111
+          },
+          {
+            "name": "client/src/components/core/Home.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/repository/MiniCalendar.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/repository/Repository.jsx",
+            "lines": 4
+          },
+          {
+            "name": "client/src/components/dashboard/Calendar.jsx",
+            "lines": 1
+          },
+          {
+            "name": "client/src/components/dashboard/QuickStats.jsx",
+            "lines": 13
+          },
+          {
+            "name": "client/src/components/dashboard/RepoGrid.jsx",
+            "lines": 2
+          },
+          {
+            "name": "client/src/components/dashboard/LangPie.jsx",
+            "lines": 1
+          },
+          {
+            "name": "client/src/components/dashboard/Language.jsx",
+            "lines": 1
+          },
+          {
+            "name": "client/src/components/admin/Users.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/dashboard/RepoCard.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/repository/ContributorList.jsx",
+            "lines": -17
+          },
+          {
+            "name": "client/src/components/core/PopupMenu.jsx",
+            "lines": 124
+          },
+          {
+            "name": "client/src/components/PopupMenu.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/core/Header.jsx",
+            "lines": -4
+          },
+          {
+            "name": "client/src/components/Header.jsx",
+            "lines": 10
+          },
+          {
+            "name": "client/src/components/repository/FolderTree.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/repository/GitGraph.jsx",
+            "lines": 2
+          },
+          {
+            "name": "client/src/components/repository/CircleIcon.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/repository/LanguageBreakdown.jsx",
+            "lines": 0
+          }
+        ]
+      },
+      {
+        "name": "CSS",
+        "children": [
+          {
+            "name": "client/src/index.css",
+            "lines": 15
+          },
+          {
+            "name": "client/public/css/style.css",
+            "lines": 13
+          }
+        ]
+      },
+      {
+        "name": "Javascript",
+        "children": [
+          {
+            "name": "client/src/api/api.js",
+            "lines": 20
+          },
+          {
+            "name": "client/src/reducers/repositories.js",
+            "lines": 19
+          },
+          {
+            "name": "client/src/components/admin/Admin.js",
+            "lines": 59
+          },
+          {
+            "name": "client/src/components/admin/Users.js",
+            "lines": 4
+          },
+          {
+            "name": "client/src/components/repository/ContibutorList.js",
+            "lines": 117
+          },
+          {
+            "name": "client/src/components/repository/Repository.js",
+            "lines": 4
+          },
+          {
+            "name": "client/src/App.js",
+            "lines": 4
+          },
+          {
+            "name": "client/src/components/admin/expansionList.js",
+            "lines": 67
+          },
+          {
+            "name": "client/src/components/admin/searchFields.js",
+            "lines": 58
+          },
+          {
+            "name": "client/src/components/dashboard/dashboard.js",
+            "lines": 5
+          },
+          {
+            "name": "client/src/components/dashboard/pagination.js",
+            "lines": 35
+          },
+          {
+            "name": "client/src/components/searchbar.js",
+            "lines": 67
+          },
+          {
+            "name": "client/public/js/index.js",
+            "lines": 141
+          },
+          {
+            "name": "client/src/index.js",
+            "lines": 0
+          }
+        ]
+      },
+      {
+        "name": "HTML",
+        "children": [
+          {
+            "name": "client/public/index.html",
+            "lines": 12
+          }
+        ]
+      }
+    ]
+  },
+  "EDToaster": {
+    "languages": [
+      {
+        "name": "Javascript",
+        "children": [
+          {
+            "name": "client/src/api/api.js",
+            "lines": 56
+          },
+          {
+            "name": "client/src/reducers/users.js",
+            "lines": 21
+          },
+          {
+            "name": "server/db/user.js",
+            "lines": 49
+          },
+          {
+            "name": "server/index.js",
+            "lines": 4
+          },
+          {
+            "name": "server/routes/admin.js",
+            "lines": 31
+          },
+          {
+            "name": "server/routes/authentication.js",
+            "lines": 62
+          },
+          {
+            "name": "server/routes/validator.js",
+            "lines": 56
+          },
+          {
+            "name": "server/routes/repo.js",
+            "lines": 0
+          },
+          {
+            "name": "server/db/repository.js",
+            "lines": 52
+          },
+          {
+            "name": "client/src/reducers/login.js",
+            "lines": 31
+          },
+          {
+            "name": "server/db/entity.js",
+            "lines": 30
+          },
+          {
+            "name": "server/db/index.js",
+            "lines": -105
+          },
+          {
+            "name": "server/routes/repoStats.js",
+            "lines": 4
+          },
+          {
+            "name": "server/authenticator/hasher.js",
+            "lines": 37
+          },
+          {
+            "name": "server/authenticator/secret.js",
+            "lines": 4
+          },
+          {
+            "name": "server/authenticator/token.js",
+            "lines": 0
+          },
+          {
+            "name": "server/routes/authentication.mjs",
+            "lines": -12
+          },
+          {
+            "name": "server/index.mjs",
+            "lines": 9
+          },
+          {
+            "name": "client/src/api/colours.js",
+            "lines": 9
+          },
+          {
+            "name": "client/src/api/sampleData.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/actions/index.js",
+            "lines": -12
+          },
+          {
+            "name": "client/src/reducers/repositories.js",
+            "lines": 1
+          },
+          {
+            "name": "client/src/components/repository/GitGraph.js",
+            "lines": 23
+          },
+          {
+            "name": "client/src/reducers/sampleData.js",
+            "lines": 4
+          },
+          {
+            "name": "client/src/components/Header.js",
+            "lines": -1
+          },
+          {
+            "name": "client/src/components/Login.js",
+            "lines": 1
+          },
+          {
+            "name": "client/src/components/admin/Users.js",
+            "lines": -1
+          },
+          {
+            "name": "client/src/components/core/Pagination.js",
+            "lines": 53
+          },
+          {
+            "name": "client/src/components/dashboard/Dashboard.js",
+            "lines": -8
+          },
+          {
+            "name": "client/src/components/dashboard/Repos.js",
+            "lines": 29
+          },
+          {
+            "name": "client/src/components/repository/ContributorCard.js",
+            "lines": -1
+          },
+          {
+            "name": "client/src/components/dashboard/RepoSnippet.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/repository/CodeStream.js",
+            "lines": -34
+          },
+          {
+            "name": "client/src/components/repository/Repository.js",
+            "lines": 19
+          },
+          {
+            "name": "client/src/App.js",
+            "lines": 33
+          },
+          {
+            "name": "client/src/components/repository/Contributors.js",
+            "lines": -1
+          },
+          {
+            "name": "client/src/components/repository/FolderTree.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/repository/LanguageBreakdown.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/reducers/reposReducer.js",
+            "lines": 30
+          },
+          {
+            "name": "client/src/components/dashboard/Pagination.js",
+            "lines": -35
+          },
+          {
+            "name": "client/src/components/dashboard/QuickStats.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/dashboard/dashboard.js",
+            "lines": 47
+          },
+          {
+            "name": "client/src/components/dashboard/searchbar.js",
+            "lines": -29
+          },
+          {
+            "name": "client/src/components/dashboard/repos.js",
+            "lines": 1
+          },
+          {
+            "name": "client/src/components/header.js",
+            "lines": 36
+          },
+          {
+            "name": "client/src/components/dashboard/repo-snippet.js",
+            "lines": 36
+          },
+          {
+            "name": "client/src/components/dashboard/repository.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/dashboard.js",
+            "lines": -70
+          },
+          {
+            "name": "client/src/components/dashboard/header.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/dashboard/repositories.js",
+            "lines": 32
+          },
+          {
+            "name": "client/src/components/dashboardRepos.js",
+            "lines": -17
+          },
+          {
+            "name": "client/src/index.js",
+            "lines": 26
+          },
+          {
+            "name": "client/src/components/login.js",
+            "lines": 69
+          },
+          {
+            "name": "client/src/redux/reducer.js",
+            "lines": 33
+          },
+          {
+            "name": "client/src/serviceWorker.js",
+            "lines": 135
+          }
+        ]
+      },
+      {
+        "name": "React.js",
+        "children": [
+          {
+            "name": "client/src/components/admin/Users.jsx",
+            "lines": 39
+          },
+          {
+            "name": "client/src/components/auth/Login.jsx",
+            "lines": 9
+          },
+          {
+            "name": "client/src/components/auth/Signup.jsx",
+            "lines": 35
+          },
+          {
+            "name": "client/src/components/core/Header.jsx",
+            "lines": -4
+          },
+          {
+            "name": "client/src/components/core/Home.jsx",
+            "lines": 42
+          },
+          {
+            "name": "client/src/components/dashboard/Language.jsx",
+            "lines": 31
+          },
+          {
+            "name": "client/src/components/dashboard/RepoCard.jsx",
+            "lines": 24
+          },
+          {
+            "name": "client/src/components/core/App.jsx",
+            "lines": 1
+          },
+          {
+            "name": "client/src/components/dashboard/RepoGrid.jsx",
+            "lines": 1
+          },
+          {
+            "name": "client/src/components/repository/ContributorList.jsx",
+            "lines": -10
+          },
+          {
+            "name": "client/src/components/repository/CodeStream.jsx",
+            "lines": -1
+          },
+          {
+            "name": "client/src/components/repository/Repository.jsx",
+            "lines": -2
+          },
+          {
+            "name": "client/src/components/App.jsx",
+            "lines": 11
+          },
+          {
+            "name": "client/src/components/Header.jsx",
+            "lines": -8
+          },
+          {
+            "name": "client/src/components/Login.jsx",
+            "lines": 9
+          },
+          {
+            "name": "client/src/components/Signup.jsx",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/dashboard/Repos.jsx",
+            "lines": 2
+          }
+        ]
+      },
+      {
+        "name": "HTML",
+        "children": [
+          {
+            "name": "client/public/index.html",
+            "lines": 38
+          }
+        ]
+      },
+      {
+        "name": "CSS",
+        "children": [
+          {
+            "name": "client/src/index.css",
+            "lines": 23
+          },
+          {
+            "name": "client/public/css/style.css",
+            "lines": -6
+          }
+        ]
+      },
+      {
+        "name": "Python",
+        "children": [
+          {
+            "name": "scripts/GenerateRepos.py",
+            "lines": 28
+          }
+        ]
+      },
+      {
+        "name": "Other",
+        "children": [
+          {
+            "name": "client/src/App.test.js",
+            "lines": 9
+          }
+        ]
+      }
+    ]
+  },
+  "Howard Chen": {
+    "languages": [
+      {
+        "name": "Javascript",
+        "children": [
+          {
+            "name": "client/src/api/api.js",
+            "lines": 206
+          },
+          {
+            "name": "client/src/reducers/login.js",
+            "lines": -1
+          },
+          {
+            "name": "client/src/reducers/repositories.js",
+            "lines": 44
+          },
+          {
+            "name": "client/src/reducers/users.js",
+            "lines": -7
+          },
+          {
+            "name": "client/src/components/repository/GitGraph.js",
+            "lines": 39
+          },
+          {
+            "name": "client/src/components/repository/Repository.js",
+            "lines": 13
+          },
+          {
+            "name": "client/src/reducers/sampleData.js",
+            "lines": 16
+          },
+          {
+            "name": "client/src/components/Header.js",
+            "lines": 25
+          },
+          {
+            "name": "client/src/reducers/loginReducer.js",
+            "lines": 18
+          },
+          {
+            "name": "client/src/components/dashboard/Repos.js",
+            "lines": 0
+          }
+        ]
+      },
+      {
+        "name": "React.js",
+        "children": [
+          {
+            "name": "client/src/components/admin/Users.jsx",
+            "lines": 6
+          },
+          {
+            "name": "client/src/components/dashboard/Repos.jsx",
+            "lines": 3
+          },
+          {
+            "name": "client/src/components/repository/GitGraph.jsx",
+            "lines": -9
+          },
+          {
+            "name": "client/src/components/repository/Repository.jsx",
+            "lines": -178
+          }
+        ]
+      },
+      {
+        "name": "Python",
+        "children": [
+          {
+            "name": "scripts/GenerateRepo.py",
+            "lines": 110
+          }
+        ]
+      }
+    ]
+  },
+  "Linwen Huang": {
+    "languages": [
+      {
+        "name": "Javascript",
+        "children": [
+          {
+            "name": "client/src/components/admin/expansionList.js",
+            "lines": 38
+          }
+        ]
+      }
+    ]
+  },
+  "GitHub": {
+    "languages": []
+  },
+  "ClassicPork": {
+    "languages": [
+      {
+        "name": "Javascript",
+        "children": [
+          {
+            "name": "client/public/js/index.js",
+            "lines": -1
+          },
+          {
+            "name": "client/src/components/dashboard/dashboard.js",
+            "lines": -16
+          },
+          {
+            "name": "client/src/components/dashboard/header.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/header.js",
+            "lines": 17
+          },
+          {
+            "name": "client/src/components/login.js",
+            "lines": 33
+          },
+          {
+            "name": "client/src/reducers/loginReducer.js",
+            "lines": 28
+          },
+          {
+            "name": "client/src/App.js",
+            "lines": 4
+          },
+          {
+            "name": "client/src/components/dashboard/repo-snippet.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/components/dashboard/repos.js",
+            "lines": 25
+          },
+          {
+            "name": "client/src/components/dashboard/searchbar.js",
+            "lines": -37
+          },
+          {
+            "name": "client/src/containers/availableRepos.js",
+            "lines": -10
+          },
+          {
+            "name": "client/src/index.js",
+            "lines": 0
+          },
+          {
+            "name": "client/src/reducers/repos.js",
+            "lines": -5
+          },
+          {
+            "name": "client/src/reducers/reposReducer.js",
+            "lines": 68
+          }
+        ]
+      },
+      {
+        "name": "CSS",
+        "children": [
+          {
+            "name": "client/src/index.css",
+            "lines": 0
+          }
+        ]
+      }
+    ]
+  }
+}

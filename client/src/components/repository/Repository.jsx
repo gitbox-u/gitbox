@@ -132,7 +132,7 @@ class Repository extends Component {
                 Folder Tree
               </Typography>
               <div className={classes.codeStream}>
-                <FolderTree data={data.languages}/>
+                <FolderTree data={data.tree}/>
               </div>
             </Paper>
 

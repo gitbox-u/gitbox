@@ -20,8 +20,8 @@ function LanguageBreakdown(props) {
       cornerRadius={2}
       borderWidth={1}
       borderColor="white"
-      colors="red_yellow_blue"
-      colorBy="id"
+      colors="category10"
+      colorBy={function(e){return e.color}}
       childColor="inherit"
       animate={true}
       motionStiffness={90}

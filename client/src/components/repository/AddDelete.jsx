@@ -1,10 +1,29 @@
 import React from 'react';
-import {ResponsiveLine} from '@nivo/line'
+import { ResponsiveLine } from '@nivo/line'
 
 
 function AddDelete(props) {
 
-  const data = props.data;
+  const data = props.data
+  // .map(
+  //   dat => {
+  //     return {
+  //       ...dat,
+  //       data: dat.data.map(
+  //         pt => {
+  //           return {
+  //             ...pt,
+  //             x: new Date(pt.x * 1000).toDateString(),
+  //             // x: parseInt(pt.x),
+  //           }
+  //         }
+  //       )
+  //     }
+  //   }
+  // );
+
+  console.log(data);
+
 
   return (
     <ResponsiveLine
@@ -20,7 +39,7 @@ function AddDelete(props) {
       }}
       yScale={{
         "type": "linear",
-        "stacked": true,
+        "stacked": false,
         "min": "auto",
         "max": "auto"
       }}
@@ -29,23 +48,40 @@ function AddDelete(props) {
         "tickSize": 5,
         "tickPadding": 15,
         "tickRotation": 0,
-        "legend": "time",
+        "legend": "Time",
         "legendOffset": 36,
-        "legendPosition": "middle"
+        "legendPosition": "middle",
+        "format": () => ""
       }}
       dotSize={10}
       dotColor="inherit:darker(0.3)"
-      dotBorderWidth={2}
+      dotBorderWidth={0}
       dotBorderColor="#ffffff"
       enableGridY={false}
-      enableDotLabel={true}
-      dotLabel="y"
-      colorBy={function(e){return e.color}}
-      dotLabelYOffset={-12}
+      enableDotLabel={false}
+      colorBy={e => e.color}
       animate={true}
       motionStiffness={90}
       motionDamping={15}
-
+      curve={"monotoneX"}
+      tooltip={
+        slice => (
+          <div style={{ color: '#000' }}>
+            <siv>{new Date(slice.id * 1000).toDateString()}</siv>
+            {slice.data.map(d => (
+              <div
+                key={d.serie.id}
+                style={{
+                  color: d.serie.color,
+                  padding: '3px 0',
+                }}
+              >
+                <strong>{d.serie.id}</strong> [{d.data.y}]
+          </div>
+            ))}
+          </div>
+        )
+      }
     />
   );
 }

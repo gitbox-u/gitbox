@@ -10,7 +10,7 @@ function FolderTree(props) {
     <ResponsiveTreeMap
       root={data}
       identity="name"
-      value="lines"
+      value="size"
       innerPadding={3}
       outerPadding={3}
       margin={{
@@ -19,7 +19,7 @@ function FolderTree(props) {
         "bottom": 10,
         "left": 10
       }}
-      label="lines"
+      label="size"
       labelFormat=".0s"
       labelSkipSize={12}
       labelTextColor="inherit:darker(1.2)"
