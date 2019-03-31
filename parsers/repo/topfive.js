@@ -40,7 +40,7 @@ async function topfive(path) {
   return top5.map(u => {
     const out = {name: u};
     stats_month.forEach((data, mi) => {
-      out[mi] = data[u] === undefined ? 0 : data[u];
+      out[mi + 1] = data[u] === undefined ? 0 : data[u];
     });
 
     return out;

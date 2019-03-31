@@ -161,11 +161,12 @@ export async function getRepositoryData(id, auth) {
 
       }
     ],
-    calendar: [{'0': 1, '1': 8, '2': 0, '3': 0, '4': 0, name: 'Howard Chen'},
-      {'0': 28, '1': 15, '2': 0, '3': 0, '4': 0, name: 'Linwen'},
-      {'0': 31, '1': 22, '2': 0, '3': 0, '4': 0, name: 'EDToaster'},
-      {'0': 42, '1': 35, '2': 0, '3': 0, '4': 0, name: 'Murad Akhundov'},
-      {'0': 61, '1': 23, '2': 0, '3': 0, '4': 0, name: 'Eric Lindau'}],
+    calendar: [ { '1': 1, '2': 8, '3': 0, '4': 0, '5': 0, name: 'Howard Chen' },
+      { '1': 28, '2': 15, '3': 0, '4': 0, '5': 0, name: 'Linwen' },
+      { '1': 31, '2': 22, '3': 0, '4': 0, '5': 0, name: 'EDToaster' },
+      { '1': 43, '2': 35, '3': 0, '4': 0, '5': 0, name: 'Murad Akhundov' },
+      { '1': 61, '2': 23, '3': 0, '4': 0, '5': 0, name: 'Eric Lindau' } ]
+    ,
     languages: {
       'name': 'language',
       'children': [{
