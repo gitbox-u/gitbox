@@ -60,11 +60,7 @@ async function commitLines(path) {
         const lang_to = getLanguage(to.split('.').pop());
 
 
-<<<<<<< HEAD
-        if (stats_global.languages[lang_to] === undefined) stats_global.languages[lang_to] = { name: lang_to, children: {} };
-=======
         if (stats_global.languages[lang_to] === undefined) stats_global.languages[lang_to] = {name: lang_to, children: {}, color: colours[lang_to]};
->>>>>>> 0b7345c279f39508211ffffba365fb02e338a4cb
         stats_global.languages[lang_to].children[path + to] = stats_global.languages[lang_from].children[path + frm];
 
 
@@ -78,11 +74,7 @@ async function commitLines(path) {
             typeof (stats_committers[cont].languages[lang_from].children[path + frm]) === "undefined") continue;
 
 
-<<<<<<< HEAD
-          if (stats_committers[cont].languages[lang_to] === undefined) stats_committers[cont].languages[lang_to] = { name: lang_to, children: {} };
-=======
           if (stats_committers[cont].languages[lang_to] === undefined) stats_committers[cont].languages[lang_to] = {name: lang_to, children: {}, color: colours[lang_to]};
->>>>>>> 0b7345c279f39508211ffffba365fb02e338a4cb
 
           stats_committers[cont].languages[lang_to].children[path + to] = stats_committers[cont].languages[lang_from].children[path + frm];
           stats_committers[cont].languages[lang_to].children[path + to].name = path + to;
@@ -109,16 +101,8 @@ async function commitLines(path) {
 
 
       const lang = getLanguage(extension);
-<<<<<<< HEAD
-      if (stats_global.languages[lang] === undefined) stats_global.languages[lang] = { name: lang, children: {} };
-      if (stats_committers[curr_committer].languages[lang] === undefined) stats_committers[curr_committer].languages[lang] = {
-        name: lang,
-        children: {}
-      };
-=======
       if (stats_global.languages[lang] === undefined) stats_global.languages[lang] = {name: lang, children: {}, color: colours[lang]};
       if (stats_committers[curr_committer].languages[lang] === undefined) stats_committers[curr_committer].languages[lang] = {name: lang, children: {}, color: colours[lang]};
->>>>>>> 0b7345c279f39508211ffffba365fb02e338a4cb
       if (stats_global.languages[lang].children[file] === undefined) stats_global.languages[lang].children[file] = {
         name: file,
         lines: 0
