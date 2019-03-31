@@ -69,35 +69,35 @@ async function commitLines(path) {
       stats_global.languages[lang].children[file].lines -= del;
 
 
-      const stats_add_data = stats_commiters[curr_committer][0].data;
-      const stats_del_data = stats_commiters[curr_committer][1].data;
-      const global_add_data = stats_global[0].data;
-      const global_del_data = stats_global[1].data;
-      // addDelete stats, init if needed
-      if (stats_add_data[curr_time] === undefined || stats_del_data[curr_time] === undefined) {
-        stats_add_data[curr_time] = {y: 0};
-        stats_del_data[curr_time] = {y: 0};
-      }
-      
-      if (global_add_data[curr_time] === undefined || stats_del_data[curr_time] === undefined) {
-        global_add_data[curr_time] = {y: 0};
-        global_del_data[curr_time] = {y: 0};
-      }
-
-      stats_add_data[curr_time].y += add;
-      stats_del_data[curr_time].y += del;
-      global_add_data[curr_time].y += add;
-      global_add_data[curr_time].y += del;
+      // const stats_add_data = stats_committers[curr_committer][0].data;
+      // const stats_del_data = stats_committers[curr_committer][1].data;
+      // const global_add_data = stats_global[0].data;
+      // const global_del_data = stats_global[1].data;
+      // // addDelete stats, init if needed
+      // if (stats_add_data[curr_time] === undefined || stats_del_data[curr_time] === undefined) {
+      //   stats_add_data[curr_time] = {y: 0};
+      //   stats_del_data[curr_time] = {y: 0};
+      // }
+      //
+      // if (global_add_data[curr_time] === undefined || stats_del_data[curr_time] === undefined) {
+      //   global_add_data[curr_time] = {y: 0};
+      //   global_del_data[curr_time] = {y: 0};
+      // }
+      //
+      // stats_add_data[curr_time].y += add;
+      // stats_del_data[curr_time].y += del;
+      // global_add_data[curr_time].y += add;
+      // global_add_data[curr_time].y += del;
     }
   });
 
   stats_global.languages = getLangArray(stats_global.languages);
   stats_global.addDelete = getKeyedObjectAsArray(stats_global.addDelete, 'x');
-  for (let committer in stats_commiters){
+  for (let committer in stats_committers){
     stats_committers[committer].languages = getLangArray(stats_committers[committer].languages);
-    stats_committers[committer].addDelete = getKeyedObjectAsArray(stats_committers[comitter].addDelete, 'x');
+    stats_committers[committer].addDelete = getKeyedObjectAsArray(stats_committers[committer].addDelete, 'x');
   }
-  return stats_commiters;
+  return {stats_global};
 }
 
 const IGNORED_EXTENSIONS = [
