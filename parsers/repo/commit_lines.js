@@ -149,7 +149,7 @@ async function commitLines(path) {
     stats_committers[committer].addDelete[0].data = getKeyedObjectAsArray(stats_committers[committer].addDelete[0].data, 'x');
     stats_committers[committer].addDelete[1].data = getKeyedObjectAsArray(stats_committers[committer].addDelete[1].data, 'x');
   }
-  return {stats_global, stats_committers, committers, extensions};
+  return {stats_global, stats_committers, committers, extensions: [...extensions]};
 }
 
 function getLangArray(languages) {
@@ -177,6 +177,8 @@ function getKeyedObjectAsArray(obj, name) {
 
   return ret;
 }
+
+
 
 module.exports = commitLines;
 
