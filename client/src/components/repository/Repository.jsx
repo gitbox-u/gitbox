@@ -99,7 +99,7 @@ class Repository extends Component {
           </Typography>
         </Grid>
         <Grid item>
-          <Button variant="outlined" className={classes.button}><Refresh style ={{fontSize: 30}}></Refresh></Button>
+          <Button variant="outlined" className={classes.button}><Refresh style ={{fontSize: 30, marginRight: 10}}></Refresh> Refresh Statistics</Button>
         </Grid>
       </Grid>
 
@@ -158,7 +158,7 @@ class Repository extends Component {
               <Grid item>
                 <Paper>
                   <Typography variant="h6" className={classes.cardHeader}>
-                    Top 5 in last 5 months
+                    Top Coders in last 5 months
                   </Typography>
                   <div className={classes.langBreak}>
                     <MiniCalendar data={data.calendar}/>

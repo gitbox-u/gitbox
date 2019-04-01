@@ -41,7 +41,7 @@ export default class FormDialog extends React.Component {
           <DialogTitle id="form-dialog-title">Add a repository to your dashboard.</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Please enter the name of your repository, the URL to the repo and the credentials for repository of required.
+              Please enter the name of your repository, the URL to the repo and the credentials for the repository if required .
             </DialogContentText>
             <TextField
               autoFocus
@@ -63,7 +63,7 @@ export default class FormDialog extends React.Component {
               autoFocus
               margin="dense"
               id="User Name"
-              label="User Name"
+              label="User Name (Optional)"
               type="User Name"
               fullWidth
             />
@@ -71,8 +71,19 @@ export default class FormDialog extends React.Component {
               autoFocus
               margin="dense"
               id="password"
-              label="Password"
+              label="Password (Optional)"
               type="password"
+              fullWidth
+            />
+            <DialogContentText>
+              OR
+            </DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="Key"
+              label="Key (Optional)"
+              type="Key"
               fullWidth
             />
           </DialogContent>
