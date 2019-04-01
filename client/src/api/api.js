@@ -553,7 +553,7 @@ export async function getRepositoryData(id, auth) {
         }],
         "type": "directory"
       }, {
-        "path": "/home/murad/WebstormProjects/team01/payload.sh",
+        "path": "/home/murad/WebstormProjects/team01/deploy_payload.sh",
         "name": "payload.sh",
         "size": 100,
         "extension": ".sh",
