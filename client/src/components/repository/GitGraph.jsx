@@ -14,6 +14,7 @@ const options = {
     tooltipDelay: 300,
     selectable: false,
     zoomView: false,
+    dragView: false,
   },
   physics: {
     enabled: false,
