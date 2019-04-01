@@ -246,7 +246,7 @@ function getColour(language) {
 }
 
 function isIgnored(ext) {
-  IGNORED_EXTENSIONS.includes(ext)
+  return IGNORED_EXTENSIONS.includes(ext)
 }
 
 module.exports = {getLanguage, getColour, isIgnored};

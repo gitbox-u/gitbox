@@ -88,6 +88,7 @@ async function commitLines(path) {
 
       const [name, extension] = file.split('.');
       if (name.split('/').pop() === '') return;
+
       if (isIgnored(extension)) return;
       extensions.add(extension);
 
