@@ -1,7 +1,7 @@
 const dirTree = require("directory-tree");
 
 function getTree(path, extensions) {
-  const regex = new RegExp(`\\.(${extensions.join('|')})$`)
+  const regex = new RegExp(`\\.(${extensions.join('|')})$`);
 
   const tree = dirTree(path, {
     extensions: regex,
@@ -13,7 +13,7 @@ function getTree(path, extensions) {
 
 function fixTree(tree){
   if(typeof(tree.children) !== "undefined"){
-      delete tree.size
+      delete tree.size;
       for(child of tree.children){
         fixTree(child)
       }
