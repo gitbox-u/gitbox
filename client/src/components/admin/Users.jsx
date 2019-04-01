@@ -10,6 +10,8 @@ import {connect} from "react-redux";
 import {addUser, removeUser, initUsers, filterUsers, updateSearch, updateUsername} from '../../reducers/users';
 import AddIcon from '@material-ui/icons/Add';
 
+import AddUsers from './AddUser';
+
 
 import Add from '@material-ui/icons/Add';
 
@@ -94,14 +96,8 @@ class Users extends Component {
             value={username}
             className={classes.textInput}
           />
-          <Button onClick={this.addUser} style={{marginTop: '10px'}}>
-                <Fab size='medium' color='primary' aria-label='Add' style={{boxShadow: "none"}}>
-                  <AddIcon/>
-                </Fab>
-        </Button>
-          {/* <IconButton onClick={this.addUser}>
-            <Add></Add>
-          </IconButton> */}
+          <AddUsers></AddUsers>
+
         </div>
         {
           users.map(
@@ -115,10 +111,6 @@ class Users extends Component {
                 <ExpansionPanelDetails>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
                           className={classes.button}>Edit User</Button>
-                  {/* <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                          className={classes.button}>Message User</Button>
-                  <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                          className={classes.button}>Block User</Button> */}
                   <Button variant="outlined" color="primary" onClick={() => this.props.removeUser(user.id)}
                           className={classes.button}>Remove User</Button>
                 </ExpansionPanelDetails>
