@@ -40,7 +40,9 @@ const styles = theme => ({
 
   grow: {
     flexGrow: 1,
-  }
+  },
+
+  
 });
 
 class Users extends Component {
@@ -88,14 +90,6 @@ class Users extends Component {
             className={classes.textInput}
           />
           <div className={classes.grow}></div>
-          <TextField
-            placeholder="New user..."
-            id="outlined-bare"
-            margin="normal"
-            variant="outlined"
-            value={username}
-            className={classes.textInput}
-          />
           <AddUsers></AddUsers>
 
         </div>
