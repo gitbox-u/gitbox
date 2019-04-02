@@ -22,12 +22,6 @@ const addRepo = (entityUUID, name, remoteUrl, credentials) => {
   let auth;
 
   if (credentials) auth = credentials;
-  else auth = {
-    username: '',
-    password: '',
-    privateKey: '',
-  };
-
   const repoRecord = new Repository({
     uuid: uuid(),
     name,

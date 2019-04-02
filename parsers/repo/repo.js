@@ -24,7 +24,7 @@ commit_lines(path)
   .then((res) => {
     saveFile(res.committers, 'committers');
     saveFile(res.stats_global, 'stats_global');
-    saveFile(res.stats_committers, 'stats_commiters');
+    saveFile(res.stats_committers, 'stats_committers');
 
     return tree(path, res.extensions);
   })
@@ -32,7 +32,7 @@ commit_lines(path)
 // console.log(JSON.stringify(tree(path, ['jsx', 'js', 'sh'])));
 topfive(path).then((t) => saveFile(t, 'topfive'));
 
-branches(path).then((t) => saveFile(t, 'branches'))
+branches(path).then((t) => saveFile(t, 'branches'));
 
 
 function saveFile(file, name) {
