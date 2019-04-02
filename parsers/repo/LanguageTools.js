@@ -43,7 +43,7 @@ const languages = {
 };
 
 const colours = {
-  "Other": "#000000",
+  "Other": "#808080",
   "Mercury": "#ff2b2b",
   "React": "#50e1ff",
   "TypeScript": "#2b7489",
