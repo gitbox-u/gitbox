@@ -32,6 +32,8 @@ commit_lines(path)
 // console.log(JSON.stringify(tree(path, ['jsx', 'js', 'sh'])));
 topfive(path).then((t) => saveFile(t, 'topfive'));
 
+branches(path).then((t) => saveFile(t, 'branches'))
+
 
 function saveFile(file, name) {
   if(save) fs.writeFileSync(`${save}/${name}.json`, JSON.stringify(file))
