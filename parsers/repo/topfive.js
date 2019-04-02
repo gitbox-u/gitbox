@@ -23,6 +23,7 @@ async function topfive(path) {
   months_sdout.forEach((stdout, mi) => {
     stdout.split('\n').forEach((line, index) => {
       const [cs, user] = line.split('\t');
+      if (user === undefined) return;
       const commits = parseInt(cs);
       stats_month[mi][user] = commits;
 
@@ -35,7 +36,8 @@ async function topfive(path) {
     return committers[a] - committers[b]
   });
 
-  const top5 = sorted.slice(0, 5);
+
+  const top5 = sorted.slice(0, Math.min(sorted.length, 5));
 
   return top5.map(u => {
     const out = {name: u};

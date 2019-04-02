@@ -99,7 +99,6 @@ export async function addRepo(name, remoteUrl, auth) {
 
 export async function getRepositoryData(id, auth) {
   const data = getData(`${apiRoot}${repoEnd}stats/${id}`);
-  console.log(data);
   return data;
 }
 
