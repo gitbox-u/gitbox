@@ -25,10 +25,13 @@ router.get("/stats/:id", (req, res) => {
 });
 
 router.post("/add", (req, res) => { // TODO: Assume authenticated, add to authorized repos
-  addRepo(req.body.uuid, req.body.name, req.body.remoteUrl, req.body.auth)
-    .then(() => registerRepo(req.body.remoteUrl, req.body.auth))
+  addRepo(req.body.uuid, req.params.name, req.body.remoteUrl, req.body.auth)
+    .then((repo) => registerRepo(repo))
     .then(() => res.status(200).json({message: "repo created"}))
-    .catch(() => res.status(500).json({message: "error creating a repo"}))
+    .catch((e) => {
+      console.log(e)
+      res.status(500).json({message: "error creating a repo"})
+    })
 });
 
 

@@ -39,7 +39,8 @@ const addRepo = (entityUUID, name, remoteUrl, credentials) => {
     .then((entity) => {
       entity.authorized.push(repoRecord.uuid); // TODO: Check if already there (use a map)
       return entity.save();
-    });
+    })
+    .then(() => repoRecord);
 };
 
 /**
