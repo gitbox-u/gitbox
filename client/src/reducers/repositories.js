@@ -26,11 +26,10 @@ const ACTIONS = {
   SET_REPO_DATA: 'REPOSITORIES_SET_REPO_DATA',
 };
 
-const initRepos = () => (dispatch) => {
+const refresh = () => (dispatch) => {
   return getRepositories().then(
     res => {
       if (res.auth) {
-        console.log('INIT: ' + res);
         dispatch({
           type: ACTIONS.SET_REPOS,
           allRepos: res,
@@ -103,8 +102,6 @@ const repositories = (state = initial, action) => {
   if (type === ACTIONS.UPDATE_SEARCH) {
     const { value } = action;
 
-    console.log('ALL');
-    console.log(state.allRepos);
     const filtered = filterRepos(state.allRepos, value);
     const page = getPage(filtered, state.pageOffset);
     const pages = getNumPages(filtered);
@@ -145,11 +142,16 @@ const repositories = (state = initial, action) => {
       pageRepos: page,
     }
   } else if (type === ACTIONS.SET_REPOS) {
-    console.log('set allRepos to ' + action.allRepos);
     const { allRepos } = action;
+    const filtered = filterRepos(allRepos, state.search);
+    const page = getPage(filtered, state.pageOffset);
+    const pages = getNumPages(filtered);
 
     return {
       ...state,
+      filteredRepos: filtered,
+      pageRepos: page,
+      numPages: pages,
       allRepos,
     }
   } else if (type === ACTIONS.SET_REPO_DATA) {
@@ -167,5 +169,5 @@ const repositories = (state = initial, action) => {
   return state;
 };
 
-export { updateSearchField, changePage, initRepos, initDataForRepo};
+export { updateSearchField, changePage, refresh, initDataForRepo};
 export default repositories;

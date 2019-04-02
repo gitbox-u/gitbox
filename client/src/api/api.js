@@ -13,6 +13,7 @@ const apiRoot = 'http://' + host + ':3000/api/';
 const authEnd = 'auth/';
 const userEnd = 'user/';
 const adminEnd = 'admin/';
+const repoEnd = 'repo/';
 
 const postData = (url = ``, data = {}) => {
   // Default options are marked with *
@@ -90,6 +91,10 @@ export function getUsers() {
 /// USER REPOSITORIES
 export async function getRepositories() {
   return getData(`${apiRoot}${userEnd}repos`);
+}
+
+export async function addRepo(name, remoteUrl, auth) {
+  return postData(`${apiRoot}${repoEnd}add`, {name, remoteUrl, auth});
 }
 
 export async function getRepositoryData(id, auth) {

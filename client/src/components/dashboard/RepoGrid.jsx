@@ -1,12 +1,11 @@
-import React, {Component} from 'react';
-import {Grid, TextField, Fab, Button} from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
+import React, { Component } from 'react';
+import { Grid, TextField, Fab, Button } from '@material-ui/core';
 import Repository from './RepoCard';
-import {connect} from 'react-redux';
-import {updateSearchField, changePage, initRepos} from '../../reducers/repositories';
+import { connect } from 'react-redux';
+import { updateSearchField, changePage, refresh } from '../../reducers/repositories';
 import Pagination from '../core/Pagination';
-import {Typography, withStyles} from '@material-ui/core/es';
-import Addrepo from './AddRepo';
+import { Typography, withStyles } from '@material-ui/core/es';
+import AddRepo from './AddRepo';
 
 const styles = {
   textInput: {
@@ -14,15 +13,13 @@ const styles = {
     marginRight: '10px',
   },
 
-  container: {},
-
-  subcontainer: {
-    width: '65%',
-  },
-
-  repo: {
+  container: {
     width: '100%',
   },
+
+  // subcontainer: { width: '100%' },
+  //
+  // repo: { width: '100%' },
 
   fab: {
     margin: '10px 0',
@@ -48,21 +45,21 @@ class RepoGrid extends Component {
 
   render() {
 
-    const {allRepos, numResults, pageRepos, search, numPages, pageOffset, langs} = this.props;
+    const { allRepos, numResults, pageRepos, search, numPages, pageOffset, langs } = this.props;
 
-    const {classes} = this.props;
+    const { classes } = this.props;
 
     return (
       <Grid container
             direction='column'
             alignItems='center'
-            className={classes.container}
-            spacing={16}>
+            className={ classes.container }
+            spacing={ 16 }>
 
         <Grid container
               direction='column'
               alignItems='flex-start'
-              className={classes.subcontainer}
+          // className={ classes.subcontainer }
         >
           <Grid item>
             <Typography variant='h4'>
@@ -72,12 +69,12 @@ class RepoGrid extends Component {
 
           <Grid item>
             <Typography>
-              {`${numResults === 0 ? 'No' : numResults} results`}
+              { `${numResults === 0 ? 'No' : numResults} results` }
             </Typography>
           </Grid>
 
           <Grid container
-                className={classes.textInput}
+                className={ classes.textInput }
                 alignItems='inline'
           >
             <TextField
@@ -85,39 +82,41 @@ class RepoGrid extends Component {
               id='outlined-bare'
               margin='normal'
               variant='outlined'
-              value={search}
-              onChange={this.handleSearchFieldChange}
-              className={classes.textInput}
+              value={ search }
+              onChange={ this.handleSearchFieldChange }
+              className={ classes.textInput }
             />
 
-              <Addrepo></Addrepo> 
+            <AddRepo/>
           </Grid>
         </Grid>
 
-        <Grid item>
+        <Grid item
+              className={ classes.container }>
           <Grid container
+                className={ classes.container }
                 direction='row'
-                spacing={16}
-                justify='space-evenly'
-                className={classes.repo}
-                alignItems='center'
+                lg={ 12 }
+                spacing={ 32 }
+                alignItems='flex-start'
           >
             {
               pageRepos.map(
                 (repo, i) => (
                   <Grid item
-                        key={i}
+                        key={ i }
+                        flexGrow={ 1 }
+                        lg={ 3 } md={ 6 } sm={ 12 }
                   >
-                    <Repository id={repo}
-                                key={2 * i}
-                                name={allRepos[repo].name}
-                                desc={allRepos[repo].desc}
-                                breakdown={allRepos[repo].breakdown}
-                                className={classes.repo}
-                                allLangs ={langs}
+                    <Repository id={ repo }
+                                key={ 2 * i }
+                                name={ allRepos[repo].name }
+                                desc={ allRepos[repo].desc }
+                                breakdown={ allRepos[repo].breakdown }
+                                allLangs={ langs }
                     />
                   </Grid>
-                
+
                 )
               )
             }
@@ -126,9 +125,9 @@ class RepoGrid extends Component {
 
         <Grid item>
           <Pagination
-            max={numPages}
-            current={pageOffset}
-            onClick={this.handleClick}
+            max={ numPages }
+            current={ pageOffset }
+            onClick={ this.handleClick }
           />
         </Grid>
       </Grid>
@@ -138,16 +137,16 @@ class RepoGrid extends Component {
 }
 
 const mapStateToProps = state => {
-  const {allRepos, filteredRepos, pageRepos, search, numPages, pageOffset, langs} = state.repos;
+  const { allRepos, filteredRepos, pageRepos, search, numPages, pageOffset, langs } = state.repos;
 
   const numResults = filteredRepos.length;
-  return {allRepos, numResults, pageRepos, search, numPages, pageOffset, langs};
+  return { allRepos, numResults, pageRepos, search, numPages, pageOffset, langs };
 };
 
 const mapDispatchToProps = {
   updateSearchField,
   changePage,
-  initRepos,
+  initRepos: refresh,
 };
 
 export default connect(
