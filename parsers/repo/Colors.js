@@ -1,14 +1,9 @@
 module.exports = {
   colors: [
-    'red',
-    'blue',
-    'hotpink',
-    'green',
-    'blue',
-    'yellow',
-    'cyan',
-    'magenta',
-    'purple',
-    'lime'
+    '#FBFF57',
+    '#E8AF5A',
+    '#FF6665',
+    '#9C5CE8',
+    '#66C6FF',
   ]
 }
