@@ -59,7 +59,7 @@ class Header extends Component {
                 logout();
                 this.routeChange("/login")();
               }} color="inherit" variant="text">
-                {`Logout ${username}`}
+                {"Logout"}
               </Button> :
               <Button onClick={this.routeChange("/login")} color="inherit" variant="text">
                 Login

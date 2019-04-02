@@ -7,7 +7,7 @@ import Language from './Language';
 
 const styles = {
   repoCard: {
-    width: '300px',
+    width: '100%',
     height: '250px',
     transition: 'box-shadow 100ms',
     textAlign: 'left',
@@ -49,7 +49,8 @@ class RepoCard extends Component {
       <ButtonBase onClick={this.routeChange(`/repository/${id}`)}
                   className={classes.full}
       >
-        <Card className={classes.repoCard}
+        <Card
+          className={classes.repoCard}
               onMouseOver={this.toggleRaised}
               onMouseOut={this.toggleRaised}
               raised={this.state.raised}
@@ -61,7 +62,7 @@ class RepoCard extends Component {
           />
           <Grid container
                 spacing={16}
-                justify='flex-start'
+                justify='stretch'
                 className={classes.full}
                 alignItems='center'
           >
