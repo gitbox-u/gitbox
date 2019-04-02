@@ -10,6 +10,8 @@ import {connect} from "react-redux";
 import {addUser, removeUser, initUsers, filterUsers, updateSearch, updateUsername} from '../../reducers/users';
 import AddIcon from '@material-ui/icons/Add';
 
+import AddUsers from './AddUser';
+
 
 import Add from '@material-ui/icons/Add';
 
@@ -38,7 +40,9 @@ const styles = theme => ({
 
   grow: {
     flexGrow: 1,
-  }
+  },
+
+  
 });
 
 class Users extends Component {
@@ -86,22 +90,8 @@ class Users extends Component {
             className={classes.textInput}
           />
           <div className={classes.grow}></div>
-          <TextField
-            placeholder="New user..."
-            id="outlined-bare"
-            margin="normal"
-            variant="outlined"
-            value={username}
-            className={classes.textInput}
-          />
-          <Button onClick={this.addUser} style={{marginTop: '10px'}}>
-                <Fab size='medium' color='primary' aria-label='Add' style={{boxShadow: "none"}}>
-                  <AddIcon/>
-                </Fab>
-        </Button>
-          {/* <IconButton onClick={this.addUser}>
-            <Add></Add>
-          </IconButton> */}
+          <AddUsers></AddUsers>
+
         </div>
         {
           users.map(
@@ -115,10 +105,6 @@ class Users extends Component {
                 <ExpansionPanelDetails>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
                           className={classes.button}>Edit User</Button>
-                  {/* <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                          className={classes.button}>Message User</Button>
-                  <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                          className={classes.button}>Block User</Button> */}
                   <Button variant="outlined" color="primary" onClick={() => this.props.removeUser(user.uuid)}
                           className={classes.button}>Remove User</Button>
                 </ExpansionPanelDetails>
