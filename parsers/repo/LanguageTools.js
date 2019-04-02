@@ -10,7 +10,9 @@ const IGNORED_EXTENSIONS = [
   'yaml',
   'md',
   'yml',
-  'ico'
+  'ico',
+  'jar',
+  'gradle',
 ];
 
 const languages = {
