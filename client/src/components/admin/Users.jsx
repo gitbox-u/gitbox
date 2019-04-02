@@ -119,7 +119,7 @@ class Users extends Component {
                           className={classes.button}>Message User</Button>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
                           className={classes.button}>Block User</Button> */}
-                  <Button variant="outlined" color="primary" onClick={() => this.props.removeUser(user.id)}
+                  <Button variant="outlined" color="primary" onClick={() => this.props.removeUser(user.uuid)}
                           className={classes.button}>Remove User</Button>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
