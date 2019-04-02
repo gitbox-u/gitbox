@@ -12,7 +12,7 @@ async function topfive(path) {
     d.setMonth(d.getMonth() - 1);
     const prev = d.toISOString();
 
-    const git = `cd ${path}
+    const git = `cd "${path}"
     git shortlog HEAD -sn --no-merges --since="${prev}" --until="${curr}"`;
     months_sdout[i] = (await exec(git)).stdout;
   }

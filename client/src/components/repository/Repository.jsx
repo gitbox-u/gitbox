@@ -57,6 +57,26 @@ const styles = {
 };
 
 class Repository extends Component {
+  state = {
+    checked: null,
+  };
+
+  /**
+   * For currently selected contributors
+   */
+  handleToggle = value => () => {
+    let newValue;
+
+    if (this.state.checked === value.name) {
+      newValue = null;
+    } else {
+      newValue = value.name;
+    }
+
+    this.setState({
+      checked: newValue,
+    });
+  };
 
   componentDidMount() {
     this.props.initDataForRepo(this.props.match.params.id);
@@ -67,7 +87,7 @@ class Repository extends Component {
     const id = this.props.match.params.id;
 
     const {classes} = this.props;
-    const {repoData, allRepos} = this.props;
+    const {repoData} = this.props;
 
     const data = repoData[id];
 
@@ -78,7 +98,22 @@ class Repository extends Component {
       </div>
     );
 
-    const {graph, contributors} = data;
+    let {graph, contributors} = data;
+
+    let languages, addDelete;
+
+    if (this.state.checked in data.stats_committers) {
+      // use user dependent stats TODO: fix, so this wrapping is done in the parser?
+      languages = {
+        children: data.stats_committers[this.state.checked].languages,
+        name: "language",
+      };
+      addDelete = data.stats_committers[this.state.checked].addDelete;
+    } else {
+      languages = data.languages;
+      addDelete = data.addDelete;
+    }
+
 
     return (
       <Grid item
@@ -150,7 +185,7 @@ class Repository extends Component {
                     Language Breakdown
                   </Typography>
                   <div className={classes.langBreak}>
-                    <LanguageBreakdown data={data.languages}/>
+                    <LanguageBreakdown data={languages}/>
                   </div>
                 </Paper>
               </Grid>
@@ -173,14 +208,14 @@ class Repository extends Component {
                   Additions and Deletions
                 </Typography>
                 <div className={classes.deleteAdd}>
-                  <AddDelete data={data.addDelete}/>
+                  <AddDelete data={addDelete}/>
                 </div>
               </Paper>
             </Grid>
           </Grid>
 
           <Grid item className={classes.contributors}>
-            <ContributorList contributors={data.contributors}/>
+            <ContributorList contributors={data.contributors} handleToggle={this.handleToggle} checked={this.state.checked}/>
           </Grid>
 
         </Grid>

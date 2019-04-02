@@ -5,7 +5,7 @@ const { colors } = require("./Colors")
 const interval = 86400;
 
 async function commitLines(path) {
-  const git = `cd ${path}
+  const git = `cd "${path}"
   git log --numstat --pretty="C:%cn:%at" --no-merges --reverse| sed '/^$/d'`;
   const { stdout, stderr } = await exec(git);
 

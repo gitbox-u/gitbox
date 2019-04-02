@@ -1,4 +1,3 @@
-import { repos, gitNodes } from './sampleData';
 import Cookies from 'js-cookie';
 // Replace all of this with server calls.
 
@@ -94,7 +93,11 @@ export async function getRepositories() {
 }
 
 export async function addRepo(name, remoteUrl, auth) {
-  return postData(`${apiRoot}${repoEnd}add`, {name, remoteUrl, auth});
+  if (auth !== undefined) {
+    return postData(`${apiRoot}${repoEnd}add`, {name, remoteUrl, auth});
+  } else {
+    return postData(`${apiRoot}${repoEnd}add`, {name, remoteUrl});
+  }
 }
 
 export async function getRepositoryData(id, auth) {

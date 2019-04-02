@@ -13,11 +13,21 @@ const registerRepo = (repo) => {
 
   const store = path.join(root, repo.uuid, 'repo');
 
+  console.log(repo);
+  console.log(repo.auth);
+
   let remote = repo.remoteUrl;
-  if (repo.auth) remote = `https://${repo.auth.username}:${repo.auth.password}@${remote.split('://')[1]}`;
+  if (repo.auth !== undefined) {
+    console.log("RUN")
+    const user = encodeURIComponent(repo.auth.username);
+    const pass = encodeURIComponent(repo.auth.password);
+    remote = `https://${user}:${pass}@${remote.split('://')[1]}`;
+  }
   shell.mkdir('-p', store);
 
-  const creds = `cd ${store}/${repo.name}
+  console.log(remote);
+
+  const creds = `cd "${store}/${repo.name}"
         git config credential.helper store`;
 
   console.log('dir created');
@@ -57,6 +67,7 @@ async function getStats(repoID) {
     readFile(path.join(store, 'tree.json')).then(r => stats.tree = JSON.parse(r)),
     readFile(path.join(store, 'topfive.json')).then(r => stats.calendar = JSON.parse(r)),
     readFile(path.join(store, 'branches.json')).then(r => stats.graph = JSON.parse(r)),
+    readFile(path.join(store, 'stats_committers.json')).then(r => stats.stats_committers = JSON.parse(r)),
     getRepo(repoID).exec().then(r => stats.name = r.name)
   ]);
 

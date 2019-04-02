@@ -2,7 +2,7 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
 async function branches(path) {
-  const git = `cd ${path}
+  const git = `cd "${path}"
   git log --all --date-order --pretty="%h|%p|%d|%s"`;
 
   const {stdout, stderr} = await exec(git);

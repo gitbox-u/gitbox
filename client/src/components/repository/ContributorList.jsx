@@ -6,7 +6,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Circle from '@material-ui/icons/Brightness1'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Checkbox from '@material-ui/core/Checkbox';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
 const styles = theme => ({
@@ -26,24 +25,6 @@ const styles = theme => ({
 });
 
 class ContributorList extends React.Component {
-  state = {
-    checked: null,
-  };
-
-  handleToggle = value => () => {
-
-    let newValue;
-
-    if (this.state.checked === value.name) {
-      newValue = null;
-    } else {
-      newValue = value.name;
-    }
-
-    this.setState({
-      checked: newValue,
-    });
-  };
 
   render() {
     const {classes} = this.props;
@@ -66,8 +47,8 @@ class ContributorList extends React.Component {
             }/>  
             <ListItemSecondaryAction>
               <Radio
-                onClick={this.handleToggle(contributor)}
-                checked={this.state.checked === contributor.name}
+                onClick={this.props.handleToggle(contributor)}
+                checked={this.props.checked === contributor.name}
               />
             </ListItemSecondaryAction>
           </ListItem>

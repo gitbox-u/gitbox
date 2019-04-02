@@ -14,15 +14,20 @@ function AddRepo({ refresh }) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState('');
   const [remoteUrl, setRemoteUrl] = useState('');
-  const [auth, setAuth] = useState('');
+  const [authUsername, setAuthUsername] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
 
   const handleClickOpen = () => setOpen(true);
 
   const handleClose = () => setOpen(false);
 
   const handleAdd = () => {
-    addRepo(name, remoteUrl, {}).then(() => { // TEMP: Empty auth ({})
-      handleClose();
+    handleClose();
+    let auth = undefined;
+    if (authUsername.length > 0 && authPassword.length > 0) {
+      auth = {username: authUsername, password: authPassword};
+    }
+    addRepo(name, remoteUrl, auth).then(() => { 
       refresh();
     });
   };
@@ -68,6 +73,7 @@ function AddRepo({ refresh }) {
             label="User Name (Optional)"
             type="User Name"
             fullWidth
+            onChange={ (e) => setAuthUsername(e.target.value) }
           />
           <TextField
             autoFocus
@@ -76,8 +82,9 @@ function AddRepo({ refresh }) {
             label="Password (Optional)"
             type="password"
             fullWidth
+            onChange={ (e) => setAuthPassword(e.target.value)}
           />
-          <DialogContentText>
+          {/* <DialogContentText>
             OR
           </DialogContentText>
           <TextField
@@ -87,7 +94,7 @@ function AddRepo({ refresh }) {
             label="Key (Optional)"
             type="Key"
             fullWidth
-          />
+          /> */}
         </DialogContent>
         <DialogActions>
           <Button onClick={ handleClose } color="primary">
