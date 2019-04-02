@@ -13,8 +13,6 @@ const options = {
     hoverConnectedEdges: false,
     tooltipDelay: 300,
     selectable: false,
-    zoomView: false,
-    dragView: false,
   },
   physics: {
     enabled: false,

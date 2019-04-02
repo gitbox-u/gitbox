@@ -42,6 +42,7 @@ function AddDelete(props) {
         "stacked": false,
         "min": "auto",
         "max": "auto"
+        
       }}
       axisBottom={{
         "orient": "bottom",
@@ -54,6 +55,7 @@ function AddDelete(props) {
         "format": () => ""
       }}
       dotSize={10}
+      enableGridX={false}
       dotColor="inherit:darker(0.3)"
       dotBorderWidth={0}
       dotBorderColor="#ffffff"

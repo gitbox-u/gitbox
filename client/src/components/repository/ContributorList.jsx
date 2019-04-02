@@ -1,5 +1,5 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core';
+import {withStyles, Typography, Radio} from '@material-ui/core';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -27,22 +27,21 @@ const styles = theme => ({
 
 class ContributorList extends React.Component {
   state = {
-    checked: [1],
+    checked: null,
   };
 
   handleToggle = value => () => {
-    const {checked} = this.state;
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
 
-    if (currentIndex === -1) {
-      newChecked.push(value);
+    let newValue;
+
+    if (this.state.checked === value.name) {
+      newValue = null;
     } else {
-      newChecked.splice(currentIndex, 1);
+      newValue = value.name;
     }
 
     this.setState({
-      checked: newChecked,
+      checked: newValue,
     });
   };
 
@@ -58,12 +57,17 @@ class ContributorList extends React.Component {
               <Circle style={{fill: contributor.color}}/>
             </ListItemAvatar>
             <ListItemText primary={contributor.name}
-            secondary={'Commits: \nAdditions: \nDeletions:'}/>  
-            {/* TODO: make sure to udpate the commits, additions deletions to include the values */}
+            secondary={
+              <div>
+                <Typography variant={"caption"}>{`Commits: ${contributor.commits}`}</Typography>
+                <Typography variant={"caption"}>{`Additions: ${contributor.additions}`}</Typography>
+                <Typography variant={"caption"}>{`Deletions: ${contributor.deletions}`}</Typography>
+              </div>
+            }/>  
             <ListItemSecondaryAction>
-              <Checkbox
-                onChange={this.handleToggle(contributor)}
-                checked={this.state.checked.indexOf(contributor) !== -1}
+              <Radio
+                onClick={this.handleToggle(contributor)}
+                checked={this.state.checked === contributor.name}
               />
             </ListItemSecondaryAction>
           </ListItem>

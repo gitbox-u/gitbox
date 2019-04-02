@@ -29,7 +29,7 @@ function MiniCalendar(props) {
         "tickSize": 1,
         "tickPadding": 3,
         "tickRotation": -10,
-        "legend": "user",
+        "legend": "",
         "legendOffset": 60
       }}
       axisTop={{

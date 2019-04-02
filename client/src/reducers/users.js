@@ -16,7 +16,7 @@ const initial = {
 };
 
 function filterUsers(users, filter) {
-  return users.filter(user => user.username.toLowerCase().includes(filter.toLowerCase()));
+  return users.filter(user => user.user.toLowerCase().includes(filter.toLowerCase()));
 }
 
 const initUsers = () => (dispatch) => {

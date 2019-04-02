@@ -104,12 +104,14 @@ class Repository extends Component {
       </Grid>
 
         <Grid item>
-          <Paper className={classes.gitGraph}>
+          <Paper >
             <Typography variant="h6" className={classes.cardHeader}>
-              Repository Branches History
+              Repository History
             </Typography>
+            <div className={classes.gitGraph}>
             <GitGraph graph={graph}>
             </GitGraph>
+            </div>
           </Paper>
         </Grid>
         <Grid item

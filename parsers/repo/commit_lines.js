@@ -1,6 +1,7 @@
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const {getColour, getLanguage, isIgnored} = require('./LanguageTools')
+const {colors} = require("./Colors")
 const interval = 86400;
 
 async function commitLines(path) {
@@ -15,10 +16,13 @@ async function commitLines(path) {
   const stats_global = {
     languages: {},
     addDelete: [{'id': 'additions', 'color': 'green', 'data': {}}, {'id': 'deletions', 'color': 'red', 'data': {}}],
+    stats: {}
   };
 
   let curr_committer = null;
   let curr_time = null;
+
+  let committer_ind = 0;
 
   stdout.split('\n').forEach((commit, index) => {
     if (commit === '') return;
@@ -30,7 +34,9 @@ async function commitLines(path) {
       curr_time = Math.floor(parseInt(time) / interval) * interval; // floor to nearest day
 
       if (committers[curr_committer] === undefined) {
-        committers[curr_committer] = {commits: 1, add: 0, delete: 0};
+        committers[curr_committer] = {commits: 1, additions: 0, deletions: 0, color: colors[(committer_ind) % colors.length], key: committer_ind};
+
+        committer_ind++;
         stats_committers[curr_committer] = {
           languages: {},
           addDelete: [{'id': 'additions', 'color': 'green', 'data': {}}, {
@@ -40,6 +46,21 @@ async function commitLines(path) {
           }]
         };
       } else committers[curr_committer].commits++
+
+
+      // code stream
+      const {stats} = stats_global;
+
+      if (stats[curr_time] === undefined) {
+        stats[curr_time] = {};
+      }
+
+      if (stats[curr_time][curr_committer] === undefined) {
+        stats[curr_time][curr_committer] = 0;
+      }
+
+      stats[curr_time][curr_committer]++;
+
     } else {
 
       let [adds, dels, file] = commit.split('\t');
@@ -97,8 +118,8 @@ async function commitLines(path) {
       if (!isNaN(parseInt(adds))) add = parseInt(adds);
       if (!isNaN(parseInt(dels))) del = parseInt(dels);
 
-      committers[curr_committer].add += add;
-      committers[curr_committer].delete += del;
+      committers[curr_committer].additions += add;
+      committers[curr_committer].deletions += del;
 
 
       const lang = getLanguage(extension);
@@ -149,7 +170,24 @@ async function commitLines(path) {
     stats_committers[committer].addDelete[0].data = getKeyedObjectAsArray(stats_committers[committer].addDelete[0].data, 'x');
     stats_committers[committer].addDelete[1].data = getKeyedObjectAsArray(stats_committers[committer].addDelete[1].data, 'x');
   }
-  return {stats_global, stats_committers, committers, extensions: [...extensions]};
+
+
+  // codestream
+  const allCommitters = Object.keys(stats_committers)
+  // give all non-committers of this interval a value of 0
+  stats_global.stats = Object.values(stats_global.stats).map(
+    s => {
+      for (let committer of allCommitters) {
+        if (s[committer] === undefined) s[committer] = 0;
+      }
+      return s;
+    }
+  );
+
+  // transforming committers
+  const newCommittersArray = getKeyedObjectAsArray(committers, "name");
+
+  return {stats_global, stats_committers, committers: newCommittersArray, extensions: [...extensions]};
 }
 
 function getLangArray(languages) {
