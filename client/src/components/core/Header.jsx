@@ -41,9 +41,9 @@ class Header extends Component {
 
           <div className={classes.grow}/>
 
-          {
+          {/* {
             auth && <PopUp></PopUp>
-          }
+          } */}
           {
             auth ? admin ?
               <Button onClick={this.routeChange("/admin")} color="inherit" variant="text">

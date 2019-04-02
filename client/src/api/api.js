@@ -98,69 +98,350 @@ export async function getRepositoryData(id, auth) {
     id: id,
     name: 'Sample repository',
     desc: 'Name is hardcoded for now, but will be fixed in the future',
-    contributors: [
-      {
-        key: '1',
-        name: 'Murad',
-        commits: 300,
-        additions: 2000,
-        deletions: 400,
-        color: 'red',
-      },
-      {
-        key: '2',
-        name: 'Eric',
-        commits: 300,
-        additions: 2000,
-        deletions: 400,
-        color: 'blue',
-      },
-      {
-        key: '3',
-        name: 'Linwen',
-        commits: 300,
-        additions: 2000,
-        deletions: 400,
-        color: 'hotpink',
-      },
-      {
-        key: '4',
-        name: 'Howard',
-        commits: 300,
-        additions: 2000,
-        deletions: 400,
-        color: 'green',
-      },
-    ],
+    contributors: [{ "name": "GitHub", "commits": 3, "additions": 0, "deletions": 0, "color": "red", "key": 0 }, { "name": "EDToaster", "commits": 55, "additions": 3674, "deletions": 1329, "color": "blue", "key": 1 }, { "name": "ClassicPork", "commits": 4, "additions": 272, "deletions": 166, "color": "hotpink", "key": 2 }, { "name": "Murad Akhundov", "commits": 83, "additions": 4568, "deletions": 2423, "color": "green", "key": 3 }, { "name": "Eric Lindau", "commits": 85, "additions": 3148, "deletions": 2638, "color": "blue", "key": 4 }, { "name": "Linwen", "commits": 47, "additions": 1348, "deletions": 365, "color": "yellow", "key": 5 }, { "name": "Howard Chen", "commits": 8, "additions": 617, "deletions": 332, "color": "cyan", "key": 6 }, { "name": "Linwen Huang", "commits": 2, "additions": 40, "deletions": 2, "color": "magenta", "key": 7 }],
     stats: [
       {
-        'Murad': 93,
-        'Eric': 155,
-        'Linwen': 20,
-        'Howard': 135,
+        "GitHub": 1,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Murad Akhundov": 0,
+        "Eric Lindau": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
       },
       {
-        'Murad': 42,
-        'Eric': 4,
-        'Linwen': 57,
-        'Howard': 140,
-
+        "GitHub": 1,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Murad Akhundov": 0,
+        "Eric Lindau": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
       },
       {
-        'Murad': 170,
-        'Eric': 44,
-        'Linwen': 2,
-        'Howard': 77,
-
+        "EDToaster": 3,
+        "GitHub": 0,
+        "ClassicPork": 0,
+        "Murad Akhundov": 0,
+        "Eric Lindau": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
       },
       {
-        'Murad': 55,
-        'Eric': 4,
-        'Linwen': 140,
-        'Howard': 65,
-
+        "EDToaster": 8,
+        "ClassicPork": 2,
+        "Murad Akhundov": 4,
+        "Eric Lindau": 6,
+        "Linwen": 4,
+        "GitHub": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Linwen": 5,
+        "Murad Akhundov": 4,
+        "Eric Lindau": 2,
+        "EDToaster": 2,
+        "ClassicPork": 2,
+        "GitHub": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Murad Akhundov": 9,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Eric Lindau": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Eric Lindau": 5,
+        "Murad Akhundov": 7,
+        "Howard Chen": 2,
+        "Linwen": 4,
+        "EDToaster": 4,
+        "GitHub": 0,
+        "ClassicPork": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Howard Chen": 2,
+        "GitHub": 1,
+        "Linwen Huang": 2,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Murad Akhundov": 0,
+        "Eric Lindau": 0,
+        "Linwen": 0
+      },
+      {
+        "Eric Lindau": 2,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Murad Akhundov": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Eric Lindau": 2,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Murad Akhundov": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Murad Akhundov": 1,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Eric Lindau": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Murad Akhundov": 2,
+        "Howard Chen": 2,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Eric Lindau": 0,
+        "Linwen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Howard Chen": 1,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Murad Akhundov": 0,
+        "Eric Lindau": 0,
+        "Linwen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "EDToaster": 5,
+        "Eric Lindau": 3,
+        "Murad Akhundov": 3,
+        "Linwen": 2,
+        "GitHub": 0,
+        "ClassicPork": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Eric Lindau": 3,
+        "Murad Akhundov": 1,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Murad Akhundov": 3,
+        "Howard Chen": 1,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Eric Lindau": 0,
+        "Linwen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Linwen": 11,
+        "Murad Akhundov": 3,
+        "EDToaster": 2,
+        "Eric Lindau": 7,
+        "GitHub": 0,
+        "ClassicPork": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Eric Lindau": 15,
+        "Murad Akhundov": 13,
+        "EDToaster": 10,
+        "Linwen": 6,
+        "GitHub": 0,
+        "ClassicPork": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Eric Lindau": 10,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Murad Akhundov": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Eric Lindau": 4,
+        "EDToaster": 2,
+        "GitHub": 0,
+        "ClassicPork": 0,
+        "Murad Akhundov": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Linwen": 1,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Murad Akhundov": 0,
+        "Eric Lindau": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Murad Akhundov": 2,
+        "EDToaster": 2,
+        "Eric Lindau": 1,
+        "Linwen": 1,
+        "GitHub": 0,
+        "ClassicPork": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Murad Akhundov": 1,
+        "EDToaster": 2,
+        "Eric Lindau": 3,
+        "GitHub": 0,
+        "ClassicPork": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Eric Lindau": 5,
+        "Murad Akhundov": 5,
+        "EDToaster": 9,
+        "Linwen": 1,
+        "GitHub": 0,
+        "ClassicPork": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Murad Akhundov": 5,
+        "Eric Lindau": 1,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Eric Lindau": 1,
+        "EDToaster": 1,
+        "GitHub": 0,
+        "ClassicPork": 0,
+        "Murad Akhundov": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Eric Lindau": 2,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Murad Akhundov": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Eric Lindau": 4,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Murad Akhundov": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Murad Akhundov": 2,
+        "Eric Lindau": 2,
+        "Linwen": 4,
+        "EDToaster": 2,
+        "GitHub": 0,
+        "ClassicPork": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Eric Lindau": 5,
+        "Murad Akhundov": 3,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Murad Akhundov": 4,
+        "Eric Lindau": 1,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Linwen": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Linwen": 4,
+        "Murad Akhundov": 1,
+        "EDToaster": 1,
+        "GitHub": 0,
+        "ClassicPork": 0,
+        "Eric Lindau": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Murad Akhundov": 7,
+        "EDToaster": 2,
+        "Linwen": 1,
+        "GitHub": 0,
+        "ClassicPork": 0,
+        "Eric Lindau": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
+      },
+      {
+        "Murad Akhundov": 3,
+        "Linwen": 3,
+        "Eric Lindau": 1,
+        "GitHub": 0,
+        "EDToaster": 0,
+        "ClassicPork": 0,
+        "Howard Chen": 0,
+        "Linwen Huang": 0
       }
     ],
+
     calendar: [{ '1': 1, '2': 8, '3': 0, '4': 0, '5': 0, name: 'Howard Chen' },
     { '1': 28, '2': 15, '3': 0, '4': 0, '5': 0, name: 'Linwen' },
     { '1': 31, '2': 22, '3': 0, '4': 0, '5': 0, name: 'EDToaster' },
@@ -171,7 +452,9 @@ export async function getRepositoryData(id, auth) {
       'name': 'language',
       children: [{ "name": "HTML", "children": [{ "name": "client/public/index.html", "lines": 24 }], "color": "#e44b23" }, { "name": "JavaScript", "children": [{ "name": "client/src/index.js", "lines": 36 }, { "name": "client/src/serviceWorker.js", "lines": 135 }, { "name": "client/src/api/api.js", "lines": 803 }, { "name": "client/src/components/dashboard.js", "lines": 1 }, { "name": "client/src/components/dashboardRepos.js", "lines": 0 }, { "name": "client/src/components/dashboard/dashboard.js", "lines": 2 }, { "name": "client/src/components/dashboard/header.js", "lines": 0 }, { "name": "client/src/components/dashboard/repository.js", "lines": 0 }, { "name": "client/src/components/dashboard/repo-snippet.js", "lines": 0 }, { "name": "client/src/components/searchbar.js", "lines": 67 }, { "name": "client/src/components/dashboard/searchbar.js", "lines": -67 }, { "name": "client/src/containers/availableRepos.js", "lines": 0 }, { "name": "client/src/reducers/repos.js", "lines": 0 }, { "name": "client/public/js/geo.js", "lines": 128 }, { "name": "client/src/components/dashboard/Pagination.js", "lines": 0 }, { "name": "client/src/components/admin/expansionList.js", "lines": 0 }, { "name": "client/src/reducers/sampleData.js", "lines": 20 }, { "name": "client/src/actions/index.js", "lines": 0 }, { "name": "client/src/reducers/users.js", "lines": 79 }, { "name": "client/src/reducers/login.js", "lines": 109 }, { "name": "client/src/reducers/repositories.js", "lines": 171 }, { "name": "client/src/components/dashboard/QuickStats.js", "lines": 1 }, { "name": "client/src/geo/geo.js", "lines": -1 }, { "name": "client/src/reducers/notifications.js", "lines": 25 }, { "name": "client/src/api/colours.js", "lines": 9 }, { "name": "client/src/api/sampleData.js", "lines": 0 }, { "name": "server/routes/authentication.mjs", "lines": 0 }, { "name": "server/db/index.js", "lines": -23 }, { "name": "server/index.js", "lines": 42 }, { "name": "server/routes/authentication.js", "lines": 59 }, { "name": "server/routes/validator.js", "lines": 66 }, { "name": "server/db/index.mjs", "lines": 19 }, { "name": "server/index.mjs", "lines": 0 }, { "name": "server/authenticator/hasher.js", "lines": 37 }, { "name": "server/authenticator/secret.js", "lines": 4 }, { "name": "server/authenticator/token.js", "lines": 0 }, { "name": "server/env/index.js", "lines": 9 }, { "name": "server/git/index.js", "lines": 46 }, { "name": "server/routes/repo.js", "lines": 37 }, { "name": "server/db/entity.js", "lines": 30 }, { "name": "server/db/repository.js", "lines": 68 }, { "name": "server/db/user.js", "lines": 49 }, { "name": "server/routes/user.js", "lines": 39 }, { "name": "server/routes/admin.js", "lines": 31 }, { "name": "parsers/repo/branches.js", "lines": 117 }, { "name": "parsers/repo/commit_lines.js", "lines": 212 }, { "name": "parsers/repo/repo.js", "lines": 24 }, { "name": "parsers/repo/tree.js", "lines": 24 }, { "name": "parsers/user/user.js", "lines": 0 }, { "name": "parsers/repo/topfive.js", "lines": 53 }], "color": "#f1e05a" }, { "name": "Other", "children": [{ "name": "client/src/App.test.js", "lines": 9 }], "color": "#000000" }, { "name": "CSS", "children": [{ "name": "client/src/index.css", "lines": 38 }, { "name": "client/public/css/style.css", "lines": 1 }], "color": "#563d7c" }, { "name": "Python", "children": [{ "name": "scripts/GenerateRepos.py", "lines": 28 }, { "name": "scripts/GenerateRepo.py", "lines": 110 }], "color": "#3572A5" }, { "name": "React", "children": [{ "name": "client/src/components/Header.jsx", "lines": 93 }, { "name": "client/src/components/Login.jsx", "lines": 56 }, { "name": "client/src/components/admin/Admin.jsx", "lines": 67 }, { "name": "client/src/components/admin/Users.jsx", "lines": 145 }, { "name": "client/src/components/admin/searchFields.jsx", "lines": 0 }, { "name": "client/src/components/core/Pagination.jsx", "lines": 53 }, { "name": "client/src/components/dashboard/Calendar.jsx", "lines": 40 }, { "name": "client/src/components/dashboard/Dashboard.jsx", "lines": 48 }, { "name": "client/src/components/dashboard/LangPie.jsx", "lines": 72 }, { "name": "client/src/components/dashboard/QuickStats.jsx", "lines": 74 }, { "name": "client/src/components/repository/AddDelete.jsx", "lines": 53 }, { "name": "client/src/components/repository/CodeStream.jsx", "lines": 71 }, { "name": "client/src/components/repository/ContributorCard.jsx", "lines": 0 }, { "name": "client/src/components/repository/Contributors.jsx", "lines": 0 }, { "name": "client/src/components/repository/FolderTree.jsx", "lines": 36 }, { "name": "client/src/components/repository/GitGraph.jsx", "lines": 55 }, { "name": "client/src/components/repository/LanguageBreakdown.jsx", "lines": 34 }, { "name": "client/src/components/repository/Repository.jsx", "lines": 199 }, { "name": "client/src/components/App.jsx", "lines": 66 }, { "name": "client/src/components/repository/ContributorList.jsx", "lines": 77 }, { "name": "client/src/components/repository/CircleIcon.jsx", "lines": 0 }, { "name": "client/src/components/PopupMenu.jsx", "lines": 0 }, { "name": "client/src/components/Signup.jsx", "lines": 90 }, { "name": "client/src/components/dashboard/RepoCard.jsx", "lines": 90 }, { "name": "client/src/components/dashboard/RepoGrid.jsx", "lines": 137 }, { "name": "client/src/components/core/SearchField.jsx", "lines": 0 }, { "name": "client/src/components/Auth.jsx", "lines": 66 }, { "name": "client/src/components/auth/Auth.jsx", "lines": -1 }, { "name": "client/src/components/auth/Signup.jsx", "lines": 35 }, { "name": "client/src/components/repository/Stat.jsx", "lines": 19 }, { "name": "client/src/components/core/App.jsx", "lines": 4 }, { "name": "client/src/components/core/Header.jsx", "lines": -9 }, { "name": "client/src/components/dashboard/Language.jsx", "lines": 32 }, { "name": "client/src/components/core/Home.jsx", "lines": 42 }, { "name": "client/src/components/auth/Login.jsx", "lines": 9 }, { "name": "client/src/components/repository/MiniCalendar.jsx", "lines": 71 }, { "name": "client/src/components/core/Notifications.jsx", "lines": 179 }, { "name": "client/src/components/repository/New.jsx", "lines": 43 }, { "name": "client/src/components/auth/PrivRoute.jsx", "lines": 24 }, { "name": "client/src/components/dashboard/AddRepo.jsx", "lines": 91 }], "color": "#50e1ff" }, { "name": "Shell", "children": [{ "name": "build.sh", "lines": 5 }, { "name": "deploy.sh", "lines": 6 }, { "name": "payload.sh", "lines": 5 }], "color": "#89e051" }]
     },
-    addDelete: [{ "id": "additions", "color": "green", "data": [{ "x": "1550361600", "y": 223 }, { "x": "1550448000", "y": 965 }, { "x": "1550534400", "y": 715 }, { "x": "1550620800", "y": 527 }, { "x": "1550707200", "y": 1938 }, { "x": "1550793600", "y": 92 }, { "x": "1550880000", "y": 57 }, { "x": "1550966400", "y": 135 }, { "x": "1551052800", "y": 9 }, { "x": "1551139200", "y": 45 }, { "x": "1551225600", "y": 193 }, { "x": "1551398400", "y": 537 }, { "x": "1551484800", "y": 152 }, { "x": "1551571200", "y": 399 }, { "x": "1551657600", "y": 542 }, { "x": "1551744000", "y": 1488 }, { "x": "1551830400", "y": 312 }, { "x": "1552867200", "y": 23 }, { "x": "1553040000", "y": 226 }, { "x": "1553126400", "y": 153 }, { "x": "1553212800", "y": 540 }, { "x": "1553299200", "y": 100 }, { "x": "1553385600", "y": 3 }, { "x": "1553472000", "y": 93 }, { "x": "1553558400", "y": 57 }, { "x": "1553644800", "y": 352 }, { "x": "1553731200", "y": 402 }, { "x": "1553817600", "y": 200 }, { "x": "1553904000", "y": 174 }, { "x": "1553990400", "y": 1012 }] }, { "id": "deletions", "color": "red", "data": [{ "x": "1550361600", "y": 1 }, { "x": "1550448000", "y": 383 }, { "x": "1550534400", "y": 399 }, { "x": "1550620800", "y": 242 }, { "x": "1550707200", "y": 1433 }, { "x": "1550793600", "y": 11 }, { "x": "1550880000", "y": 35 }, { "x": "1550966400", "y": 122 }, { "x": "1551052800", "y": 1 }, { "x": "1551139200", "y": 6 }, { "x": "1551225600", "y": 19 }, { "x": "1551398400", "y": 239 }, { "x": "1551484800", "y": 89 }, { "x": "1551571200", "y": 443 }, { "x": "1551657600", "y": 462 }, { "x": "1551744000", "y": 951 }, { "x": "1551830400", "y": 356 }, { "x": "1552867200", "y": 3 }, { "x": "1553040000", "y": 60 }, { "x": "1553126400", "y": 41 }, { "x": "1553212800", "y": 376 }, { "x": "1553299200", "y": 59 }, { "x": "1553385600", "y": 3 }, { "x": "1553472000", "y": 57 }, { "x": "1553558400", "y": 28 }, { "x": "1553644800", "y": 128 }, { "x": "1553731200", "y": 205 }, { "x": "1553817600", "y": 95 }, { "x": "1553904000", "y": 65 }, { "x": "1553990400", "y": 504 }] }],
+    addDelete: [
+      { "id": "additions", "color": "#77ff66", "data": [{ "x": "1550361600", "y": 223 }, { "x": "1550448000", "y": 965 }, { "x": "1550534400", "y": 715 }, { "x": "1550620800", "y": 527 }, { "x": "1550707200", "y": 1938 }, { "x": "1550793600", "y": 92 }, { "x": "1550880000", "y": 57 }, { "x": "1550966400", "y": 135 }, { "x": "1551052800", "y": 9 }, { "x": "1551139200", "y": 45 }, { "x": "1551225600", "y": 193 }, { "x": "1551398400", "y": 537 }, { "x": "1551484800", "y": 152 }, { "x": "1551571200", "y": 399 }, { "x": "1551657600", "y": 542 }, { "x": "1551744000", "y": 1488 }, { "x": "1551830400", "y": 312 }, { "x": "1552867200", "y": 23 }, { "x": "1553040000", "y": 226 }, { "x": "1553126400", "y": 153 }, { "x": "1553212800", "y": 540 }, { "x": "1553299200", "y": 100 }, { "x": "1553385600", "y": 3 }, { "x": "1553472000", "y": 93 }, { "x": "1553558400", "y": 57 }, { "x": "1553644800", "y": 352 }, { "x": "1553731200", "y": 402 }, { "x": "1553817600", "y": 200 }, { "x": "1553904000", "y": 174 }, { "x": "1553990400", "y": 1012 }] }, 
+      { "id": "deletions", "color": "#ba0000", "data": [{ "x": "1550361600", "y": 1 }, { "x": "1550448000", "y": 383 }, { "x": "1550534400", "y": 399 }, { "x": "1550620800", "y": 242 }, { "x": "1550707200", "y": 1433 }, { "x": "1550793600", "y": 11 }, { "x": "1550880000", "y": 35 }, { "x": "1550966400", "y": 122 }, { "x": "1551052800", "y": 1 }, { "x": "1551139200", "y": 6 }, { "x": "1551225600", "y": 19 }, { "x": "1551398400", "y": 239 }, { "x": "1551484800", "y": 89 }, { "x": "1551571200", "y": 443 }, { "x": "1551657600", "y": 462 }, { "x": "1551744000", "y": 951 }, { "x": "1551830400", "y": 356 }, { "x": "1552867200", "y": 3 }, { "x": "1553040000", "y": 60 }, { "x": "1553126400", "y": 41 }, { "x": "1553212800", "y": 376 }, { "x": "1553299200", "y": 59 }, { "x": "1553385600", "y": 3 }, { "x": "1553472000", "y": 57 }, { "x": "1553558400", "y": 28 }, { "x": "1553644800", "y": 128 }, { "x": "1553731200", "y": 205 }, { "x": "1553817600", "y": 95 }, { "x": "1553904000", "y": 65 }, { "x": "1553990400", "y": 504 }] }],
     tree: {
       "path": "/home/murad/WebstormProjects/team01/",
       "name": "team01",
@@ -553,7 +836,7 @@ export async function getRepositoryData(id, auth) {
         }],
         "type": "directory"
       }, {
-        "path": "/home/murad/WebstormProjects/team01/payload.sh",
+        "path": "/home/murad/WebstormProjects/team01/deploy_payload.sh",
         "name": "payload.sh",
         "size": 100,
         "extension": ".sh",

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {withStyles, Grid, Typography} from '@material-ui/core';
+import {withStyles, Grid, Typography, Button} from '@material-ui/core';
 import CodeStream from "./CodeStream";
 import Paper from "@material-ui/core/Paper";
 import LanguageBreakdown from "./LanguageBreakdown";
@@ -10,6 +10,7 @@ import AddDelete from "./AddDelete";
 import {initDataForRepo} from '../../reducers/repositories';
 import FolderTree from './FolderTree';
 import MiniCalendar from "./MiniCalendar";
+import Refresh from '@material-ui/icons/Sync';
 
 const styles = {
   repoViewContainer: {
@@ -79,7 +80,7 @@ class Repository extends Component {
 
     const {graph} = data;
 
-    const contributorNames = data.contributors.map((c) => c.name);
+    const contributorNames = data.contributors.map((c) => c.name); 
     return (
       <Grid item
             container
@@ -88,6 +89,7 @@ class Repository extends Component {
             direction="column"
             className={classes.repoViewContainer}
       >
+      <Grid container spacing={32} alignItems="center">
         <Grid item>
           <Typography className={classes.repoName} variant="h4">
             {`${data.name} | Repository #${data.id}`}
@@ -96,6 +98,11 @@ class Repository extends Component {
             {data.desc}
           </Typography>
         </Grid>
+        <Grid item>
+          <Button variant="outlined" className={classes.button}><Refresh style ={{fontSize: 30, marginRight: 10}}></Refresh> Refresh Statistics</Button>
+        </Grid>
+      </Grid>
+
         <Grid item>
           <Paper className={classes.gitGraph}>
             <Typography variant="h6" className={classes.cardHeader}>
@@ -151,7 +158,7 @@ class Repository extends Component {
               <Grid item>
                 <Paper>
                   <Typography variant="h6" className={classes.cardHeader}>
-                    Top 5 in last 5 months
+                    Top Coders in last 5 months
                   </Typography>
                   <div className={classes.langBreak}>
                     <MiniCalendar data={data.calendar}/>

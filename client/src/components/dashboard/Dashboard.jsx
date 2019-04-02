@@ -37,7 +37,7 @@ function Dashboard({classes}) {
           justify="center"
           className={classes.dashboardContainer}
     >
-      <QuickStats/>
+      {/* <QuickStats/> */}
       <Grid item className={classes.repos}>
         <Repositories/>
       </Grid>
