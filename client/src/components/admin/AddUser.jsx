@@ -1,88 +1,59 @@
-import React from 'react';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import {Grid, TextField, Fab, Button} from '@material-ui/core';
+import React, { Component } from 'react';
+import { Button, Fab, withStyles, Grid, Typography } from '@material-ui/core';
+import { connect } from 'react-redux';
+import { updateLoginField, tryLogin } from '../../reducers/login';
 import AddIcon from '@material-ui/icons/Add';
+import {withRouter} from "react-router-dom";
 
-export default class AddUser extends React.Component {
-  state = {
-    open: false,
+
+
+const styles = {
+  formInput: {
+    marginTop: '5px',
+    borderBottom: '1px solid black',
+    padding: '0 5px',
+  },
+
+  button: {
+    height: "40px",
+    marginTop: "20px",
+    marginLeft: "20px",
+  },
+
+  logo: {
+    width: 130
+  },
+
+  logoLabel: {
+    letterSpacing: '0.1em'
+  }
+};
+
+class AddUser extends Component {
+  routeChange = path => {
+    this.props.history.push(path);
   };
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
+  handleSignup = () => {
+    this.routeChange('signup');
   };
 
   render() {
+    const {classes } = this.props;
+
     return (
-      <div>
-        {/* <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
-          Open form dialog
-        </Button> */}
 
-        <Button onClick={this.handleClickOpen} style={{marginTop: '10px'}}>
-                <Fab size='medium' color='primary' aria-label='Add' style={{boxShadow: "none"}}>
-                  <AddIcon/>
-                </Fab>
-        </Button>
 
-        <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title">Add a user.</DialogTitle>
-          <DialogContent>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Name of User"
-              type="name"
-              fullWidth
-            />
-            <TextField
-              autoFocus
-              margin="dense"
-              id="Username"
-              label="Username"
-              type="username"
-              fullWidth
-            />
-            <TextField
-              autoFocus
-              margin="dense"
-              id="password"
-              label="Password"
-              type="password"
-              fullWidth
-            />
-            <TextField
-              autoFocus
-              margin="dense"
-              id="password2"
-              label="Retype password"
-              type="password2"
-              fullWidth
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={this.handleClose} color="primary">
-              Add User
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </div>
+    <Button onClick={this.handleSignup} className={classes.button}><AddIcon style ={{fontSize: 30, marginRight: 10}}></AddIcon> Create a New user</Button>
+
+
     );
   }
 }
+
+const mapDispatchToProps = {
+  updateLoginField,
+};
+
+
+export default withRouter(connect(null, mapDispatchToProps)(withStyles(styles)(AddUser)));
