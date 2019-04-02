@@ -31,8 +31,17 @@ class ContributorList extends React.Component {
   };
 
   handleToggle = value => () => {
+
+    let newValue;
+
+    if (this.state.checked === value.name) {
+      newValue = null;
+    } else {
+      newValue = value.name;
+    }
+
     this.setState({
-      checked: value.name,
+      checked: newValue,
     });
   };
 
@@ -57,7 +66,7 @@ class ContributorList extends React.Component {
             }/>  
             <ListItemSecondaryAction>
               <Radio
-                onChange={this.handleToggle(contributor)}
+                onClick={this.handleToggle(contributor)}
                 checked={this.state.checked === contributor.name}
               />
             </ListItemSecondaryAction>

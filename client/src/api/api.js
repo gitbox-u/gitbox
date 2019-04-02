@@ -13,6 +13,7 @@ const apiRoot = 'http://' + host + ':3000/api/';
 const authEnd = 'auth/';
 const userEnd = 'user/';
 const adminEnd = 'admin/';
+const repoEnd = 'repo/';
 
 const postData = (url = ``, data = {}) => {
   // Default options are marked with *
@@ -92,13 +93,17 @@ export async function getRepositories() {
   return getData(`${apiRoot}${userEnd}repos`);
 }
 
+export async function addRepo(name, remoteUrl, auth) {
+  return postData(`${apiRoot}${repoEnd}add`, {name, remoteUrl, auth});
+}
+
 export async function getRepositoryData(id, auth) {
   return {
     graph: gitNodes,
     id: id,
     name: 'Sample repository',
     desc: 'Name is hardcoded for now, but will be fixed in the future',
-    contributors: [{ "name": "GitHub", "commits": 3, "additions": 0, "deletions": 0, "color": "red", "key": 0 }, { "name": "EDToaster", "commits": 55, "additions": 3674, "deletions": 1329, "color": "blue", "key": 1 }, { "name": "ClassicPork", "commits": 4, "additions": 272, "deletions": 166, "color": "hotpink", "key": 2 }, { "name": "Murad Akhundov", "commits": 83, "additions": 4568, "deletions": 2423, "color": "green", "key": 3 }, { "name": "Eric Lindau", "commits": 85, "additions": 3148, "deletions": 2638, "color": "blue", "key": 4 }, { "name": "Linwen", "commits": 47, "additions": 1348, "deletions": 365, "color": "yellow", "key": 5 }, { "name": "Howard Chen", "commits": 8, "additions": 617, "deletions": 332, "color": "cyan", "key": 6 }, { "name": "Linwen Huang", "commits": 2, "additions": 40, "deletions": 2, "color": "magenta", "key": 7 }],
+    contributors: [{"name":"GitHub","commits":3,"additions":0,"deletions":0,"color":"#FBFF57","key":0},{"name":"EDToaster","commits":58,"additions":4093,"deletions":1421,"color":"#E8AF5A","key":1},{"name":"ClassicPork","commits":4,"additions":272,"deletions":166,"color":"#FF6665","key":2},{"name":"Murad Akhundov","commits":84,"additions":4620,"deletions":2462,"color":"#9C5CE8","key":3},{"name":"Eric Lindau","commits":85,"additions":3148,"deletions":2638,"color":"#66C6FF","key":4},{"name":"Linwen","commits":50,"additions":1492,"deletions":462,"color":"#FBFF57","key":5},{"name":"Howard Chen","commits":8,"additions":617,"deletions":332,"color":"#E8AF5A","key":6},{"name":"Linwen Huang","commits":2,"additions":40,"deletions":2,"color":"#FF6665","key":7}],
     stats: [
       {
         "GitHub": 1,

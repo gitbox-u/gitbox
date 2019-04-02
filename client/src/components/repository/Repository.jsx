@@ -78,9 +78,8 @@ class Repository extends Component {
       </div>
     );
 
-    const {graph} = data;
+    const {graph, contributors} = data;
 
-    const contributorNames = data.contributors.map((c) => c.name); 
     return (
       <Grid item
             container
@@ -104,12 +103,14 @@ class Repository extends Component {
       </Grid>
 
         <Grid item>
-          <Paper className={classes.gitGraph}>
+          <Paper >
             <Typography variant="h6" className={classes.cardHeader}>
-              Repository Branches History
+              Repository History
             </Typography>
+            <div className={classes.gitGraph}>
             <GitGraph graph={graph}>
             </GitGraph>
+            </div>
           </Paper>
         </Grid>
         <Grid item
@@ -123,7 +124,7 @@ class Repository extends Component {
                 Contributions over time
               </Typography>
               <div className={classes.codeStream} title={'Code Stream'}>
-                <CodeStream stats={data.stats} contributors={contributorNames}/>
+                <CodeStream stats={data.stats} contributors={contributors}/>
               </div>
             </Paper>
 

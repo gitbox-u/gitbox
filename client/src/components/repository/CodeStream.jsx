@@ -2,12 +2,16 @@ import React from 'react';
 import { ResponsiveStream } from '@nivo/stream';
 
 function CodeStream(props) {
-  const { stats } = props;
+  const { stats, contributors } = props;
+
+  const contributorNames = contributors.map(t => t.name);
+  const contributorColors = contributors.map(t => t.color);
+
 
   return (
     <ResponsiveStream
       data={stats}
-      keys={props.contributors}
+      keys={contributorNames}
       margin={{
         "top": 20,
         "right": 110,
@@ -40,28 +44,8 @@ function CodeStream(props) {
       dotBorderColor="inherit:brighter(0.7)"
       animate={true}
       motionStiffness={90}
-      colors={['#466289', '#DBE8F9','#FA6121','#FFB739']}
+      colors={contributorColors}
       motionDamping={15}
-      legends={[
-        {
-          "anchor": "bottom-right",
-          "direction": "column",
-          "translateX": 100,
-          "itemWidth": 80,
-          "itemHeight": 20,
-          "itemTextColor": "#999",
-          "symbolSize": 12,
-          "symbolShape": "circle",
-          "effects": [
-            {
-              "on": "hover",
-              "style": {
-                "itemTextColor": "#000"
-              }
-            }
-          ]
-        }
-      ]}
     />
   );
 }
