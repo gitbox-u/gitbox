@@ -43,6 +43,7 @@ async function refreshStats(repoID) {
   const sstore = path.join(root, repo.uuid, 'stats');
   const rstore = path.join(root, repo.uuid, 'repo', repo.name);
   shell.mkdir('-p', sstore);
+  console.log(`node ../parsers/repo/repo.js --path "${rstore}" --save "${sstore}"`)
   await exec(`node ../parsers/repo/repo.js --path "${rstore}" --save "${sstore}"`)
 }
 
@@ -55,7 +56,7 @@ async function getStats(repoID) {
     readFile(path.join(store, 'committers.json')).then(r => stats.contributors = JSON.parse(r)),
     readFile(path.join(store, 'tree.json')).then(r => stats.tree = JSON.parse(r)),
     readFile(path.join(store, 'topfive.json')).then(r => stats.calendar = JSON.parse(r)),
-    readFile(path.join(store, 'branches.json')).then(r => stats.gitGraph = JSON.parse(r)),
+    readFile(path.join(store, 'branches.json')).then(r => stats.graph = JSON.parse(r)),
     getRepo(repoID).exec().then(r => stats.name = r.name)
   ]);
 

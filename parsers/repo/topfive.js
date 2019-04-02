@@ -35,7 +35,7 @@ async function topfive(path) {
     return committers[a] - committers[b]
   });
 
-  const top5 = sorted.slice(0, 5);
+  const top5 = sorted.slice(0, Math.min(5, sorted.length));
 
   return top5.map(u => {
     const out = {name: u};

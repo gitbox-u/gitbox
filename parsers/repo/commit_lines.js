@@ -107,9 +107,11 @@ async function commitLines(path) {
       }
 
 
-      const [name, extension] = file.split('.');
-      if (name.split('/').pop() === '') return;
+      const tokens =  file.split('.');
+      const extension = tokens.pop();
+      const name = tokens.join();
 
+      if (name.split('/').pop() === '') return;
       if (isIgnored(extension)) return;
       extensions.add(extension);
 
