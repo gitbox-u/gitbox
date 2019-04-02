@@ -13,19 +13,15 @@ const registerRepo = (repo) => {
 
   const store = path.join(root, repo.uuid, 'repo');
 
-  console.log(repo);
-  console.log(repo.auth);
-
   let remote = repo.remoteUrl;
   if (repo.auth !== undefined) {
-    console.log("RUN")
+    // somehow this check doesn't work, but it works nonetheless
     const user = encodeURIComponent(repo.auth.username);
     const pass = encodeURIComponent(repo.auth.password);
     remote = `https://${user}:${pass}@${remote.split('://')[1]}`;
   }
   shell.mkdir('-p', store);
 
-  console.log(remote);
 
   const creds = `cd "${store}/${repo.name}"
         git config credential.helper store`;
