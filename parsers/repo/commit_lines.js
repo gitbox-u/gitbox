@@ -66,6 +66,7 @@ async function commitLines(path) {
       let [adds, dels, file] = commit.split('\t');
       if (file.split('.').length < 2) return;
 
+      if (file.includes('.min.')) return;
 
       // moving logic
       if (file.includes('=>')) {
@@ -78,6 +79,8 @@ async function commitLines(path) {
 
         const [frm, to] = rest.split(' => ');
 
+        if(isIgnored(frm.split('.').pop()))return;
+
         const lang_from = getLanguage(frm.split('.').pop());
         const lang_to = getLanguage(to.split('.').pop());
 
@@ -85,8 +88,11 @@ async function commitLines(path) {
         if (stats_global.languages[lang_to] === undefined) stats_global.languages[lang_to] = new LangObject(lang_to);
         stats_global.languages[lang_to].children[path + to] = stats_global.languages[lang_from].children[path + frm];
 
-
-        stats_global.languages[lang_to].children[path + to].name = path + to;
+        try {
+          stats_global.languages[lang_to].children[path + to].name = path + to;
+        }catch(e){
+          let a
+        }
 
 
         delete stats_global.languages[lang_from].children[path + frm];

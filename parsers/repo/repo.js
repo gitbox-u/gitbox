@@ -22,24 +22,17 @@ if (save) shell.mkdir('-p', save);
 
 commit_lines(path)
   .then((res) => {
-    console.log('a');
     saveFile(res.committers, 'committers');
-    console.log('b');
     saveFile(res.stats_global, 'stats_global');
-    console.log('c');
     saveFile(res.stats_committers, 'stats_committers');
-    console.log('d');
 
     return tree(path, res.extensions);
   })
   .then((t) => {
-    console.log('e');
     saveFile(t, 'tree');
-    console.log('f');
   }).catch((t) => {
-    console.log('g');
+    console.error(t)
     saveFile(t, 'err')
-    console.log('h');
   });
 
 // console.log(JSON.stringify(tree(path, ['jsx', 'js', 'sh'])));

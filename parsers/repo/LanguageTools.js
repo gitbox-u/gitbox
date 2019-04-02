@@ -13,12 +13,21 @@ const IGNORED_EXTENSIONS = [
   'ico',
   'jar',
   'gradle',
+  'wav',
+  'gif',
+  'lock',
+  'log',
+  'db',
+  'icns',
+  'afdesign'
 ];
 
 const languages = {
   js: 'JavaScript',
+  ts: 'TypeScript',
   mjs: 'JavaScript',
   jsx: 'React',
+  tsx: 'React',
   py: 'Python',
   java: 'Java',
   c: 'C',
@@ -30,6 +39,7 @@ const languages = {
   swift: 'Swift',
   kt: 'Kotlin',
   cs: 'C#',
+  rs: 'Rust'
 };
 
 const colours = {
@@ -229,7 +239,7 @@ const colours = {
   "NCL": "#28431f",
   "Io": "#a9188d",
   "Rouge": "#cc0088",
-  "cpp": "#f34b7d",
+  "C++": "#f34b7d",
   "AGS Script": "#B9D9FF",
   "Dogescript": "#cca760",
   "nesC": "#94B0C7"
