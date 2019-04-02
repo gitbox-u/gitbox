@@ -24,7 +24,7 @@ function FolderTree(props) {
       labelSkipSize={12}
       labelTextColor="inherit:darker(1.2)"
       colors={['#466289', '#DBE8F9', '#627894', '#A0AEC1']}
-      colorBy="name"
+      colorBy={function(e){return e.color === undefined ? "grey" : e.color}}
       borderColor="inherit:darker(0.3)"
       animate={true}
       motionStiffness={90}

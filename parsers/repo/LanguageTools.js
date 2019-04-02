@@ -249,4 +249,16 @@ function isIgnored(ext) {
   return IGNORED_EXTENSIONS.includes(ext)
 }
 
-module.exports = {getLanguage, getColour, isIgnored};
+function darken(col, factor) {
+  let r = Math.floor(parseInt(col.slice(1, 3), 16) * factor).toString(16);
+  let g = Math.floor(parseInt(col.slice(3, 5), 16) * factor).toString(16);
+  let b = Math.floor(parseInt(col.slice(5, 7), 16) * factor).toString(16);
+
+  r = ("0".repeat(2 - r.length)) + r;
+  g = ("0".repeat(2 - g.length)) + g;
+  b = ("0".repeat(2 - b.length)) + b;
+
+  return "#" + r + g + b;
+}
+
+module.exports = {getLanguage, getColour, isIgnored, darken};

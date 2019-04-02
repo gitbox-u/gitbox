@@ -1,4 +1,5 @@
 const dirTree = require("directory-tree");
+const {getLanguage, getColour, darken} = require("./LanguageTools");
 
 function getTree(path, extensions) {
   const regex = new RegExp(`\\.(${extensions.join('|')})$`);
@@ -7,16 +8,22 @@ function getTree(path, extensions) {
     extensions: regex,
     exclude: [/.*node_modules.*/, /.*\/build\/.*/, /.*dependencies.*/, /.*\/\..*/]
   });
-  fixTree(tree);
+  fixTree(tree, "#f0f0f0");
   return tree;
 }
 
-function fixTree(tree){
+
+function fixTree(tree, col){
   if(typeof(tree.children) !== "undefined"){
       delete tree.size;
       for(child of tree.children){
-        fixTree(child)
+        fixTree(child, darken(col, .9))
       }
+      tree.color = col;
+  }else{
+    const extension = tree.path.split('.').pop();
+    if(extension === "")return;
+    tree.color = getColour(getLanguage(extension));
   }
 }
 
