@@ -43,7 +43,7 @@ async function refreshStats(repoID) {
   const sstore = path.join(root, repo.uuid, 'stats');
   const rstore = path.join(root, repo.uuid, 'repo', repo.name);
   shell.mkdir('-p', sstore);
-  await exec(`node ../parsers/repo/repo.js --path ${rstore} --save ${sstore}`)
+  await exec(`node ../parsers/repo/repo.js --path "${rstore}" --save "${sstore}"`)
 }
 
 async function getStats(repoID) {
@@ -52,7 +52,7 @@ async function getStats(repoID) {
   stats.id = repoID;
   stats.description = "Descriptions are cancelled, please remove me from the frontend. Thanks!";
   await Promise.all([
-    readFile(path.join(store, 'committers.json')).then(r => stats.stats_committers = JSON.parse(r)),
+    readFile(path.join(store, 'committers.json')).then(r => stats.contributors = JSON.parse(r)),
     readFile(path.join(store, 'tree.json')).then(r => stats.tree = JSON.parse(r)),
     readFile(path.join(store, 'topfive.json')).then(r => stats.calendar = JSON.parse(r)),
     readFile(path.join(store, 'branches.json')).then(r => stats.gitGraph = JSON.parse(r)),
