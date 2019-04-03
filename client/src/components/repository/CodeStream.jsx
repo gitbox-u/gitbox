@@ -24,7 +24,7 @@ function CodeStream(props) {
         "tickSize": 5,
         "tickPadding": 15,
         "tickRotation": 0,
-        "legend": "",
+        "legend": "time",
         "legendOffset": 36
       }}
       axisLeft={{
