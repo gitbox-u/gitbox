@@ -135,6 +135,11 @@ export async function apiLogout(auth) {
   }
 }
 
+export function removeUser(uuid) {
+  const req = {uuid};
+  return postData(`${apiRoot}${adminEnd}users/remove/user`, req);
+}
+
 // this is just a small helper function.
 function getRandomColor() {
   var letters = '0123456789ABCDEF';

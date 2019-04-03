@@ -27,6 +27,7 @@ router.get("/stats/:id", (req, res) => {
 });
 
 router.post("/add", (req, res) => { // TODO: Assume authenticated, add to authorized repos
+  if (req.body.name.length === 0) return res.status(400).send();
   addRepo(req.body.uuid, req.body.name, req.body.remoteUrl, req.body.auth)
     .then((repo) => registerRepo(repo))
     .then((repo) => refreshStats(repo.uuid))

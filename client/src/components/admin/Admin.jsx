@@ -19,19 +19,6 @@ const style =
   };
 
 class Admin extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      adding: false,
-    };
-  }
-
-  add = () => {
-    console.log(this);
-    this.setState({
-      adding: true
-    });
-  };
 
   render() {
     const {classes, search} = this.props;
@@ -45,19 +32,6 @@ class Admin extends Component {
       >
         <Grid item className={classes.adminSection}>
           <Users/>
-        </Grid>
-
-        <Grid item>
-          {this.state.adding ?
-            <TextField
-              placeholder="Username"
-              id="outlined-bare"
-              margin="normal"
-              variant="outlined"
-              // value={search}
-              // onChange={console.log(this)}
-              // className={classes.textInput}
-            /> : null}
         </Grid>
       </Grid>
     );
