@@ -59,7 +59,7 @@ function AddDelete(props) {
       dotColor="inherit:darker(0.3)"
       dotBorderWidth={0}
       dotBorderColor="#ffffff"
-      enableGridY={false}
+      enableGridY={true}
       enableDotLabel={false}
       colorBy={e => e.color}
       animate={true}

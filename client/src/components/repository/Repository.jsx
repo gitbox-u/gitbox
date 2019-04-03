@@ -91,6 +91,9 @@ class Repository extends Component {
 
     const data = repoData[id];
 
+    // console.log(data.languages);
+    // console.log(data.stats_committers);
+
     if (data === undefined) return (
       <div
         className={classes.repoViewContainer}>
@@ -133,6 +136,7 @@ class Repository extends Component {
           </Typography>
         </Grid>
         <Grid item>
+          {/** TODO: add stuff to refresh the repository */}
           <Button variant="outlined" className={classes.button}><Refresh style ={{fontSize: 30, marginRight: 10}}></Refresh> Refresh Statistics</Button>
         </Grid>
       </Grid>
@@ -194,7 +198,7 @@ class Repository extends Component {
               <Grid item>
                 <Paper>
                   <Typography variant="h6" className={classes.cardHeader}>
-                    Top Coders in last 5 months
+                    Top 5 in last 5 months
                   </Typography>
                   <div className={classes.langBreak}>
                     <MiniCalendar data={data.calendar}/>

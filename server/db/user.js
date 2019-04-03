@@ -35,15 +35,18 @@ const addUser = (user, salt, hash) => {
 const getUser = (user) => User.findOne({ user });
 const getUserByUUID = (uuid) => User.findOne({ uuid });
 const getAllUsers = (uuid) => User.find();
-const updatePassword = (user, password) => {
-  const cred = enc(password);
-  return User.findOneAndUpdate({user}, {...cred}).then(res => {
+const updateUsername = (user, username) => {
+  return User.findOneAndUpdate({user}, {user: username}).then(res => {
     if (res) return Promise.resolve();
     return Promise.reject();
   })
 }
 
+const removeUser = (uuid) => {
+  return User.findOneAndRemove({uuid});
+}
+
 
 module.exports = {
-  User, addUser, getUser, getUserByUUID, getAllUsers, updatePassword
+  User, addUser, getUser, getUserByUUID, getAllUsers, updateUsername, removeUser
 };

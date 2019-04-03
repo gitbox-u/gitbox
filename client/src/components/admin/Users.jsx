@@ -7,13 +7,13 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {connect} from "react-redux";
-import {addUser, removeUser, initUsers, filterUsers, updateSearch, updateUsername} from '../../reducers/users';
+import { initUsers, filterUsers, updateSearch, updateUsername} from '../../reducers/users';
 import AddIcon from '@material-ui/icons/Add';
+import {removeUser} from '../../api/api';
 
 import AddUsers from './AddUser';
 
 
-import Add from '@material-ui/icons/Add';
 
 const styles = theme => ({
   root: {
@@ -64,12 +64,12 @@ class Users extends Component {
     this.props.updateUsername(e.target.value);
   };
 
-  addUser = (e) => {
-    this.props.addUser();
-  };
-
   handleSearch = e => {
     this.props.updateSearch(e.target.value);
+  };
+
+  removeUser = uuid => {
+    removeUser(uuid);
   };
 
   render() {
@@ -88,6 +88,7 @@ class Users extends Component {
             variant="outlined"
             onChange={this.handleSearch}
             className={classes.textInput}
+            value={username}
           />
           <div className={classes.grow}></div>
           <AddUsers></AddUsers>
@@ -105,7 +106,7 @@ class Users extends Component {
                 <ExpansionPanelDetails>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}
                           className={classes.button}>Edit User</Button>
-                  <Button variant="outlined" color="primary" onClick={() => this.props.removeUser(user.uuid)}
+                  <Button variant="outlined" color="primary" onClick={() => this.removeUser(user.uuid)}
                           className={classes.button}>Remove User</Button>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
@@ -131,7 +132,6 @@ const mapDispatchToProps = {
   initUsers,
   updateSearch,
   updateUsername,
-  addUser,
 };
 
 export default connect(

@@ -69,12 +69,11 @@ class RepoCard extends Component {
             {
               breakdown.map(
                 (lang, i) => {
-                  const {language, proportion} = lang;
-                  const colour = allLangs[lang.language];
+                  const {language, color} = lang;
 
                   return (
                     <Grid item key={i}>
-                      <Language key={2 * i} colour={colour} language={language} proportion={proportion}/>
+                      <Language key={2 * i} colour={color} language={language}/>
                     </Grid>
                   )
                 }

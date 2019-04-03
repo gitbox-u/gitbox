@@ -45,7 +45,7 @@ class RepoGrid extends Component {
 
   render() {
 
-    const { allRepos, numResults, pageRepos, search, numPages, pageOffset, langs } = this.props;
+    const { allRepos, numResults, pageRepos, search, numPages, pageOffset } = this.props;
 
     const { classes } = this.props;
 
@@ -113,7 +113,6 @@ class RepoGrid extends Component {
                                 name={ allRepos[repo].name }
                                 desc={ allRepos[repo].desc }
                                 breakdown={ allRepos[repo].breakdown }
-                                allLangs={ langs }
                     />
                   </Grid>
 
@@ -137,10 +136,10 @@ class RepoGrid extends Component {
 }
 
 const mapStateToProps = state => {
-  const { allRepos, filteredRepos, pageRepos, search, numPages, pageOffset, langs } = state.repos;
+  const { allRepos, filteredRepos, pageRepos, search, numPages, pageOffset } = state.repos;
 
   const numResults = filteredRepos.length;
-  return { allRepos, numResults, pageRepos, search, numPages, pageOffset, langs };
+  return { allRepos, numResults, pageRepos, search, numPages, pageOffset };
 };
 
 const mapDispatchToProps = {
