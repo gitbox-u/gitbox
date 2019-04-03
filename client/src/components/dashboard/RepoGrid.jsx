@@ -13,6 +13,10 @@ const styles = {
     marginRight: '10px',
   },
 
+  textInputContainer: {
+    paddingLeft: '15px',
+  },
+
   container: {
     width: '100%',
   },
@@ -74,7 +78,7 @@ class RepoGrid extends Component {
           </Grid>
 
           <Grid container
-                className={ classes.textInput }
+                className={ classes.textInputContainer }
                 alignItems='inline'
           >
             <TextField
