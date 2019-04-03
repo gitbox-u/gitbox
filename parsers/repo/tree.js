@@ -6,7 +6,7 @@ function getTree(path, extensions) {
 
   const tree = dirTree(path, {
     extensions: regex,
-    exclude: [/.*node_modules.*/, /.*\/build\/.*/, /.*dependencies.*/, /.*\/\..*/]
+    exclude: [/.*node_modules.*/, /.*\/build\/.*/, /.*dependencies.*/, /.*\.min\..*/, /.*\/\..*/]
   });
   fixTree(tree, "#f0f0f0");
   return tree;
@@ -14,6 +14,7 @@ function getTree(path, extensions) {
 
 
 function fixTree(tree, col){
+  if(tree === null) return;
   if(typeof(tree.children) !== "undefined"){
       delete tree.size;
       for(child of tree.children){
