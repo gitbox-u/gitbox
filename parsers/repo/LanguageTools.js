@@ -19,7 +19,10 @@ const IGNORED_EXTENSIONS = [
   'log',
   'db',
   'icns',
-  'afdesign'
+  'afdesign',
+  'pdf',
+  'eps',
+  'psd'
 ];
 
 const languages = {
