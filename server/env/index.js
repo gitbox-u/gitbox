@@ -1,7 +1,7 @@
 const path = require('path');
 
 const root = path.join(process.env.REPODIR ? process.env.REPODIR : require('os').homedir(), 'REPODUMP', 'Repos');
-const parsers = path.join(__dirname, process.env.PARSERDIR || '..', 'parsers/');
+const parsers = path.join(process.env.PARSERDIR || '..', 'parsers/');
 console.log(parsers);
 
 module.exports = {
