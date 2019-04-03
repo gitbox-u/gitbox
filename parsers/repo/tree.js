@@ -14,7 +14,6 @@ function getTree(path, extensions) {
 
 
 function fixTree(tree, col){
-  if(tree === null) return;
   if(typeof(tree.children) !== "undefined"){
       delete tree.size;
       for(child of tree.children){
