@@ -194,6 +194,9 @@ class Repository extends Component {
                     Language Breakdown
                   </Typography>
                   <Typography className={classes.cardHeader}>
+                    Hover for individual file languages.
+                  </Typography>
+                  <Typography className={classes.cardHeader}>
                     
                   </Typography>
                   <div className={classes.langBreak}>
