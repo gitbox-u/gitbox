@@ -5,7 +5,7 @@ services:
       - CLIENTBUILDPATH=/build/
       - MONGOHOST=mongo
       - REPODIR=/REPOdata/
-      - PARSERDIR=/gitmap/parsers/
+      - PARSERDIR=/gitmap/
     build: .
     volumes:
       - /REPOdata:/REPOdata
