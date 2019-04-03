@@ -135,17 +135,7 @@ export async function apiLogout(auth) {
   }
 }
 
-export function removeUser(uuid) {
-  const req = {uuid};
+export function removeUser(uuid_delete) {
+  const req = {uuid_delete};
   return postData(`${apiRoot}${adminEnd}users/remove/user`, req);
-}
-
-// this is just a small helper function.
-function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
 }
