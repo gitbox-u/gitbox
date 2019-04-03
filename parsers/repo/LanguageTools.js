@@ -25,25 +25,7 @@ const IGNORED_EXTENSIONS = [
   'psd'
 ];
 
-const languages = {
-  js: 'JavaScript',
-  ts: 'TypeScript',
-  mjs: 'JavaScript',
-  jsx: 'React',
-  tsx: 'React',
-  py: 'Python',
-  java: 'Java',
-  c: 'C',
-  h: 'C',
-  sh: 'Shell',
-  css: 'CSS',
-  html: 'HTML',
-  cpp: 'C++',
-  swift: 'Swift',
-  kt: 'Kotlin',
-  cs: 'C#',
-  rs: 'Rust'
-};
+const languages = require("./Languages.json");
 
 const colours = {
   "Other": "#808080",

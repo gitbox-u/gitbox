@@ -12,6 +12,7 @@ async function commitLines(path) {
   const committers = {};
   const stats_committers = {};
   const extensions = new Set([]);
+  const languages = new Set([]);
 
   const stats_global = {
     languages: {},
@@ -135,6 +136,7 @@ async function commitLines(path) {
 
 
       const lang = getLanguage(extension);
+      languages.add(lang);
       if (stats_global.languages[lang] === undefined) stats_global.languages[lang] = new LangObject(lang);
       if (stats_committers[curr_committer].languages[lang] === undefined) stats_committers[curr_committer].languages[lang] = new LangObject(lang);
       if (stats_global.languages[lang].children[file] === undefined) stats_global.languages[lang].children[file] = {
@@ -204,7 +206,9 @@ async function commitLines(path) {
   const newCommittersArray = getKeyedObjectAsArray(committers, "name");
 
 
-  return { stats_global, stats_committers, committers: newCommittersArray, extensions: [...extensions] };
+  return { stats_global, stats_committers, committers: newCommittersArray, extensions: [...extensions],
+    languages: [...languages].map(lang => {return {language: lang, color: getColour(lang)}})
+  };
 }
 
 function getLangArray(languages) {

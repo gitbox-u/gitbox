@@ -12,6 +12,7 @@ const Repository = model('Repository', new Schema({
   },
   remoteUrl: String,
   stats: String, // TODO: Expand into useful objects
+  breakdown: Array
 }));
 
 /**
@@ -27,6 +28,7 @@ const addRepo = (entityUUID, name, remoteUrl, credentials) => {
     name,
     auth,
     remoteUrl,
+    breakdown: []
   });
   return repoRecord.save()
     .then(() => getEntity(entityUUID))
@@ -62,7 +64,7 @@ const getUserRepos = async (useruuid) => {
           uuid: r.uuid,
           name: r.name,
           desc: '',
-          breakdown: [],
+          breakdown: r.breakdown,
         };
       }).forEach((rep) => {
         l.auth = true;

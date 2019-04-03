@@ -25,6 +25,7 @@ commit_lines(path)
     saveFile(res.committers, 'committers');
     saveFile(res.stats_global, 'stats_global');
     saveFile(res.stats_committers, 'stats_committers');
+    saveFile(res.languages, 'languages');
 
     return tree(path, res.extensions);
   })
