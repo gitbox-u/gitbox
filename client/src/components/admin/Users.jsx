@@ -100,8 +100,8 @@ class Users extends Component {
               <ExpansionPanel expanded={expanded === user.uuid} onChange={this.handleChange(user.uuid)} key={user.uuid}>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
                   <Typography className={classes.heading}>{user.user}</Typography>
-                  <Typography className={classes.secondaryHeading}>{user.repos} repos
-                    - {user.commits} commits</Typography>
+                  {/* <Typography className={classes.secondaryHeading}>{user.repos} repos
+                    - {user.commits} commits</Typography> */}
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                   <Button variant="outlined" color="primary" onClick={this.handleSubmit}

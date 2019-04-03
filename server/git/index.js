@@ -1,6 +1,6 @@
 const git = require('simple-git/promise');
 const {getRepo} = require('../db/index');
-const {root} = require('../env');
+const {root, parsers} = require('../env');
 const path = require('path');
 const shell = require('shelljs');
 const util = require('util');
@@ -49,8 +49,8 @@ async function refreshStats(repoID) {
   const sstore = path.join(root, repo.uuid, 'stats');
   const rstore = path.join(root, repo.uuid, 'repo', repo.name);
   shell.mkdir('-p', sstore);
-  console.log(`node ../parsers/repo/repo.js --path "${rstore}" --save "${sstore}"`)
-  await exec(`node ../parsers/repo/repo.js --path "${rstore}" --save "${sstore}"`)
+  console.log(`node ${parsers}repo/repo.js --path "${rstore}" --save "${sstore}"`)
+  await exec(`node ${parsers}repo/repo.js --path "${rstore}" --save "${sstore}"`)
 }
 
 async function getStats(repoID) {

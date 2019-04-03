@@ -24,7 +24,6 @@ app.use('/api/admin/',  require('./routes/admin'));
 let buildpath = '../client/build/';
 if (process.env.CLIENTBUILDPATH) {
   buildpath = process.env.CLIENTBUILDPATH;
-  console.log(buildpath);
 }
 
 app.use(express.static(path.join(__dirname, buildpath)));

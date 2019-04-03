@@ -34,7 +34,6 @@ const postData = (url = ``, data = {}) => {
 };
 
 const getData = (url = ``) => {
-  console.log(url);
   return fetch(url, {
     method: 'GET', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, cors, *same-origin

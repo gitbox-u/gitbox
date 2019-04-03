@@ -146,6 +146,9 @@ class Repository extends Component {
             <Typography variant="h6" className={classes.cardHeader}>
               Repository History
             </Typography>
+            <Typography className={classes.cardHeader}>
+              A view of your repositories history and branches over time. Scroll to zoom in, and drag to move.
+            </Typography>
             <div className={classes.gitGraph}>
             <GitGraph graph={graph}>
             </GitGraph>
@@ -162,6 +165,9 @@ class Repository extends Component {
               <Typography variant="h6" className={classes.cardHeader}>
                 Contributions over time
               </Typography>
+              <Typography className={classes.cardHeader}>
+                Hover over the graph to see the breakdown in contributions per day.
+              </Typography>
               <div className={classes.codeStream} title={'Code Stream'}>
                 <CodeStream stats={data.stats} contributors={contributors}/>
               </div>
@@ -170,6 +176,9 @@ class Repository extends Component {
             <Paper>
               <Typography variant="h6" className={classes.cardHeader}>
                 Folder Tree
+              </Typography>
+              <Typography className={classes.cardHeader}>
+                A break down of the folder and file structure of your repository.
               </Typography>
               <div className={classes.codeStream}>
                 <FolderTree data={data.tree}/>
@@ -187,6 +196,12 @@ class Repository extends Component {
                 <Paper>
                   <Typography variant="h6" className={classes.cardHeader}>
                     Language Breakdown
+                  </Typography>
+                  <Typography className={classes.cardHeader}>
+                    Hover for individual file languages.
+                  </Typography>
+                  <Typography className={classes.cardHeader}>
+                    
                   </Typography>
                   <div className={classes.langBreak}>
                     <LanguageBreakdown data={languages}/>
@@ -210,6 +225,9 @@ class Repository extends Component {
               <Paper className={classes.addDelCon}>
                 <Typography variant="h6" className={classes.cardHeader}>
                   Additions and Deletions
+                </Typography>
+                <Typography className={classes.cardHeader}>
+                    Hover over to see a breakdown per day.
                 </Typography>
                 <div className={classes.deleteAdd}>
                   <AddDelete data={addDelete}/>

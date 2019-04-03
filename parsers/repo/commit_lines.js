@@ -65,8 +65,9 @@ async function commitLines(path) {
 
       let [adds, dels, file] = commit.split('\t');
       if (file.split('.').length < 2) return;
+      if (includesBanned(file)) return;
 
-      if (file.includes('.min.')) return;
+
 
       // moving logic
       if (file.includes('=>')) {
@@ -114,7 +115,10 @@ async function commitLines(path) {
       }
 
 
-      const [name, extension] = file.split('.');
+      const tokens = file.split('.');
+      const extension = tokens.pop();
+      const name = tokens.join();
+
       if (name.split('/').pop() === '') return;
 
       if (isIgnored(extension)) return;
@@ -125,7 +129,6 @@ async function commitLines(path) {
       if (!isNaN(parseInt(adds))) add = parseInt(adds);
       if (!isNaN(parseInt(dels))) del = parseInt(dels);
 
-      console.log(add, del);
 
       committers[curr_committer].additions += add;
       committers[curr_committer].deletions += del;
@@ -144,7 +147,7 @@ async function commitLines(path) {
       };
 
       stats_committers[curr_committer].languages[lang].children[file].lines += add;
-      stats_committers[curr_committer].languages[lang].children[file].lines -= del;
+      // stats_committers[curr_committer].languages[lang].children[file].lines -= del;
       stats_global.languages[lang].children[file].lines += add;
       stats_global.languages[lang].children[file].lines -= del;
 
@@ -228,6 +231,15 @@ function getKeyedObjectAsArray(obj, name) {
   }
 
   return ret;
+}
+
+function includesBanned(file){
+  const BANNED = ['.min.', 'build/', 'dependencies/', 'node_modules/'];
+  for (let item of BANNED){
+    if (file.includes(item)) return true;
+  }
+
+  return false;
 }
 
 
