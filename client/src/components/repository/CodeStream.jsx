@@ -14,7 +14,7 @@ function CodeStream(props) {
       keys={contributorNames}
       margin={{
         "top": 20,
-        "right": 110,
+        "right": 60,
         "bottom": 50,
         "left": 60
       }}
