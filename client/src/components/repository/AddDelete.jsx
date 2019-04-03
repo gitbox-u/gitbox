@@ -55,11 +55,11 @@ function AddDelete(props) {
         "format": () => ""
       }}
       dotSize={10}
-      enableGridX={false}
+      enableGridY={false}
       dotColor="inherit:darker(0.3)"
       dotBorderWidth={0}
       dotBorderColor="#ffffff"
-      enableGridY={true}
+      enableGridX={true}
       enableDotLabel={false}
       colorBy={e => e.color}
       animate={true}
