@@ -213,7 +213,10 @@ class Repository extends Component {
               <Grid item>
                 <Paper>
                   <Typography variant="h6" className={classes.cardHeader}>
-                    Top 5 in last 5 months
+                    Top contributors
+                  </Typography>
+                  <Typography className={classes.cardHeader}>
+                    Top 5 contributors over last 5 months.
                   </Typography>
                   <div className={classes.langBreak}>
                     <MiniCalendar data={data.calendar}/>
