@@ -144,7 +144,7 @@ const colours = {
   "Arduino": "#bd79d1",
   "FLUX": "#88ccff",
   "NetLogo": "#ff6375",
-  "C Sharp": "#178600",
+  "C#": "#178600",
   "CSS": "#563d7c",
   "Emacs Lisp": "#c065db",
   "Stan": "#b2011d",
