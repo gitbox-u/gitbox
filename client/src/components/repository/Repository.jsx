@@ -121,13 +121,13 @@ class Repository extends Component {
 
   handleCommitChange = commit => {
     console.log(commit);
-    const {sha, author, message} = commit;
+    const { sha, author, message } = commit;
     this.setState({
       message: (
         <div>
-        <Typography>{`SHA: ${sha}`}</Typography>
-          <Typography>{`Author: ${author}`}</Typography>
-          <Typography>{`Message: ${message}`}</Typography>
+          <Typography>{ `SHA: ${sha}` }</Typography>
+          <Typography>{ `Author: ${author}` }</Typography>
+          <Typography>{ `Message: ${message}` }</Typography>
         </div>
       ),
     })
@@ -187,9 +187,9 @@ class Repository extends Component {
         </Grid>
 
         <Grid item xs={ 3 }>
-          <Button variant="outlined" className={ classes.btn } onClick={(e) => {
+          <Button variant="outlined" className={ classes.btn } onClick={ (e) => {
             console.log(e);
-          }}><Refresh
+          } }><Refresh
             style={ { fontSize: 30 } }/> Refresh Statistics</Button>
         </Grid>
 
@@ -201,14 +201,13 @@ class Repository extends Component {
             <Typography className={ classes.cardSub }>
               A view of your repositories history and branches over time. Scroll to zoom in, and drag to move.
             </Typography>
-            <Grid container className={classes.gitGraph} spacing={16}>
-              <Grid item xs={ 10 } >
-                <GitGraph graph={graph} commits={data.commits} commitChange={this.handleCommitChange} >
-                </GitGraph>
+            <Grid container className={ classes.gitGraph } spacing={ 16 }>
+              <Grid item className={ classes.full } xs={ 10 }>
+                <GitGraph graph={ graph } commits={ data.commits } commitChange={ this.handleCommitChange }/>
               </Grid>
               <Grid item xs={ 2 }>
                 <div>
-                  {this.state.message}
+                  { this.state.message }
                 </div>
               </Grid>
             </Grid>
