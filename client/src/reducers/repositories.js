@@ -29,12 +29,10 @@ const ACTIONS = {
 const refresh = () => (dispatch) => {
   return getRepositories().then(
     res => {
-      if (res.auth) {
-        dispatch({
-          type: ACTIONS.SET_REPOS,
-          allRepos: res,
-        })
-      }
+      dispatch({
+        type: ACTIONS.SET_REPOS,
+        allRepos: res,
+      })
     }
   );
 };

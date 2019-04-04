@@ -15,7 +15,7 @@ const initial = {
 
   token: undefined,
   auth: Cookies.get('token') !== undefined,
-  admin: Boolean(Cookies.get('admin')),
+  admin: Cookies.get('admin') === "true",
 };
 
 const updateLoginField = (field, value) => {
@@ -60,6 +60,7 @@ const login = (state = initial, action) => {
   const { type } = action;
   if (type === ACTIONS.INIT) {
     const { login } = action;
+    console.log(login);
     return {
       ...state,
       ...login,
@@ -72,7 +73,7 @@ const login = (state = initial, action) => {
     }
   } else if (type === ACTIONS.AUTH) {
     const { result } = action;
-
+    console.log(result);
     return {
       ...state,
       password: '',

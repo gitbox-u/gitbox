@@ -34,6 +34,7 @@ class RepoGrid extends Component {
   componentDidMount() {
     this.props.initRepos().then(
       () => {
+        console.log("Init repositories");
         this.props.updateSearchField('');
       }
     );
