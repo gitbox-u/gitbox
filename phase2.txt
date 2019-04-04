@@ -1,11 +1,16 @@
 Phase 2:
 
 ================================
-How to use:
+How to use: 
 
 ================================
 Edits to features:
+
 Added Features:
+Admins can promote users to admin. Repo statistics were updated to change based
+on which user is selected using the radio buttons in the contributors list. Add
+repo functionality was added, so users can add private and public repos to their 
+accounts using any git (not necessarily github) url.
 
 Removed Features:
 Some features were removed due to time constraints: for example the 
@@ -18,6 +23,7 @@ User interactions:
 A user can register for an account from the login in page by 
 clicking register. They can also login in using the login page
 with the default user account being:
+
 Username: user
 Password: user
 
@@ -59,7 +65,23 @@ new user button). They can search for users using the user's
 username. They can access actions for each user by click the 
 user's listing to get access to buttons that will allow them to
 remove a user's account from the website, and to edit a user's 
-user name.
+user name. 
+
+The admins will also have access to all actions that a normal user
+has access to. (TODO)
+
+The admin accounts can also change any existing normal user account
+into an admind account by clicking the promote user button. (TODO) 
 
 ================================
 Other:
+
+                    _
+                  _(_)_                          wWWWw   _
+      @@@@       (_)@(_)   vVVVv     _     @@@@  (___) _(_)_
+     @@()@@ wWWWw  (_)\    (___)   _(_)_  @@()@@   Y  (_)@(_)
+      @@@@  (___)     `|/    Y    (_)@(_)  @@@@   \|/   (_)\
+       /      Y       \|    \|/    /(_)    \|      |/      |
+    \ |     \ |/       | / \ | /  \|/       |/    \|      \|/
+     \\|//   \\|///  \\\|//\\\|/// \|///  \\\|//  \\|//  \\\|// 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
