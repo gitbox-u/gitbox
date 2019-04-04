@@ -126,7 +126,6 @@ async function commitLines(path) {
       if (name.split('/').pop() === '') return;
 
       if (isIgnored(extension)) return;
-      extensions.add(extension);
 
 
       let add = 0, del = 0;
@@ -141,6 +140,8 @@ async function commitLines(path) {
       const lang = getLanguage(extension);
       if(lang === "Other") return;
       languages.add(lang);
+      extensions.add(extension);
+
       if (stats_global.languages[lang] === undefined) stats_global.languages[lang] = new LangObject(lang);
       if (stats_committers[curr_committer].languages[lang] === undefined) stats_committers[curr_committer].languages[lang] = new LangObject(lang);
       if (stats_global.languages[lang].children[file] === undefined) stats_global.languages[lang].children[file] = {
