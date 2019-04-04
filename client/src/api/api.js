@@ -70,6 +70,10 @@ export async function addRepo(name, remoteUrl, auth) {
   }
 }
 
+export function refresh(id) {
+  return getData(`${apiRoot}${repoEnd}refresh/${id}`);
+}
+
 export function getRepositoryData(id) {
   return getData(`${apiRoot}${repoEnd}stats/${id}`);
 }

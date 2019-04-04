@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withStyles, Grid, Typography, Button } from '@material-ui/core';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {withStyles, Grid, Typography, Button} from '@material-ui/core';
 import CodeStream from "./CodeStream";
 import Paper from "@material-ui/core/Paper";
 import AddDelete from './AddDelete';
 import LanguageBreakdown from "./LanguageBreakdown";
 import GitGraph from './GitGraph';
 import ContributorList from "./ContributorList"
-import { initDataForRepo } from '../../reducers/repositories';
+import {initDataForRepo} from '../../reducers/repositories';
 import FolderTree from './FolderTree';
 import MiniCalendar from "./MiniCalendar";
 import Refresh from '@material-ui/icons/Sync';
+import {refresh} from '../../api/api';
 
 const styles = {
   repoViewContainer: {
@@ -128,6 +129,9 @@ class Repository extends Component {
           <Typography>{ `SHA: ${sha}` }</Typography>
           <Typography>{ `Author: ${author}` }</Typography>
           <Typography>{ `Message: ${message}` }</Typography>
+          <Typography>{`SHA: ${sha}`}</Typography>
+          <Typography>{`Author: ${author}`}</Typography>
+          <Typography>{`Message: ${message}`}</Typography>
         </div>
       ),
     })
@@ -148,12 +152,12 @@ class Repository extends Component {
 
     if (data === undefined) return (
       <div
-        className={ classes.repoViewContainer }>
-        { `No data for repository #${id}` }
+        className={classes.repoViewContainer}>
+        {`No data for repository #${id}`}
       </div>
     );
 
-    let { graph, contributors } = data;
+    let {graph, contributors} = data;
 
     let languages, addDelete;
 
@@ -173,24 +177,24 @@ class Repository extends Component {
       <Grid item
             container
             justify="center"
-            spacing={ 16 }
+            spacing={16}
             direction="row"
-            className={ classes.repoViewContainer }
+            className={classes.repoViewContainer}
       >
-        <Grid item xs={ 9 }>
-          <Typography className={ classes.repoName } variant="h4">
-            { `${data.name}` }
+        <Grid item xs={9}>
+          <Typography className={classes.repoName} variant="h4">
+            {`${data.name}`}
           </Typography>
           <Typography className={ classes.repoName } variant="h6">
             { data.desc }
           </Typography>
         </Grid>
 
-        <Grid item xs={ 3 }>
-          <Button variant="outlined" className={ classes.btn } onClick={ (e) => {
-            console.log(e);
-          } }><Refresh
-            style={ { fontSize: 30 } }/> Refresh Statistics</Button>
+        <Grid item xs={3}>
+          <Button variant="outlined" className={classes.btn} onClick={(e) => {
+            refresh(id).then(() => window.location.reload()).catch(() => alert("reload failed"));
+          }}><Refresh
+            style={{fontSize: 30}}/> Refresh Statistics</Button>
         </Grid>
 
         <Grid item xs={ 12 } className={ classes.paddedFull }>
@@ -198,7 +202,7 @@ class Repository extends Component {
             <Typography variant="h6" className={ classes.cardHeader }>
               Repository History
             </Typography>
-            <Typography className={ classes.cardSub }>
+]            <Typography className={ classes.cardSub }>
               A view of your repositories history and branches over time. Scroll to zoom in, and drag to move.
             </Typography>
             <Grid container className={ classes.gitGraph } spacing={ 16 }>
@@ -287,11 +291,11 @@ class Repository extends Component {
           </Grid>
         </Grid>
 
-        <Grid item className={ classes.contributors } xs={ 3 }>
-          <Paper className={ classes.paper }>
-            <ContributorList contributors={ data.contributors }
-                             handleToggle={ this.handleToggle }
-                             checked={ this.state.checked }
+        <Grid item className={classes.contributors} xs={3}>
+          <Paper className={classes.paper}>
+            <ContributorList contributors={data.contributors}
+                             handleToggle={this.handleToggle}
+                             checked={this.state.checked}
             />
           </Paper>
         </Grid>
@@ -301,8 +305,8 @@ class Repository extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { repos } = state;
-  const { allRepos, repoData } = repos;
+  const {repos} = state;
+  const {allRepos, repoData} = repos;
 
   return {
     allRepos,
