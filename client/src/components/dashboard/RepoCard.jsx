@@ -65,7 +65,7 @@ class RepoCard extends Component {
           <ButtonBase
             className={ classes.full }
             onClick={ () => this.deleteRepo(id) }>
-            <Close style={ { position: 'absolute', left: '-25px', top: '5gitpx'} }/>
+            <Close style={ { position: 'absolute', left: '-25px', top: '5px'} }/>
           </ButtonBase>
         }>
 
