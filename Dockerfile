@@ -8,7 +8,7 @@ COPY ./client/package*.json ./client/
 COPY ./server ./server
 COPY ./parsers ./parsers
 
-RUN cd /gitmap/client && npm install && REACT_APP_APIHOST=ec2-3-87-7-156.compute-1.amazonaws.com npm run build
+RUN cd /gitmap/client && npm install && REACT_APP_APIHOST=gitbox.xyz npm run build
 RUN cd /gitmap/server && npm install
 RUN cd /gitmap/parsers && npm install
 
