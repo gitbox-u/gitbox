@@ -242,7 +242,7 @@ function getKeyedObjectAsArray(obj, name) {
 }
 
 function includesBanned(file){
-  const BANNED = ['.min.', 'build/', 'dependencies/', 'node_modules/'];
+  const BANNED = ['.min.', 'build/', 'dependencies', 'bootstrap', 'jquery', 'node_modules/'];
   for (let item of BANNED){
     if (file.includes(item)) return true;
   }

@@ -4,8 +4,6 @@
 // outputs: "hash | previous commits (parents) | (?) | message"
 import React, {Component} from 'react';
 import Graph from 'react-graph-vis';
-import {connect} from "react-redux";
-import { withStyles } from '@material-ui/core/es';
 
 const options = {
   interaction: {
@@ -38,10 +36,6 @@ const options = {
 
 
 class GitGraph extends Component {
-
-
-
-
   render() {
     const {graph, commits, classes} = this.props;
     console.log(commits);
@@ -55,8 +49,7 @@ class GitGraph extends Component {
     };
 
     return (
-      <Graph graph={graph} events={events} options={options}>
-      </Graph>
+      <Graph graph={graph} events={events} options={options}/>
     );
   }
 }
