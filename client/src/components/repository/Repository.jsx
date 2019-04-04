@@ -14,7 +14,7 @@ import Refresh from '@material-ui/icons/Sync';
 
 const styles = {
   repoViewContainer: {
-    padding: 85,
+    padding: '120px 5vw',
   },
 
   full: {
@@ -34,8 +34,10 @@ const styles = {
   },
 
   btn: {
-    // position: 'absolute',
-    // right: '0'
+    marginRight: 'calc(5vw + 10px)',
+    marginBottom: '10px',
+    position: 'absolute',
+    right: '0'
   },
 
   codeStream: {
@@ -137,9 +139,6 @@ class Repository extends Component {
 
     const data = repoData[id];
 
-    // console.log(data.languages);
-    // console.log(data.stats_committers);
-
     if (data === undefined) return (
       <div
         className={ classes.repoViewContainer }>
@@ -181,7 +180,9 @@ class Repository extends Component {
         </Grid>
 
         <Grid item xs={ 3 }>
-          <Button variant="outlined" className={ classes.btn }><Refresh
+          <Button variant="outlined" className={ classes.btn } onClick={(e) => {
+            console.log(e);
+          }}><Refresh
             style={ { fontSize: 30 } }/> Refresh Statistics</Button>
         </Grid>
 
