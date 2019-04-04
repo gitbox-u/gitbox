@@ -1,12 +1,7 @@
 const {authenticate, bodyHasParameters} = require('./validator');
 const express = require('express');
-<<<<<<< HEAD
-const {getEntity, addRepo} = require('../db');
-const {registerRepo, refreshStats, getStats} = require('../git');
-=======
 const {getEntity, addRepo, getUserRepos} = require('../db');
 const {registerRepo, pullRepo, refreshStats, getStats} = require('../git');
->>>>>>> 942b257cd15e700265acea78b6e8d510d8360465
 const router = express.Router();
 
 router.use(authenticate);
