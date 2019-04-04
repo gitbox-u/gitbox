@@ -36,13 +36,6 @@ const options = {
   }
 };
 
-const styles = {
-  leftQuarter: {
-    width: "25%",
-    float: "left",
-  }
-}
-
 
 class GitGraph extends Component {
 
@@ -56,8 +49,7 @@ class GitGraph extends Component {
       click: properties => {
         const node = properties.nodes.pop();
         if (node) {
-          console.log(node);
-          console.log(commits[node])
+          this.props.commitChange({sha: node, ...commits[node]});
         }
       }
     };
@@ -70,4 +62,4 @@ class GitGraph extends Component {
 }
 
 
-export default withStyles(styles)(GitGraph);
+export default (GitGraph);
