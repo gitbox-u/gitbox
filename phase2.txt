@@ -5,12 +5,61 @@ How to use:
 
 ================================
 Edits to features:
+Added Features:
+
+Removed Features:
+Some features were removed due to time constraints: for example the 
+quick stats for a user's overall account were removed due to the 
+complexity and time needed to write parsers for these stats. 
+Notifications were also removed.
 
 ================================
 User interactions:
+A user can register for an account from the login in page by 
+clicking register. They can also login in using the login page
+with the default user account being:
+Username: user
+Password: user
+
+Once logged in the user can search for repos using the repo's 
+name, and can add a github repo by clicking the + button next
+to the search bar. They can also navigate between different pages
+of repos using the pagination buttons on the bottom.
+
+Once the add repo button is clicked the user will be prompted with
+a form that asks for a Repor name (required) and a repo url (this will
+be the same url used when calling git clone: for example:
+https://github.com/chyyran/seiri.git), if the repo is a private
+repo, then the user's git credentials, such as for example your github
+login can be added in the username and password forms. The example
+repo provided (Seiri) does not require a login. 
+
+Once submitted a new repo card will appear, showing the name and 
+and language breakdown of the repo. Users can click the x button to
+delete a repo. Users can click the repo box, and this will redirect to 
+a repo specific page, which has overall statistics for the repo 
+(language breakdown, repo history, deletions etc.) Many of these graphs
+can be hovered over to see break downs for each contributor. The user
+can also click any of the radio buttons associated with a user to see 
+the graphs change to be reflective of that specific user's contributions.
+
+The user can also choose to update the statistics of repo to the most
+current repo version by clicking the refresh repo button at the top of the
+page.
 
 ================================
 Admin interactions:
+The admin can log in using the credentials
+Username: Admin
+Password: Admin
+
+Once logged in they have access to the admin dashboard, which
+allows them to register new users (by clicking the create new
+new user button). They can search for users using the user's 
+username. They can access actions for each user by click the 
+user's listing to get access to buttons that will allow them to
+remove a user's account from the website, and to edit a user's 
+user name.
 
 ================================
 Other:
