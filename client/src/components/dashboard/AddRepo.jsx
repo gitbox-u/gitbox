@@ -23,6 +23,9 @@ function AddRepo({ refresh }) {
 
   const handleAdd = () => {
     handleClose();
+
+    if (name.length === 0) return;
+
     let auth = undefined;
     if (authUsername.length > 0 && authPassword.length > 0) {
       auth = {username: authUsername, password: authPassword};
