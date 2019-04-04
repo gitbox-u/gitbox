@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {withStyles, Grid, Typography, Button} from '@material-ui/core';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withStyles, Grid, Typography, Button } from '@material-ui/core';
 import CodeStream from "./CodeStream";
 import Paper from "@material-ui/core/Paper";
+import AddDelete from './AddDelete';
 import LanguageBreakdown from "./LanguageBreakdown";
 import GitGraph from './GitGraph';
 import ContributorList from "./ContributorList"
-import AddDelete from "./AddDelete";
-import {initDataForRepo} from '../../reducers/repositories';
+import { initDataForRepo } from '../../reducers/repositories';
 import FolderTree from './FolderTree';
 import MiniCalendar from "./MiniCalendar";
 import Refresh from '@material-ui/icons/Sync';
@@ -17,33 +17,36 @@ const styles = {
     padding: 100,
   },
 
+  full: {
+    width: '100%',
+    height: '100%',
+  },
+
   codeStream: {
-    height: '30vh',
-    width: '40vw',
-    marginBottom: '2vh'
+    height: '250px',
+    width: '100%',
   },
 
   deleteAdd: {
-    height: '30vh',
-    width: '30vw',
-    marginBottom: '2vh',
+    height: '250px',
+    width: '100%',
   },
 
   gitGraph: {
+    height: '250px',
     width: '100%',
-    height: '200px',
   },
 
   repoName: {},
 
   contributors: {
-    height: '70vh',
-    width: '15vw',
+    height: '250px',
+    width: '100%',
   },
 
   langBreak: {
-    width: '14.5vw',
-    height: '30vh'
+    height: '250px',
+    width: '100%',
   },
 
   cardHeader: {
@@ -52,8 +55,14 @@ const styles = {
 
   addDelCon: {
     marginTop: '2vh'
-  }
+  },
 
+  paper: {
+    height: '100%',
+    width: '100%',
+    padding: '0.1em',
+    // overflowY: 'hidden',
+  },
 };
 
 class Repository extends Component {
@@ -86,8 +95,8 @@ class Repository extends Component {
 
     const id = this.props.match.params.id;
 
-    const {classes} = this.props;
-    const {repoData} = this.props;
+    const { classes } = this.props;
+    const { repoData } = this.props;
 
     const data = repoData[id];
 
@@ -96,12 +105,12 @@ class Repository extends Component {
 
     if (data === undefined) return (
       <div
-        className={classes.repoViewContainer}>
-        {`No data for repository #${id}`}
+        className={ classes.repoViewContainer }>
+        { `No data for repository #${id}` }
       </div>
     );
 
-    let {graph, contributors} = data;
+    let { graph, contributors } = data;
 
     let languages, addDelete;
 
@@ -117,132 +126,125 @@ class Repository extends Component {
       addDelete = data.addDelete;
     }
 
-
     return (
       <Grid item
             container
             justify="center"
-            spacing={16}
-            direction="column"
-            className={classes.repoViewContainer}
+            spacing={ 16 }
+            direction="row"
+            className={ classes.repoViewContainer }
       >
-      <Grid container spacing={32} alignItems="center">
-        <Grid item>
-          <Typography className={classes.repoName} variant="h4">
-            {`${data.name} | Repository #${data.id}`}
+        <Grid item xs={ 10 }>
+          <Typography className={ classes.repoName } variant="h4">
+            { `${data.name}` }
           </Typography>
-          <Typography className={classes.repoName} variant="h6">
-            {data.desc}
+          <Typography className={ classes.repoName } variant="h5">
+            { data.desc }
           </Typography>
         </Grid>
-        <Grid item>
-          {/** TODO: add stuff to refresh the repository */}
-          <Button variant="outlined" className={classes.button}><Refresh style ={{fontSize: 30, marginRight: 10}}></Refresh> Refresh Statistics</Button>
-        </Grid>
-      </Grid>
 
-        <Grid item>
-          <Paper >
-            <Typography variant="h6" className={classes.cardHeader}>
+        <Grid item xs={ 2 }>
+          { /** TODO: add stuff to refresh the repository */ }
+          <Button variant="outlined" className={ classes.button }><Refresh
+            style={ { fontSize: 30, marginRight: 10 } }/> Refresh Statistics</Button>
+        </Grid>
+
+        <Grid item xs={ 12 } className={ classes.full }>
+          <Paper className={ classes.paper }>
+            <Typography variant="h5" className={ classes.cardHeader }>
               Repository History
             </Typography>
-            <Typography className={classes.cardHeader}>
+            <Typography className={ classes.cardHeader }>
               A view of your repositories history and branches over time. Scroll to zoom in, and drag to move.
             </Typography>
-            <div className={classes.gitGraph}>
-            <GitGraph graph={graph}>
-            </GitGraph>
+            <div className={ classes.gitGraph }>
+              <GitGraph graph={ graph }/>
             </div>
           </Paper>
         </Grid>
-        <Grid item
-              container
-              direction="row"
-              spacing={16}
-        >
-          <Grid item>
-            <Paper>
-              <Typography variant="h6" className={classes.cardHeader}>
-                Contributions over time
-              </Typography>
-              <Typography className={classes.cardHeader}>
-                Hover over the graph to see the breakdown in contributions per day.
-              </Typography>
-              <div className={classes.codeStream} title={'Code Stream'}>
-                <CodeStream stats={data.stats} contributors={contributors}/>
-              </div>
-            </Paper>
 
-            <Paper>
-              <Typography variant="h6" className={classes.cardHeader}>
-                Folder Tree
-              </Typography>
-              <Typography className={classes.cardHeader}>
-                A break down of the folder and file structure of your repository.
-              </Typography>
-              <div className={classes.codeStream}>
-                <FolderTree data={data.tree}/>
-              </div>
-            </Paper>
+        <Grid item className={ classes.full } xs={ 6 }>
+          <Paper className={ classes.paper }>
+            <Typography variant="h5" className={ classes.cardHeader }>
+              Contributions over time
+            </Typography>
+            <Typography className={ classes.cardHeader }>
+              Hover over the graph to see the breakdown in contributions per day.
+            </Typography>
+            <div className={ classes.codeStream } title={ 'Code Stream' }>
+              <CodeStream stats={ data.stats } contributors={ contributors }/>
+            </div>
+          </Paper>
+        </Grid>
 
-          </Grid>
+        <Grid item className={ classes.full } xs={ 3 }>
+          <Paper className={ classes.paper }>
+            <Typography variant="h5" className={ classes.cardHeader }>
+              Top Contributors
+            </Typography>
+            <Typography className={ classes.cardHeader }>
+              Top 5 contributors over last 5 months.
+            </Typography>
+            <div className={ classes.langBreak }>
+              <MiniCalendar data={ data.calendar }/>
+            </div>
+          </Paper>
+        </Grid>
 
-          <Grid item>
-            <Grid item container
-                  direction="row"
-                  spacing={16}
-            >
-              <Grid item>
-                <Paper>
-                  <Typography variant="h6" className={classes.cardHeader}>
-                    Language Breakdown
-                  </Typography>
-                  <Typography className={classes.cardHeader}>
-                    Hover for individual file languages.
-                  </Typography>
-                  <Typography className={classes.cardHeader}>
-                    
-                  </Typography>
-                  <div className={classes.langBreak}>
-                    <LanguageBreakdown data={languages}/>
-                  </div>
-                </Paper>
-              </Grid>
+        <Grid item className={ classes.full } xs={ 3 }>
+          <Paper className={ classes.paper }>
+            <Typography variant="h5" className={ classes.cardHeader }>
+              Language Breakdown
+            </Typography>
+            <Typography className={ classes.cardHeader }>
+              Hover for individual file languages.
+            </Typography>
+            <Typography className={ classes.cardHeader }>
+            </Typography>
+            <div className={ classes.langBreak }>
+              <LanguageBreakdown data={ languages }/>
+            </div>
+          </Paper>
+        </Grid>
 
+        <Grid item className={ classes.full } xs={ 6 }>
+          <Paper className={ classes.paper }>
+            <Typography variant="h5" className={ classes.cardHeader }>
+              Folder Tree
+            </Typography>
+            <Typography className={ classes.cardHeader }>
+              A break down of the folder and file structure of your repository.
+            </Typography>
+            <div className={ classes.codeStream }>
+              <FolderTree data={ data.tree }/>
+            </div>
+          </Paper>
+        </Grid>
 
-              <Grid item>
-                <Paper>
-                  <Typography variant="h6" className={classes.cardHeader}>
-                    Top contributors
-                  </Typography>
-                  <Typography className={classes.cardHeader}>
-                    Top 5 contributors over last 5 months.
-                  </Typography>
-                  <div className={classes.langBreak}>
-                    <MiniCalendar data={data.calendar}/>
-                  </div>
-                </Paper>
-              </Grid>
-            </Grid>
-            <Grid item>
-              <Paper className={classes.addDelCon}>
-                <Typography variant="h6" className={classes.cardHeader}>
-                  Additions and Deletions
-                </Typography>
-                <Typography className={classes.cardHeader}>
-                    Hover over to see a breakdown per day.
-                </Typography>
-                <div className={classes.deleteAdd}>
-                  <AddDelete data={addDelete}/>
-                </div>
-              </Paper>
-            </Grid>
-          </Grid>
+        <Grid item className={ classes.full } xs={ 4 }>
+          <Paper className={ classes.paper }>
+            <Typography variant="h5" className={ classes.cardHeader }>
+              Additions and Deletions
+            </Typography>
+            <Typography className={ classes.cardHeader }>
+              Hover over to see a breakdown per day.
+            </Typography>
+            <div className={ classes.deleteAdd }>
+              <AddDelete data={ addDelete }/>
+            </div>
+          </Paper>
+        </Grid>
 
-          <Grid item className={classes.contributors}>
-            <ContributorList contributors={data.contributors} handleToggle={this.handleToggle} checked={this.state.checked}/>
-          </Grid>
-
+        <Grid item className={ classes.contributors } xs={ 2 }>
+          <Paper className={ classes.paper }>
+            <Typography variant="h5" className={ classes.cardHeader }>
+              Contributors
+            </Typography>
+            <ContributorList contributors={ data.contributors }
+                             handleToggle={ this.handleToggle }
+                             checked={ this.state.checked }
+            />
+          </Paper>
         </Grid>
       </Grid>
     );
@@ -250,8 +252,8 @@ class Repository extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const {repos} = state;
-  const {allRepos, repoData} = repos;
+  const { repos } = state;
+  const { allRepos, repoData } = repos;
 
   return {
     allRepos,

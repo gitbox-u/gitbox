@@ -13,7 +13,7 @@ const styles = theme => ({
     width: '100%',
     height: '100%',
     backgroundColor: theme.palette.background.paper,
-    overflow: 'auto',
+    overflowY: 'auto',
   },
   listSection: {
     backgroundColor: 'inherit',
@@ -31,7 +31,7 @@ class ContributorList extends React.Component {
 
     return (
       <List dense className={classes.root}>
-        <ListSubheader style={{backgroundColor: 'white'}}>{'Contributors'}</ListSubheader>
+        {/*<ListSubheader style={{backgroundColor: 'white'}}>{'Contributors'}</ListSubheader>*/}
         {this.props.contributors.map((contributor, i) => ( // TODO: Change ALL keys to non-index values
           <ListItem key={i} button style={{minHeight: 100}}>
             <ListItemAvatar>
