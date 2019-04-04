@@ -122,13 +122,13 @@ class Repository extends Component {
 
   handleCommitChange = commit => {
     console.log(commit);
-    const { sha, author, message } = commit;
+    const {sha, author, message} = commit;
     this.setState({
       message: (
         <div>
-          <Typography>{ `SHA: ${sha}` }</Typography>
-          <Typography>{ `Author: ${author}` }</Typography>
-          <Typography>{ `Message: ${message}` }</Typography>
+          <Typography>{`SHA: ${sha}`}</Typography>
+          <Typography>{`Author: ${author}`}</Typography>
+          <Typography>{`Message: ${message}`}</Typography>
           <Typography>{`SHA: ${sha}`}</Typography>
           <Typography>{`Author: ${author}`}</Typography>
           <Typography>{`Message: ${message}`}</Typography>
@@ -145,8 +145,8 @@ class Repository extends Component {
 
     const id = this.props.match.params.id;
 
-    const { classes } = this.props;
-    const { repoData } = this.props;
+    const {classes} = this.props;
+    const {repoData} = this.props;
 
     const data = repoData[id];
 
@@ -185,107 +185,109 @@ class Repository extends Component {
           <Typography className={classes.repoName} variant="h4">
             {`${data.name}`}
           </Typography>
-          <Typography className={ classes.repoName } variant="h6">
-            { data.desc }
+          <Typography className={classes.repoName} variant="h6">
+            {data.desc}
           </Typography>
         </Grid>
 
         <Grid item xs={3}>
           <Button variant="outlined" className={classes.btn} onClick={(e) => {
-            refresh(id).then(() => window.location.reload()).catch(() => alert("reload failed"));
+            refresh(id)
+              .then(() => window.location.reload())
+              .catch(() => alert("reload failed"));
           }}><Refresh
             style={{fontSize: 30}}/> Refresh Statistics</Button>
         </Grid>
 
-        <Grid item xs={ 12 } className={ classes.paddedFull }>
-          <Paper className={ classes.paper }>
-            <Typography variant="h6" className={ classes.cardHeader }>
+        <Grid item xs={12} className={classes.paddedFull}>
+          <Paper className={classes.paper}>
+            <Typography variant="h6" className={classes.cardHeader}>
               Repository History
             </Typography>
-]            <Typography className={ classes.cardSub }>
+            <Typography className={classes.cardSub}>
               A view of your repositories history and branches over time. Scroll to zoom in, and drag to move.
             </Typography>
-            <Grid container className={ classes.gitGraph } spacing={ 16 }>
-              <Grid item className={ classes.full } xs={ 10 }>
-                <GitGraph graph={ graph } commits={ data.commits } commitChange={ this.handleCommitChange }/>
+            <Grid container className={classes.gitGraph} spacing={16}>
+              <Grid item className={classes.full} xs={10}>
+                <GitGraph graph={graph} commits={data.commits} commitChange={this.handleCommitChange}/>
               </Grid>
-              <Grid item xs={ 2 }>
+              <Grid item xs={2}>
                 <div>
-                  { this.state.message }
+                  {this.state.message}
                 </div>
               </Grid>
             </Grid>
           </Paper>
         </Grid>
 
-        <Grid item container spacing={ 16 } xs={ 9 }>
-          <Grid item xs={ 12 }>
-            <Paper className={ classes.paper }>
-              <Typography variant="h6" className={ classes.cardHeader }>
+        <Grid item container spacing={16} xs={9}>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              <Typography variant="h6" className={classes.cardHeader}>
                 Contributions Over Time
               </Typography>
-              <Typography className={ classes.cardSub }>
+              <Typography className={classes.cardSub}>
                 Hover over the graph to see the breakdown in contributions per day.
               </Typography>
-              <div className={ classes.codeStream } title={ 'Code Stream' }>
-                <CodeStream stats={ data.stats } contributors={ contributors }/>
+              <div className={classes.codeStream} title={'Code Stream'}>
+                <CodeStream stats={data.stats} contributors={contributors}/>
               </div>
             </Paper>
           </Grid>
 
 
-          <Grid item xs={ 3 }>
-            <Paper className={ classes.paper }>
-              <Typography variant="h6" className={ classes.cardHeader }>
+          <Grid item xs={3}>
+            <Paper className={classes.paper}>
+              <Typography variant="h6" className={classes.cardHeader}>
                 Top Contributors
               </Typography>
-              <Typography className={ classes.cardSub }>
+              <Typography className={classes.cardSub}>
                 Top 5 over the last 5 months.
               </Typography>
-              <div className={ classes.langBreak }>
-                <MiniCalendar data={ data.calendar }/>
+              <div className={classes.langBreak}>
+                <MiniCalendar data={data.calendar}/>
               </div>
             </Paper>
           </Grid>
 
-          <Grid item xs={ 3 }>
-            <Paper className={ classes.paper }>
-              <Typography variant="h6" className={ classes.cardHeader }>
+          <Grid item xs={3}>
+            <Paper className={classes.paper}>
+              <Typography variant="h6" className={classes.cardHeader}>
                 Language Breakdown
               </Typography>
-              <Typography className={ classes.cardSub }>
+              <Typography className={classes.cardSub}>
                 Hover for individual file languages.
               </Typography>
-              <div className={ classes.langBreak }>
-                <LanguageBreakdown data={ languages }/>
+              <div className={classes.langBreak}>
+                <LanguageBreakdown data={languages}/>
               </div>
             </Paper>
           </Grid>
 
-          <Grid item xs={ 6 }>
-            <Paper className={ classes.paper }>
-              <Typography variant="h6" className={ classes.cardHeader }>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>
+              <Typography variant="h6" className={classes.cardHeader}>
                 Additions and Deletions
               </Typography>
-              <Typography className={ classes.cardSub }>
+              <Typography className={classes.cardSub}>
                 Hover over to see a breakdown per day.
               </Typography>
-              <div className={ classes.deleteAdd }>
-                <AddDelete data={ addDelete }/>
+              <div className={classes.deleteAdd}>
+                <AddDelete data={addDelete}/>
               </div>
             </Paper>
           </Grid>
 
-          <Grid item xs={ 12 }>
-            <Paper className={ classes.paper }>
-              <Typography variant="h6" className={ classes.cardHeader }>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              <Typography variant="h6" className={classes.cardHeader}>
                 Folder Tree
               </Typography>
-              <Typography className={ classes.cardSub }>
+              <Typography className={classes.cardSub}>
                 A breakdown of the folder and file structure of your repository.
               </Typography>
-              <div className={ classes.codeStream }>
-                <FolderTree data={ data.tree }/>
+              <div className={classes.codeStream}>
+                <FolderTree data={data.tree}/>
               </div>
             </Paper>
           </Grid>

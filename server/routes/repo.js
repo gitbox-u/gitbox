@@ -14,7 +14,7 @@ router.get("/refresh/:id", (req, res) => {
     })
     .then(() => pullRepo(req.params.id))
     .then(() => refreshStats(req.params.id))
-    .then(() => res.status(200).send())
+    .then(() => res.status(200).json({}))
     .catch(() => res.status(500).json({message: "Error"}));
 });
 
