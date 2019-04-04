@@ -49,7 +49,6 @@ const getData = (url = ``) => {
   })
     .then(response => response.json())
   // .catch(err => err);// parses JSON response into native Javascript objects
-  // TODO: INVOKE DEAUTH EVENT IF THE SERVER INDICATES IT
 };
 
 /// ADMIN

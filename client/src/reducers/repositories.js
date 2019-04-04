@@ -1,7 +1,7 @@
 import { getRepositories, getRepositoryData } from '../api/api';
 import {getRandomColor} from '../api/colours'
 
-const REPOS_PER_PAGE = 8;
+const REPOS_PER_PAGE = 16;
 
 const initial = {
   allRepos: {},
