@@ -15,7 +15,7 @@ async function topfive(path) {
 
     const git = `cd "${path}"
     git shortlog HEAD -sn --no-merges --since="${prev}" --until="${curr}"`;
-    months_sdout[i] = (await exec(git)).stdout;
+    months_sdout[i] = (await exec(git, {maxBuffer: 1024 * 1000 * 4})).stdout;
   }
 
   const stats_month = [{}, {}, {}, {}, {}];
