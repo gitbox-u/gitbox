@@ -84,17 +84,6 @@ function AddRepo({ refresh }) {
             fullWidth
             onChange={ (e) => setAuthPassword(e.target.value)}
           />
-          {/* <DialogContentText>
-            OR
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="Key"
-            label="Key (Optional)"
-            type="Key"
-            fullWidth
-          /> */}
         </DialogContent>
         <DialogActions>
           <Button onClick={ handleClose } color="primary">

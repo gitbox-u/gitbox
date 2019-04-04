@@ -54,35 +54,6 @@ const getData = (url = ``) => {
 
 /// ADMIN
 export function getUsers() {
-  // return [
-  //   {
-  //     username: 'Linwen',
-  //     id: 0,
-  //     repos: 30,
-  //     commits: 554
-  //   },
-
-  //   {
-  //     username: 'Eric',
-  //     id: 1,
-  //     repos: 3000,
-  //     commits: 1
-  //   },
-
-  //   {
-  //     username: 'Howard',
-  //     id: 2,
-  //     repos: 0,
-  //     commits: 0
-  //   },
-
-  //   {
-  //     username: 'Murad',
-  //     id: 3,
-  //     repos: 0,
-  //     commits: 0
-  //   }
-  // ];
   return getData(`${apiRoot}${adminEnd}users`);
 }
 
@@ -99,9 +70,13 @@ export async function addRepo(name, remoteUrl, auth) {
   }
 }
 
-export async function getRepositoryData(id, auth) {
-  const data = await getData(`${apiRoot}${repoEnd}stats/${id}`);
-  return data;
+export function getRepositoryData(id) {
+  return getData(`${apiRoot}${repoEnd}stats/${id}`);
+}
+
+export function deleteRepo(id) {
+  const req = {id};
+  return postData(`${apiRoot}${repoEnd}delete`, req);
 }
 
 export function apiRegister(username, password) {
@@ -120,13 +95,15 @@ export function apiLogin(username, password) {
   return postData(`${apiRoot}${authEnd}login`, req).then(
     ret => {
       Cookies.set('token', ret.token);
+      Cookies.set('admin', ret.admin);
       return ret;
     }
   );
 }
 
-export async function apiLogout(auth) {
+export async function apiLogout() {
   Cookies.remove('token');
+  Cookies.remove('admin');
 
   return {
     token: undefined,
@@ -137,5 +114,18 @@ export async function apiLogout(auth) {
 
 export function removeUser(uuid_delete) {
   const req = {uuid_delete};
-  return postData(`${apiRoot}${adminEnd}users/remove/user`, req);
+  return postData(`${apiRoot}${adminEnd}users/remove`, req);
+}
+
+export function promoteUser(uuid_promote, admin) {
+  const req = {uuid_promote, admin};
+  return postData(`${apiRoot}${adminEnd}users/promote`, req);
+}
+
+/*router.post("/users/change", 
+  bodyHasParameters(["uuid_change", "new_username"]),
+*/
+export function changeUser(uuid_change, new_username) {
+  const req = {uuid_change, new_username};
+  return postData(`${apiRoot}${adminEnd}users/change`, req);
 }
