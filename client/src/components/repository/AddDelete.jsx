@@ -31,7 +31,7 @@ function AddDelete(props) {
       margin={{
         "top": 30,
         "right": 20,
-        "bottom": 50,
+        "bottom": 20,
         "left": 60
       }}
       xScale={{

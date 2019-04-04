@@ -17,7 +17,7 @@ function MiniCalendar(props) {
       ]}
       indexBy="name"
       margin={{
-        "top": 20,
+        "top": 25,
         "right": 10,
         "bottom": 10,
         "left": 90

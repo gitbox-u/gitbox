@@ -1,5 +1,5 @@
 import React from 'react';
-import {withStyles, Typography, Radio} from '@material-ui/core';
+import { withStyles, Typography, Radio } from '@material-ui/core';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -13,7 +13,7 @@ const styles = theme => ({
     width: '100%',
     height: '100%',
     backgroundColor: theme.palette.background.paper,
-    overflow: 'auto',
+    overflowY: 'auto',
   },
   listSection: {
     backgroundColor: 'inherit',
@@ -22,37 +22,43 @@ const styles = theme => ({
     backgroundColor: 'inherit',
     padding: 0,
   },
+  cardHeader: {
+    textAlign: 'center',
+  },
 });
 
 class ContributorList extends React.Component {
 
   render() {
-    const {classes} = this.props;
+    const { classes } = this.props;
 
     return (
-      <List dense className={classes.root}>
-        <ListSubheader style={{backgroundColor: 'white'}}>{'Contributors'}</ListSubheader>
-        {this.props.contributors.map((contributor, i) => ( // TODO: Change ALL keys to non-index values
-          <ListItem key={i} button style={{minHeight: 100}}>
+      <List dense className={ classes.root }>
+        <Typography variant="h5" className={ classes.cardHeader }>
+          Contributors
+        </Typography>
+        { /*<ListSubheader style={{backgroundColor: 'white'}}>{'Contributors'}</ListSubheader>*/ }
+        { this.props.contributors.map((contributor, i) => ( // TODO: Change ALL keys to non-index values
+          <ListItem key={ i } button style={ { minHeight: 100 } }>
             <ListItemAvatar>
-              <Circle style={{fill: contributor.color}}/>
+              <Circle style={ { fill: contributor.color } }/>
             </ListItemAvatar>
-            <ListItemText primary={contributor.name}
-            secondary={
-              <div>
-                <Typography variant={"caption"}>{`Commits: ${contributor.commits}`}</Typography>
-                <Typography variant={"caption"}>{`Additions: ${contributor.additions}`}</Typography>
-                <Typography variant={"caption"}>{`Deletions: ${contributor.deletions}`}</Typography>
-              </div>
-            }/>  
+            <ListItemText primary={ contributor.name }
+                          secondary={
+                            <div>
+                              <Typography variant={ "caption" }>{ `Commits: ${contributor.commits}` }</Typography>
+                              <Typography variant={ "caption" }>{ `Additions: ${contributor.additions}` }</Typography>
+                              <Typography variant={ "caption" }>{ `Deletions: ${contributor.deletions}` }</Typography>
+                            </div>
+                          }/>
             <ListItemSecondaryAction>
               <Radio
-                onClick={this.props.handleToggle(contributor)}
-                checked={this.props.checked === contributor.name}
+                onClick={ this.props.handleToggle(contributor) }
+                checked={ this.props.checked === contributor.name }
               />
             </ListItemSecondaryAction>
           </ListItem>
-        ))}
+        )) }
       </List>
     );
   }

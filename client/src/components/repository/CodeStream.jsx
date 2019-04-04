@@ -13,10 +13,10 @@ function CodeStream(props) {
       data={stats}
       keys={contributorNames}
       margin={{
-        "top": 20,
-        "right": 60,
-        "bottom": 50,
-        "left": 60
+        "top": 10,
+        "right": 30,
+        "bottom": 35,
+        "left": 30
       }}
 
       axisBottom={{
