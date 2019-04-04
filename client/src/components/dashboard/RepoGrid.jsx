@@ -116,7 +116,7 @@ class RepoGrid extends Component {
                     <Repository id={ repo }
                                 key={ 2 * i }
                                 name={ allRepos[repo].name }
-                                desc={ allRepos[repo].desc }
+                                desc={ allRepos[repo].remoteUrl }
                                 breakdown={ allRepos[repo].breakdown }
                     />
                   </Grid>

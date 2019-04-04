@@ -129,9 +129,6 @@ class Repository extends Component {
           <Typography>{`SHA: ${sha}`}</Typography>
           <Typography>{`Author: ${author}`}</Typography>
           <Typography>{`Message: ${message}`}</Typography>
-          <Typography>{`SHA: ${sha}`}</Typography>
-          <Typography>{`Author: ${author}`}</Typography>
-          <Typography>{`Message: ${message}`}</Typography>
         </div>
       ),
     })
@@ -158,7 +155,7 @@ class Repository extends Component {
     );
 
     let {graph, contributors} = data;
-
+      console.log(data);
     let languages, addDelete;
 
     if (this.state.checked in data.stats_committers) {
@@ -183,10 +180,10 @@ class Repository extends Component {
       >
         <Grid item xs={9}>
           <Typography className={classes.repoName} variant="h4">
-            {`${data.name}`}
+            {data.name}
           </Typography>
           <Typography className={classes.repoName} variant="h6">
-            {data.desc}
+            {data.remoteUrl}
           </Typography>
         </Grid>
 

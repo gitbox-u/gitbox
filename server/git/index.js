@@ -70,7 +70,7 @@ async function getStats(repoID) {
     readFile(path.join(store, 'branches.json')).then(r => stats.graph = JSON.parse(r)),
     readFile(path.join(store, 'commits.json')).then(r => stats.commits = JSON.parse(r)),
     readFile(path.join(store, 'stats_committers.json')).then(r => stats.stats_committers = JSON.parse(r)),
-    getRepo(repoID).exec().then(r => {stats.name = r.name})
+    getRepo(repoID).exec().then(r => {stats.name = r.name; stats.remoteUrl = r.remoteUrl})
   ]);
 
   stats.languages = {name: "language", children: stats.languages};

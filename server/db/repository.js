@@ -53,16 +53,11 @@ const getUserRepos = async (useruuid) => {
   return Promise.all(user.authorized.map(getRepo))
     .then(res => {
       let l = {};
-      res.map(r => { // TODO: Clean this ugly stuff up
-        let name, uuid = '';
-        if (r && r.name && r.uuid) {
-          name = r.name;
-        } else if (r && r.remoteUrl) {
-          name = r.remoteUrl;
-        }
+      res.map(r => {
         return {
           uuid: r.uuid,
           name: r.name,
+          remoteUrl: r.remoteUrl,
           desc: '',
           breakdown: r.breakdown,
         };
