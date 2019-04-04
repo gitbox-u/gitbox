@@ -22,10 +22,7 @@ const styles = {
   full: {
     width: '100%',
   },
-
-  grow: {
-    flexGrow: 1,
-  },
+  
 };
 
 class RepoCard extends Component {
@@ -65,18 +62,11 @@ class RepoCard extends Component {
             justifyContent= 'space-between'
             alignItems= 'center'
         >
-        <Grid item
-          width="1/2"
-        >
           <CardHeader
             className={classes.header}
             title={name.substring(0,20)}
             subheader={desc}
           />
-        </Grid>
-          <div className={classes.grow}/>
-        
-          <Close style={{marginRight: "10px"}}></Close>
         </Grid>
 
           <Grid container

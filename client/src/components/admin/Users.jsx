@@ -9,7 +9,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {connect} from "react-redux";
 import { initUsers, filterUsers, updateSearch, updateUsername} from '../../reducers/users';
 import AddIcon from '@material-ui/icons/Add';
-import {removeUser} from '../../api/api';
+import {removeUser, promoteUser, changeUser} from '../../api/api';
 
 import AddUsers from './AddUser';
 
@@ -69,8 +69,27 @@ class Users extends Component {
   };
 
   removeUser = uuid => {
-    removeUser(uuid);
+    removeUser(uuid)
+    .then(msg => window.alert(msg.message))
+    .then(() => window.location.reload());
   };
+
+  promoteUser = (uuid, admin) => {
+    promoteUser(uuid, admin)
+    .then(msg => window.alert(msg.message))
+    .then(() => window.location.reload());
+  };
+
+  changeUser = (uuid) => {
+    const newName = window.prompt(`Enter new username for user ${uuid}`);
+    if (newName === undefined || newName === null || newName.length === 0) {
+      window.alert("Operation cancelled, username not valid");
+    } else {
+      changeUser(uuid, newName).then(
+        msg => window.alert(msg.message)
+      ).then(() => window.location.reload());
+    }
+  } 
 
   render() {
     const {classes} = this.props;
@@ -100,14 +119,26 @@ class Users extends Component {
               <ExpansionPanel expanded={expanded === user.uuid} onChange={this.handleChange(user.uuid)} key={user.uuid}>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
                   <Typography className={classes.heading}>{user.user}</Typography>
-                  {/* <Typography className={classes.secondaryHeading}>{user.repos} repos
-                    - {user.commits} commits</Typography> */}
+                  <Typography className={classes.secondaryHeading}>{user.admin ? "Admin" : "User"} - {user.uuid}</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
-                  <Button variant="outlined" color="primary" onClick={this.handleSubmit}
-                          className={classes.button}>Edit User</Button>
+                  <Button variant="outlined" color="primary" onClick={() => this.changeUser(user.uuid)}
+                          className={classes.button}>Edit Username</Button>
                   <Button variant="outlined" color="primary" onClick={() => this.removeUser(user.uuid)}
                           className={classes.button}>Remove User</Button>
+
+                  {
+                    user.admin ? 
+
+                    <Button variant="outlined" color="primary" onClick={() => this.promoteUser(user.uuid, false)}
+                    className={classes.button}>Demote User</Button>
+
+                    :
+
+                    <Button variant="outlined" color="primary" onClick={() => this.promoteUser(user.uuid, true)}
+                    className={classes.button}>Promote User to Admin</Button>
+                  }
+
                 </ExpansionPanelDetails>
               </ExpansionPanel>
             )

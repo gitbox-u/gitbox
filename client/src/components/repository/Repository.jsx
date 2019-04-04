@@ -25,7 +25,7 @@ const styles = {
   paddedFull: {
     width: '100%',
     height: '100%',
-    margin: '8px',
+    margin: '0 8px',
   },
 
   stat: {
@@ -53,7 +53,9 @@ const styles = {
     width: '100%',
   },
 
-  repoName: {},
+  repoName: {
+    paddingLeft: '10px',
+  },
 
   contributors: {
     height: '866px',

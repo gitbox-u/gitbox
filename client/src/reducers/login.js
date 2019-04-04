@@ -15,17 +15,7 @@ const initial = {
 
   token: undefined,
   auth: Cookies.get('token') !== undefined,
-  admin: false,
-};
-
-const initLogin = () => (dispatch) => {
-  const login = Cookies.get('token');
-  if (login === undefined) return;
-
-  dispatch({
-    type: ACTIONS.INIT,
-    login,
-  })
+  admin: Boolean(Cookies.get('admin')),
 };
 
 const updateLoginField = (field, value) => {
@@ -105,5 +95,5 @@ const login = (state = initial, action) => {
   return state;
 };
 
-export { updateLoginField, tryLogin, tryRegister, logout, initLogin };
+export { updateLoginField, tryLogin, tryRegister, logout };
 export default login;

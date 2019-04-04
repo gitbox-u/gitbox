@@ -1,4 +1,4 @@
-const {authenticate} = require('./validator');
+const {authenticate, bodyHasParameters} = require('./validator');
 const express = require('express');
 const {getEntity, addRepo, getUserRepos} = require('../db');
 const {registerRepo, pullRepo, refreshStats, getStats} = require('../git');
@@ -21,12 +21,17 @@ router.get("/refresh/:id", (req, res) => {
 router.get("/stats/:id", (req, res) => {
   getEntity(req.body.uuid)
     .then((entity) => {
+      console.log(entity);
       if (!(entity.authorized.includes(req.params.id))) throw Error;
       // else return refreshStats(req.params.id)
     })
     .then(() => getStats(req.params.id))
     .then(r => res.status(200).json(r))
-    .catch(() => res.status(500).json({message: "Error"}));
+    .catch((e) => {
+      console.log(e);
+      res.status(500).json({message: "Error"});
+
+    });
 });
 
 router.post("/add", (req, res) => { // TODO: Assume authenticated, add to authorized repos
@@ -41,5 +46,16 @@ router.post("/add", (req, res) => { // TODO: Assume authenticated, add to author
     })
 });
 
+
+router.post("/delete", 
+  bodyHasParameters(["id"]),
+  (req, res) => {
+    const {id, uuid} = req.body;
+    console.log(id, uuid);
+    getEntity(uuid).update({$pull: {authorized: id}}).then(
+      () => res.json({message: "Deleted"})
+    ).catch(() => res.send({message: "Something went wrong"}))
+  }
+);
 
 module.exports = router;

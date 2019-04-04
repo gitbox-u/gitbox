@@ -3,7 +3,7 @@ const exec = util.promisify(require('child_process').exec);
 
 async function branches(path) {
   const git = `cd "${path}"
-  git log --all --date-order --pretty="%h|%p|%d|%s"`;
+  git log --all --date-order --pretty="%h|%p|%d|%s|%an"`;
 
   const {stdout, stderr} = await exec(git, {maxBuffer: 1024 * 1000 * 4});
 
@@ -12,6 +12,7 @@ async function branches(path) {
   let reserve = [];
   let branchIndex = 0;
   const branches = {};
+  const messages = {};
 
   function getBranch(sha) {
 
@@ -28,7 +29,7 @@ async function branches(path) {
   stdout.split('\n').forEach((commit, index) => {
     const tokens = commit.split('|');
     if (tokens.length < 4) return;
-    const [sha, parentsstring, desc, message] = tokens;
+    const [sha, parentsstring, desc, message, author] = tokens;
 
     const parents = parentsstring.split(" ");
 
@@ -71,10 +72,12 @@ async function branches(path) {
       'y': offset * 50,
       //'y': branch * 100,
       'x': index * 50,
-      //'routes': routes,
+      //'routes'1c8bd7a: routes,
       'color': COLOURS[branch % COLOURS.length],
       'fixed': true,
     });
+
+    messages[sha] = {author, message};
 
     parents.forEach(p => {
       edges.push({
@@ -84,10 +87,10 @@ async function branches(path) {
     });
   });
 
-  return {
+  return {graph: {
     'nodes': nodes,
     'edges': edges,
-  }
+  }, messages}
 
 }
 

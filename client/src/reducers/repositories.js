@@ -34,11 +34,6 @@ const refresh = () => (dispatch) => {
           type: ACTIONS.SET_REPOS,
           allRepos: res,
         })
-      } else {
-        dispatch({
-          type: ACTIONS.DEAUTH,
-          res
-        })
       }
     }
   );
