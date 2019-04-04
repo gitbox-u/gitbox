@@ -7,7 +7,7 @@ const interval = 86400;
 async function commitLines(path) {
   const git = `cd "${path}"
   git log --numstat --pretty="C:%cn:%at" --no-merges --reverse| sed '/^$/d'`;
-  const { stdout, stderr } = await exec(git);
+  const { stdout, stderr } = await exec(git, {maxBuffer: 1024 * 1000 * 4});
 
   const committers = {};
   const stats_committers = {};
@@ -69,52 +69,55 @@ async function commitLines(path) {
       if (includesBanned(file)) return;
 
 
+      try {
+        // moving logic
+        if (file.includes('=>')) {
+          // TODO: FIX
+          if (file.includes('}/')) return; // hell to handle
+          if (!file.includes('}')) return; // hell to handle
+          let [path, rest] = file.split('{');
 
-      // moving logic
-      if (file.includes('=>')) {
-        // TODO: FIX
-        if (file.includes('}/')) return; // hell to handle
-        if (!file.includes('}')) return; // hell to handle
-        let [path, rest] = file.split('{');
+          rest = rest.split('}')[0];
 
-        rest = rest.split('}')[0];
+          const [frm, to] = rest.split(' => ');
 
-        const [frm, to] = rest.split(' => ');
+          if (isIgnored(frm.split('.').pop())) return;
 
-        if(isIgnored(frm.split('.').pop()))return;
+          const lang_from = getLanguage(frm.split('.').pop());
+          const lang_to = getLanguage(to.split('.').pop());
 
-        const lang_from = getLanguage(frm.split('.').pop());
-        const lang_to = getLanguage(to.split('.').pop());
+          if (lang_from === "Other") return;
+
+          if (stats_global.languages[lang_to] === undefined) stats_global.languages[lang_to] = new LangObject(lang_to);
+          stats_global.languages[lang_to].children[path + to] = stats_global.languages[lang_from].children[path + frm];
+
+          try {
+            stats_global.languages[lang_to].children[path + to].name = path + to;
+          }catch (e) {
+
+          }
 
 
-        if (stats_global.languages[lang_to] === undefined) stats_global.languages[lang_to] = new LangObject(lang_to);
-        stats_global.languages[lang_to].children[path + to] = stats_global.languages[lang_from].children[path + frm];
+          delete stats_global.languages[lang_from].children[path + frm];
 
-        try {
-          stats_global.languages[lang_to].children[path + to].name = path + to;
-        }catch(e){
-          let a
+          for (let cont of Object.keys(stats_committers)) {
+            if (typeof (stats_committers[cont].languages[lang_from]) === "undefined" ||
+              typeof (stats_committers[cont].languages[lang_from].children[path + frm]) === "undefined") continue;
+
+
+            if (stats_committers[cont].languages[lang_to] === undefined) stats_committers[cont].languages[lang_to] = new LangObject(lang_to);
+
+            stats_committers[cont].languages[lang_to].children[path + to] = stats_committers[cont].languages[lang_from].children[path + frm];
+            stats_committers[cont].languages[lang_to].children[path + to].name = path + to;
+            stats_committers[cont].languages[lang_to].children[path + to].name = path + to;
+            delete stats_committers[cont].languages[lang_from].children[path + frm];
+          }
+
+          file = path + to;
         }
-
-
-        delete stats_global.languages[lang_from].children[path + frm];
-
-        for (let cont of Object.keys(stats_committers)) {
-          if (typeof (stats_committers[cont].languages[lang_from]) === "undefined" ||
-            typeof (stats_committers[cont].languages[lang_from].children[path + frm]) === "undefined") continue;
-
-
-          if (stats_committers[cont].languages[lang_to] === undefined) stats_committers[cont].languages[lang_to] = new LangObject(lang_to);
-
-          stats_committers[cont].languages[lang_to].children[path + to] = stats_committers[cont].languages[lang_from].children[path + frm];
-          stats_committers[cont].languages[lang_to].children[path + to].name = path + to;
-          stats_committers[cont].languages[lang_to].children[path + to].name = path + to;
-          delete stats_committers[cont].languages[lang_from].children[path + frm];
-        }
-
-        file = path + to;
+      }catch (e) {
+        return;
       }
-
 
       const tokens = file.split('.');
       const extension = tokens.pop();
@@ -136,6 +139,7 @@ async function commitLines(path) {
 
 
       const lang = getLanguage(extension);
+      if(lang === "Other") return;
       languages.add(lang);
       if (stats_global.languages[lang] === undefined) stats_global.languages[lang] = new LangObject(lang);
       if (stats_committers[curr_committer].languages[lang] === undefined) stats_committers[curr_committer].languages[lang] = new LangObject(lang);

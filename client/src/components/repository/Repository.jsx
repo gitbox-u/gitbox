@@ -52,7 +52,11 @@ const styles = {
 
   addDelCon: {
     marginTop: '2vh'
-  }
+  },
+  
+  grow: {
+    flexGrow: 1,
+  },
 
 };
 
@@ -135,6 +139,7 @@ class Repository extends Component {
             {data.desc}
           </Typography>
         </Grid>
+        <div className={classes.grow}/>
         <Grid item>
           {/** TODO: add stuff to refresh the repository */}
           <Button variant="outlined" className={classes.button}><Refresh style ={{fontSize: 30, marginRight: 10}}></Refresh> Refresh Statistics</Button>

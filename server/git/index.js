@@ -36,8 +36,9 @@ const registerRepo = (repo) => {
     });
 };
 
-function pullRepo(repo) {
-  const store = path.join(root, repo.uuid, 'repo');
+async function pullRepo(repoID) {
+  const repo = await getRepo(repoID).exec();
+  const store = path.join(root, repo.uuid, 'repo', repo.name);
 
   return git(store)
     .pull('origin', 'master')
@@ -52,7 +53,7 @@ async function refreshStats(repoID) {
   await exec(`node ${parsers}repo/repo.js --path "${rstore}" --save "${sstore}"`);
   const languages = JSON.parse(await readFile(path.join(sstore, 'languages.json')));
   repo.breakdown = languages;
-  await repo.save().exec();
+  await repo.save();
 
 
 }
