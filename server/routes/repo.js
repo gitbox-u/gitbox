@@ -1,6 +1,6 @@
-const {authenticate} = require('./validator');
+const {authenticate, bodyHasParameters} = require('./validator');
 const express = require('express');
-const {getEntity, addRepo, getUserRepos} = require('../db');
+const {getEntity, addRepo} = require('../db');
 const {registerRepo, refreshStats, getStats} = require('../git');
 const router = express.Router();
 
@@ -38,5 +38,16 @@ router.post("/add", (req, res) => { // TODO: Assume authenticated, add to author
     })
 });
 
+
+router.post("/delete", 
+  bodyHasParameters(["id"]),
+  (req, res) => {
+    const {id, uuid} = req.body;
+    console.log(id, uuid);
+    getEntity(uuid).update({$pull: {authorized: id}}).then(
+      () => res.json({message: "Deleted"})
+    ).catch(() => res.send({message: "Something went wrong"}))
+  }
+);
 
 module.exports = router;

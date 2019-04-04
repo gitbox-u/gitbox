@@ -6,8 +6,6 @@ import {connect} from 'react-redux';
 
 import {logout} from '../../reducers/login';
 
-import PopUp from './Notifications';
-
 const styles = {
   grow: {
     flexGrow: 1,
@@ -31,28 +29,31 @@ class Header extends Component {
     const {auth, admin, username} = this.props;
     const {logout} = this.props;
 
+    console.log(auth, admin, username);
+
     return (
       <AppBar className={classes.appBar} color="primary" position="fixed">
         <Toolbar>
           <IconButton disabled color="inherit">
-            <img src={logo} width="40" alt="Gitmap"/>
+            <img src={logo} width="40" alt="Gitbox"/>
           </IconButton>
 
 
           <div className={classes.grow}/>
 
-          {/* {
-            auth && <PopUp></PopUp>
-          } */}
           {
             auth ? admin ?
               <Button onClick={this.routeChange("/admin")} color="inherit" variant="text">
                 Admin Panel
-              </Button> :
+              </Button> : <div></div> : <div></div>
+          }
+          {
+              auth ? 
               <Button onClick={this.routeChange("/dashboard")} color="inherit" variant="text">
                 Dashboard
               </Button> : <div></div>
           }
+
           {
             auth ?
               <Button onClick={e => {

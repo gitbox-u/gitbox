@@ -7,7 +7,6 @@ import Admin from '../admin/Admin';
 
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { initLogin } from '../../reducers/login';
 import Auth from '../auth/Auth';
 import PrivRoute from '../auth/PrivRoute';
 import Home from './Home';
@@ -38,10 +37,6 @@ const theme = createMuiTheme({
 });
 
 class App extends Component {
-  componentDidMount() {
-    this.props.initLogin();
-  }
-
   render() {
     const { location, auth } = this.props;
     return (
@@ -61,7 +56,6 @@ class App extends Component {
 const mapStateToProps = state => ({ auth: state.login.auth });
 
 const mapDispatchToProps = {
-  initLogin,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
