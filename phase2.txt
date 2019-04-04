@@ -1,7 +1,13 @@
 Phase 2:
 
+URL: http://ec2-3-87-7-156.compute-1.amazonaws.com:3000/
+
 ================================
 How to use: 
+Follow the URL: http://ec2-3-87-7-156.compute-1.amazonaws.com:3000/
+and click the login button in the header and find login information
+for both default user and admin accounts in the user interactions
+and admin interactions sections. 
 
 ================================
 Edits to features:
@@ -10,7 +16,9 @@ Added Features:
 Admins can promote users to admin. Repo statistics were updated to change based
 on which user is selected using the radio buttons in the contributors list. Add
 repo functionality was added, so users can add private and public repos to their 
-accounts using any git (not necessarily github) url.
+accounts using any git (not necessarily github) url. Site was deployed using AWS.
+Admins have also now have access to their own dashboards (i.e. all normal user
+functionality, previously they only had access to admin actions.)
 
 Removed Features:
 Some features were removed due to time constraints: for example the 
