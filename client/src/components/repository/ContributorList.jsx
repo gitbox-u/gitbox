@@ -34,7 +34,7 @@ class ContributorList extends React.Component {
 
     return (
       <List dense className={ classes.root }>
-        <Typography variant="h5" className={ classes.cardHeader }>
+        <Typography variant="h6" className={ classes.cardHeader }>
           Contributors
         </Typography>
         { /*<ListSubheader style={{backgroundColor: 'white'}}>{'Contributors'}</ListSubheader>*/ }

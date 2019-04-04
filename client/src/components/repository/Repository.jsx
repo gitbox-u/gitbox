@@ -30,7 +30,7 @@ const styles = {
 
   stat: {
     width: '100%',
-    height: '350px',
+    height: '250px',
   },
 
   btn: {
@@ -41,35 +41,42 @@ const styles = {
   },
 
   codeStream: {
-    height: '200px',
+    height: '250px',
     width: '100%',
   },
 
   deleteAdd: {
-    height: '200px',
+    height: '250px',
     width: '100%',
   },
 
   gitGraph: {
-    height: '200px',
+    height: '250px',
     width: '100%',
   },
 
   repoName: {
     paddingLeft: '10px',
+    paddingBottom: '10px',
   },
 
   contributors: {
-    height: '866px',
+    height: '966px',
     width: '100%',
   },
 
   langBreak: {
-    height: '200px',
+    height: '250px',
     width: '100%',
   },
 
   cardHeader: {
+    textAlign: 'center',
+  },
+
+  cardSub: {
+    fontSize: '0.8em',
+    color: 'grey',
     textAlign: 'center',
   },
 
@@ -174,7 +181,7 @@ class Repository extends Component {
           <Typography className={ classes.repoName } variant="h4">
             { `${data.name}` }
           </Typography>
-          <Typography className={ classes.repoName } variant="h5">
+          <Typography className={ classes.repoName } variant="h6">
             { data.desc }
           </Typography>
         </Grid>
@@ -188,10 +195,10 @@ class Repository extends Component {
 
         <Grid item xs={ 12 } className={ classes.paddedFull }>
           <Paper className={ classes.paper }>
-            <Typography variant="h5" className={ classes.cardHeader }>
+            <Typography variant="h6" className={ classes.cardHeader }>
               Repository History
             </Typography>
-            <Typography className={ classes.cardHeader }>
+            <Typography className={ classes.cardSub }>
               A view of your repositories history and branches over time. Scroll to zoom in, and drag to move.
             </Typography>
             <Grid container className={classes.gitGraph} spacing={16}>
@@ -211,10 +218,10 @@ class Repository extends Component {
         <Grid item container spacing={ 16 } xs={ 9 }>
           <Grid item xs={ 12 }>
             <Paper className={ classes.paper }>
-              <Typography variant="h5" className={ classes.cardHeader }>
-                Contributions over time
+              <Typography variant="h6" className={ classes.cardHeader }>
+                Contributions Over Time
               </Typography>
-              <Typography className={ classes.cardHeader }>
+              <Typography className={ classes.cardSub }>
                 Hover over the graph to see the breakdown in contributions per day.
               </Typography>
               <div className={ classes.codeStream } title={ 'Code Stream' }>
@@ -226,11 +233,11 @@ class Repository extends Component {
 
           <Grid item xs={ 3 }>
             <Paper className={ classes.paper }>
-              <Typography variant="h5" className={ classes.cardHeader }>
+              <Typography variant="h6" className={ classes.cardHeader }>
                 Top Contributors
               </Typography>
-              <Typography className={ classes.cardHeader }>
-                Top 5 contributors over last 5 months.
+              <Typography className={ classes.cardSub }>
+                Top 5 over the last 5 months.
               </Typography>
               <div className={ classes.langBreak }>
                 <MiniCalendar data={ data.calendar }/>
@@ -240,13 +247,11 @@ class Repository extends Component {
 
           <Grid item xs={ 3 }>
             <Paper className={ classes.paper }>
-              <Typography variant="h5" className={ classes.cardHeader }>
+              <Typography variant="h6" className={ classes.cardHeader }>
                 Language Breakdown
               </Typography>
-              <Typography className={ classes.cardHeader }>
+              <Typography className={ classes.cardSub }>
                 Hover for individual file languages.
-              </Typography>
-              <Typography className={ classes.cardHeader }>
               </Typography>
               <div className={ classes.langBreak }>
                 <LanguageBreakdown data={ languages }/>
@@ -256,10 +261,10 @@ class Repository extends Component {
 
           <Grid item xs={ 6 }>
             <Paper className={ classes.paper }>
-              <Typography variant="h5" className={ classes.cardHeader }>
+              <Typography variant="h6" className={ classes.cardHeader }>
                 Additions and Deletions
               </Typography>
-              <Typography className={ classes.cardHeader }>
+              <Typography className={ classes.cardSub }>
                 Hover over to see a breakdown per day.
               </Typography>
               <div className={ classes.deleteAdd }>
@@ -270,11 +275,11 @@ class Repository extends Component {
 
           <Grid item xs={ 12 }>
             <Paper className={ classes.paper }>
-              <Typography variant="h5" className={ classes.cardHeader }>
+              <Typography variant="h6" className={ classes.cardHeader }>
                 Folder Tree
               </Typography>
-              <Typography className={ classes.cardHeader }>
-                A break down of the folder and file structure of your repository.
+              <Typography className={ classes.cardSub }>
+                A breakdown of the folder and file structure of your repository.
               </Typography>
               <div className={ classes.codeStream }>
                 <FolderTree data={ data.tree }/>
