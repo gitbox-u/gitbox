@@ -92,6 +92,7 @@ const styles = {
 class Repository extends Component {
   state = {
     checked: null,
+    message: "Click on a graph node to check out the specific commit!"
   };
 
   /**
@@ -110,6 +111,20 @@ class Repository extends Component {
       checked: newValue,
     });
   };
+
+  handleCommitChange = commit => {
+    console.log(commit);
+    const {sha, author, message} = commit;
+    this.setState({
+      message: (
+        <div>
+        <Typography>{`SHA: ${sha}`}</Typography>
+          <Typography>{`Author: ${author}`}</Typography>
+          <Typography>{`Message: ${message}`}</Typography>
+        </div>
+      ),
+    })
+  }
 
   componentDidMount() {
     this.props.initDataForRepo(this.props.match.params.id);
@@ -179,9 +194,17 @@ class Repository extends Component {
             <Typography className={ classes.cardHeader }>
               A view of your repositories history and branches over time. Scroll to zoom in, and drag to move.
             </Typography>
-            <div className={ classes.gitGraph }>
-              <GitGraph graph={ graph }/>
-            </div>
+            <Grid container className={classes.gitGraph} spacing={16}>
+              <Grid item xs={ 10 } >
+                <GitGraph graph={graph} commits={data.commits} commitChange={this.handleCommitChange} >
+                </GitGraph>
+              </Grid>
+              <Grid item xs={ 2 }>
+                <div>
+                  {this.state.message}
+                </div>
+              </Grid>
+            </Grid>
           </Paper>
         </Grid>
 
