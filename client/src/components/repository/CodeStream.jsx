@@ -15,7 +15,7 @@ function CodeStream(props) {
       margin={{
         "top": 10,
         "right": 30,
-        "bottom": 30,
+        "bottom": 35,
         "left": 30
       }}
 

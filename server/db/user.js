@@ -35,8 +35,8 @@ const addUser = (user, salt, hash) => {
 const getUser = (user) => User.findOne({ user });
 const getUserByUUID = (uuid) => User.findOne({ uuid });
 const getAllUsers = (uuid) => User.find();
-const updateUsername = (user, username) => {
-  return User.findOneAndUpdate({user}, {user: username}).then(res => {
+const updateUsername = (uuid, username) => {
+  return User.findOneAndUpdate({uuid}, {user: username}).then(res => {
     if (res) return Promise.resolve();
     return Promise.reject();
   })

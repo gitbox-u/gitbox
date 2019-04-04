@@ -4,6 +4,7 @@ import {ButtonBase, Card, CardHeader, Grid} from '@material-ui/core';
 import {withRouter} from 'react-router-dom';
 import {getRandomColor} from '../../api/colours';
 import Language from './Language';
+import Close from '@material-ui/icons/Close'
 
 const styles = {
   repoCard: {
@@ -20,6 +21,10 @@ const styles = {
 
   full: {
     width: '100%',
+  },
+
+  grow: {
+    flexGrow: 1,
   },
 };
 
@@ -55,11 +60,25 @@ class RepoCard extends Component {
               onMouseOut={this.toggleRaised}
               raised={this.state.raised}
         >
+        <Grid container
+            flexDirection= 'row'
+            justifyContent= 'space-between'
+            alignItems= 'center'
+        >
+        <Grid item
+          width="1/2"
+        >
           <CardHeader
             className={classes.header}
-            title={name}
+            title={name.substring(0,20)}
             subheader={desc}
           />
+        </Grid>
+          <div className={classes.grow}/>
+        
+          <Close style={{marginRight: "10px"}}></Close>
+        </Grid>
+
           <Grid container
                 spacing={16}
                 justify='stretch'

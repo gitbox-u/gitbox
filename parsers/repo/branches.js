@@ -5,7 +5,7 @@ async function branches(path) {
   const git = `cd "${path}"
   git log --all --date-order --pretty="%h|%p|%d|%s"`;
 
-  const {stdout, stderr} = await exec(git);
+  const {stdout, stderr} = await exec(git, {maxBuffer: 1024 * 1000 * 4});
 
   const nodes = [];
   const edges = [];

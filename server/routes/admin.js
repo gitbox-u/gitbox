@@ -18,21 +18,20 @@ router.get("/users", (req, res) => {
 });
 
 router.post("/users/update/user", 
-  bodyHasParameters(["oldUsername", "newUsername"]),
+  bodyHasParameters(["uuid_change", "new_username"]),
   (req, res) => {
-    const {oldUsername, newUsername} = req.body;
-    updateUsername(oldUsername, newUsername)
-    .then(() => res.status(200).json({"message": `Username for user ${newUsername} changed`}))
-    .catch(() => res.status(400).json({"message": `Could not find user ${oldUsername}`}))
+    const {uuid_change, new_username} = req.body;
+    updateUsername(uuid_change, new_username)
+    .then(() => res.status(200).json({"message": `Username for user ${new_username} changed`}))
+    .catch(() => res.status(400).json({"message": `Could not find user ${uuid_change}`}))
   }
 );
 
 router.post("/users/remove/user",
-  bodyHasParameters(["uuid"]),
+  bodyHasParameters(["uuid_delete"]),
   (req, res) => {
-    console.log("hello!");
-    const {uuid} = req.body;
-    removeUser(uuid)
+    const {uuid_delete} = req.body;
+    removeUser(uuid_delete)
     .then(() => res.status(200).json({"message": "done"}));
   }
 );
