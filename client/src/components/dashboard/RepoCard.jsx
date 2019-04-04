@@ -61,64 +61,60 @@ class RepoCard extends Component {
     return (
       <Badge badgeContent={
         <ButtonBase onClick={() => this.deleteRepo(id)}>
-          <ButtonBase onClick={this.routeChange(`/repository/${id}`)}
-            className={classes.full}
-          >
-            <Close style={{ marginRight: "10px" }}></Close>
-          </ButtonBase>
-          }>
-    
+          <Close style={{ marginRight: "10px" }}></Close>
+        </ButtonBase>
+      }>
+
         <ButtonBase onClick={this.routeChange(`/repository/${id}`)}
-            className={classes.full}
+          className={classes.full}
+        >
+          <Card
+            className={classes.repoCard}
+            onMouseOver={this.toggleRaised}
+            onMouseOut={this.toggleRaised}
+            raised={this.state.raised}
           >
-            <Card
-              className={classes.repoCard}
-              onMouseOver={this.toggleRaised}
-              onMouseOut={this.toggleRaised}
-              raised={this.state.raised}
+            <Grid container
+              flexDirection='row'
+              justifyContent='space-between'
+              alignItems='center'
             >
-              <Grid container
-                flexDirection='row'
-                justifyContent='space-between'
-                alignItems='center'
+              <Grid item
+                width="1/2"
               >
-                <Grid item
-                  width="1/2"
-                >
-                  <CardHeader
-                    className={classes.header}
-                    title={name.substring(0, 20)}
-                    subheader={desc}
-                  />
-                </Grid>
-                <div className={classes.grow} />
-
+                <CardHeader
+                  className={classes.header}
+                  title={name.substring(0, 20)}
+                  subheader={desc}
+                />
               </Grid>
+              <div className={classes.grow} />
 
-              <Grid container
-                spacing={16}
-                justify='stretch'
-                className={classes.full}
-                alignItems='center'
-              >
-                {
-                  breakdown.map(
-                    (lang, i) => {
-                      const { language, color } = lang;
+            </Grid>
 
-                      return (
-                        <Grid item key={i}>
-                          <Language key={2 * i} colour={color} language={language} />
-                        </Grid>
-                      )
-                    }
-                  )
-                }
-              </Grid>
-            </Card>
-          </ButtonBase>
+            <Grid container
+              spacing={16}
+              justify='stretch'
+              className={classes.full}
+              alignItems='center'
+            >
+              {
+                breakdown.map(
+                  (lang, i) => {
+                    const { language, color } = lang;
+
+                    return (
+                      <Grid item key={i}>
+                        <Language key={2 * i} colour={color} language={language} />
+                      </Grid>
+                    )
+                  }
+                )
+              }
+            </Grid>
+          </Card>
+        </ButtonBase>
       </Badge>
-    
     );
   }
 }
