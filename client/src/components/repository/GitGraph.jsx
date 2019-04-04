@@ -5,6 +5,7 @@
 import React, {Component} from 'react';
 import Graph from 'react-graph-vis';
 import {connect} from "react-redux";
+import { withStyles } from '@material-ui/core/es';
 
 const options = {
   interaction: {
@@ -35,6 +36,13 @@ const options = {
   }
 };
 
+const styles = {
+  leftQuarter: {
+    width: "25%",
+    float: "left",
+  }
+}
+
 
 class GitGraph extends Component {
 
@@ -42,7 +50,7 @@ class GitGraph extends Component {
 
 
   render() {
-    const {graph, commits} = this.props;
+    const {graph, commits, classes} = this.props;
     console.log(commits);
     const events = {
       click: properties => {
@@ -62,4 +70,4 @@ class GitGraph extends Component {
 }
 
 
-export default (GitGraph);
+export default withStyles(styles)(GitGraph);

@@ -58,6 +58,9 @@ const styles = {
     flexGrow: 1,
   },
 
+  leftQuarter: {
+    width:"25%",
+  }
 };
 
 class Repository extends Component {
@@ -155,8 +158,13 @@ class Repository extends Component {
               A view of your repositories history and branches over time. Scroll to zoom in, and drag to move.
             </Typography>
             <div className={classes.gitGraph}>
-            <GitGraph graph={graph} commits={data.commits} >
-            </GitGraph>
+              <span>
+
+              <div className={classes.leftQuarter}>
+              </div>
+              <GitGraph graph={graph} commits={data.commits} >
+              </GitGraph>
+              </span>
             </div>
           </Paper>
         </Grid>
