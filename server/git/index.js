@@ -36,8 +36,9 @@ const registerRepo = (repo) => {
     });
 };
 
-function pullRepo(repo) {
-  const store = path.join(root, repo.uuid, 'repo');
+async function pullRepo(repoID) {
+  const repo = await getRepo(repoID).exec();
+  const store = path.join(root, repo.uuid, 'repo', repo.name);
 
   return git(store)
     .pull('origin', 'master')
