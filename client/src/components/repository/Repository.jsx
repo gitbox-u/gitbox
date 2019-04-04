@@ -95,12 +95,16 @@ const styles = {
     padding: '0.1em',
     // overflowY: 'hidden',
   },
+
+  msg: {
+
+  },
 };
 
 class Repository extends Component {
   state = {
     checked: null,
-    message: "Click on a graph node to check out the specific commit!"
+    message: "Click on a node to check out a specific commit!"
   };
 
   /**
@@ -132,7 +136,7 @@ class Repository extends Component {
         </div>
       ),
     })
-  }
+  };
 
   componentDidMount() {
     this.props.initDataForRepo(this.props.match.params.id);
@@ -150,7 +154,7 @@ class Repository extends Component {
     if (data === undefined) return (
       <div
         className={classes.repoViewContainer}>
-        {`No data for repository #${id}`}
+        {`Loading data for repository #${id}`}
       </div>
     );
 
@@ -191,7 +195,7 @@ class Repository extends Component {
           <Button variant="outlined" className={classes.btn} onClick={(e) => {
             refresh(id)
               .then(() => window.location.reload())
-              .catch(() => alert("reload failed"));
+              .catch();
           }}><Refresh
             style={{fontSize: 30}}/> Refresh Statistics</Button>
         </Grid>
@@ -209,7 +213,7 @@ class Repository extends Component {
                 <GitGraph graph={graph} commits={data.commits} commitChange={this.handleCommitChange}/>
               </Grid>
               <Grid item xs={2}>
-                <div>
+                <div className={classes.msg}>
                   {this.state.message}
                 </div>
               </Grid>
