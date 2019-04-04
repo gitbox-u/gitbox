@@ -68,6 +68,7 @@ async function getStats(repoID) {
     readFile(path.join(store, 'tree.json')).then(r => stats.tree = JSON.parse(r)),
     readFile(path.join(store, 'topfive.json')).then(r => stats.calendar = JSON.parse(r)),
     readFile(path.join(store, 'branches.json')).then(r => stats.graph = JSON.parse(r)),
+    readFile(path.join(store, 'commits.json')).then(r => stats.commits = JSON.parse(r)),
     readFile(path.join(store, 'stats_committers.json')).then(r => stats.stats_committers = JSON.parse(r)),
     getRepo(repoID).exec().then(r => {stats.name = r.name})
   ]);

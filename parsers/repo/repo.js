@@ -32,19 +32,21 @@ commit_lines(path)
   .then((t) => {
     saveFile(t, 'tree');
   }).catch((t) => {
-    console.error(t)
-    saveFile(t, 'err')
-  });
+  console.error(t)
+  saveFile(t, 'err')
+});
 
 // console.log(JSON.stringify(tree(path, ['jsx', 'js', 'sh'])));
 topfive(path).then((t) => saveFile(t, 'topfive'));
 
-branches(path).then((t) => saveFile(t, 'branches'));
-
+branches(path).then((t) => {
+  saveFile(t.graph, 'branches');
+  saveFile(t.messages, 'commits');
+});
 
 
 function saveFile(file, name) {
-  if(save) fs.writeFileSync(`${save}/${name}.json`, JSON.stringify(file))
+  if (save) fs.writeFileSync(`${save}/${name}.json`, JSON.stringify(file))
 }
 
 

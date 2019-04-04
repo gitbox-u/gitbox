@@ -150,7 +150,7 @@ class Repository extends Component {
               A view of your repositories history and branches over time. Scroll to zoom in, and drag to move.
             </Typography>
             <div className={classes.gitGraph}>
-            <GitGraph graph={graph}>
+            <GitGraph graph={graph} commits={data.commits} >
             </GitGraph>
             </div>
           </Paper>

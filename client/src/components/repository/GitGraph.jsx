@@ -2,9 +2,9 @@
 // empty, but wanted to keep this handy :)
 
 // outputs: "hash | previous commits (parents) | (?) | message"
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Graph from 'react-graph-vis';
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 
 const options = {
   interaction: {
@@ -12,7 +12,7 @@ const options = {
     hover: true,
     hoverConnectedEdges: false,
     tooltipDelay: 300,
-    selectable: false,
+    selectable: true,
   },
   physics: {
     enabled: false,
@@ -36,15 +36,26 @@ const options = {
 };
 
 
-
 class GitGraph extends Component {
 
+
+
+
   render() {
-    const {graph} = this.props;
-    
+    const {graph, commits} = this.props;
+    console.log(commits);
+    const events = {
+      click: properties => {
+        const node = properties.nodes.pop();
+        if (node) {
+          console.log(node);
+          console.log(commits[node])
+        }
+      }
+    };
 
     return (
-      <Graph graph={graph} options={options}>
+      <Graph graph={graph} events={events} options={options}>
       </Graph>
     );
   }
