@@ -101,7 +101,7 @@ class RepoCard extends Component {
 
             <Grid item
                   container
-                  spacing={ 16 }
+                  spacing={ 8 }
                   justify='stretch'
                   className={ classes.full }
                   alignItems='center'
