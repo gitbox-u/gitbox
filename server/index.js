@@ -12,12 +12,6 @@ const { registerRepo } = require('./git');
 const app = express();
 const port = process.env.GITBOXPORT || 3000;
 
-app.use(function(req, res){
-  if(req.protocol === "http"){
-    res.redirect("https://" + req.headers.host + req.url);
-  }
-});
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
