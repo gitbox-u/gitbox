@@ -6,13 +6,14 @@ services:
       - MONGOHOST=mongo
       - REPODIR=/REPOdata/
       - PARSERDIR=/gitmap/
+      - GITBOXPORT=80
     build: .
     volumes:
       - /REPOdata:/REPOdata
     depends_on:
       - mongo
     ports:
-      - "80:3000"
+      - "80:80"
     networks:
       - tunn
   mongo:

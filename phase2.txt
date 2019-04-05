@@ -6,7 +6,7 @@
 
 *** Tested on Google Chrome, fullscreen *** 
 
-Front-end URL: http://ec2-3-87-7-156.compute-1.amazonaws.com:3000/
+Front-end URL: https://gitbox.xyz
 
 ### How to use
 ================================

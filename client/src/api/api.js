@@ -8,7 +8,8 @@ if (process.env.REACT_APP_APIHOST) {
   host = process.env.REACT_APP_APIHOST;
 }
 
-const apiRoot = 'http://' + host + ':3000/api/';
+const port = process.env.REACT_APIPORT || 3000;
+const apiRoot = 'https://' + host + ':' + port + '/api/';
 const authEnd = 'auth/';
 const userEnd = 'user/';
 const adminEnd = 'admin/';
