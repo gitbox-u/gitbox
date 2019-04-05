@@ -8,7 +8,7 @@ COPY ./client/package*.json ./client/
 COPY ./server ./server
 COPY ./parsers ./parsers
 
-RUN cd /gitmap/client && npm install && REACT_APP_APIHOST=gitbox.xyz REACT_APP_APIPORT=80 npm run build
+RUN cd /gitmap/client && npm install && REACT_APP_APIHOST=gitbox.xyz REACT_APP_APIPORT=443 npm run build
 RUN cd /gitmap/server && npm install
 RUN cd /gitmap/parsers && npm install
 
