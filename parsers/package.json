@@ -11,7 +11,7 @@
   "dependencies": {
     "directory-tree": "^2.2.1",
     "shelljs": "^0.8.3",
-    "simple-git": "^1.110.0",
+    "simple-git": "^3.3.0",
     "yargs": "latest"
   }
 }
